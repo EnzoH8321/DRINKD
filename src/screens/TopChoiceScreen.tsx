@@ -10,6 +10,8 @@ const TopChoicesScreen = () => {
   return (
     <View style={styles.container}>
       <MiniCardComponent />
+      <MiniCardComponent />
+      <MiniCardComponent />
     </View>
   );
 };

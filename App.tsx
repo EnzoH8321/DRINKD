@@ -1,6 +1,6 @@
 import React from "react";
 
-import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
+import { Provider as PaperProvider } from "react-native-paper";
 
 //ReactNav
 import { createStackNavigator } from "@react-navigation/stack";
@@ -9,17 +9,19 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 //Screens
 import HomeScreen from "./src/screens/HomeScreen";
 import TopChoiceScreen from "./src/screens/TopChoiceScreen";
+import JoinScreen from "./src/screens/JoinScreen";
 
 //Stack
-const HomeStack = createDrawerNavigator();
+const HomeDrawer = createDrawerNavigator();
 const AppStack = createStackNavigator();
 
 const Home = () => {
   return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen name="Home" component={HomeScreen} />
-      <HomeStack.Screen name="TopChoice" component={TopChoiceScreen} />
-    </HomeStack.Navigator>
+    <HomeDrawer.Navigator>
+      <HomeDrawer.Screen name="Home" component={HomeScreen} />
+      <HomeDrawer.Screen name="TopChoice" component={TopChoiceScreen} />
+      <HomeDrawer.Screen name="JoinScreen" component={JoinScreen} />
+    </HomeDrawer.Navigator>
   );
 };
 
