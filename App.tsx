@@ -1,21 +1,42 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
 
-export default function App() {
+import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
+
+//ReactNav
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+//Screens
+import HomeScreen from "./src/screens/HomeScreen";
+import TopChoiceScreen from "./src/screens/TopChoiceScreen";
+
+//Stack
+const HomeStack = createDrawerNavigator();
+const AppStack = createStackNavigator();
+
+const Home = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <HomeStack.Navigator>
+      <HomeStack.Screen name="Home" component={HomeScreen} />
+      <HomeStack.Screen name="TopChoice" component={TopChoiceScreen} />
+    </HomeStack.Navigator>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App = () => {
+  return (
+    <AppStack.Navigator>
+      <AppStack.Screen name="HomeApp" component={Home} />
+    </AppStack.Navigator>
+  );
+};
+
+export default () => {
+  return (
+    <NavigationContainer>
+      <PaperProvider>
+        <App />
+      </PaperProvider>
+    </NavigationContainer>
+  );
+};
