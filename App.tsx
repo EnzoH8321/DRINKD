@@ -10,6 +10,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import HomeScreen from "./src/screens/HomeScreen";
 import TopChoiceScreen from "./src/screens/TopChoiceScreen";
 import JoinScreen from "./src/screens/JoinScreen";
+import CreateScreen from "./src/screens/Createscreen";
 
 //Stack
 const HomeDrawer = createDrawerNavigator();
@@ -21,6 +22,7 @@ const Home = () => {
       <HomeDrawer.Screen name="Home" component={HomeScreen} />
       <HomeDrawer.Screen name="TopChoice" component={TopChoiceScreen} />
       <HomeDrawer.Screen name="JoinScreen" component={JoinScreen} />
+      <HomeDrawer.Screen name="CreateScreen" component={CreateScreen} />
     </HomeDrawer.Navigator>
   );
 };
