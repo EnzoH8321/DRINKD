@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     top: 100,
   },
   cardComponent: {},
+  cardImage: {},
   miniCardComponent: {},
   button: {
     width: "50%",
