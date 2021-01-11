@@ -5,8 +5,8 @@ import styles from "../styles/constant";
 
 const JoinScreen = () => {
   return (
-    <View style={[styles.container, override.view]}>
-      <Headline style={override.headline}> Test </Headline>
+    <View style={[styles.container]}>
+      <Headline style={override.headline}> Enter Party Code Below </Headline>
       <TextInput label="Party Code" />
       <Button mode="contained" style={[styles.button, override.button]}>
         Go
@@ -18,6 +18,7 @@ const JoinScreen = () => {
 const override = StyleSheet.create({
   headline: {
     textAlign: "center",
+    marginBottom: 100,
   },
   button: {
     top: 50,

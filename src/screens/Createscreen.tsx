@@ -1,13 +1,15 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { Headline, Subheading } from "react-native-paper";
+import { Headline, Button } from "react-native-paper";
 import styles from "../styles/constant";
 
 const CreateScreen = () => {
   return (
     <View style={[styles.container, override.view]}>
-      <Headline style={override.headline}>Your Party</Headline>
-      <Headline>Your code</Headline>
+      <Button mode="contained" style={styles.button}>
+        Create Party
+      </Button>
+      <Headline style={override.headline}>Your party code is xxx</Headline>
     </View>
   );
 };
@@ -17,7 +19,7 @@ const override = StyleSheet.create({
     alignItems: "center",
   },
   headline: {
-    marginBottom: 100,
+    marginTop: 100,
   },
 });
 
