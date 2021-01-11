@@ -29,9 +29,9 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <CardComponent />
+
       <BottomSheet
-        snapPoints={[500, 0]}
-        initialSnap={0}
+        snapPoints={[200, 500]}
         borderRadius={10}
         renderContent={renderContent}
         renderHeader={renderHeader}
