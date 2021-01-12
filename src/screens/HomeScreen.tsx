@@ -24,12 +24,6 @@ const HomeScreen = () => {
     </View>
   );
 
-  const renderHeader = () => (
-    <View>
-      <Text>Hello</Text>
-    </View>
-  );
-
   return (
     <View style={styles.container}>
       <CardComponent />
