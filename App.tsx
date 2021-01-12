@@ -1,6 +1,6 @@
-import React from "react";
-
+import React, { useEffect } from "react";
 import { Provider as PaperProvider } from "react-native-paper";
+import fetchAPI from "./src/api/YelpApi";
 
 //ReactNav
 import { createStackNavigator } from "@react-navigation/stack";
@@ -36,6 +36,11 @@ const App = () => {
 };
 
 export default () => {
+  useEffect(() => {
+    let data = fetchAPI();
+    console.log(data);
+  }, []);
+
   return (
     <NavigationContainer>
       <PaperProvider>

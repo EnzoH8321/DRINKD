@@ -1,6 +1,7 @@
 //API
 
 import * as Location from "expo-location";
+import axios from "axios";
 
 export default async function fetchAPI() {
   const { status } = await Location.requestPermissionsAsync();
@@ -11,11 +12,11 @@ export default async function fetchAPI() {
   }
 
   let location = await Location.getCurrentPositionAsync();
-  let locationLat = location.coords.latitude.toString;
-  let locaitonLong = location.coords.longitude.toString;
+  let locationLat = location.coords.latitude.toString();
+  let locationLong = location.coords.longitude.toString();
 
-  const data = await fetch(
-    `https://api.yelp.com/v3/businesses/search?latitude=${locationLat}longitude=${locaitonLong}`,
+  const data = await axios(
+    `https://api.yelp.com/v3/businesses/search?categories='bars'&latitude=${locationLat}&longitude=${locationLong}`,
     {
       method: "GET",
       headers: {
@@ -25,5 +26,6 @@ export default async function fetchAPI() {
     }
   );
 
-  return data.json();
+  console.log(data);
+  return data;
 }
