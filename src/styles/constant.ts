@@ -10,6 +10,10 @@ const styles = StyleSheet.create({
   cardComponent: {},
   cardImage: {},
   miniCardComponent: {},
+  iconList: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
   button: {
     width: "50%",
     alignSelf: "center",

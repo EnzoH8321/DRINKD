@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import { Text } from "react-native-paper";
+import { Text, List } from "react-native-paper";
 import BottomSheet from "reanimated-bottom-sheet";
 import styles from "../styles/constant";
 
@@ -16,7 +16,11 @@ const HomeScreen = () => {
         height: 450,
       }}
     >
-      <Text>Swipe down to close</Text>
+      <View style={styles.iconList}>
+        <List.Icon icon="phone" />
+        <List.Icon icon="food" />
+        <List.Icon icon="map" />
+      </View>
     </View>
   );
 
@@ -34,7 +38,6 @@ const HomeScreen = () => {
         snapPoints={[200, 500]}
         borderRadius={10}
         renderContent={renderContent}
-        renderHeader={renderHeader}
       ></BottomSheet>
     </View>
   );
