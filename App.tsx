@@ -35,10 +35,13 @@ const App = () => {
   );
 };
 
-export default () => {
+export default function () {
   useEffect(() => {
-    let data = fetchAPI();
-    console.log(data);
+    // the parenth below is syntax for => function(){...}
+    (async () => {
+      const data = await fetchAPI();
+      console.log(data);
+    })();
   }, []);
 
   return (
@@ -48,4 +51,4 @@ export default () => {
       </PaperProvider>
     </NavigationContainer>
   );
-};
+}
