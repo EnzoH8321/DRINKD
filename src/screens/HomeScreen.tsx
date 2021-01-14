@@ -6,24 +6,9 @@ import styles from "../styles/constant";
 
 //Components
 import CardComponent from "../components/CardComponent";
+import CustomSheet from "../components/BottomSheetComponent";
 
 const HomeScreen = () => {
-  const renderContent = () => (
-    <View
-      style={{
-        backgroundColor: "white",
-        padding: 16,
-        height: 450,
-      }}
-    >
-      <View style={styles.iconList}>
-        <List.Icon icon="phone" />
-        <List.Icon icon="food" />
-        <List.Icon icon="map" />
-      </View>
-    </View>
-  );
-
   return (
     <View style={styles.container}>
       <CardComponent />
@@ -31,7 +16,7 @@ const HomeScreen = () => {
       <BottomSheet
         snapPoints={[200, 500]}
         borderRadius={10}
-        renderContent={renderContent}
+        renderContent={CustomSheet}
       ></BottomSheet>
     </View>
   );

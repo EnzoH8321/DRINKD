@@ -36,6 +36,7 @@ const App = () => {
 };
 
 export default function () {
+  //Calls API
   useEffect(() => {
     // the parenth below is syntax for => function(){...}
     (async () => {
