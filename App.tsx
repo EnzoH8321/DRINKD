@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { Provider as PaperProvider } from "react-native-paper";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
 import fetchAPI from "./src/api/YelpApi";
 
 //ReactNav
@@ -11,6 +13,11 @@ import HomeScreen from "./src/screens/HomeScreen";
 import TopChoiceScreen from "./src/screens/TopChoiceScreen";
 import JoinScreen from "./src/screens/JoinScreen";
 import CreateScreen from "./src/screens/Createscreen";
+
+import rootReducer from "./src/reducers/index";
+
+// Store
+const store = createStore(rootReducer);
 
 //Stack
 const HomeDrawer = createDrawerNavigator();
@@ -47,9 +54,11 @@ export default function () {
 
   return (
     <NavigationContainer>
-      <PaperProvider>
-        <App />
-      </PaperProvider>
+      <Provider store={store}>
+        <PaperProvider>
+          <App />
+        </PaperProvider>
+      </Provider>
     </NavigationContainer>
   );
 }

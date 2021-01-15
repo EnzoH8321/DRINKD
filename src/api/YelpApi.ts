@@ -1,5 +1,3 @@
-//API
-
 import * as Location from "expo-location";
 import axios from "axios";
 
@@ -25,6 +23,6 @@ export default async function fetchAPI() {
       },
     }
   );
-
-  return data;
+  //Returns an array of objects
+  return data.data.businesses;
 }
