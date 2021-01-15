@@ -1,8 +1,7 @@
 import React from "react";
 import { Provider as PaperProvider } from "react-native-paper";
-import { createStore, applyMiddleware } from "redux";
+
 import { Provider } from "react-redux";
-import thunk from "redux-thunk";
 
 //ReactNav
 import { createStackNavigator } from "@react-navigation/stack";
@@ -14,10 +13,13 @@ import TopChoiceScreen from "./src/screens/TopChoiceScreen";
 import JoinScreen from "./src/screens/JoinScreen";
 import CreateScreen from "./src/screens/Createscreen";
 
-import rootReducer from "./src/reducers/index";
+import store from "./src/store/store";
 
-// Store
-const store = createStore(rootReducer, applyMiddleware(thunk));
+// // Store
+// const store = createStore(rootReducer, applyMiddleware(thunk));
+// console.log(store.getState().establishment.establishmentList);
+
+console.log(store.getState().establishment.establishmentList);
 
 //Stack
 const HomeDrawer = createDrawerNavigator();
@@ -43,7 +45,6 @@ const App = () => {
 };
 
 export default function () {
-  console.log(store.getState().establishment.establishmentList);
   return (
     <NavigationContainer>
       <Provider store={store}>

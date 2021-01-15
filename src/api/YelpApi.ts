@@ -5,13 +5,10 @@ import { useDispatch } from "react-redux";
 
 //Actions
 import * as actions from "../actions";
-import { setApiData } from "../actions/APIActions";
 
 export default async function fetchAPI() {
   try {
     const { status } = await Location.requestPermissionsAsync();
-
-    const dispatch = useDispatch();
 
     if (status !== "granted") {
       alert("Permission to access denied");
@@ -33,7 +30,6 @@ export default async function fetchAPI() {
       }
     );
 
-    dispatch(setApiData(data.data.businesses));
     //Returns an array of objects
     return data.data.businesses;
   } catch (error) {
