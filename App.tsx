@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Provider as PaperProvider } from "react-native-paper";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import fetchAPI from "./src/api/YelpApi";
+import thunk from "redux-thunk";
 
 //ReactNav
 import { createStackNavigator } from "@react-navigation/stack";
@@ -17,7 +17,7 @@ import CreateScreen from "./src/screens/Createscreen";
 import rootReducer from "./src/reducers/index";
 
 // Store
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 //Stack
 const HomeDrawer = createDrawerNavigator();
@@ -43,15 +43,7 @@ const App = () => {
 };
 
 export default function () {
-  //Calls API
-  useEffect(() => {
-    // the parenth below is syntax for => function(){...}
-    (async () => {
-      const data = await fetchAPI();
-      console.log(data);
-    })();
-  }, []);
-
+  console.log(store.getState().establishment.establishmentList);
   return (
     <NavigationContainer>
       <Provider store={store}>
