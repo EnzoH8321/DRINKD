@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 
 import fetchAPI from "../api/YelpApi";
@@ -20,27 +20,29 @@ import store from "../store/store";
 const HomeScreen = () => {
   const dispatch = useDispatch();
 
+  const [dataArray, setDataArray] = useState(null);
+
   // Calls API
   useEffect(() => {
     // the parenth below is syntax for => function(){...}
     (async () => {
       const data = await fetchAPI();
       dispatch(setApiData(data));
-      console.log(store.getState().establishment.establishmentList);
+      setDataArray(data);
     })();
   }, []);
 
   return (
     <View style={styles.container}>
-      <CardComponent />
-
-      <BottomSheet
-        snapPoints={[200, 500]}
-        borderRadius={10}
-        renderContent={CustomSheet}
-      ></BottomSheet>
-
-      <Paragraph> Hello</Paragraph>
+      {!dataArray ? (
+        <Paragraph>Not Loaded Yet</Paragraph>
+      ) : (
+        <BottomSheet
+          snapPoints={[200, 500]}
+          borderRadius={10}
+          renderContent={CustomSheet}
+        ></BottomSheet>
+      )}
     </View>
   );
 };
