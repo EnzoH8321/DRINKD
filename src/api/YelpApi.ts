@@ -1,11 +1,6 @@
 import * as Location from "expo-location";
 import axios from "axios";
 
-import { useDispatch } from "react-redux";
-
-//Actions
-import * as actions from "../actions";
-
 export default async function fetchAPI() {
   try {
     const { status } = await Location.requestPermissionsAsync();

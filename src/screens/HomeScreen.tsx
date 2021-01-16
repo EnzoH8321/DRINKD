@@ -23,11 +23,11 @@ const HomeScreen = () => {
   // Calls API
   useEffect(() => {
     // the parenth below is syntax for => function(){...}
-    async () => {
+    (async () => {
       const data = await fetchAPI();
       dispatch(setApiData(data));
       console.log(store.getState().establishment.establishmentList);
-    };
+    })();
   }, []);
 
   return (

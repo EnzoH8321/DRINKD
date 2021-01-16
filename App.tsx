@@ -15,12 +15,6 @@ import CreateScreen from "./src/screens/Createscreen";
 
 import store from "./src/store/store";
 
-// // Store
-// const store = createStore(rootReducer, applyMiddleware(thunk));
-// console.log(store.getState().establishment.establishmentList);
-
-console.log(store.getState().establishment.establishmentList);
-
 //Stack
 const HomeDrawer = createDrawerNavigator();
 const AppStack = createStackNavigator();
