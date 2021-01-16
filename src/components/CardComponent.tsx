@@ -1,17 +1,16 @@
 import React from "react";
 import styles from "../styles/constant";
-import { Text, Card, Title } from "react-native-paper";
+import { Card, Title, Subheading } from "react-native-paper";
 
-const CardComponent = () => {
+const CardComponent = ({ businessData }) => {
+  const { name, image_url, rating } = businessData;
+
   return (
     <Card>
       <Card.Content>
-        <Title>Card Title</Title>
-        <Card.Cover
-          source={require("../../assets/goodfood.jpg")}
-          style={styles.cardImage}
-        />
-        <Text>Card Text</Text>
+        <Title>{name}</Title>
+        <Card.Cover source={{ uri: `${image_url}` }} style={styles.cardImage} />
+        <Subheading>{rating}</Subheading>
       </Card.Content>
     </Card>
   );

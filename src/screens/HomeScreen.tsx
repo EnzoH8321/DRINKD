@@ -1,26 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
-
+import { useDispatch } from "react-redux";
 import fetchAPI from "../api/YelpApi";
-import BottomSheet from "reanimated-bottom-sheet";
 import styles from "../styles/constant";
-import { Paragraph } from "react-native-paper";
-
 //Components
 import CardComponent from "../components/CardComponent";
 import CustomSheet from "../components/BottomSheetComponent";
-import { useDispatch } from "react-redux";
-
+import BottomSheet from "reanimated-bottom-sheet";
+import { Paragraph } from "react-native-paper";
+import Carousel from "react-native-snap-carousel";
 //Actions
 import { setApiData } from "../actions/APIActions";
-
-//State
-import store from "../store/store";
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
 
   const [dataArray, setDataArray] = useState(null);
+  console.log(dataArray);
 
   // Calls API
   useEffect(() => {
@@ -37,11 +33,22 @@ const HomeScreen = () => {
       {!dataArray ? (
         <Paragraph>Not Loaded Yet</Paragraph>
       ) : (
-        <BottomSheet
-          snapPoints={[200, 500]}
-          borderRadius={10}
-          renderContent={CustomSheet}
-        ></BottomSheet>
+        <>
+          <Carousel
+            data={dataArray}
+            renderItem={({ item }) => {
+              return <CardComponent businessData={item} />;
+            }}
+            itemWidth={400}
+            sliderWidth={500}
+          />
+
+          <BottomSheet
+            snapPoints={[200, 500]}
+            borderRadius={10}
+            renderContent={CustomSheet}
+          ></BottomSheet>
+        </>
       )}
     </View>
   );

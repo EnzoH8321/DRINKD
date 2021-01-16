@@ -12,7 +12,7 @@ import HomeScreen from "./src/screens/HomeScreen";
 import TopChoiceScreen from "./src/screens/TopChoiceScreen";
 import JoinScreen from "./src/screens/JoinScreen";
 import CreateScreen from "./src/screens/Createscreen";
-
+//Store
 import store from "./src/store/store";
 
 //Stack
