@@ -5,7 +5,6 @@ import styles from "../styles/constant";
 
 const CustomSheet = (arrayObj) => {
   const { price, location, phone } = arrayObj;
-  const [screenType, setScreenType] = useState("phone");
 
   return (
     <View
@@ -16,15 +15,11 @@ const CustomSheet = (arrayObj) => {
       }}
     >
       <View style={styles.iconList}>
-        <Pressable onPress={() => setScreenType("phone")}>
-          <List.Icon icon="phone" />
-        </Pressable>
-        <Pressable onPress={() => setScreenType("food")}>
-          <List.Icon icon="food" />
-        </Pressable>
-        <Pressable onPress={() => setScreenType("map")}>
-          <List.Icon icon="map" />
-        </Pressable>
+        <List.Icon icon="phone" />
+
+        <List.Icon icon="food" />
+
+        <List.Icon icon="map" />
       </View>
       <View>
         <Title>{arrayObj.name}</Title>
