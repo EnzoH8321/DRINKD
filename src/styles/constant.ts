@@ -12,6 +12,11 @@ const styles = StyleSheet.create({
   //Mini Card Component
   miniCardComponent: {},
   //Bottom Sheet Component
+  sheetContainer: {
+    backgroundColor: "white",
+    padding: 16,
+    height: "100%",
+  },
   iconList: {
     flexDirection: "row",
     justifyContent: "space-between",

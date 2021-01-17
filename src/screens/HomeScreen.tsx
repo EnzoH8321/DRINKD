@@ -47,7 +47,7 @@ const HomeScreen = () => {
           />
 
           <BottomSheet
-            snapPoints={[200, 500]}
+            snapPoints={[200, 800]}
             borderRadius={10}
             renderContent={() => {
               return CustomSheet(dataArray[index]);

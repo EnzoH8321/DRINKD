@@ -15,7 +15,7 @@ export default async function fetchAPI() {
     let locationLong = location.coords.longitude.toString();
 
     const data = await axios(
-      `https://api.yelp.com/v3/businesses/search?categories=bars&latitude=${locationLat}&longitude=${locationLong}`,
+      `https://api.yelp.com/v3/businesses/search?categories=bars&latitude=${locationLat}&longitude=${locationLong}&limit=10`,
       {
         method: "GET",
         headers: {
