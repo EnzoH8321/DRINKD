@@ -8,12 +8,15 @@ import CardComponent from "../components/CardComponent";
 import CustomSheet from "../components/BottomSheetComponent";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { Paragraph } from "react-native-paper";
+import HomeButton from "../components/HomeButton";
 import Carousel from "react-native-snap-carousel";
 //Actions
 import { setApiData } from "../actions/APIActions";
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
+
+  //use dataArray[index] to find current card
 
   const [dataArray, setDataArray] = useState();
   const [index, setIndex] = useState(0);
@@ -35,17 +38,21 @@ const HomeScreen = () => {
         <Paragraph>Not Loaded Yet</Paragraph>
       ) : (
         <>
-          <Carousel
-            ref={refCarousel}
-            data={dataArray}
-            renderItem={({ item }) => {
-              return <CardComponent businessData={item} />;
-            }}
-            itemWidth={400}
-            sliderWidth={500}
-            onBeforeSnapToItem={(index) => setIndex(index)}
-          />
-          <BottomSheet snapPoints={[200, 500]} ref={refCarousel}>
+          <View style={styles.carousel}>
+            <Carousel
+              ref={refCarousel}
+              data={dataArray}
+              renderItem={({ item }) => {
+                return <CardComponent businessData={item} />;
+              }}
+              itemWidth={400}
+              sliderWidth={500}
+              onBeforeSnapToItem={(index) => setIndex(index)}
+            />
+          </View>
+          <HomeButton></HomeButton>
+
+          <BottomSheet snapPoints={[150, 700]} ref={refCarousel}>
             {CustomSheet(dataArray[index])}
           </BottomSheet>
         </>

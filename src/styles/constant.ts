@@ -17,12 +17,19 @@ const styles = StyleSheet.create({
     padding: 16,
     height: "100%",
   },
+  carousel: {
+    // backgroundColor: "purple",
+    height: 300,
+  },
   iconList: {
     flexDirection: "row",
     justifyContent: "space-between",
   },
   textArea: {},
-  //
+  //Home button
+  homeButton: {
+    marginTop: 100,
+  },
   button: {
     width: "50%",
     alignSelf: "center",
