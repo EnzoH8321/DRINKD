@@ -16,7 +16,8 @@ const HomeScreen = () => {
   const dispatch = useDispatch();
 
   const [dataArray, setDataArray] = useState(null);
-  console.log(dataArray);
+  const [index, setIndex] = useState(0);
+  const refCarousel = React.useRef(null);
 
   // Calls API
   useEffect(() => {
@@ -35,18 +36,22 @@ const HomeScreen = () => {
       ) : (
         <>
           <Carousel
+            ref={refCarousel}
             data={dataArray}
             renderItem={({ item }) => {
               return <CardComponent businessData={item} />;
             }}
             itemWidth={400}
             sliderWidth={500}
+            onBeforeSnapToItem={(index) => setIndex(index)}
           />
 
           <BottomSheet
             snapPoints={[200, 500]}
             borderRadius={10}
-            renderContent={CustomSheet}
+            renderContent={() => {
+              return CustomSheet(dataArray[index]);
+            }}
           ></BottomSheet>
         </>
       )}

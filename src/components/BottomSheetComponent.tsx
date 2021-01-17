@@ -1,9 +1,11 @@
 import React from "react";
 import { View } from "react-native";
-import { List } from "react-native-paper";
+import { List, Paragraph, Title } from "react-native-paper";
 import styles from "../styles/constant";
 
-const CustomSheet = () => {
+const CustomSheet = (arrayObj) => {
+  const { price, location } = arrayObj;
+
   return (
     <View
       style={{
@@ -16,6 +18,14 @@ const CustomSheet = () => {
         <List.Icon icon="phone" />
         <List.Icon icon="food" />
         <List.Icon icon="map" />
+      </View>
+      <View>
+        <Title>{arrayObj.name}</Title>
+        <Paragraph>
+          {location.address1}
+          {"\n"}
+          {location.city} {location.state} {location.zip_code}
+        </Paragraph>
       </View>
     </View>
   );
