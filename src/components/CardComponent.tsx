@@ -3,7 +3,7 @@ import styles from "../styles/constant";
 import { Card, Title, Subheading } from "react-native-paper";
 
 const CardComponent = ({ businessData }) => {
-  const { name, image_url, rating } = businessData;
+  const { name, image_url, rating, price } = businessData;
 
   return (
     <Card>
@@ -11,6 +11,7 @@ const CardComponent = ({ businessData }) => {
         <Title>{name}</Title>
         <Card.Cover source={{ uri: `${image_url}` }} style={styles.cardImage} />
         <Subheading>{rating}</Subheading>
+        <Subheading>{price}</Subheading>
       </Card.Content>
     </Card>
   );

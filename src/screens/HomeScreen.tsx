@@ -15,7 +15,7 @@ import { setApiData } from "../actions/APIActions";
 const HomeScreen = () => {
   const dispatch = useDispatch();
 
-  const [dataArray, setDataArray] = useState(null);
+  const [dataArray, setDataArray] = useState();
   const [index, setIndex] = useState(0);
   const refCarousel = React.useRef(null);
 
