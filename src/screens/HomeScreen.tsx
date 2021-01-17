@@ -6,7 +6,7 @@ import styles from "../styles/constant";
 //Components
 import CardComponent from "../components/CardComponent";
 import CustomSheet from "../components/BottomSheetComponent";
-import BottomSheet from "reanimated-bottom-sheet";
+import BottomSheet from "@gorhom/bottom-sheet";
 import { Paragraph } from "react-native-paper";
 import Carousel from "react-native-snap-carousel";
 //Actions
@@ -45,14 +45,9 @@ const HomeScreen = () => {
             sliderWidth={500}
             onBeforeSnapToItem={(index) => setIndex(index)}
           />
-
-          <BottomSheet
-            snapPoints={[200, 800]}
-            borderRadius={10}
-            renderContent={() => {
-              return CustomSheet(dataArray[index]);
-            }}
-          ></BottomSheet>
+          <BottomSheet snapPoints={[200, 500]} ref={refCarousel}>
+            {CustomSheet(dataArray[index])}
+          </BottomSheet>
         </>
       )}
     </View>
