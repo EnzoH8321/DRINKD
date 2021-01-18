@@ -50,7 +50,7 @@ const HomeScreen = () => {
               onBeforeSnapToItem={(index) => setIndex(index)}
             />
           </View>
-          <HomeButton></HomeButton>
+          <HomeButton />
 
           <BottomSheet snapPoints={[150, 700]} ref={refCarousel}>
             {CustomSheet(dataArray[index])}
