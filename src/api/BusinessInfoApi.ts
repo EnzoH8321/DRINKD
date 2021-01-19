@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default function fetchBusinessInfo(id) {
+export default async function fetchBusinessInfo(id) {
   const data = await axios(`https://api.yelp.com/v3/businesses/${id}`, {
     method: "GET",
     headers: {

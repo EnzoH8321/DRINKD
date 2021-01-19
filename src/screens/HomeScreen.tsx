@@ -13,7 +13,7 @@ import Carousel from "react-native-snap-carousel";
 //Actions
 import { setApiData } from "../actions/APIActions";
 
-const HomeScreen = () => {
+const HomeScreen: React.FC = () => {
   const dispatch = useDispatch();
 
   //use dataArray[index] to find current card

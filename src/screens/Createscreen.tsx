@@ -3,7 +3,7 @@ import { View, StyleSheet } from "react-native";
 import { Headline, Button } from "react-native-paper";
 import styles from "../styles/constant";
 
-const CreateScreen = () => {
+const CreateScreen: React.FC = () => {
   return (
     <View style={[styles.container, override.view]}>
       <Button mode="contained" style={styles.button}>

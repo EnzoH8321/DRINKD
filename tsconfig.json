@@ -8,5 +8,8 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "strict": true
-  }
+  },
+  "include": [
+    "src/**/*" // *** The files TypeScript should type check ***
+  ]
 }
