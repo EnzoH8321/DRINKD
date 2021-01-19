@@ -12,14 +12,16 @@ import HomeButton from "../components/HomeButton";
 import Carousel from "react-native-snap-carousel";
 //Actions
 import { setApiData } from "../actions/APIActions";
+//Types
+import { ApiSearch } from "../types/types";
 
 const HomeScreen: React.FC = () => {
   const dispatch = useDispatch();
 
   //use dataArray[index] to find current card
 
-  const [dataArray, setDataArray] = useState();
-  const [index, setIndex] = useState(0);
+  const [dataArray, setDataArray] = useState<ApiSearch[] | null>();
+  const [index, setIndex] = useState<number>(0);
   const refCarousel = React.useRef(null);
 
   // Calls API

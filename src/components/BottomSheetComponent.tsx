@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { View, Pressable } from "react-native";
-import { List, Paragraph, Title } from "react-native-paper";
+import React from "react";
+import { View } from "react-native";
+import { Paragraph, Title } from "react-native-paper";
 import styles from "../styles/constant";
 
-const CustomSheet = (arrayObj) => {
-  const { price, location, phone } = arrayObj;
+const CustomSheet = (arrayObj): React.ReactNode => {
+  const { location, phone } = arrayObj;
 
   return (
     <View style={styles.sheetContainer}>
