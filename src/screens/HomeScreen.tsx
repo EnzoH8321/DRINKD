@@ -53,7 +53,6 @@ const HomeScreen: React.FC = () => {
             />
           </View>
           <HomeButton />
-
           <BottomSheet snapPoints={[150, 700]} ref={refCarousel}>
             {CustomSheet(dataArray[index])}
           </BottomSheet>

@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../styles/constant";
 import { Card, Title, Subheading } from "react-native-paper";
 
-import { ApiSearch } from "../types/types";
+import { ApiSearch, CardComp } from "../types/types";
 
 const CardComponent = ({ businessData }: ApiSearch): React.ReactNode => {
   const { name, image_url, rating, price } = businessData;
