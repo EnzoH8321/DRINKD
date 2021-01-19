@@ -47,6 +47,14 @@ export interface ApiSearch {
   };
 }
 
+export type Item = {
+  item: ApiSearch;
+};
+
+export type CardComp = {
+  businessData: ApiSearch;
+};
+
 export type ApiAction = {
   type: "SET ESTAB DATA";
   payload: ApiSearch[];

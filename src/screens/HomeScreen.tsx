@@ -13,7 +13,7 @@ import Carousel from "react-native-snap-carousel";
 //Actions
 import { setApiData } from "../actions/APIActions";
 //Types
-import { ApiSearch } from "../types/types";
+import { ApiSearch, Item } from "../types/types";
 
 const HomeScreen: React.FC = () => {
   const dispatch = useDispatch();
@@ -44,7 +44,7 @@ const HomeScreen: React.FC = () => {
             <Carousel
               ref={refCarousel}
               data={dataArray}
-              renderItem={({ item }) => {
+              renderItem={({ item }: Item) => {
                 return <CardComponent businessData={item} />;
               }}
               itemWidth={400}
