@@ -34,6 +34,10 @@ const styles = StyleSheet.create({
     width: "50%",
     alignSelf: "center",
   },
+  arrayImage: {
+    height: 200,
+    width: 200,
+  },
 });
 
 export default styles;

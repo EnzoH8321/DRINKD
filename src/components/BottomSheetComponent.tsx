@@ -25,11 +25,9 @@ const CustomSheet = (arrayObj, chosenCard) => {
           <Paragraph>{chosenCard.name}</Paragraph>
           <Image
             source={{
-              uri: `https://reactnative.dev/img/tiny_logo.png`,
+              uri: `${chosenCard.photos[0]}`,
             }}
-            height={100}
-            width={100}
-            style={{ backgroundColor: "purple" }}
+            style={styles.arrayImage}
           ></Image>
         </View>
       ) : (
