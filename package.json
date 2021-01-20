@@ -10,9 +10,9 @@
   "dependencies": {
     "@gorhom/bottom-sheet": "^2.0.4",
     "@react-native-community/masked-view": "0.1.10",
-    "@react-navigation/drawer": "^5.11.4",
-    "@react-navigation/native": "^5.8.10",
-    "@react-navigation/stack": "^5.12.8",
+    "@react-navigation/drawer": "^5.11.5",
+    "@react-navigation/native": "^5.9.0",
+    "@react-navigation/stack": "^5.13.0",
     "@reduxjs/toolkit": "^1.5.0",
     "axios": "^0.21.1",
     "eslint": "^7.18.0",
@@ -22,11 +22,11 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
-    "react-native-gesture-handler": "^1.8.0",
-    "react-native-paper": "^4.6.0",
+    "react-native-gesture-handler": "^1.9.0",
+    "react-native-paper": "^4.7.0",
     "react-native-reanimated": "^1.13.2",
     "react-native-safe-area-context": "3.1.9",
-    "react-native-screens": "~2.15.0",
+    "react-native-screens": "^2.15.1",
     "react-native-snap-carousel": "^3.9.1",
     "react-native-vector-icons": "^7.1.0",
     "react-native-web": "~0.13.12",
@@ -34,15 +34,15 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "@babel/core": "~7.9.0",
+    "@babel/core": "^7.9.6",
     "@types/react": "~16.9.35",
     "@types/react-dom": "~16.9.8",
-    "@types/react-native": "^0.63.45",
+    "@types/react-native": "^0.63.46",
     "@types/react-native-snap-carousel": "^3.8.2",
-    "typescript": "~4.0.0",
     "@types/react-redux": "^7.1.15",
     "@typescript-eslint/eslint-plugin": "^4.14.0",
-    "@typescript-eslint/parser": "^4.14.0"
+    "@typescript-eslint/parser": "^4.14.0",
+    "typescript": "~4.0.0"
   },
   "private": true
 }

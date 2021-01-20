@@ -2,7 +2,7 @@ import React from "react";
 
 import { Text, Card, Title } from "react-native-paper";
 
-const MiniCardComponent = () => {
+const MiniCardComponent = (): React.ReactNode => {
   return (
     <Card>
       <Card.Content>

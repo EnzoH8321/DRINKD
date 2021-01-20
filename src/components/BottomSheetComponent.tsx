@@ -3,7 +3,7 @@ import { View } from "react-native";
 import { Paragraph, Title } from "react-native-paper";
 import styles from "../styles/constant";
 
-const CustomSheet = (arrayObj): React.ReactNode => {
+const CustomSheet = (arrayObj) => {
   const { location, phone } = arrayObj;
 
   return (
