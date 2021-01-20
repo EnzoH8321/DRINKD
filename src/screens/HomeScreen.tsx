@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import { useDispatch } from "react-redux";
 import fetchAPI from "../api/YelpApi";
+import axios from "axios";
 import styles from "../styles/constant";
 //Components
 import CardComponent from "../components/CardComponent";
@@ -15,13 +16,31 @@ import { setApiData } from "../actions/APIActions";
 //Types
 import { ApiSearch, Item } from "../types/types";
 
+// import BusinessInfoApi from "../api/BusinessInfoApi";
+
 const HomeScreen: React.FC = () => {
+  //Api Fetch
+  async function fetchBusinessInfo(id) {
+    const data = await axios(`https://api.yelp.com/v3/businesses/${id}`, {
+      method: "GET",
+      headers: {
+        Authorization:
+          "BEARER nX9W-jXWsXSB_gW3t2Y89iwQ-M7SR9-HVBHDAqf1Zy0fo8LTs3Q1VbIVpdeyFu7PehJlkLDULQulnJ3l6q6loIET5JHmcs9i3tJqYEO02f39qKgSCi4DAEVIlgPPX3Yx",
+      },
+    });
+
+    console.log(data.data);
+    setCardDetails(data.data);
+  }
+
   const dispatch = useDispatch();
 
   //use dataArray[index] to find current card
 
   const [dataArray, setDataArray] = useState<ApiSearch[] | null>();
+  const [cardDetail, setCardDetails] = useState();
   const [index, setIndex] = useState<number>(0);
+
   const refCarousel = React.useRef(null);
 
   // Calls API
@@ -52,7 +71,7 @@ const HomeScreen: React.FC = () => {
               onBeforeSnapToItem={(index) => setIndex(index)}
             />
           </View>
-          <HomeButton />
+          <HomeButton cardID={dataArray[index]} apiFunc={fetchBusinessInfo} />
           <BottomSheet snapPoints={[150, 700]} ref={refCarousel}>
             {CustomSheet(dataArray[index])}
           </BottomSheet>

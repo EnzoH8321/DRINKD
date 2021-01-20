@@ -51,6 +51,10 @@ export type Item = {
   item: ApiSearch;
 };
 
+export type ID = {
+  id: ApiSearch;
+};
+
 export type CardComp = {
   businessData: ApiSearch;
 };
