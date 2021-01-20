@@ -52,7 +52,7 @@ export type Item = {
 };
 
 export type ID = {
-  id: ApiSearch;
+  cardID: ApiSearch;
 };
 
 export type CardComp = {

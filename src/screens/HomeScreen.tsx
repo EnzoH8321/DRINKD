@@ -19,7 +19,7 @@ import { ApiSearch, Item } from "../types/types";
 // import BusinessInfoApi from "../api/BusinessInfoApi";
 
 const HomeScreen: React.FC = () => {
-  //Api Fetch
+  //Calls specific business using current card ID
   async function fetchBusinessInfo(id) {
     const data = await axios(`https://api.yelp.com/v3/businesses/${id}`, {
       method: "GET",
@@ -29,7 +29,6 @@ const HomeScreen: React.FC = () => {
       },
     });
 
-    console.log(data.data);
     setCardDetails(data.data);
   }
 
@@ -43,7 +42,7 @@ const HomeScreen: React.FC = () => {
 
   const refCarousel = React.useRef(null);
 
-  // Calls API
+  // Calls General Yelp Api
   useEffect(() => {
     // the parenth below is syntax for => function(){...}
     (async () => {
@@ -72,8 +71,8 @@ const HomeScreen: React.FC = () => {
             />
           </View>
           <HomeButton cardID={dataArray[index]} apiFunc={fetchBusinessInfo} />
-          <BottomSheet snapPoints={[150, 700]} ref={refCarousel}>
-            {CustomSheet(dataArray[index])}
+          <BottomSheet snapPoints={[150, 700]}>
+            {CustomSheet(dataArray[index], cardDetail)}
           </BottomSheet>
         </>
       )}

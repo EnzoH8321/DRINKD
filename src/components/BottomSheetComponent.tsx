@@ -1,10 +1,12 @@
 import React from "react";
-import { View } from "react-native";
+import { View, Image } from "react-native";
 import { Paragraph, Title } from "react-native-paper";
 import styles from "../styles/constant";
 
-const CustomSheet = (arrayObj) => {
+const CustomSheet = (arrayObj, chosenCard) => {
   const { location, phone } = arrayObj;
+
+  console.log(chosenCard);
 
   return (
     <View style={styles.sheetContainer}>
@@ -18,6 +20,23 @@ const CustomSheet = (arrayObj) => {
           {phone}
         </Paragraph>
       </View>
+      {chosenCard ? (
+        <View>
+          <Paragraph>{chosenCard.name}</Paragraph>
+          <Image
+            source={{
+              uri: `https://reactnative.dev/img/tiny_logo.png`,
+            }}
+            height={100}
+            width={100}
+            style={{ backgroundColor: "purple" }}
+          ></Image>
+        </View>
+      ) : (
+        <>
+          <Paragraph>Still loading</Paragraph>
+        </>
+      )}
     </View>
   );
 };
