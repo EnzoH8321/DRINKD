@@ -1,8 +1,8 @@
 import React from "react";
 
-import { Text, Card, Title } from "react-native-paper";
+import { Text, Card } from "react-native-paper";
 
-const MiniCardComponent = (): React.ReactNode => {
+const MiniCardComponent = () => {
   return (
     <Card>
       <Card.Content>

@@ -1,7 +1,7 @@
 import * as Location from "expo-location";
 import axios from "axios";
 
-export default async function fetchAPI() {
+export default async function fetchBusiness() {
   try {
     const { status } = await Location.requestPermissionsAsync();
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
 import { useDispatch } from "react-redux";
-import fetchAPI from "../api/YelpApi";
+import fetchBusiness from "../api/YelpApi";
 import axios from "axios";
 import styles from "../styles/constant";
 //Components
@@ -20,7 +20,7 @@ import { ApiSearch, Item } from "../types/types";
 
 const HomeScreen: React.FC = () => {
   //Calls specific business using current card ID
-  async function fetchBusinessInfo(id: string) {
+  async function fetchBarDetails(id: string) {
     const data = await axios(`https://api.yelp.com/v3/businesses/${id}`, {
       method: "GET",
       headers: {
@@ -48,7 +48,7 @@ const HomeScreen: React.FC = () => {
   useEffect(() => {
     // the parenth below is syntax for => function(){...}
     (async () => {
-      const data = await fetchAPI();
+      const data = await fetchBusiness();
       dispatch(setApiData(data));
       setDataArray(data);
     })();
@@ -65,14 +65,14 @@ const HomeScreen: React.FC = () => {
               ref={refCarousel}
               data={dataArray}
               renderItem={({ item }: Item) => {
-                return <CardComponent businessData={item} />;
+                return <CardComponent barData={item} />;
               }}
               itemWidth={400}
               sliderWidth={500}
               onBeforeSnapToItem={(index) => setIndex(index)}
             />
           </View>
-          <HomeButton cardID={dataArray[index]} apiFunc={fetchBusinessInfo} />
+          <HomeButton cardID={dataArray[index]} apiFunc={fetchBarDetails} />
           <BottomSheet snapPoints={[150, 700]}>
             {CustomSheet(dataArray[index], cardDetail)}
           </BottomSheet>

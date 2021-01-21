@@ -18,7 +18,6 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   carousel: {
-    // backgroundColor: "purple",
     height: 300,
   },
   iconList: {
