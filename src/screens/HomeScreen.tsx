@@ -20,7 +20,7 @@ import { ApiSearch, Item } from "../types/types";
 
 const HomeScreen: React.FC = () => {
   //Calls specific business using current card ID
-  async function fetchBusinessInfo(id) {
+  async function fetchBusinessInfo(id: string) {
     const data = await axios(`https://api.yelp.com/v3/businesses/${id}`, {
       method: "GET",
       headers: {

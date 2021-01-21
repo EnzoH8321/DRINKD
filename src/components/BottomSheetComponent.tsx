@@ -24,11 +24,22 @@ const CustomSheet = (
         </Paragraph>
       </View>
       {chosenCard ? (
-        <View>
-          <Paragraph>{chosenCard.name}</Paragraph>
+        <View style={styles.imageArray}>
           <Image
             source={{
               uri: `${chosenCard.photos[0]}`,
+            }}
+            style={styles.arrayImage}
+          ></Image>
+          <Image
+            source={{
+              uri: `${chosenCard.photos[1]}`,
+            }}
+            style={styles.arrayImage}
+          ></Image>
+          <Image
+            source={{
+              uri: `${chosenCard.photos[2]}`,
             }}
             style={styles.arrayImage}
           ></Image>

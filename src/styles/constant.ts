@@ -25,7 +25,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
-  textArea: {},
+  imageArray: {
+    flexDirection: "row",
+  },
   //Home button
   homeButton: {
     marginTop: 100,
