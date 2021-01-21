@@ -4,7 +4,11 @@ import { Card, Title, Subheading } from "react-native-paper";
 
 import { ApiSearch } from "../types/types";
 
-const CardComponent = ({ barData }: ApiSearch): React.ReactNode => {
+type BarData = {
+  barData: ApiSearch;
+};
+
+const CardComponent = ({ barData }: BarData): React.ReactElement => {
   const { name, image_url, rating, price } = barData;
 
   return (

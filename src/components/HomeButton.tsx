@@ -4,14 +4,22 @@ import { Button } from "react-native-paper";
 
 import { ApiSearch } from "../types/types";
 
-const HomeButton = ({ cardID, apiFunc }) => {
-  const { id } = cardID;
+type HomeButton = {
+  barObj: ApiSearch;
+  callBackFunc: (arg0: string) => void;
+};
+
+const HomeButton = ({
+  barObj,
+  callBackFunc,
+}: HomeButton): React.ReactElement => {
+  const { id } = barObj;
 
   return (
     <Button
       style={styles.homeButton}
       mode="contained"
-      onPress={() => apiFunc(id)}
+      onPress={() => callBackFunc(id)}
     >
       Get More Info
     </Button>

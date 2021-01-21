@@ -152,10 +152,6 @@ export interface ApiBusiness {
   ];
 }
 
-export type Item = {
-  item: ApiSearch;
-};
-
 export type ID = {
   cardID: ApiSearch;
 };

@@ -14,9 +14,12 @@ import Carousel from "react-native-snap-carousel";
 //Actions
 import { setApiData } from "../actions/APIActions";
 //Types
-import { ApiSearch, Item } from "../types/types";
+import { ApiSearch } from "../types/types";
 
-// import BusinessInfoApi from "../api/BusinessInfoApi";
+//Interface
+type Item = {
+  item: ApiSearch;
+};
 
 const HomeScreen: React.FC = () => {
   //Calls specific business using current card ID
@@ -72,7 +75,10 @@ const HomeScreen: React.FC = () => {
               onBeforeSnapToItem={(index) => setIndex(index)}
             />
           </View>
-          <HomeButton cardID={dataArray[index]} apiFunc={fetchBarDetails} />
+          <HomeButton
+            barObj={dataArray[index]}
+            callBackFunc={fetchBarDetails}
+          />
           <BottomSheet snapPoints={[150, 700]}>
             {CustomSheet(dataArray[index], cardDetail)}
           </BottomSheet>
