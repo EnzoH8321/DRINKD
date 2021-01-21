@@ -7,7 +7,7 @@ import { ArrayObj, ApiBusiness } from "../types/types";
 
 const CustomSheet = (
   arrayObj: ArrayObj,
-  chosenCard: ApiBusiness
+  chosenCard: ApiBusiness | undefined
 ): React.ReactNode => {
   const { location, phone } = arrayObj;
 

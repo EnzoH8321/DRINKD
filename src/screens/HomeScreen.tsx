@@ -42,6 +42,8 @@ const HomeScreen: React.FC = () => {
 
   const refCarousel = React.useRef(null);
 
+  console.log(dataArray);
+
   // Calls General Yelp Api
   useEffect(() => {
     // the parenth below is syntax for => function(){...}

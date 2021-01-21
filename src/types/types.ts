@@ -3,49 +3,47 @@
 
 //Api Business Search
 export interface ApiSearch {
-  total: number;
-  businesses: [
+  alias: string;
+  categories: [
     {
-      rating: number;
-      price: string;
-      phone: string;
-      id: string;
       alias: string;
-      is_closed: boolean;
-      categories: [
-        {
-          alias: string;
-          title: string;
-        }
-      ];
-      review_count: number;
-      name: string;
-      url: string;
-      coordinates: {
-        latitude: number;
-        longitude: number;
-      };
-      image_url: string;
-      location: {
-        city: string;
-        country: string;
-        address2: string;
-        address3: string;
-        state: string;
-        address1: string;
-        zip_code: string;
-      };
-      distance: number;
-      transactions: string[];
+      title: string;
+    },
+    {
+      alias: string;
+      title: string;
+    },
+    {
+      alias: string;
+      title: string;
     }
-    // ...
   ];
-  region: {
-    center: {
-      latitude: number;
-      longitude: number;
-    };
+  coordinates: {
+    latitude: number;
+    longitude: number;
   };
+  display_phone: string;
+  distance: number;
+  id: string;
+  image_url: string;
+  is_closed: boolean;
+  location: {
+    address1: string;
+    address2: string;
+    address3: string;
+    city: string;
+    country: string;
+    display_address: [string, string];
+    state: string;
+    zip_code: string;
+  };
+  name: string;
+  phone: string;
+  price: string;
+  rating: number;
+  review_count: number;
+  transactions: [string];
+  url: string;
 }
 
 //Api Business Details
