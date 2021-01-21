@@ -3,10 +3,13 @@ import { View, Image } from "react-native";
 import { Paragraph, Title } from "react-native-paper";
 import styles from "../styles/constant";
 
-const CustomSheet = (arrayObj, chosenCard) => {
-  const { location, phone } = arrayObj;
+import { ArrayObj, ApiBusiness } from "../types/types";
 
-  console.log(chosenCard);
+const CustomSheet = (
+  arrayObj: ArrayObj,
+  chosenCard: ApiBusiness
+): React.ReactNode => {
+  const { location, phone } = arrayObj;
 
   return (
     <View style={styles.sheetContainer}>
