@@ -152,33 +152,7 @@ export interface ApiBusiness {
   ];
 }
 
-export type ID = {
-  cardID: ApiSearch;
-};
-
-export type CardComp = {
-  businessData: ApiSearch;
-};
-
-export type ArrayObj = {
-  location: {
-    city: string;
-    country: string;
-    address2: string;
-    address3: string;
-    state: string;
-    address1: string;
-    zip_code: string;
-  };
-  name: string;
-  phone: string;
-};
-
-export type ChosenCard = {
-  chosenCard: ApiBusiness;
-};
-
 export type ApiAction = {
-  type: "SET ESTAB DATA";
+  type: "SET BARLIST DATA";
   payload: ApiSearch[];
 };

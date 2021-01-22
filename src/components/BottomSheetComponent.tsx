@@ -3,7 +3,21 @@ import { View, Image } from "react-native";
 import { Paragraph, Title } from "react-native-paper";
 import styles from "../styles/constant";
 
-import { ArrayObj, ApiBusiness } from "../types/types";
+import { ApiBusiness } from "../types/types";
+
+type ArrayObj = {
+  location: {
+    city: string;
+    country: string;
+    address2: string;
+    address3: string;
+    state: string;
+    address1: string;
+    zip_code: string;
+  };
+  name: string;
+  phone: string;
+};
 
 const CustomSheet = (
   arrayObj: ArrayObj,
