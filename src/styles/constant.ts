@@ -9,6 +9,11 @@ const styles = StyleSheet.create({
   //Card Component
   cardComponent: {},
   cardImage: {},
+  //Create Screen
+  textInput: {
+    marginBottom: 50,
+  },
+
   //Mini Card Component
   miniCardComponent: {},
   //Bottom Sheet Component
