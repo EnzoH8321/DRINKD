@@ -12,8 +12,8 @@ const CreateScreen: React.FC = () => {
       Math.pow(10, 8 - 1) + Math.random() * 9 * Math.pow(10, 8 - 1)
     ).toString();
 
-    firebase.database().ref("parties/").set({
-      userId: randomNumber,
+    firebase.database().ref(`parties/${randomNumber}`).set({
+      partyId: randomNumber,
     });
 
     setPartyCode(randomNumber);
