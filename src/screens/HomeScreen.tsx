@@ -82,6 +82,7 @@ const HomeScreen: React.FC = () => {
           <Button
             onPress={() => fetchBarDetails(dataArray[index].id)}
             style={styles.homeButton}
+            mode="contained"
           >
             Get more info
           </Button>
