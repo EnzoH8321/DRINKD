@@ -38,7 +38,8 @@ const App = () => {
   );
 };
 
-export default function () {
+//Do i need to name this?...
+export default function Main(): React.ReactElement {
   return (
     <NavigationContainer>
       <Provider store={store}>
