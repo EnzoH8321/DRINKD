@@ -8,8 +8,8 @@ import styles from "../styles/constant";
 import CardComponent from "../components/CardComponent";
 import CustomSheet from "../components/BottomSheetComponent";
 import BottomSheet from "@gorhom/bottom-sheet";
-import { Paragraph } from "react-native-paper";
-import HomeButton from "../components/HomeButton";
+import { Paragraph, Button } from "react-native-paper";
+
 import Carousel from "react-native-snap-carousel";
 //Actions
 import { setApiData } from "../actions/APIActions";
@@ -49,12 +49,16 @@ const HomeScreen: React.FC = () => {
 
   // Calls General Yelp Api
   useEffect(() => {
-    // the parenth below is syntax for => function(){...}
-    (async () => {
-      const data = await fetchBusiness();
-      dispatch(setApiData(data));
-      setDataArray(data);
-    })();
+    try {
+      // the parenth below is syntax for => function(){...}
+      (async () => {
+        const data = await fetchBusiness();
+        dispatch(setApiData(data));
+        setDataArray(data);
+      })();
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   return (
@@ -75,10 +79,12 @@ const HomeScreen: React.FC = () => {
               onBeforeSnapToItem={(index) => setIndex(index)}
             />
           </View>
-          <HomeButton
-            barObj={dataArray[index]}
-            callBackFunc={fetchBarDetails}
-          />
+          <Button
+            onPress={() => fetchBarDetails(dataArray[index].id)}
+            style={styles.homeButton}
+          >
+            Get more info
+          </Button>
           <BottomSheet snapPoints={[150, 700]}>
             {CustomSheet(dataArray[index], cardDetail)}
           </BottomSheet>
