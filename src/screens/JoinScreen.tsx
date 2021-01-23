@@ -14,13 +14,18 @@ const JoinScreen: React.FC = () => {
     ref.on("value", (snapshot) => {
       const data = snapshot.val();
 
-      if (data === null) {
-        Alert.alert("No Party Found");
+      //returns if data is not found
+      if (data === null || textValue.length === 0) {
+        return Alert.alert("No Party Found");
       }
+
+      console.log(data.partyId);
+      setPartyCode(data.partyId);
     });
   }
 
   const [textValue, setTextValue] = useState("");
+  const [partyCode, setPartyCode] = useState(false);
 
   return (
     <View style={[styles.container]}>
@@ -37,6 +42,14 @@ const JoinScreen: React.FC = () => {
       >
         Go
       </Button>
+
+      {!partyCode ? (
+        <Headline style={override.statusText}>You are not in a party</Headline>
+      ) : (
+        <Headline style={override.statusText}>
+          Your party code is {partyCode}
+        </Headline>
+      )}
     </View>
   );
 };
@@ -45,6 +58,11 @@ const override = StyleSheet.create({
   headline: {
     textAlign: "center",
     marginBottom: 100,
+  },
+  statusText: {
+    textAlign: "center",
+    marginBottom: 100,
+    marginTop: 200,
   },
   button: {
     top: 50,
