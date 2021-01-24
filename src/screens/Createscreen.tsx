@@ -38,7 +38,7 @@ const CreateScreen: React.FC = () => {
   const partyStatus = store.getState().party.inParty;
 
   const [partyCode, setPartyCode] = useState("");
-  const [partyName, setPartyName] = useState();
+  const [partyName, setPartyName] = useState("");
 
   console.log(partyStatus);
 

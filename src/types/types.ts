@@ -152,7 +152,12 @@ export interface ApiBusiness {
   ];
 }
 
-export type ApiAction = {
+export type SetBarlistData = {
   type: "SET BARLIST DATA";
   payload: ApiSearch[];
+};
+
+export type SetInPartyData = {
+  type: "SET INPARTY DATA";
+  payload: boolean;
 };
