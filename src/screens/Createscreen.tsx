@@ -2,11 +2,18 @@ import React, { useState } from "react";
 import { View, StyleSheet, Alert } from "react-native";
 import { Headline, Button, TextInput } from "react-native-paper";
 import styles from "../styles/constant";
+//Actions
+import { setPartyData } from "../actions/PartyActions";
 
 //firebase
 import firebase from "../utils/firebase";
+import { useDispatch, useStore } from "react-redux";
 
 const CreateScreen: React.FC = () => {
+  const dispatch = useDispatch();
+  const store = useStore();
+  const partyStatus = store.getState().party;
+
   function createPartyCode() {
     if (!partyName) {
       return Alert.alert("You must name your party");
@@ -21,6 +28,7 @@ const CreateScreen: React.FC = () => {
       partyName: partyName,
     });
 
+    dispatch(setPartyData(true));
     setPartyCode(randomNumber);
   }
 
