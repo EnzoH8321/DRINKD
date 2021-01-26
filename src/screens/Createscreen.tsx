@@ -3,13 +3,14 @@ import { View, StyleSheet, Alert } from "react-native";
 import { Headline, Button, TextInput } from "react-native-paper";
 import styles from "../styles/constant";
 //Actions
-import { setPartyData } from "../actions/PartyActions";
+import { setPartyData, setMemberLevel } from "../actions/PartyActions";
 
 //firebase
 import firebase from "../utils/firebase";
 import { useDispatch, useStore } from "react-redux";
 
 const CreateScreen: React.FC = () => {
+  //Create Party
   function createParty() {
     if (!partyName) {
       return Alert.alert("You must name your party");
@@ -25,9 +26,11 @@ const CreateScreen: React.FC = () => {
     });
 
     dispatch(setPartyData(true));
+    dispatch(setMemberLevel("LEADER"));
     setPartyCode(randomNumber);
   }
 
+  //Leave Party
   function leaveParty() {
     dispatch(setPartyData(false));
     setPartyCode("");

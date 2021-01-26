@@ -161,3 +161,8 @@ export type SetInPartyData = {
   type: "SET INPARTY DATA";
   payload: boolean;
 };
+
+export type SetMemberLevel = {
+  type: "SET MEMBER LEVEL";
+  payload: "LEADER" | "MEMBER" | string;
+};

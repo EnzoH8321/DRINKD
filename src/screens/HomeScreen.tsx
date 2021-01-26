@@ -12,7 +12,7 @@ import { Paragraph, Button } from "react-native-paper";
 
 import Carousel from "react-native-snap-carousel";
 //Actions
-import { setApiData } from "../actions/APIActions";
+import { setBarListData } from "../actions/APIActions";
 //Types
 import { ApiSearch } from "../types/types";
 
@@ -51,7 +51,7 @@ const HomeScreen: React.FC = () => {
       // the parenth below is syntax for => function(){...}
       (async () => {
         const data = await fetchBusiness();
-        dispatch(setApiData(data));
+        dispatch(setBarListData(data));
         setDataArray(data);
       })();
     } catch (error) {
