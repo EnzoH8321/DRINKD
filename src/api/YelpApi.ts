@@ -1,8 +1,14 @@
 import * as Location from "expo-location";
 import axios from "axios";
 
+import { setPartyURL } from "../actions/PartyActions";
+
+import { useDispatch } from "react-redux";
+
 export default async function fetchBusiness() {
   try {
+    // const dispatch = useDispatch();
+
     const { status } = await Location.requestPermissionsAsync();
 
     if (status !== "granted") {
@@ -13,6 +19,7 @@ export default async function fetchBusiness() {
     const location = await Location.getCurrentPositionAsync();
     const locationLat = location.coords.latitude.toString();
     const locationLong = location.coords.longitude.toString();
+    const url = `https://api.yelp.com/v3/businesses/search?categories=bars&latitude=${locationLat}&longitude=${locationLong}&limit=10`;
 
     const data = await axios(
       `https://api.yelp.com/v3/businesses/search?categories=bars&latitude=${locationLat}&longitude=${locationLong}&limit=10`,
@@ -24,6 +31,8 @@ export default async function fetchBusiness() {
         },
       }
     );
+
+    console.log(data.data.businesses);
 
     //Returns an array of objects
     return data.data.businesses;

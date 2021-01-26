@@ -166,3 +166,8 @@ export type SetMemberLevel = {
   type: "SET MEMBER LEVEL";
   payload: "LEADER" | "MEMBER" | string;
 };
+
+export type SetPartyUrl = {
+  type: "SET PARTY URL";
+  payload: string;
+};
