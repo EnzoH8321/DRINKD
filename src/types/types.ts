@@ -171,3 +171,8 @@ export type SetPartyUrl = {
   type: "SET PARTY URL";
   payload: string;
 };
+
+export type BarListData = {
+  type: "SET BARLIST DATA";
+  payload: ApiSearch[];
+};
