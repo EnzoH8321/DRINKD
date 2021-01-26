@@ -3,8 +3,11 @@ import { View, StyleSheet, Alert } from "react-native";
 import { Headline, TextInput, Button } from "react-native-paper";
 import styles from "../styles/constant";
 
+import { setPartyData, setMemberLevel } from "../actions/PartyActions";
+
 //firebase
 import firebase from "../utils/firebase";
+import { useDispatch } from "react-redux";
 
 const JoinScreen: React.FC = () => {
   //Join Party
@@ -20,10 +23,16 @@ const JoinScreen: React.FC = () => {
       }
 
       console.log(data.partyId);
+
+      //Sets party status to true
+      dispatch(setPartyData(true));
+      //Sets global member level to member
+      dispatch(setMemberLevel("MEMBER"));
       setPartyCode(data.partyId);
     });
   }
 
+  const dispatch = useDispatch();
   const [textValue, setTextValue] = useState("");
   const [partyCode, setPartyCode] = useState(false);
 

@@ -6,6 +6,7 @@ type InitialState = {
   memberLevel: "LEADER" | "MEMBER" | string;
 };
 
+//Initial State!
 export const initialState = {
   inParty: false,
   memberLevel: "",

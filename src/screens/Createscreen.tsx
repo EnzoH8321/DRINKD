@@ -32,7 +32,12 @@ const CreateScreen: React.FC = () => {
 
   //Leave Party
   function leaveParty() {
+    //Removes "session" from DB
+    firebase.database().ref(`parties/${partyCode}`).remove();
+
     dispatch(setPartyData(false));
+    dispatch(setMemberLevel(""));
+
     setPartyCode("");
   }
 
