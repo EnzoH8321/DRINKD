@@ -22,8 +22,6 @@ const JoinScreen: React.FC = () => {
         return Alert.alert("No Party Found");
       }
 
-      console.log(data.partyId);
-
       //Sets party status to true
       dispatch(setPartyData(true));
       //Sets global member level to member

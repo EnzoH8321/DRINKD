@@ -23,6 +23,7 @@ const CreateScreen: React.FC = () => {
     firebase.database().ref(`parties/${randomNumber}`).set({
       partyId: randomNumber,
       partyName: partyName,
+      partyURL: partyURL,
     });
 
     dispatch(setPartyData(true));
@@ -44,11 +45,12 @@ const CreateScreen: React.FC = () => {
   const dispatch = useDispatch();
   const store = useStore();
   const partyStatus = store.getState().party.inParty;
+  const partyURL = store.getState().party.partyURL;
 
   const [partyCode, setPartyCode] = useState("");
   const [partyName, setPartyName] = useState("");
 
-  console.log(partyStatus);
+  console.log(partyURL);
 
   return (
     <View style={[styles.container]}>

@@ -3,6 +3,7 @@ import { View } from "react-native";
 import { useDispatch } from "react-redux";
 import fetchBusiness from "../api/YelpApi";
 import axios from "axios";
+import * as Location from "expo-location";
 import styles from "../styles/constant";
 //Components
 import CardComponent from "../components/CardComponent";
@@ -15,6 +16,7 @@ import Carousel from "react-native-snap-carousel";
 import { setBarListData } from "../actions/APIActions";
 //Types
 import { ApiSearch } from "../types/types";
+import { setPartyURL } from "../actions/PartyActions";
 
 //Interface
 type Item = {
@@ -50,8 +52,21 @@ const HomeScreen: React.FC = () => {
     try {
       // the parenth below is syntax for => function(){...}
       (async () => {
-        const data = await fetchBusiness();
+        const { status } = await Location.requestPermissionsAsync();
+
+        if (status !== "granted") {
+          alert("Permission to access denied");
+          return;
+        }
+
+        const location = await Location.getCurrentPositionAsync();
+        const locationLat = location.coords.latitude.toString();
+        const locationLong = location.coords.longitude.toString();
+        const url = `https://api.yelp.com/v3/businesses/search?categories=bars&latitude=${locationLat}&longitude=${locationLong}&limit=10`;
+
+        const data = await fetchBusiness(url);
         dispatch(setBarListData(data));
+        dispatch(setPartyURL(url));
         setDataArray(data);
       })();
     } catch (error) {
