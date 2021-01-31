@@ -16,12 +16,16 @@ const CreateScreen: React.FC = () => {
       return Alert.alert("You must name your party");
     }
 
+    //Sets timestamp for when this is posted to the DB
+    const creationTime = Date.now();
+
     const randomNumber = Math.floor(
       Math.pow(10, 8 - 1) + Math.random() * 9 * Math.pow(10, 8 - 1)
     ).toString();
 
     firebase.database().ref(`parties/${randomNumber}`).set({
       partyId: randomNumber,
+      partyTimestamp: creationTime,
       partyName: partyName,
       partyURL: partyURL,
     });
@@ -49,8 +53,6 @@ const CreateScreen: React.FC = () => {
 
   const [partyCode, setPartyCode] = useState("");
   const [partyName, setPartyName] = useState("");
-
-  console.log(partyURL);
 
   return (
     <View style={[styles.container]}>
