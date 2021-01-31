@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View } from "react-native";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { useDispatch } from "react-redux";
 import fetchBusiness from "../api/YelpApi";
 import axios from "axios";
@@ -10,13 +10,14 @@ import CardComponent from "../components/CardComponent";
 import CustomSheet from "../components/BottomSheetComponent";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { Paragraph, Button } from "react-native-paper";
-
 import Carousel from "react-native-snap-carousel";
 //Actions
 import { setBarListData } from "../actions/APIActions";
+import { setPartyURL } from "../actions/PartyActions";
 //Types
 import { ApiSearch } from "../types/types";
-import { setPartyURL } from "../actions/PartyActions";
+//
+import Icon from "react-native-vector-icons/FontAwesome";
 
 //Interface
 type Item = {
@@ -99,6 +100,26 @@ const HomeScreen: React.FC = () => {
           >
             Get more info
           </Button>
+          <View style={override.starView}>
+            <TouchableOpacity>
+              <Icon name="star" style={override.starStyles}></Icon>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Icon name="star" style={override.starStyles}></Icon>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Icon name="star" style={override.starStyles}></Icon>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Icon name="star" style={override.starStyles}></Icon>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Icon name="star" style={override.starStyles}></Icon>
+            </TouchableOpacity>
+          </View>
+          <View style={override.starViewButton}>
+            <Button mode="contained">Submit</Button>
+          </View>
           <BottomSheet snapPoints={[150, 700]}>
             {CustomSheet(dataArray[index], cardDetail)}
           </BottomSheet>
@@ -107,5 +128,21 @@ const HomeScreen: React.FC = () => {
     </View>
   );
 };
+
+const override = StyleSheet.create({
+  starView: {
+    marginTop: 60,
+    flexDirection: "row",
+    justifyContent: "space-around",
+  },
+  starStyles: {
+    fontSize: 32,
+  },
+  starViewButton: {
+    flexDirection: "row",
+    marginTop: 30,
+    justifyContent: "center",
+  },
+});
 
 export default HomeScreen;
