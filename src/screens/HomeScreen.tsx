@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
-import { useDispatch } from "react-redux";
+import { useDispatch, useStore } from "react-redux";
 import fetchBusiness from "../api/YelpApi";
 import axios from "axios";
 import * as Location from "expo-location";
@@ -39,14 +39,25 @@ const HomeScreen: React.FC = () => {
   }
 
   const dispatch = useDispatch();
+  const store = useStore();
 
   //use dataArray[index] to find current card
 
   const [dataArray, setDataArray] = useState<ApiSearch[] | null>();
   const [cardDetail, setCardDetails] = useState();
   const [index, setIndex] = useState<number>(0);
+  const [currentPartyStatus, setCurrentPartyStatus] = useState();
+
+  // const partyStatus = store.getState().party.inParty;
 
   const refCarousel = React.useRef(null);
+
+  //Checks for party status
+  useEffect(() => {
+    const partyStatus = store.getState().party.inParty;
+
+    setCurrentPartyStatus(partyStatus);
+  });
 
   // Calls General Yelp Api
   useEffect(() => {
@@ -100,26 +111,32 @@ const HomeScreen: React.FC = () => {
           >
             Get more info
           </Button>
-          <View style={override.starView}>
-            <TouchableOpacity>
-              <Icon name="star" style={override.starStyles}></Icon>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Icon name="star" style={override.starStyles}></Icon>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Icon name="star" style={override.starStyles}></Icon>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Icon name="star" style={override.starStyles}></Icon>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Icon name="star" style={override.starStyles}></Icon>
-            </TouchableOpacity>
-          </View>
-          <View style={override.starViewButton}>
-            <Button mode="contained">Submit</Button>
-          </View>
+          {currentPartyStatus ? (
+            <>
+              <View style={override.starView}>
+                <TouchableOpacity>
+                  <Icon name="star" style={override.starStyles}></Icon>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <Icon name="star" style={override.starStyles}></Icon>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <Icon name="star" style={override.starStyles}></Icon>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <Icon name="star" style={override.starStyles}></Icon>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <Icon name="star" style={override.starStyles}></Icon>
+                </TouchableOpacity>
+              </View>
+              <View style={override.starViewButton}>
+                <Button mode="contained">Submit</Button>
+              </View>
+            </>
+          ) : (
+            <View></View>
+          )}
           <BottomSheet snapPoints={[150, 700]}>
             {CustomSheet(dataArray[index], cardDetail)}
           </BottomSheet>
