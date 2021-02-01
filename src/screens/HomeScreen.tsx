@@ -11,6 +11,7 @@ import CustomSheet from "../components/BottomSheetComponent";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { Paragraph, Button } from "react-native-paper";
 import Carousel from "react-native-snap-carousel";
+
 //Actions
 import { setBarListData } from "../actions/APIActions";
 import { setPartyURL } from "../actions/PartyActions";
@@ -55,7 +56,6 @@ const HomeScreen: React.FC = () => {
   //Checks for party status
   useEffect(() => {
     const partyStatus = store.getState().party.inParty;
-
     setCurrentPartyStatus(partyStatus);
   });
 
