@@ -5,13 +5,13 @@ import fetchBusiness from "../api/YelpApi";
 import axios from "axios";
 import * as Location from "expo-location";
 import styles from "../styles/constant";
+import { useIsDrawerOpen } from "@react-navigation/drawer";
 //Components
 import CardComponent from "../components/CardComponent";
 import CustomSheet from "../components/BottomSheetComponent";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { Paragraph, Button } from "react-native-paper";
 import Carousel from "react-native-snap-carousel";
-
 //Actions
 import { setBarListData } from "../actions/APIActions";
 import { setPartyURL } from "../actions/PartyActions";
