@@ -25,7 +25,7 @@ type Item = {
   item: ApiSearch;
 };
 
-const HomeScreen: React.FC = () => {
+const HomeScreen: React.FC = ({ navigation }) => {
   //Calls specific business using current card ID
   async function fetchBarDetails(id: string) {
     const data = await axios(`https://api.yelp.com/v3/businesses/${id}`, {
@@ -42,20 +42,16 @@ const HomeScreen: React.FC = () => {
   const dispatch = useDispatch();
   const store = useStore();
 
-  //use dataArray[index] to find current card
-
   const [dataArray, setDataArray] = useState<ApiSearch[] | null>();
   const [cardDetail, setCardDetails] = useState();
   const [index, setIndex] = useState<number>(0);
   const [currentPartyStatus, setCurrentPartyStatus] = useState();
-
-  // const partyStatus = store.getState().party.inParty;
-
   const refCarousel = React.useRef(null);
 
   //Checks for party status
   useEffect(() => {
     const partyStatus = store.getState().party.inParty;
+
     setCurrentPartyStatus(partyStatus);
   });
 
