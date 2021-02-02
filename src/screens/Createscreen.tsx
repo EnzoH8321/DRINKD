@@ -9,7 +9,7 @@ import { setPartyData, setMemberLevel } from "../actions/PartyActions";
 import firebase from "../utils/firebase";
 import { useDispatch, useStore } from "react-redux";
 
-const CreateScreen: React.FC = () => {
+const CreateScreen: React.FC = ({ navigation }) => {
   //Create Party
   function createParty() {
     if (!partyName) {
@@ -33,6 +33,7 @@ const CreateScreen: React.FC = () => {
     dispatch(setPartyData(true));
     dispatch(setMemberLevel("LEADER"));
     setPartyCode(randomNumber);
+    navigation.navigate("Home", { showStars: true });
   }
 
   //Leave Party
@@ -44,6 +45,8 @@ const CreateScreen: React.FC = () => {
     dispatch(setMemberLevel(""));
 
     setPartyCode("");
+
+    navigation.navigate("Home", { showStars: false });
   }
 
   const dispatch = useDispatch();
