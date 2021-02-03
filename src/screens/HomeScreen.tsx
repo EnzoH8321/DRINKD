@@ -46,24 +46,20 @@ const HomeScreen: React.FC = ({ route, navigation }) => {
   const [starVal, setStarValue] = useState({
     star1: {
       isPressed: false,
-      points: 0,
     },
     star2: {
       isPressed: false,
-      points: 0,
     },
     star3: {
       isPressed: false,
-      points: 0,
     },
     star4: {
       isPressed: false,
-      points: 0,
     },
     star5: {
       isPressed: false,
-      points: 0,
     },
+    points: 0,
   });
 
   const refCarousel = React.useRef(null);
@@ -96,10 +92,18 @@ const HomeScreen: React.FC = ({ route, navigation }) => {
     }
   }, []);
 
-  // //Submit score to DB
-  // function submitStarScores() {
-  //   let currentCard =
-  // }
+  //Submit score to DB
+  function submitStarScores() {
+    let currentCard = dataArray[index].name;
+
+    // let finalScore = 0;
+
+    // for (const [key, { points }] of Object.entries(starVal)) {
+    //   finalScore = finalScore + points;
+    // }
+
+    console.log(starVal.points);
+  }
 
   return (
     <View style={styles.container}>
@@ -135,8 +139,8 @@ const HomeScreen: React.FC = ({ route, navigation }) => {
                       ...starVal,
                       star1: {
                         isPressed: !starVal.star1.isPressed,
-                        points: !starVal.star1.isPressed ? 1 : 0,
                       },
+                      points: 1,
                     })
                   }
                 >
@@ -154,8 +158,8 @@ const HomeScreen: React.FC = ({ route, navigation }) => {
                       ...starVal,
                       star2: {
                         isPressed: !starVal.star2.isPressed,
-                        points: !starVal.star2.isPressed ? 2 : 0,
                       },
+                      points: 2,
                     })
                   }
                 >
@@ -173,8 +177,8 @@ const HomeScreen: React.FC = ({ route, navigation }) => {
                       ...starVal,
                       star3: {
                         isPressed: !starVal.star3.isPressed,
-                        points: !starVal.star3.isPressed ? 3 : 0,
                       },
+                      points: 3,
                     })
                   }
                 >
@@ -192,8 +196,8 @@ const HomeScreen: React.FC = ({ route, navigation }) => {
                       ...starVal,
                       star4: {
                         isPressed: !starVal.star4.isPressed,
-                        points: !starVal.star4.isPressed ? 4 : 0,
                       },
+                      points: 4,
                     })
                   }
                 >
@@ -211,8 +215,8 @@ const HomeScreen: React.FC = ({ route, navigation }) => {
                       ...starVal,
                       star5: {
                         isPressed: !starVal.star5.isPressed,
-                        points: !starVal.star5.isPressed ? 5 : 0,
                       },
+                      points: 5,
                     })
                   }
                 >
@@ -226,7 +230,9 @@ const HomeScreen: React.FC = ({ route, navigation }) => {
                 </TouchableOpacity>
               </View>
               <View style={override.starViewButton}>
-                <Button mode="contained">Submit</Button>
+                <Button mode="contained" onPress={submitStarScores}>
+                  Submit
+                </Button>
               </View>
             </>
           ) : (
