@@ -147,7 +147,7 @@ const HomeScreen: React.FC = ({ route, navigation }) => {
                   <Icon
                     name="star"
                     style={{
-                      color: !starVal.star1.isPressed ? "black" : "gold",
+                      color: starVal.points >= 1 ? "gold" : "black",
                       fontSize: 32,
                     }}
                   ></Icon>
@@ -166,7 +166,7 @@ const HomeScreen: React.FC = ({ route, navigation }) => {
                   <Icon
                     name="star"
                     style={{
-                      color: !starVal.star2.isPressed ? "black" : "gold",
+                      color: starVal.points >= 2 ? "gold" : "black",
                       fontSize: 32,
                     }}
                   ></Icon>
@@ -185,7 +185,7 @@ const HomeScreen: React.FC = ({ route, navigation }) => {
                   <Icon
                     name="star"
                     style={{
-                      color: !starVal.star3.isPressed ? "black" : "gold",
+                      color: starVal.points >= 3 ? "gold" : "black",
                       fontSize: 32,
                     }}
                   ></Icon>
@@ -204,7 +204,7 @@ const HomeScreen: React.FC = ({ route, navigation }) => {
                   <Icon
                     name="star"
                     style={{
-                      color: !starVal.star4.isPressed ? "black" : "gold",
+                      color: starVal.points >= 4 ? "gold" : "black",
                       fontSize: 32,
                     }}
                   ></Icon>
@@ -223,7 +223,7 @@ const HomeScreen: React.FC = ({ route, navigation }) => {
                   <Icon
                     name="star"
                     style={{
-                      color: !starVal.star5.isPressed ? "black" : "gold",
+                      color: starVal.points >= 5 ? "gold" : "black",
                       fontSize: 32,
                     }}
                   ></Icon>
