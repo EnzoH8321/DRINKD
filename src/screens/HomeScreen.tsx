@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
-import { useDispatch, useStore } from "react-redux";
+import { useDispatch } from "react-redux";
 import fetchBusiness from "../api/YelpApi";
 import axios from "axios";
 import * as Location from "expo-location";
 import styles from "../styles/constant";
-import { useIsDrawerOpen } from "@react-navigation/drawer";
+
 //Components
 import CardComponent from "../components/CardComponent";
 import CustomSheet from "../components/BottomSheetComponent";
@@ -40,14 +40,33 @@ const HomeScreen: React.FC = ({ route, navigation }) => {
   }
 
   const dispatch = useDispatch();
-  const store = useStore();
-
   const [dataArray, setDataArray] = useState<ApiSearch[] | null>();
   const [cardDetail, setCardDetails] = useState();
   const [index, setIndex] = useState<number>(0);
+  const [starVal, setStarValue] = useState({
+    star1: {
+      isPressed: false,
+      points: 0,
+    },
+    star2: {
+      isPressed: false,
+      points: 0,
+    },
+    star3: {
+      isPressed: false,
+      points: 0,
+    },
+    star4: {
+      isPressed: false,
+      points: 0,
+    },
+    star5: {
+      isPressed: false,
+      points: 0,
+    },
+  });
 
   const refCarousel = React.useRef(null);
-
   const currentPartyStatus = route.params.showStars;
 
   // Calls General Yelp Api
@@ -77,6 +96,11 @@ const HomeScreen: React.FC = ({ route, navigation }) => {
     }
   }, []);
 
+  // //Submit score to DB
+  // function submitStarScores() {
+  //   let currentCard =
+  // }
+
   return (
     <View style={styles.container}>
       {!dataArray ? (
@@ -105,20 +129,100 @@ const HomeScreen: React.FC = ({ route, navigation }) => {
           {currentPartyStatus ? (
             <>
               <View style={override.starView}>
-                <TouchableOpacity>
-                  <Icon name="star" style={override.starStyles}></Icon>
+                <TouchableOpacity
+                  onPress={() =>
+                    setStarValue({
+                      ...starVal,
+                      star1: {
+                        isPressed: !starVal.star1.isPressed,
+                        points: !starVal.star1.isPressed ? 1 : 0,
+                      },
+                    })
+                  }
+                >
+                  <Icon
+                    name="star"
+                    style={{
+                      color: !starVal.star1.isPressed ? "black" : "gold",
+                      fontSize: 32,
+                    }}
+                  ></Icon>
                 </TouchableOpacity>
-                <TouchableOpacity>
-                  <Icon name="star" style={override.starStyles}></Icon>
+                <TouchableOpacity
+                  onPress={() =>
+                    setStarValue({
+                      ...starVal,
+                      star2: {
+                        isPressed: !starVal.star2.isPressed,
+                        points: !starVal.star2.isPressed ? 2 : 0,
+                      },
+                    })
+                  }
+                >
+                  <Icon
+                    name="star"
+                    style={{
+                      color: !starVal.star2.isPressed ? "black" : "gold",
+                      fontSize: 32,
+                    }}
+                  ></Icon>
                 </TouchableOpacity>
-                <TouchableOpacity>
-                  <Icon name="star" style={override.starStyles}></Icon>
+                <TouchableOpacity
+                  onPress={() =>
+                    setStarValue({
+                      ...starVal,
+                      star3: {
+                        isPressed: !starVal.star3.isPressed,
+                        points: !starVal.star3.isPressed ? 3 : 0,
+                      },
+                    })
+                  }
+                >
+                  <Icon
+                    name="star"
+                    style={{
+                      color: !starVal.star3.isPressed ? "black" : "gold",
+                      fontSize: 32,
+                    }}
+                  ></Icon>
                 </TouchableOpacity>
-                <TouchableOpacity>
-                  <Icon name="star" style={override.starStyles}></Icon>
+                <TouchableOpacity
+                  onPress={() =>
+                    setStarValue({
+                      ...starVal,
+                      star4: {
+                        isPressed: !starVal.star4.isPressed,
+                        points: !starVal.star4.isPressed ? 4 : 0,
+                      },
+                    })
+                  }
+                >
+                  <Icon
+                    name="star"
+                    style={{
+                      color: !starVal.star4.isPressed ? "black" : "gold",
+                      fontSize: 32,
+                    }}
+                  ></Icon>
                 </TouchableOpacity>
-                <TouchableOpacity>
-                  <Icon name="star" style={override.starStyles}></Icon>
+                <TouchableOpacity
+                  onPress={() =>
+                    setStarValue({
+                      ...starVal,
+                      star5: {
+                        isPressed: !starVal.star5.isPressed,
+                        points: !starVal.star5.isPressed ? 5 : 0,
+                      },
+                    })
+                  }
+                >
+                  <Icon
+                    name="star"
+                    style={{
+                      color: !starVal.star5.isPressed ? "black" : "gold",
+                      fontSize: 32,
+                    }}
+                  ></Icon>
                 </TouchableOpacity>
               </View>
               <View style={override.starViewButton}>
