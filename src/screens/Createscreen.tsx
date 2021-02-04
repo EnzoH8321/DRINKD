@@ -7,6 +7,7 @@ import {
   setPartyData,
   setMemberLevel,
   setPartyId,
+  setUserName,
 } from "../actions/PartyActions";
 
 //firebase
@@ -27,6 +28,10 @@ const CreateScreen: React.FC = ({ navigation }) => {
       Math.pow(10, 8 - 1) + Math.random() * 9 * Math.pow(10, 8 - 1)
     ).toString();
 
+    const userNameGenerator = Math.floor(
+      Math.pow(10, 4 - 1) + Math.random() * 9 * Math.pow(10, 4 - 1)
+    ).toString();
+
     firebase.database().ref(`parties/${randomNumber}`).set({
       partyId: randomNumber,
       partyTimestamp: creationTime,
@@ -38,6 +43,7 @@ const CreateScreen: React.FC = ({ navigation }) => {
     dispatch(setPartyData(true));
     dispatch(setMemberLevel("LEADER"));
     dispatch(setPartyId(randomNumber));
+    dispatch(setUserName(userNameGenerator));
     setPartyCode(randomNumber);
     navigation.navigate("Home", { showStars: true });
   }

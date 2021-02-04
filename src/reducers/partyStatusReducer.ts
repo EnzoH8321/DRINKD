@@ -4,6 +4,7 @@ import {
   SetMemberLevel,
   SetPartyUrl,
   SetPartyId,
+  SetUserName,
 } from "../types/types";
 
 type InitialState = {
@@ -11,6 +12,7 @@ type InitialState = {
   memberLevel: "LEADER" | "MEMBER" | string;
   partyURL: string;
   partyId: string;
+  userName: string;
 };
 
 //Initial State!
@@ -19,11 +21,17 @@ export const initialState = {
   memberLevel: "",
   partyURL: "",
   partyId: "",
+  userName: "",
 };
 
 export default function partyStatusReducer(
   state = initialState,
-  action: SetInPartyData | SetMemberLevel | SetPartyUrl | SetPartyId
+  action:
+    | SetInPartyData
+    | SetMemberLevel
+    | SetPartyUrl
+    | SetPartyId
+    | SetUserName
 ): InitialState {
   switch (action.type) {
     case actions.SET_INPARTY_DATA:
@@ -37,6 +45,9 @@ export default function partyStatusReducer(
 
     case actions.SET_PARTY_ID:
       return { ...state, partyId: action.payload };
+
+    case actions.SET_USERNAME:
+      return { ...state, userName: action.payload };
 
     default:
       return state;

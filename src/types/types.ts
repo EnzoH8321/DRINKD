@@ -157,6 +157,11 @@ export type SetBarlistData = {
   payload: ApiSearch[];
 };
 
+export type SetUserName = {
+  type: "SET USERNAME";
+  payload: string;
+};
+
 export type SetInPartyData = {
   type: "SET INPARTY DATA";
   payload: boolean;
