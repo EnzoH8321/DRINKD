@@ -29,16 +29,21 @@ const CreateScreen: React.FC = ({ navigation }) => {
     ).toString();
 
     const userNameGenerator = Math.floor(
-      Math.pow(10, 4 - 1) + Math.random() * 9 * Math.pow(10, 4 - 1)
+      Math.pow(10, 5 - 1) + Math.random() * 9 * Math.pow(10, 5 - 1)
     ).toString();
 
-    firebase.database().ref(`parties/${randomNumber}`).set({
-      partyId: randomNumber,
-      partyTimestamp: creationTime,
-      partyName: partyName,
-      partyURL: partyURL,
-      topBars: "none",
-    });
+    firebase
+      .database()
+      .ref(`parties/${randomNumber}`)
+      .set({
+        partyId: randomNumber,
+        partyTimestamp: creationTime,
+        partyName: partyName,
+        partyURL: partyURL,
+        topBars: {
+          [userNameGenerator]: "",
+        },
+      });
 
     dispatch(setPartyData(true));
     dispatch(setMemberLevel("LEADER"));

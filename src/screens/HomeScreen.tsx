@@ -85,7 +85,7 @@ const HomeScreen: React.FC = ({ route, navigation }) => {
 
     firebase
       .database()
-      .ref(`parties/${currentPartyId}/topBars`)
+      .ref(`parties/${currentPartyId}/topBars/${userName}`)
       .update({
         [currentCard]: finalScore,
       });
