@@ -28,6 +28,7 @@ const CreateScreen: React.FC = ({ navigation }) => {
       partyTimestamp: creationTime,
       partyName: partyName,
       partyURL: partyURL,
+      topBars: "none",
     });
 
     dispatch(setPartyData(true));
