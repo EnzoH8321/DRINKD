@@ -81,11 +81,6 @@ const HomeScreen: React.FC = ({ route, navigation }) => {
   function submitStarScores() {
     const currentCard = dataArray[index].name;
     const finalScore = pointValue;
-
-    const newPostKey = firebase.database().ref().child("topBars");
-
-    // console.log(newPostKey);
-
     firebase
       .database()
       .ref(`parties/${currentPartyId}/topBars`)
