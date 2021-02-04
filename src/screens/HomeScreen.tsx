@@ -48,6 +48,7 @@ const HomeScreen: React.FC = ({ route, navigation }) => {
 
   const refCarousel = React.useRef(null);
   const currentPartyStatus = route.params.showStars;
+  const currentPartyId = store.getState().party.partyId;
 
   // Calls General Yelp Api
   useEffect(() => {
@@ -78,13 +79,19 @@ const HomeScreen: React.FC = ({ route, navigation }) => {
 
   //Submit score to DB
   function submitStarScores() {
-    let currentCard = dataArray[index].name;
+    const currentCard = dataArray[index].name;
+    const finalScore = pointValue;
 
-    let finalScore = pointValue;
+    const newPostKey = firebase.database().ref().child("topBars");
 
-    firebase.database.ref(``);
+    // console.log(newPostKey);
 
-    console.log(finalScore, currentCard);
+    firebase
+      .database()
+      .ref(`parties/${currentPartyId}/topBars`)
+      .update({
+        [currentCard]: finalScore,
+      });
   }
 
   return (

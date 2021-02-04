@@ -3,7 +3,11 @@ import { View, StyleSheet, Alert } from "react-native";
 import { Headline, Button, TextInput } from "react-native-paper";
 import styles from "../styles/constant";
 //Actions
-import { setPartyData, setMemberLevel } from "../actions/PartyActions";
+import {
+  setPartyData,
+  setMemberLevel,
+  setPartyId,
+} from "../actions/PartyActions";
 
 //firebase
 import firebase from "../utils/firebase";
@@ -33,6 +37,7 @@ const CreateScreen: React.FC = ({ navigation }) => {
 
     dispatch(setPartyData(true));
     dispatch(setMemberLevel("LEADER"));
+    dispatch(setPartyId(randomNumber));
     setPartyCode(randomNumber);
     navigation.navigate("Home", { showStars: true });
   }

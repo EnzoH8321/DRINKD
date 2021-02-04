@@ -3,7 +3,11 @@ import { View, StyleSheet, Alert } from "react-native";
 import { Headline, TextInput, Button } from "react-native-paper";
 import styles from "../styles/constant";
 
-import { setPartyData, setMemberLevel } from "../actions/PartyActions";
+import {
+  setPartyData,
+  setMemberLevel,
+  setPartyId,
+} from "../actions/PartyActions";
 
 //firebase
 import firebase from "../utils/firebase";
@@ -25,6 +29,7 @@ const JoinScreen: React.FC = () => {
       //Sets party status to true
       dispatch(setPartyData(true));
       //Sets global member level to member
+      dispatch(setPartyId(data.partyId));
       dispatch(setMemberLevel("MEMBER"));
       setPartyCode(data.partyId);
     });
