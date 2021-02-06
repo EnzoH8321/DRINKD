@@ -15,6 +15,14 @@ import firebase from "../utils/firebase";
 import { useDispatch, useStore } from "react-redux";
 
 const CreateScreen: React.FC = ({ navigation }) => {
+  const dispatch = useDispatch();
+  const store = useStore();
+  const partyStatus = store.getState().party.inParty;
+  const partyURL = store.getState().party.partyURL;
+
+  const [partyCode, setPartyCode] = useState("");
+  const [partyName, setPartyName] = useState("");
+
   //Create Party
   function createParty() {
     if (!partyName) {
@@ -65,14 +73,6 @@ const CreateScreen: React.FC = ({ navigation }) => {
 
     navigation.navigate("Home", { showStars: false });
   }
-
-  const dispatch = useDispatch();
-  const store = useStore();
-  const partyStatus = store.getState().party.inParty;
-  const partyURL = store.getState().party.partyURL;
-
-  const [partyCode, setPartyCode] = useState("");
-  const [partyName, setPartyName] = useState("");
 
   return (
     <View style={[styles.container]}>
