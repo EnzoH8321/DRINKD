@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
-import { useDispatch, useStore } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import fetchBusiness from "../api/YelpApi";
 import axios from "axios";
 import * as Location from "expo-location";
@@ -40,16 +40,16 @@ const HomeScreen: React.FC = ({ route, navigation }) => {
   }
 
   const dispatch = useDispatch();
-  const store = useStore();
+
   const [dataArray, setDataArray] = useState<ApiSearch[] | null>();
   const [cardDetail, setCardDetails] = useState();
   const [index, setIndex] = useState<number>(0);
   const [pointValue, setPointValue] = useState(0);
 
   const refCarousel = React.useRef(null);
-  const currentPartyStatus = route.params.showStars;
-  const currentPartyId = store.getState().party.partyId;
-  const userName = store.getState().party.userName;
+  const currentPartyStatus = useSelector((state) => state.party.inParty);
+  const currentPartyId = useSelector((state) => state.party.partyId);
+  const userName = useSelector((state) => state.party.userName);
 
   // Calls General Yelp Api
   useEffect(() => {

@@ -30,11 +30,7 @@ const AppStack = createStackNavigator();
 const Home = () => {
   return (
     <HomeDrawer.Navigator>
-      <HomeDrawer.Screen
-        name="Home"
-        component={HomeScreen}
-        initialParams={{ showStars: false }}
-      />
+      <HomeDrawer.Screen name="Home" component={HomeScreen} />
       <HomeDrawer.Screen name="TopChoice" component={TopChoiceScreen} />
       <HomeDrawer.Screen name="JoinScreen" component={JoinScreen} />
       <HomeDrawer.Screen name="CreateScreen" component={CreateScreen} />

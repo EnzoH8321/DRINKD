@@ -60,7 +60,7 @@ const CreateScreen: React.FC = ({ navigation }) => {
     dispatch(setPartyId(randomNumber));
     dispatch(setUserName(userNameGenerator));
     setPartyCode(randomNumber);
-    navigation.navigate("Home", { showStars: true });
+    navigation.navigate("Home");
   }
 
   //Leave Party
