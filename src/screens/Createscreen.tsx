@@ -19,11 +19,9 @@ const CreateScreen: React.FC = ({ navigation }) => {
 
   const partyStatus = useSelector((state) => state.party.memberLevel);
   const partyURL = useSelector((state) => state.party.partyURL);
+  const partyId = useSelector((state) => state.party.partyId);
 
-  const [partyCode, setPartyCode] = useState("");
   const [partyName, setPartyName] = useState("");
-
-  console.log(partyStatus);
 
   //Create Party
   function createParty() {
@@ -66,12 +64,11 @@ const CreateScreen: React.FC = ({ navigation }) => {
   //Leave Party
   function leaveParty() {
     //Removes "session" from DB
-    firebase.database().ref(`parties/${partyCode}`).remove();
+    firebase.database().ref(`parties/${partyId}`).remove();
 
     dispatch(setPartyData(false));
     dispatch(setMemberLevel(""));
-
-    setPartyCode("");
+    dispatch(setPartyId(""));
   }
 
   return (
@@ -91,8 +88,8 @@ const CreateScreen: React.FC = ({ navigation }) => {
         </Button>
       )}
 
-      <Headline style={override.headline}>Party Code is {partyCode}</Headline>
-      <Headline style={override.headline}>Party Name is {partyName}</Headline>
+      <Headline style={override.headline}>Party Code is {partyId}</Headline>
+      <Headline style={override.headline}>Party Name is {partyId}</Headline>
     </View>
   );
 };
