@@ -12,16 +12,18 @@ import {
 
 //firebase
 import firebase from "../utils/firebase";
-import { useDispatch, useStore } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const CreateScreen: React.FC = ({ navigation }) => {
   const dispatch = useDispatch();
-  const store = useStore();
-  const partyStatus = store.getState().party.inParty;
-  const partyURL = store.getState().party.partyURL;
+
+  const partyStatus = useSelector((state) => state.party.memberLevel);
+  const partyURL = useSelector((state) => state.party.partyURL);
 
   const [partyCode, setPartyCode] = useState("");
   const [partyName, setPartyName] = useState("");
+
+  console.log(partyStatus);
 
   //Create Party
   function createParty() {
@@ -70,8 +72,6 @@ const CreateScreen: React.FC = ({ navigation }) => {
     dispatch(setMemberLevel(""));
 
     setPartyCode("");
-
-    navigation.navigate("Home", { showStars: false });
   }
 
   return (
