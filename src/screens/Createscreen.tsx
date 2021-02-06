@@ -20,7 +20,6 @@ const CreateScreen: React.FC = ({ navigation }) => {
   const partyStatus = useSelector((state) => state.party.memberLevel);
   const partyURL = useSelector((state) => state.party.partyURL);
   const partyId = useSelector((state) => state.party.partyId);
-
   const [partyName, setPartyName] = useState("");
 
   //Create Party
@@ -57,7 +56,7 @@ const CreateScreen: React.FC = ({ navigation }) => {
     dispatch(setMemberLevel("LEADER"));
     dispatch(setPartyId(randomNumber));
     dispatch(setUserName(userNameGenerator));
-    setPartyCode(randomNumber);
+
     navigation.navigate("Home");
   }
 

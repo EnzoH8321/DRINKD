@@ -11,7 +11,7 @@ import {
 
 //firebase
 import firebase from "../utils/firebase";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const JoinScreen: React.FC = () => {
   //Join Party
@@ -31,13 +31,12 @@ const JoinScreen: React.FC = () => {
       //Sets global member level to member
       dispatch(setPartyId(data.partyId));
       dispatch(setMemberLevel("MEMBER"));
-      setPartyCode(data.partyId);
     });
   }
 
   const dispatch = useDispatch();
+  const partyId = useSelector((state) => state.party.partyId);
   const [textValue, setTextValue] = useState("");
-  const [partyCode, setPartyCode] = useState(false);
 
   return (
     <View style={[styles.container]}>
@@ -55,11 +54,11 @@ const JoinScreen: React.FC = () => {
         Go
       </Button>
 
-      {!partyCode ? (
+      {!partyId ? (
         <Headline style={override.statusText}>You are not in a party</Headline>
       ) : (
         <Headline style={override.statusText}>
-          Your party code is {partyCode}
+          Your party code is {partyId}
         </Headline>
       )}
     </View>
