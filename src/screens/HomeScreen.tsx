@@ -45,7 +45,6 @@ const HomeScreen: React.FC = () => {
   const [cardDetail, setCardDetails] = useState();
   const [index, setIndex] = useState<number>(0);
   const [pointValue, setPointValue] = useState(0);
-
   const refCarousel = React.useRef(null);
   const currentPartyStatus = useSelector((state) => state.party.inParty);
   const currentPartyId = useSelector((state) => state.party.partyId);
