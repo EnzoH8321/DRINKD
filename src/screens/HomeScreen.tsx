@@ -17,6 +17,7 @@ import { setBarListData } from "../actions/APIActions";
 import { setPartyURL } from "../actions/PartyActions";
 //Types
 import { ApiSearch } from "../types/types";
+import { RootState } from "../reducers";
 //Firebase
 import firebase from "../utils/firebase";
 
@@ -41,14 +42,16 @@ const HomeScreen: React.FC = () => {
 
   const dispatch = useDispatch();
 
-  const [dataArray, setDataArray] = useState<ApiSearch[] | null>();
+  const [dataArray, setDataArray] = useState<ApiSearch[]>();
   const [cardDetail, setCardDetails] = useState();
   const [index, setIndex] = useState<number>(0);
   const [pointValue, setPointValue] = useState(0);
   const refCarousel = React.useRef(null);
-  const currentPartyStatus = useSelector((state) => state.party.inParty);
-  const currentPartyId = useSelector((state) => state.party.partyId);
-  const userName = useSelector((state) => state.party.userName);
+  const currentPartyStatus = useSelector(
+    (state: RootState) => state.party.inParty
+  );
+  const currentPartyId = useSelector((state: RootState) => state.party.partyId);
+  const userName = useSelector((state: RootState) => state.party.userName);
 
   // Calls General Yelp Api
   useEffect(() => {

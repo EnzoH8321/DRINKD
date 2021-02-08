@@ -7,4 +7,6 @@ const rootReducer = combineReducers({
   party: partyStatusReducer,
 });
 
+export type RootState = ReturnType<typeof rootReducer>;
+
 export default rootReducer;
