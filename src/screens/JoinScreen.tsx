@@ -17,6 +17,14 @@ import firebase from "../utils/firebase";
 import { RootState } from "../reducers";
 
 const JoinScreen: React.FC = () => {
+  const dispatch = useDispatch();
+  const partyId = useSelector((state: RootState) => state.party.partyId);
+  const memberLevel = useSelector(
+    (state: RootState) => state.party.memberLevel
+  );
+  const inParty = useSelector((state: RootState) => state.party.inParty);
+  const [textValue, setTextValue] = useState("");
+
   //Join Party
   function joinParty() {
     const ref = firebase.database().ref(`parties/${textValue}`);
@@ -43,14 +51,6 @@ const JoinScreen: React.FC = () => {
     dispatch(setMemberLevel(""));
     dispatch(setPartyId(""));
   }
-
-  const dispatch = useDispatch();
-  const partyId = useSelector((state: RootState) => state.party.partyId);
-  const memberLevel = useSelector(
-    (state: RootState) => state.party.memberLevel
-  );
-  const inParty = useSelector((state: RootState) => state.party.inParty);
-  const [textValue, setTextValue] = useState("");
 
   return (
     <View style={[styles.container]}>
