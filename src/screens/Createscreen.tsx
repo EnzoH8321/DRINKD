@@ -13,13 +13,18 @@ import {
 //firebase
 import firebase from "../utils/firebase";
 import { useDispatch, useSelector } from "react-redux";
+//Types
+import { RootState } from "../reducers";
+import { CreateScreenProps } from "../types/types";
 
-const CreateScreen: React.FC = ({ navigation }) => {
+const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
   const dispatch = useDispatch();
 
-  const partyStatus = useSelector((state) => state.party.memberLevel);
-  const partyURL = useSelector((state) => state.party.partyURL);
-  const partyId = useSelector((state) => state.party.partyId);
+  const partyStatus = useSelector(
+    (state: RootState) => state.party.memberLevel
+  );
+  const partyURL = useSelector((state: RootState) => state.party.partyURL);
+  const partyId = useSelector((state: RootState) => state.party.partyId);
   const [partyName, setPartyName] = useState("");
 
   //Create Party

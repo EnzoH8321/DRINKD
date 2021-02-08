@@ -15,16 +15,8 @@ import CreateScreen from "./src/screens/Createscreen";
 //Store
 import store from "./src/store/store";
 
-//Types
-type HomeStackParamList = {
-  Home: { showStars: boolean };
-  TopChoice: undefined;
-  JoinScreen: undefined;
-  CreateScreen: undefined;
-};
-
 //Stack
-const HomeDrawer = createDrawerNavigator<HomeStackParamList>();
+const HomeDrawer = createDrawerNavigator();
 const AppStack = createStackNavigator();
 
 const Home = () => {

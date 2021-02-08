@@ -14,7 +14,6 @@
     "@react-navigation/native": "^5.9.2",
     "@react-navigation/stack": "^5.14.2",
     "@reduxjs/toolkit": "^1.5.0",
-    "@types/react-native-vector-icons": "^6.4.6",
     "axios": "^0.21.1",
     "eslint": "^7.19.0",
     "eslint-plugin-react": "^7.22.0",
@@ -44,6 +43,7 @@
     "@types/react-redux": "^7.1.16",
     "@typescript-eslint/eslint-plugin": "^4.14.1",
     "@typescript-eslint/parser": "^4.14.1",
+    "@types/react-native-vector-icons": "^6.4.6",
     "typescript": "~4.0.0"
   },
   "private": true

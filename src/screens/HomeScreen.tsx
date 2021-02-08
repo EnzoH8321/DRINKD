@@ -26,7 +26,7 @@ type Item = {
   item: ApiSearch;
 };
 
-const HomeScreen: React.FC = () => {
+const HomeScreen = (): React.ReactNode => {
   //Calls specific business using current card ID
   async function fetchBarDetails(id: string) {
     const data = await axios(`https://api.yelp.com/v3/businesses/${id}`, {

@@ -12,6 +12,8 @@ import {
 //firebase
 import firebase from "../utils/firebase";
 import { useDispatch, useSelector } from "react-redux";
+//Types
+import { RootState } from "../reducers";
 
 const JoinScreen: React.FC = () => {
   //Join Party
@@ -35,7 +37,7 @@ const JoinScreen: React.FC = () => {
   }
 
   const dispatch = useDispatch();
-  const partyId = useSelector((state) => state.party.partyId);
+  const partyId = useSelector((state: RootState) => state.party.partyId);
   const [textValue, setTextValue] = useState("");
 
   return (

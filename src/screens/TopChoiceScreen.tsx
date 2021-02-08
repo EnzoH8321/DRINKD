@@ -6,7 +6,7 @@ import styles from "../styles/constant";
 //Components
 import MiniCardComponent from "../components/MiniCardComponent";
 
-const TopChoicesScreen = (): React.ReactElement => {
+const TopChoicesScreen = (): React.ReactNode => {
   return (
     <View style={styles.container}>
       <MiniCardComponent />

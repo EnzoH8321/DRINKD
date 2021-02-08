@@ -1,5 +1,5 @@
-//“always use interface for public API’s definition when authoring a library or 3rd-party ambient type definitions.”
-//“consider using type for your React Component Props and State, because it is more constrained.”
+import { RouteProp } from "@react-navigation/native";
+import { DrawerNavigationProp } from "@react-navigation/drawer";
 
 //Api Business Search
 export interface ApiSearch {
@@ -185,4 +185,24 @@ export type SetPartyId = {
 export type BarListData = {
   type: "SET BARLIST DATA";
   payload: ApiSearch[];
+};
+
+//Navigation
+type HomeDrawerParamList = {
+  Home: undefined;
+  TopChoice: undefined;
+  JoinScreen: undefined;
+  CreateScreen: undefined;
+};
+
+type CreateScreenRouteProp = RouteProp<HomeDrawerParamList, "CreateScreen">;
+
+type ProfileScreenNavigationProp = DrawerNavigationProp<
+  HomeDrawerParamList,
+  "CreateScreen"
+>;
+
+export type CreateScreenProps = {
+  route: CreateScreenRouteProp;
+  navigation: ProfileScreenNavigationProp;
 };
