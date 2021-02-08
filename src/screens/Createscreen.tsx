@@ -24,6 +24,7 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
     (state: RootState) => state.party.memberLevel
   );
   const partyURL = useSelector((state: RootState) => state.party.partyURL);
+  ``;
   const partyId = useSelector((state: RootState) => state.party.partyId);
   const [partyName, setPartyName] = useState("");
 
