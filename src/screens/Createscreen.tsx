@@ -19,16 +19,14 @@ import { CreateScreenProps } from "../types/types";
 
 const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
   const dispatch = useDispatch();
-
   const partyStatus = useSelector(
     (state: RootState) => state.party.memberLevel
   );
   const partyURL = useSelector((state: RootState) => state.party.partyURL);
-  ``;
   const partyId = useSelector((state: RootState) => state.party.partyId);
   const [partyName, setPartyName] = useState("");
 
-  //Create Party
+  //Create Party func
   function createParty() {
     if (!partyName) {
       return Alert.alert("You must name your party");
@@ -66,8 +64,12 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
     navigation.navigate("Home");
   }
 
-  //Leave Party
+  //Leave Party func
   function leaveParty() {
+    if (partyStatus === "MEMBER") {
+      return Alert.alert("You must be party leader to leave the party");
+    }
+
     //Removes "session" from DB
     firebase.database().ref(`parties/${partyId}`).remove();
 

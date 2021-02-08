@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Alert } from "react-native";
 import { Headline, TextInput, Button } from "react-native-paper";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "../styles/constant";
 
 import {
@@ -11,7 +12,7 @@ import {
 
 //firebase
 import firebase from "../utils/firebase";
-import { useDispatch, useSelector } from "react-redux";
+
 //Types
 import { RootState } from "../reducers";
 
@@ -36,8 +37,19 @@ const JoinScreen: React.FC = () => {
     });
   }
 
+  //Leave Party func
+  function leaveParty() {
+    dispatch(setPartyData(false));
+    dispatch(setMemberLevel(""));
+    dispatch(setPartyId(""));
+  }
+
   const dispatch = useDispatch();
   const partyId = useSelector((state: RootState) => state.party.partyId);
+  const memberLevel = useSelector(
+    (state: RootState) => state.party.memberLevel
+  );
+  const inParty = useSelector((state: RootState) => state.party.inParty);
   const [textValue, setTextValue] = useState("");
 
   return (
@@ -48,13 +60,23 @@ const JoinScreen: React.FC = () => {
         value={textValue}
         onChangeText={(text) => setTextValue(text)}
       />
-      <Button
-        mode="contained"
-        style={[styles.button, override.button]}
-        onPress={joinParty}
-      >
-        Go
-      </Button>
+      {!inParty ? (
+        <Button
+          mode="contained"
+          style={[styles.button, override.button]}
+          onPress={joinParty}
+        >
+          Go
+        </Button>
+      ) : (
+        <Button
+          mode="contained"
+          style={[styles.button, override.button]}
+          onPress={leaveParty}
+        >
+          Leave Party
+        </Button>
+      )}
 
       {!partyId ? (
         <Headline style={override.statusText}>You are not in a party</Headline>
