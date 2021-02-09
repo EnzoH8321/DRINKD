@@ -7,18 +7,24 @@ import firebase from "../utils/firebase";
 
 //Components
 import MiniCardComponent from "../components/MiniCardComponent";
+import { Headline } from "react-native-paper";
+import { useSelector } from "react-redux";
+import { RootState } from "../reducers";
 
 const TopChoicesScreen = (): React.ReactNode => {
-  const [choicesArray, setChoicesArray] = useState();
-  console.log(choicesArray);
+  const [choicesObject, setChoicesObject] = useState();
+  const partyId = useSelector((state: RootState) => state.party.partyId);
+  console.log(choicesObject);
   useEffect(() => {
     try {
       // the parenth below is syntax for => function(){...}
       (async () => {
-        const firebaseData = await firebase.database().ref(`parties/`);
+        const firebaseData = await firebase
+          .database()
+          .ref(`parties/${partyId}`);
         firebaseData.on("value", (snapshot) => {
           const data = snapshot.val();
-          setChoicesArray(data);
+          setChoicesObject(data);
         });
       })();
     } catch (error) {
@@ -28,9 +34,15 @@ const TopChoicesScreen = (): React.ReactNode => {
 
   return (
     <View style={styles.container}>
-      <MiniCardComponent index={1} />
-      <MiniCardComponent index={2} />
-      <MiniCardComponent index={3} />
+      {choicesObject ? (
+        <>
+          <MiniCardComponent index={1} />
+          <MiniCardComponent index={2} />
+          <MiniCardComponent index={3} />
+        </>
+      ) : (
+        <Headline>Loading</Headline>
+      )}
     </View>
   );
 };
