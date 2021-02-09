@@ -2,11 +2,11 @@ import React from "react";
 
 import { Text, Card } from "react-native-paper";
 
-const MiniCardComponent = (): React.ReactElement => {
+const MiniCardComponent = ({ index }): React.ReactElement => {
   return (
     <Card>
       <Card.Content>
-        <Text>Choice</Text>
+        <Text>{index}. Choice - </Text>
       </Card.Content>
     </Card>
   );
