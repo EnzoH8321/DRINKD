@@ -19,7 +19,7 @@ import { CreateScreenProps } from "../types/types";
 
 const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
   const dispatch = useDispatch();
-  const partyStatus = useSelector(
+  const memberLevel = useSelector(
     (state: RootState) => state.party.memberLevel
   );
   const partyURL = useSelector((state: RootState) => state.party.partyURL);
@@ -66,7 +66,7 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
 
   //Leave Party func
   function leaveParty() {
-    if (partyStatus === "MEMBER") {
+    if (memberLevel === "MEMBER") {
       return Alert.alert("You must be party leader to leave the party");
     }
 
@@ -78,27 +78,52 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
     dispatch(setPartyId(""));
   }
 
-  return (
-    <View style={[styles.container]}>
-      <TextInput
-        style={styles.textInput}
-        value={partyName}
-        onChangeText={(name) => setPartyName(name)}
-      ></TextInput>
-      {!partyStatus ? (
-        <Button mode="contained" style={styles.button} onPress={createParty}>
-          Create Party
-        </Button>
-      ) : (
-        <Button mode="contained" style={styles.button} onPress={leaveParty}>
-          Leave Party
-        </Button>
-      )}
+  function renderSwitch(param) {
+    switch (param) {
+      case "MEMBER":
+        return (
+          <View>
+            <Headline>Please Leave your party first</Headline>
+          </View>
+        );
 
-      <Headline style={override.headline}>Party Code is {partyId}</Headline>
-      <Headline style={override.headline}>Party Name is {partyId}</Headline>
-    </View>
-  );
+      default:
+        return (
+          <View style={[styles.container]}>
+            <TextInput
+              style={styles.textInput}
+              value={partyName}
+              onChangeText={(name) => setPartyName(name)}
+            ></TextInput>
+            {!memberLevel ? (
+              <Button
+                mode="contained"
+                style={styles.button}
+                onPress={createParty}
+              >
+                Create Party
+              </Button>
+            ) : (
+              <Button
+                mode="contained"
+                style={styles.button}
+                onPress={leaveParty}
+              >
+                Leave Party
+              </Button>
+            )}
+
+            <Headline style={override.headline}>
+              Party Code is {partyId}
+            </Headline>
+            <Headline style={override.headline}>
+              Party Name is {partyId}
+            </Headline>
+          </View>
+        );
+    }
+  }
+  return renderSwitch(memberLevel);
 };
 
 const override = StyleSheet.create({
