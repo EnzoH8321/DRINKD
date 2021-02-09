@@ -14,7 +14,11 @@ import { RootState } from "../reducers";
 const TopChoicesScreen = (): React.ReactNode => {
   const [choicesObject, setChoicesObject] = useState();
   const partyId = useSelector((state: RootState) => state.party.partyId);
-  console.log(choicesObject);
+
+  // function getTopChoices(obj) {
+
+  // }
+
   useEffect(() => {
     try {
       // the parenth below is syntax for => function(){...}
@@ -22,15 +26,18 @@ const TopChoicesScreen = (): React.ReactNode => {
         const firebaseData = await firebase
           .database()
           .ref(`parties/${partyId}`);
+
         firebaseData.on("value", (snapshot) => {
           const data = snapshot.val();
           setChoicesObject(data);
+
+          console.log(data.topBars);
         });
       })();
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [partyId]);
 
   return (
     <View style={styles.container}>
