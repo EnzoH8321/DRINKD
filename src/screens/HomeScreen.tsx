@@ -50,8 +50,13 @@ const HomeScreen = (): React.ReactNode => {
   const currentPartyStatus = useSelector(
     (state: RootState) => state.party.inParty
   );
+  const yelpUrl = useSelector((state: RootState) => state.party.partyURL);
+  const memberLevel = useSelector(
+    (state: RootState) => state.party.memberLevel
+  );
   const currentPartyId = useSelector((state: RootState) => state.party.partyId);
   const userName = useSelector((state: RootState) => state.party.userName);
+  const inParty = useSelector((state: RootState) => state.party.inParty);
 
   // Calls General Yelp Api
   useEffect(() => {
@@ -59,16 +64,21 @@ const HomeScreen = (): React.ReactNode => {
       // the parenth below is syntax for => function(){...}
       (async () => {
         const { status } = await Location.requestPermissionsAsync();
+        const location = await Location.getCurrentPositionAsync();
+        const locationLat = location.coords.latitude.toString();
+        const locationLong = location.coords.longitude.toString();
+        let url = "";
 
         if (status !== "granted") {
           alert("Permission to access denied");
           return;
         }
 
-        const location = await Location.getCurrentPositionAsync();
-        const locationLat = location.coords.latitude.toString();
-        const locationLong = location.coords.longitude.toString();
-        const url = `https://api.yelp.com/v3/businesses/search?categories=bars&latitude=${locationLat}&longitude=${locationLong}&limit=10`;
+        if (memberLevel === "MEMBER") {
+          url = yelpUrl;
+        } else {
+          url = `https://api.yelp.com/v3/businesses/search?categories=bars&latitude=${locationLat}&longitude=${locationLong}&limit=10`;
+        }
 
         const data = await fetchBusiness(url);
         dispatch(setBarListData(data));
@@ -78,7 +88,7 @@ const HomeScreen = (): React.ReactNode => {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [yelpUrl, inParty]);
 
   //Submit score to DB
   function submitStarScores() {

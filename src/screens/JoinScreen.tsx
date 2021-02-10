@@ -8,6 +8,8 @@ import {
   setPartyData,
   setMemberLevel,
   setPartyId,
+  setUserName,
+  setPartyURL,
 } from "../actions/PartyActions";
 
 //firebase
@@ -44,6 +46,8 @@ const JoinScreen: React.FC = () => {
       dispatch(setPartyData(true));
       dispatch(setPartyId(data.partyId));
       dispatch(setMemberLevel("MEMBER"));
+      dispatch(setUserName(userNameGenerator));
+      dispatch(setPartyURL(data.partyURL));
     });
   }
 
