@@ -19,11 +19,11 @@ import { RootState } from "../reducers";
 const JoinScreen: React.FC = () => {
   const dispatch = useDispatch();
   const partyId = useSelector((state: RootState) => state.party.partyId);
-  const memberLevel = useSelector(
-    (state: RootState) => state.party.memberLevel
-  );
   const inParty = useSelector((state: RootState) => state.party.inParty);
+  const userName = useSelector((state: RootState) => state.party.userName);
   const [textValue, setTextValue] = useState("");
+
+  console.log(userName);
 
   //Join Party
   function joinParty() {
@@ -37,9 +37,7 @@ const JoinScreen: React.FC = () => {
         return Alert.alert("No Party Found");
       }
 
-      //Sets party status to true
       dispatch(setPartyData(true));
-      //Sets global member level to member
       dispatch(setPartyId(data.partyId));
       dispatch(setMemberLevel("MEMBER"));
     });
@@ -47,6 +45,8 @@ const JoinScreen: React.FC = () => {
 
   //Leave Party func
   function leaveParty() {
+    firebase.database().ref(`parties/${partyId}/topBars/${userName}/`).remove();
+
     dispatch(setPartyData(false));
     dispatch(setMemberLevel(""));
     dispatch(setPartyId(""));
