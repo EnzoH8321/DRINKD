@@ -15,9 +15,9 @@ const TopChoicesScreen = (): React.ReactNode => {
   const [choicesObject, setChoicesObject] = useState();
   const partyId = useSelector((state: RootState) => state.party.partyId);
 
-  // function getTopChoices(obj) {
-
-  // }
+  function getTopChoices(obj) {
+    let mainObj = {};
+  }
 
   useEffect(() => {
     try {
@@ -30,8 +30,8 @@ const TopChoicesScreen = (): React.ReactNode => {
         firebaseData.on("value", (snapshot) => {
           const data = snapshot.val();
           setChoicesObject(data);
-
           console.log(data.topBars);
+          getTopChoices(data.topBars);
         });
       })();
     } catch (error) {
