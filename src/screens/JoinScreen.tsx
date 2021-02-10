@@ -32,6 +32,10 @@ const JoinScreen: React.FC = () => {
     ref.on("value", (snapshot) => {
       const data = snapshot.val();
 
+      const userNameGenerator = Math.floor(
+        Math.pow(10, 5 - 1) + Math.random() * 9 * Math.pow(10, 5 - 1)
+      ).toString();
+
       //returns if data is not found
       if (data === null || textValue.length === 0) {
         return Alert.alert("No Party Found");
