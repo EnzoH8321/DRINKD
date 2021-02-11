@@ -24,16 +24,26 @@ const JoinScreen: React.FC = () => {
   const inParty = useSelector((state: RootState) => state.party.inParty);
   const userName = useSelector((state: RootState) => state.party.userName);
   const [textValue, setTextValue] = useState("");
+  let userNameGenerator = "";
+
+  if (userName === "") {
+    userNameGenerator = Math.floor(
+      Math.pow(10, 5 - 1) + Math.random() * 9 * Math.pow(10, 5 - 1)
+    ).toString();
+  } else {
+    userNameGenerator = userName;
+  }
+
+  // const userNameGenerator = Math.floor(
+  //   Math.pow(10, 5 - 1) + Math.random() * 9 * Math.pow(10, 5 - 1)
+  // ).toString();
+
   //Join Party
   function joinParty() {
     const ref = firebase.database().ref(`parties/${textValue}`);
 
     ref.on("value", (snapshot) => {
       const data = snapshot.val();
-
-      const userNameGenerator = Math.floor(
-        Math.pow(10, 5 - 1) + Math.random() * 9 * Math.pow(10, 5 - 1)
-      ).toString();
 
       //returns if data is not found
       if (data === null || textValue.length === 0) {

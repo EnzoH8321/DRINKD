@@ -26,7 +26,6 @@ const TopChoicesScreen = (): React.ReactNode => {
         firebaseData.on("value", (snapshot) => {
           const data = snapshot.val();
           setChoicesObject(data);
-          console.log(data.topBars);
         });
       })();
     } catch (error) {
@@ -43,7 +42,7 @@ const TopChoicesScreen = (): React.ReactNode => {
           <MiniCardComponent index={3} />
         </>
       ) : (
-        <Headline>Loading</Headline>
+        <Headline>You are not in a party</Headline>
       )}
     </View>
   );
