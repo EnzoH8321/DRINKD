@@ -31,7 +31,7 @@ const TopChoicesScreen = (): React.ReactNode => {
     } catch (error) {
       console.log(error);
     }
-  }, [partyId]);
+  }, []);
 
   return (
     <View style={styles.container}>
