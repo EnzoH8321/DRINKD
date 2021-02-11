@@ -8,7 +8,6 @@ import {
   setMemberLevel,
   setPartyId,
   setUserName,
-  setPartyURL,
 } from "../actions/PartyActions";
 
 //firebase
@@ -37,7 +36,7 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
     const creationTime = Date.now();
 
     const randomNumber = Math.floor(
-      Math.pow(10, 8 - 1) + Math.random() * 9 * Math.pow(10, 8 - 1)
+      Math.pow(10, 3 - 1) + Math.random() * 9 * Math.pow(10, 3 - 1)
     ).toString();
 
     const userNameGenerator = Math.floor(
@@ -61,7 +60,6 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
     dispatch(setMemberLevel("LEADER"));
     dispatch(setPartyId(randomNumber));
     dispatch(setUserName(userNameGenerator));
-
     navigation.navigate("Home");
   }
 
@@ -79,7 +77,7 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
     dispatch(setPartyId(""));
   }
 
-  function renderSwitch(param) {
+  function renderSwitch(param: string) {
     switch (param) {
       case "MEMBER":
         return (

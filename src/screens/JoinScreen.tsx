@@ -24,9 +24,6 @@ const JoinScreen: React.FC = () => {
   const inParty = useSelector((state: RootState) => state.party.inParty);
   const userName = useSelector((state: RootState) => state.party.userName);
   const [textValue, setTextValue] = useState("");
-
-  console.log(userName);
-
   //Join Party
   function joinParty() {
     const ref = firebase.database().ref(`parties/${textValue}`);
@@ -54,10 +51,10 @@ const JoinScreen: React.FC = () => {
   //Leave Party func
   function leaveParty() {
     firebase.database().ref(`parties/${partyId}/topBars/${userName}/`).remove();
-
     dispatch(setPartyData(false));
     dispatch(setMemberLevel(""));
     dispatch(setPartyId(""));
+    dispatch(setPartyURL(""));
   }
 
   return (

@@ -74,7 +74,7 @@ const HomeScreen = (): React.ReactNode => {
           return;
         }
 
-        if (memberLevel === "MEMBER") {
+        if (memberLevel === "MEMBER" && inParty) {
           url = yelpUrl;
         } else {
           url = `https://api.yelp.com/v3/businesses/search?categories=bars&latitude=${locationLat}&longitude=${locationLong}&limit=10`;
@@ -88,7 +88,7 @@ const HomeScreen = (): React.ReactNode => {
     } catch (error) {
       console.log(error);
     }
-  }, [yelpUrl, inParty]);
+  }, [yelpUrl]);
 
   //Submit score to DB
   function submitStarScores() {
