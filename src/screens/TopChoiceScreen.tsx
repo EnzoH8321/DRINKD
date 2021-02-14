@@ -1,19 +1,42 @@
 import React, { useEffect, useState } from "react";
-import { View } from "react-native";
+import { View, Alert } from "react-native";
 import styles from "../styles/constant";
-
 //Firebase
 import firebase from "../utils/firebase";
-
 //Components
 import MiniCardComponent from "../components/MiniCardComponent";
-import { Headline } from "react-native-paper";
 import { useSelector } from "react-redux";
 import { RootState } from "../reducers";
+import { Button } from "react-native-paper";
 
 const TopChoicesScreen = (): React.ReactNode => {
   const [choicesObject, setChoicesObject] = useState();
+  const [topChoicesObject, setTopChoicesObject] = useState({});
   const partyId = useSelector((state: RootState) => state.party.partyId);
+  const inParty = useSelector((state: RootState) => state.party.inParty);
+
+  function getTopScorers() {
+    if (!choicesObject) {
+      return Alert.alert("nothing found");
+    }
+
+    const entries = Object.entries(choicesObject);
+
+    const preferredChoices = {};
+
+    for (const [key, value] of entries) {
+      for (const property in value) {
+        if (!preferredChoices[property]) {
+          preferredChoices[property] = value[property];
+        } else {
+          preferredChoices[property] += value[property];
+        }
+      }
+    }
+
+    setTopChoicesObject(preferredChoices);
+    console.log(topChoicesObject);
+  }
 
   useEffect(() => {
     try {
@@ -25,25 +48,27 @@ const TopChoicesScreen = (): React.ReactNode => {
 
         firebaseData.on("value", (snapshot) => {
           const data = snapshot.val();
-          setChoicesObject(data);
+
+          if (!data) {
+            return;
+          }
+
+          setChoicesObject(data.topBars);
         });
       })();
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [inParty]);
 
   return (
     <View style={styles.container}>
-      {choicesObject ? (
-        <>
-          <MiniCardComponent index={1} />
-          <MiniCardComponent index={2} />
-          <MiniCardComponent index={3} />
-        </>
-      ) : (
-        <Headline>You are not in a party</Headline>
-      )}
+      <MiniCardComponent index={1} />
+      <MiniCardComponent index={2} />
+      <MiniCardComponent index={3} />
+      <Button mode="contained" onPress={getTopScorers}>
+        Who Won?
+      </Button>
     </View>
   );
 };

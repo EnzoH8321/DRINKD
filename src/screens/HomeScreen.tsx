@@ -95,8 +95,6 @@ const HomeScreen = (): React.ReactNode => {
     const currentCard = dataArray[index].name;
     const finalScore = pointValue;
 
-    console.log(userName);
-
     firebase
       .database()
       .ref(`parties/${currentPartyId}/topBars/${userName}`)
