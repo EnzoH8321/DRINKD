@@ -38,12 +38,12 @@
     "@babel/core": "^7.12.10",
     "@types/react": "~16.9.35",
     "@types/react-dom": "~16.9.8",
-    "@types/react-native": "^0.63.47",
+    "@types/react-native": "^0.62.2",
     "@types/react-native-snap-carousel": "^3.8.2",
+    "@types/react-native-vector-icons": "^6.4.6",
     "@types/react-redux": "^7.1.16",
     "@typescript-eslint/eslint-plugin": "^4.14.1",
     "@typescript-eslint/parser": "^4.14.1",
-    "@types/react-native-vector-icons": "^6.4.6",
     "typescript": "~4.0.0"
   },
   "private": true

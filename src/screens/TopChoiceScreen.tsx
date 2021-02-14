@@ -24,6 +24,8 @@ const TopChoicesScreen = (): React.ReactNode => {
 
     const preferredChoices = {};
 
+    let sortable = null;
+
     for (const [key, value] of entries) {
       for (const property in value) {
         if (!preferredChoices[property]) {
@@ -34,8 +36,11 @@ const TopChoicesScreen = (): React.ReactNode => {
       }
     }
 
-    setTopChoicesObject(preferredChoices);
-    console.log(topChoicesObject);
+    sortable = Object.entries(preferredChoices).sort((a, b) => a[1] - b[1]);
+
+    // setTopChoicesObject(preferredChoices);
+    console.log("sortable", sortable);
+    console.log("preferred", preferredChoices);
   }
 
   useEffect(() => {
