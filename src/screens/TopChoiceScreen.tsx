@@ -36,11 +36,18 @@ const TopChoicesScreen = (): React.ReactNode => {
       }
     }
 
-    sortable = Object.entries(preferredChoices).sort((a, b) => a[1] - b[1]);
+    sortable = Object.entries(preferredChoices)
+      .sort((a, b) => a[1] - b[1])
+      .reverse();
+
+    setTopChoicesObject({
+      first: sortable[0],
+      second: sortable[1],
+      third: sortable[2],
+    });
 
     // setTopChoicesObject(preferredChoices);
     console.log("sortable", sortable);
-    console.log("preferred", preferredChoices);
   }
 
   useEffect(() => {
