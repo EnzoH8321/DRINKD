@@ -27,7 +27,7 @@ const TopChoicesScreen = (): React.ReactNode => {
   const partyId = useSelector((state: RootState) => state.party.partyId);
   const inParty = useSelector((state: RootState) => state.party.inParty);
 
-  console.log(topChoicesObject.first);
+  console.log(topChoicesObject);
 
   function getTopScorers() {
     if (!choicesObject) {
@@ -99,7 +99,7 @@ const TopChoicesScreen = (): React.ReactNode => {
       <MiniCardComponent
         index={3}
         name={topChoicesObject.third ? topChoicesObject.third[0] : "none"}
-        number={topChoicesObject.third ? topChoicesObject.third[1] : "none"}
+        number={topChoicesObject.third ? topChoicesObject.third[1] : 0}
       />
       <Button mode="contained" onPress={getTopScorers} style={override.button}>
         Who Won?

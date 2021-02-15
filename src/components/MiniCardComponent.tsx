@@ -1,11 +1,11 @@
-import React from "react";
+import React, { ReactText } from "react";
 
 import { Text, Card } from "react-native-paper";
 
 type Props = {
   index: number;
   name?: string;
-  number?: number;
+  number?: ReactText;
 };
 
 const MiniCardComponent = ({
@@ -17,7 +17,7 @@ const MiniCardComponent = ({
     <Card>
       <Card.Content>
         <Text>
-          {index}. {name} - {number}
+          {index}. {name} - {number} Votes
         </Text>
       </Card.Content>
     </Card>
