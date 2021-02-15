@@ -10,23 +10,30 @@ import { RootState } from "../reducers";
 import { Button } from "react-native-paper";
 
 const TopChoicesScreen = (): React.ReactNode => {
-  const [choicesObject, setChoicesObject] = useState();
+  const [choicesObject, setChoicesObject] = useState({});
   const [topChoicesObject, setTopChoicesObject] = useState({});
   const partyId = useSelector((state: RootState) => state.party.partyId);
   const inParty = useSelector((state: RootState) => state.party.inParty);
+
+  type prefInterface = {
+    [key: string]: number;
+  };
+
+  type entriesInterface = [string, { [key: string]: number }][];
 
   function getTopScorers() {
     if (!choicesObject) {
       return Alert.alert("nothing found");
     }
 
-    const entries = Object.entries(choicesObject);
+    const entries: entriesInterface = Object.entries(choicesObject);
 
-    const preferredChoices = {};
+    const preferredChoices: prefInterface = {};
 
     let sortable = null;
 
     for (const [key, value] of entries) {
+      console.log(entries);
       for (const property in value) {
         if (!preferredChoices[property]) {
           preferredChoices[property] = value[property];
@@ -45,9 +52,6 @@ const TopChoicesScreen = (): React.ReactNode => {
       second: sortable[1],
       third: sortable[2],
     });
-
-    // setTopChoicesObject(preferredChoices);
-    console.log("sortable", sortable);
   }
 
   useEffect(() => {
