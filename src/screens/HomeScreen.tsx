@@ -27,6 +27,26 @@ type Item = {
 };
 
 const HomeScreen = (): React.ReactNode => {
+  const dispatch = useDispatch();
+  const [dataArray, setDataArray] = useState<ApiSearch[]>();
+  const [cardDetail, setCardDetails] = useState();
+  const [index, setIndex] = useState(0);
+  const [pointValue, setPointValue] = useState(0);
+  const [firstStar, setFirstStar] = useState(false);
+  const refCarousel = React.useRef(null);
+  const currentPartyStatus = useSelector(
+    (state: RootState) => state.party.inParty
+  );
+  const yelpUrl = useSelector((state: RootState) => state.party.partyURL);
+  const memberLevel = useSelector(
+    (state: RootState) => state.party.memberLevel
+  );
+  const currentPartyId = useSelector((state: RootState) => state.party.partyId);
+  const userName = useSelector((state: RootState) => state.party.userName);
+  const inParty = useSelector((state: RootState) => state.party.inParty);
+
+  console.log(firstStar);
+
   //Calls specific business using current card ID
   async function fetchBarDetails(id: string) {
     const data = await axios(`https://api.yelp.com/v3/businesses/${id}`, {
@@ -39,24 +59,6 @@ const HomeScreen = (): React.ReactNode => {
 
     setCardDetails(data.data);
   }
-
-  const dispatch = useDispatch();
-
-  const [dataArray, setDataArray] = useState<ApiSearch[]>();
-  const [cardDetail, setCardDetails] = useState();
-  const [index, setIndex] = useState(0);
-  const [pointValue, setPointValue] = useState(0);
-  const refCarousel = React.useRef(null);
-  const currentPartyStatus = useSelector(
-    (state: RootState) => state.party.inParty
-  );
-  const yelpUrl = useSelector((state: RootState) => state.party.partyURL);
-  const memberLevel = useSelector(
-    (state: RootState) => state.party.memberLevel
-  );
-  const currentPartyId = useSelector((state: RootState) => state.party.partyId);
-  const userName = useSelector((state: RootState) => state.party.userName);
-  const inParty = useSelector((state: RootState) => state.party.inParty);
 
   // Calls General Yelp Api
   useEffect(() => {
@@ -89,6 +91,17 @@ const HomeScreen = (): React.ReactNode => {
       console.log(error);
     }
   }, [yelpUrl]);
+
+  //Toggle First Star
+  function firstStarLogic() {
+    if (!firstStar) {
+      setFirstStar(true);
+      setPointValue(1);
+    } else {
+      setPointValue(0);
+      setFirstStar(false);
+    }
+  }
 
   //Submit score to DB
   function submitStarScores() {
@@ -135,7 +148,7 @@ const HomeScreen = (): React.ReactNode => {
           {currentPartyStatus ? (
             <>
               <View style={override.starView}>
-                <TouchableOpacity onPress={() => setPointValue(1)}>
+                <TouchableOpacity onPress={() => firstStarLogic()}>
                   <Icon
                     name="star"
                     style={{
