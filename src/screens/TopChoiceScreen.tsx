@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, ReactText } from "react";
 import { View, Alert, StyleSheet } from "react-native";
 import styles from "../styles/constant";
 //Firebase
@@ -14,9 +14,9 @@ type PrefInterface = {
 };
 type EntriesInterface = [string, { [key: string]: number }][];
 type TopChoicesInterface = {
-  first?: string;
-  second?: string;
-  third?: string;
+  first?: string | ReactText[];
+  second?: string | ReactText[];
+  third?: string | ReactText[];
 };
 //
 const TopChoicesScreen = (): React.ReactNode => {
@@ -55,9 +55,9 @@ const TopChoicesScreen = (): React.ReactNode => {
       .reverse();
 
     setTopChoicesObject({
-      first: sortable[0][0],
-      second: sortable[1] ? sortable[1][0] : "none",
-      third: sortable[2] ? sortable[2][0] : "none",
+      first: sortable[0] ? [sortable[0][0], sortable[0][1]] : "none",
+      second: sortable[1] ? [sortable[1][0], sortable[1][1]] : "none",
+      third: sortable[2] ? [sortable[2][0], sortable[2][1]] : "none",
     });
   }
 
@@ -86,9 +86,21 @@ const TopChoicesScreen = (): React.ReactNode => {
 
   return (
     <View style={styles.container}>
-      <MiniCardComponent index={1} name={topChoicesObject.first} />
-      <MiniCardComponent index={2} name={topChoicesObject.second} />
-      <MiniCardComponent index={3} name={topChoicesObject.third} />
+      <MiniCardComponent
+        index={1}
+        name={topChoicesObject.first[0]}
+        number={topChoicesObject.first[1]}
+      />
+      <MiniCardComponent
+        index={2}
+        name={topChoicesObject.second[0]}
+        number={topChoicesObject.second[1]}
+      />
+      <MiniCardComponent
+        index={3}
+        name={topChoicesObject.third[0]}
+        number={topChoicesObject.third[1]}
+      />
       <Button mode="contained" onPress={getTopScorers} style={override.button}>
         Who Won?
       </Button>
