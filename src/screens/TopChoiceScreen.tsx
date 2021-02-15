@@ -1,4 +1,4 @@
-import React, { useEffect, useState, ReactText } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Alert, StyleSheet } from "react-native";
 import styles from "../styles/constant";
 //Firebase
@@ -26,8 +26,6 @@ const TopChoicesScreen = (): React.ReactNode => {
   );
   const partyId = useSelector((state: RootState) => state.party.partyId);
   const inParty = useSelector((state: RootState) => state.party.inParty);
-
-  console.log(topChoicesObject);
 
   function getTopScorers() {
     if (!choicesObject) {

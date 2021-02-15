@@ -44,7 +44,7 @@ const HomeScreen = (): React.ReactNode => {
 
   const [dataArray, setDataArray] = useState<ApiSearch[]>();
   const [cardDetail, setCardDetails] = useState();
-  const [index, setIndex] = useState<number>(0);
+  const [index, setIndex] = useState(0);
   const [pointValue, setPointValue] = useState(0);
   const refCarousel = React.useRef(null);
   const currentPartyStatus = useSelector(
