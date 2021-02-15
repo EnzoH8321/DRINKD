@@ -8,32 +8,33 @@ import MiniCardComponent from "../components/MiniCardComponent";
 import { useSelector } from "react-redux";
 import { RootState } from "../reducers";
 import { Button } from "react-native-paper";
+//Types
+type PrefInterface = {
+  [key: string]: number;
+};
+type EntriesInterface = [string, { [key: string]: number }][];
 
+//
 const TopChoicesScreen = (): React.ReactNode => {
   const [choicesObject, setChoicesObject] = useState({});
   const [topChoicesObject, setTopChoicesObject] = useState({});
   const partyId = useSelector((state: RootState) => state.party.partyId);
   const inParty = useSelector((state: RootState) => state.party.inParty);
 
-  type prefInterface = {
-    [key: string]: number;
-  };
-
-  type entriesInterface = [string, { [key: string]: number }][];
+  console.log(topChoicesObject);
 
   function getTopScorers() {
     if (!choicesObject) {
       return Alert.alert("nothing found");
     }
 
-    const entries: entriesInterface = Object.entries(choicesObject);
+    const entries: EntriesInterface = Object.entries(choicesObject);
 
-    const preferredChoices: prefInterface = {};
+    const preferredChoices: PrefInterface = {};
 
     let sortable = null;
 
     for (const [key, value] of entries) {
-      console.log(entries);
       for (const property in value) {
         if (!preferredChoices[property]) {
           preferredChoices[property] = value[property];
@@ -48,9 +49,9 @@ const TopChoicesScreen = (): React.ReactNode => {
       .reverse();
 
     setTopChoicesObject({
-      first: sortable[0],
-      second: sortable[1],
-      third: sortable[2],
+      first: sortable[0][0],
+      second: sortable[1] ? sortable[1][0] : "none",
+      third: sortable[2] ? sortable[2][0] : "none",
     });
   }
 
@@ -79,9 +80,9 @@ const TopChoicesScreen = (): React.ReactNode => {
 
   return (
     <View style={styles.container}>
-      <MiniCardComponent index={1} />
-      <MiniCardComponent index={2} />
-      <MiniCardComponent index={3} />
+      <MiniCardComponent index={1} name={topChoicesObject.first} />
+      <MiniCardComponent index={2} name={topChoicesObject.second} />
+      <MiniCardComponent index={3} name={topChoicesObject.third} />
       <Button mode="contained" onPress={getTopScorers}>
         Who Won?
       </Button>

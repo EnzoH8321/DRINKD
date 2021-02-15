@@ -2,11 +2,18 @@ import React from "react";
 
 import { Text, Card } from "react-native-paper";
 
-const MiniCardComponent = ({ index }): React.ReactElement => {
+type Props = {
+  index: number;
+  name: string;
+};
+
+const MiniCardComponent = ({ index, name }: Props): React.ReactElement => {
   return (
     <Card>
       <Card.Content>
-        <Text>{index}. Choice - </Text>
+        <Text>
+          {index}. {name}
+        </Text>
       </Card.Content>
     </Card>
   );
