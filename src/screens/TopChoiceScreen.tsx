@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Alert } from "react-native";
+import { View, Alert, StyleSheet } from "react-native";
 import styles from "../styles/constant";
 //Firebase
 import firebase from "../utils/firebase";
@@ -13,11 +13,17 @@ type PrefInterface = {
   [key: string]: number;
 };
 type EntriesInterface = [string, { [key: string]: number }][];
-
+type TopChoicesInterface = {
+  first?: string;
+  second?: string;
+  third?: string;
+};
 //
 const TopChoicesScreen = (): React.ReactNode => {
   const [choicesObject, setChoicesObject] = useState({});
-  const [topChoicesObject, setTopChoicesObject] = useState({});
+  const [topChoicesObject, setTopChoicesObject] = useState<TopChoicesInterface>(
+    {}
+  );
   const partyId = useSelector((state: RootState) => state.party.partyId);
   const inParty = useSelector((state: RootState) => state.party.inParty);
 
@@ -83,11 +89,17 @@ const TopChoicesScreen = (): React.ReactNode => {
       <MiniCardComponent index={1} name={topChoicesObject.first} />
       <MiniCardComponent index={2} name={topChoicesObject.second} />
       <MiniCardComponent index={3} name={topChoicesObject.third} />
-      <Button mode="contained" onPress={getTopScorers}>
+      <Button mode="contained" onPress={getTopScorers} style={override.button}>
         Who Won?
       </Button>
     </View>
   );
 };
+
+const override = StyleSheet.create({
+  button: {
+    top: 100,
+  },
+});
 
 export default TopChoicesScreen;
