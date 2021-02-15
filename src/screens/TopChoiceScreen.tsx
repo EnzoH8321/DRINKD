@@ -14,9 +14,9 @@ type PrefInterface = {
 };
 type EntriesInterface = [string, { [key: string]: number }][];
 type TopChoicesInterface = {
-  first?: string | ReactText[];
-  second?: string | ReactText[];
-  third?: string | ReactText[];
+  first?: string | [string, number];
+  second?: string | [string, number];
+  third?: string | [string, number];
 };
 //
 const TopChoicesScreen = (): React.ReactNode => {
@@ -27,7 +27,7 @@ const TopChoicesScreen = (): React.ReactNode => {
   const partyId = useSelector((state: RootState) => state.party.partyId);
   const inParty = useSelector((state: RootState) => state.party.inParty);
 
-  console.log(topChoicesObject);
+  console.log(topChoicesObject.first);
 
   function getTopScorers() {
     if (!choicesObject) {
@@ -88,18 +88,18 @@ const TopChoicesScreen = (): React.ReactNode => {
     <View style={styles.container}>
       <MiniCardComponent
         index={1}
-        name={topChoicesObject.first[0]}
-        number={topChoicesObject.first[1]}
+        name={topChoicesObject.first ? topChoicesObject.first[0] : "none"}
+        number={topChoicesObject.first ? topChoicesObject.first[1] : 0}
       />
       <MiniCardComponent
         index={2}
-        name={topChoicesObject.second[0]}
-        number={topChoicesObject.second[1]}
+        name={topChoicesObject.second ? topChoicesObject.second[0] : "none"}
+        number={topChoicesObject.second ? topChoicesObject.second[1] : 0}
       />
       <MiniCardComponent
         index={3}
-        name={topChoicesObject.third[0]}
-        number={topChoicesObject.third[1]}
+        name={topChoicesObject.third ? topChoicesObject.third[0] : "none"}
+        number={topChoicesObject.third ? topChoicesObject.third[1] : "none"}
       />
       <Button mode="contained" onPress={getTopScorers} style={override.button}>
         Who Won?

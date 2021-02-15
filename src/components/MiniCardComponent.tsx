@@ -5,7 +5,7 @@ import { Text, Card } from "react-native-paper";
 type Props = {
   index: number;
   name?: string;
-  number: number;
+  number?: number;
 };
 
 const MiniCardComponent = ({
