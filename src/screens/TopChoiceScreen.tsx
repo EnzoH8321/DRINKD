@@ -52,6 +52,8 @@ const TopChoicesScreen = (): React.ReactNode => {
       .sort((a, b) => a[1] - b[1])
       .reverse();
 
+    console.log(sortable);
+
     setTopChoicesObject({
       first: sortable[0] ? [sortable[0][0], sortable[0][1]] : "none",
       second: sortable[1] ? [sortable[1][0], sortable[1][1]] : "none",
