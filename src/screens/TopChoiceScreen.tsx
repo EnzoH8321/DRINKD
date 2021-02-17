@@ -38,7 +38,7 @@ const TopChoicesScreen = (): React.ReactNode => {
 
     let sortable = null;
 
-    for (const [key, value] of entries) {
+    for (const [, value] of entries) {
       for (const property in value) {
         if (!preferredChoices[property]) {
           preferredChoices[property] = value[property];
