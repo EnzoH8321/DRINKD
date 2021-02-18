@@ -120,7 +120,7 @@ const HomeScreen = (): React.ReactNode => {
         <Paragraph>Not Loaded Yet</Paragraph>
       ) : (
         <>
-          <View style={styles.carousel}>
+          <View style={override.carousel}>
             <Carousel
               activeSlideAlignment="start"
               ref={refCarousel}
@@ -139,7 +139,7 @@ const HomeScreen = (): React.ReactNode => {
           </View>
           <Button
             onPress={() => fetchBarDetails(dataArray[index].id)}
-            style={styles.homeButton}
+            style={override.infoButton}
             mode="contained"
           >
             Get more info
@@ -212,6 +212,11 @@ const HomeScreen = (): React.ReactNode => {
 };
 
 const override = StyleSheet.create({
+  carousel: {
+    height: "50%",
+    margin: "2% 2%",
+  },
+
   starView: {
     marginTop: 60,
     flexDirection: "row",
@@ -224,6 +229,12 @@ const override = StyleSheet.create({
     flexDirection: "row",
     marginTop: 30,
     justifyContent: "center",
+  },
+
+  infoButton: {
+    marginTop: styles.button.marginTop,
+    width: styles.button.width,
+    alignSelf: styles.button.alignSelf,
   },
 });
 

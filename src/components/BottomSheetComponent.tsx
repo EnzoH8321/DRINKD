@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Image } from "react-native";
+import { View, Image, StyleSheet } from "react-native";
 import { Paragraph, Title } from "react-native-paper";
 import styles from "../styles/constant";
 
@@ -26,7 +26,7 @@ const CustomSheet = (
   const { location, phone } = arrayObj;
 
   return (
-    <View style={styles.sheetContainer}>
+    <View style={override.sheetContainer}>
       <View>
         <Title>{arrayObj.name}</Title>
         <Paragraph>
@@ -38,24 +38,24 @@ const CustomSheet = (
         </Paragraph>
       </View>
       {chosenCard ? (
-        <View style={styles.imageArray}>
+        <View style={override.imageArray}>
           <Image
             source={{
               uri: `${chosenCard.photos[0]}`,
             }}
-            style={styles.arrayImage}
+            style={override.arrayImage}
           ></Image>
           <Image
             source={{
               uri: `${chosenCard.photos[1]}`,
             }}
-            style={styles.arrayImage}
+            style={override.arrayImage}
           ></Image>
           <Image
             source={{
               uri: `${chosenCard.photos[2]}`,
             }}
-            style={styles.arrayImage}
+            style={override.arrayImage}
           ></Image>
         </View>
       ) : (
@@ -66,5 +66,20 @@ const CustomSheet = (
     </View>
   );
 };
+
+const override = StyleSheet.create({
+  imageArray: {
+    flexDirection: "row",
+  },
+  arrayImage: {
+    height: 200,
+    width: 200,
+  },
+  sheetContainer: {
+    backgroundColor: "white",
+    padding: 16,
+    height: "100%",
+  },
+});
 
 export default CustomSheet;

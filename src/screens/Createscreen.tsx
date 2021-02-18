@@ -90,7 +90,7 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
         return (
           <View style={[styles.container]}>
             <TextInput
-              style={styles.textInput}
+              style={override.textInput}
               value={partyName}
               onChangeText={(name) => setPartyName(name)}
             ></TextInput>
@@ -132,6 +132,9 @@ const override = StyleSheet.create({
   headline: {
     alignSelf: "center",
     marginTop: 100,
+  },
+  textInput: {
+    marginBottom: 50,
   },
 });
 
