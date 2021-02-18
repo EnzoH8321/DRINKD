@@ -214,7 +214,7 @@ const HomeScreen = (): React.ReactNode => {
 const override = StyleSheet.create({
   carousel: {
     height: "50%",
-    margin: "2% 2%",
+    margin: "2%",
   },
 
   starView: {

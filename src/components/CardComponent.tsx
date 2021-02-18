@@ -32,14 +32,15 @@ const override = StyleSheet.create({
   card: {
     borderRadius: styles.border.borderRadius,
     shadowRadius: styles.shadow.shadowRadius,
-    height: "90%",
+    height: "100%",
   },
   cardImage: {
     borderRadius: styles.border.borderRadius,
-    marginTop: "5%",
+    marginTop: "8%",
+    height: "60%",
   },
   cardSubheading: {
-    marginTop: "5%",
+    marginTop: "10%",
   },
 });
 
