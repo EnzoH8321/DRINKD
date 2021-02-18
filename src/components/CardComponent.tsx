@@ -12,19 +12,21 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
   const { name, image_url, rating, price } = barData;
 
   return (
-    <Card style={override.card}>
-      <Card.Content>
-        <Title>{name}</Title>
-        <Card.Cover
-          source={{ uri: `${image_url}` }}
-          style={override.cardImage}
-        />
-        <View style={override.cardSubheading}>
-          <Subheading>{rating}</Subheading>
-          <Subheading>{price}</Subheading>
-        </View>
-      </Card.Content>
-    </Card>
+    <View>
+      <Card style={override.card}>
+        <Card.Content>
+          <Title>{name}</Title>
+          <Card.Cover
+            source={{ uri: `${image_url}` }}
+            style={override.cardImage}
+          />
+          <View style={override.cardSubheading}>
+            <Subheading>{rating}</Subheading>
+            <Subheading>{price}</Subheading>
+          </View>
+        </Card.Content>
+      </Card>
+    </View>
   );
 };
 
@@ -37,10 +39,9 @@ const override = StyleSheet.create({
   cardImage: {
     borderRadius: styles.border.borderRadius,
     marginTop: "8%",
-    height: "60%",
   },
   cardSubheading: {
-    marginTop: "10%",
+    marginTop: "5%",
   },
 });
 
