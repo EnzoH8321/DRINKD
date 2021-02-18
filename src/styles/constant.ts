@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
   },
   carousel: {
     height: 300,
+    margin: "2% 2%",
   },
   iconList: {
     flexDirection: "row",

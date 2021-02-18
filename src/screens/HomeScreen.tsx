@@ -45,8 +45,6 @@ const HomeScreen = (): React.ReactNode => {
   const userName = useSelector((state: RootState) => state.party.userName);
   const inParty = useSelector((state: RootState) => state.party.inParty);
 
-  console.log(firstStar);
-
   //Calls specific business using current card ID
   async function fetchBarDetails(id: string) {
     const data = await axios(`https://api.yelp.com/v3/businesses/${id}`, {
@@ -124,6 +122,7 @@ const HomeScreen = (): React.ReactNode => {
         <>
           <View style={styles.carousel}>
             <Carousel
+              activeSlideAlignment="start"
               ref={refCarousel}
               data={dataArray}
               renderItem={({ item }: Item) => {
