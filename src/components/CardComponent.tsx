@@ -14,15 +14,15 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
   return (
     <View>
       <Card style={override.card}>
-        <Card.Content>
-          <Title>{name}</Title>
+        <Card.Content style={override.cardContent}>
+          <Title style={override.cardTitle}>{name}</Title>
           <Card.Cover
             source={{ uri: `${image_url}` }}
             style={override.cardImage}
           />
-          <View style={override.cardSubheading}>
-            <Subheading>{rating}</Subheading>
-            <Subheading>{price}</Subheading>
+          <View style={override.cardSubheadingView}>
+            <Subheading style={override.cardSubheading}>{rating}</Subheading>
+            <Subheading style={override.cardSubheading}>{price}</Subheading>
           </View>
         </Card.Content>
       </Card>
@@ -32,16 +32,34 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
 
 const override = StyleSheet.create({
   card: {
-    borderRadius: styles.border.borderRadius,
-    shadowRadius: styles.shadow.shadowRadius,
+    // borderRadius: styles.border.borderRadius,
+    // shadowRadius: styles.shadow.shadowRadius,
+    // shadowOffset: styles.shadow.shadowOffset,
+    // shadowOpacity: styles.shadow.shadowOpacity,
+    // shadowColor: styles.shadow.shadowColor,
+    // elevation: styles.shadow.elevation,
+
     height: "100%",
+    borderRadius: styles.border.borderRadius,
   },
   cardImage: {
     borderRadius: styles.border.borderRadius,
     marginTop: "8%",
+    height: "60%",
+  },
+  cardSubheadingView: {
+    marginTop: "10%",
+    marginBottom: "5%",
   },
   cardSubheading: {
-    marginTop: "5%",
+    marginTop: "2%",
+    fontSize: styles.fontM.fontSize,
+  },
+  cardContent: {
+    height: "100%",
+  },
+  cardTitle: {
+    fontSize: styles.fontL.fontSize,
   },
 });
 

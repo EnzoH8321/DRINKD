@@ -76,7 +76,7 @@ const override = StyleSheet.create({
     width: 200,
   },
   sheetContainer: {
-    backgroundColor: "white",
+    backgroundColor: styles.colorSecondary.backgroundColor,
     padding: 16,
     height: "100%",
   },

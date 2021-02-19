@@ -213,7 +213,7 @@ const HomeScreen = (): React.ReactNode => {
 
 const override = StyleSheet.create({
   carousel: {
-    height: "50%",
+    height: "60%",
     margin: "2%",
   },
 
@@ -230,11 +230,13 @@ const override = StyleSheet.create({
     marginTop: 30,
     justifyContent: "center",
   },
-
   infoButton: {
     marginTop: styles.button.marginTop,
     width: styles.button.width,
     alignSelf: styles.button.alignSelf,
+    backgroundColor: styles.colorPrimary.backgroundColor,
+    //For Android due to it not propery supporting z-index
+    elevation: 0,
   },
 });
 

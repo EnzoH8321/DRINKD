@@ -1,7 +1,7 @@
 import React from "react";
 import { Provider as PaperProvider } from "react-native-paper";
-
 import { Provider } from "react-redux";
+import styles from "./src/styles/constant";
 
 //ReactNav
 import { createStackNavigator } from "@react-navigation/stack";
@@ -14,7 +14,6 @@ import JoinScreen from "./src/screens/JoinScreen";
 import CreateScreen from "./src/screens/Createscreen";
 //Store
 import store from "./src/store/store";
-
 //Stack
 const HomeDrawer = createDrawerNavigator();
 const AppStack = createStackNavigator();
@@ -33,7 +32,19 @@ const Home = () => {
 const App = () => {
   return (
     <AppStack.Navigator>
-      <AppStack.Screen name="HomeApp" component={Home} />
+      <AppStack.Screen
+        name="HomeApp"
+        component={Home}
+        options={{
+          title: "Home",
+          headerStyle: {
+            backgroundColor: styles.colorSecondary.backgroundColor,
+          },
+          headerTitleStyle: {
+            fontSize: styles.fontL.fontSize,
+          },
+        }}
+      />
     </AppStack.Navigator>
   );
 };
