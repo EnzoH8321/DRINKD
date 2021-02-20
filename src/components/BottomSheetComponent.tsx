@@ -4,6 +4,7 @@ import { Paragraph, Title } from "react-native-paper";
 import styles from "../styles/constant";
 
 import { ApiBusiness } from "../types/types";
+import { FlatList } from "react-native-gesture-handler";
 
 type ArrayObj = {
   location: {
@@ -25,6 +26,8 @@ const CustomSheet = (
 ): React.ReactNode => {
   const { location, phone } = arrayObj;
 
+  const photoArray = chosenCard ? chosenCard.photos : [];
+
   return (
     <View style={override.sheetContainer}>
       <View style={override.infoView}>
@@ -37,30 +40,15 @@ const CustomSheet = (
           {phone}
         </Paragraph>
       </View>
-      {chosenCard ? (
-        <View style={override.imageArray}>
-          <Image
-            source={{
-              uri: `${chosenCard.photos[0]}`,
-            }}
-            style={override.arrayImage}
-          ></Image>
-          <Image
-            source={{
-              uri: `${chosenCard.photos[1]}`,
-            }}
-            style={override.arrayImage}
-          ></Image>
-          <Image
-            source={{
-              uri: `${chosenCard.photos[2]}`,
-            }}
-            style={override.arrayImage}
-          ></Image>
-        </View>
-      ) : (
-        <></>
-      )}
+      <FlatList
+        data={photoArray}
+        renderItem={({ item }) => (
+          <Image source={{ uri: item }} style={override.image}></Image>
+        )}
+        keyExtractor={(i) => i}
+        horizontal={true}
+        style={override.flatList}
+      ></FlatList>
     </View>
   );
 };
@@ -70,22 +58,24 @@ const override = StyleSheet.create({
     fontSize: styles.fontL.fontSize,
   },
   infoView: {
-    margin: 10,
+    height: "20%",
   },
   paragraph: {
     fontSize: styles.fontS.fontSize,
-  },
-  imageArray: {
-    flexDirection: "row",
-  },
-  arrayImage: {
-    height: 200,
-    width: 200,
+    marginTop: "5%",
   },
   sheetContainer: {
     backgroundColor: styles.colorSecondary.backgroundColor,
     padding: 16,
     height: "100%",
+  },
+  flatList: {
+    marginTop: "5%",
+  },
+  image: {
+    width: 200,
+    height: 200,
+    marginRight: 10,
   },
 });
 
