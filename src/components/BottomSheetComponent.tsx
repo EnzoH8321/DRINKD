@@ -27,7 +27,7 @@ const CustomSheet = (
 
   return (
     <View style={override.sheetContainer}>
-      <View>
+      <View style={override.infoView}>
         <Title style={override.title}>{arrayObj.name}</Title>
         <Paragraph style={override.paragraph}>
           {location.address1} {location.address2}
@@ -59,9 +59,7 @@ const CustomSheet = (
           ></Image>
         </View>
       ) : (
-        <>
-          <Paragraph>Still loading</Paragraph>
-        </>
+        <></>
       )}
     </View>
   );
@@ -70,6 +68,9 @@ const CustomSheet = (
 const override = StyleSheet.create({
   title: {
     fontSize: styles.fontL.fontSize,
+  },
+  infoView: {
+    margin: 10,
   },
   paragraph: {
     fontSize: styles.fontS.fontSize,
