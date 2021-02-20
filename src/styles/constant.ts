@@ -4,7 +4,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "flex-start",
-    top: 100,
+    height: "100%",
+  },
+  dataContainer: {
+    marginTop: "30%",
   },
   button: {
     marginTop: "10%",

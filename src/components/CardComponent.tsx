@@ -32,20 +32,13 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
 
 const override = StyleSheet.create({
   card: {
-    // borderRadius: styles.border.borderRadius,
-    // shadowRadius: styles.shadow.shadowRadius,
-    // shadowOffset: styles.shadow.shadowOffset,
-    // shadowOpacity: styles.shadow.shadowOpacity,
-    // shadowColor: styles.shadow.shadowColor,
-    // elevation: styles.shadow.elevation,
-
-    height: "100%",
+    height: "90%",
     borderRadius: styles.border.borderRadius,
   },
   cardImage: {
     borderRadius: styles.border.borderRadius,
     marginTop: "8%",
-    height: "60%",
+    height: "50%",
   },
   cardSubheadingView: {
     marginTop: "10%",

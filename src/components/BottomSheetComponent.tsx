@@ -76,6 +76,7 @@ const override = StyleSheet.create({
     width: 200,
     height: 200,
     marginRight: 10,
+    borderRadius: styles.border.borderRadius,
   },
 });
 

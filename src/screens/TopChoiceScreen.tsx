@@ -86,31 +86,39 @@ const TopChoicesScreen = (): React.ReactNode => {
 
   return (
     <View style={styles.container}>
-      <MiniCardComponent
-        index={1}
-        name={topChoicesObject.first ? topChoicesObject.first[0] : "none"}
-        number={topChoicesObject.first ? topChoicesObject.first[1] : 0}
-      />
-      <MiniCardComponent
-        index={2}
-        name={topChoicesObject.second ? topChoicesObject.second[0] : "none"}
-        number={topChoicesObject.second ? topChoicesObject.second[1] : 0}
-      />
-      <MiniCardComponent
-        index={3}
-        name={topChoicesObject.third ? topChoicesObject.third[0] : "none"}
-        number={topChoicesObject.third ? topChoicesObject.third[1] : 0}
-      />
-      <Button mode="contained" onPress={getTopScorers} style={override.button}>
-        Who Won?
-      </Button>
+      <View style={styles.dataContainer}>
+        <MiniCardComponent
+          index={1}
+          name={topChoicesObject.first ? topChoicesObject.first[0] : "none"}
+          number={topChoicesObject.first ? topChoicesObject.first[1] : 0}
+        />
+        <MiniCardComponent
+          index={2}
+          name={topChoicesObject.second ? topChoicesObject.second[0] : "none"}
+          number={topChoicesObject.second ? topChoicesObject.second[1] : 0}
+        />
+        <MiniCardComponent
+          index={3}
+          name={topChoicesObject.third ? topChoicesObject.third[0] : "none"}
+          number={topChoicesObject.third ? topChoicesObject.third[1] : 0}
+        />
+        <Button
+          mode="contained"
+          onPress={getTopScorers}
+          style={override.button}
+        >
+          Who Won?
+        </Button>
+      </View>
     </View>
   );
 };
 
 const override = StyleSheet.create({
   button: {
-    top: 100,
+    marginTop: styles.button.marginTop,
+    width: styles.button.width,
+    alignSelf: styles.button.alignSelf,
   },
 });
 

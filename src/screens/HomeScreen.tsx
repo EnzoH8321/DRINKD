@@ -120,88 +120,90 @@ const HomeScreen = (): React.ReactNode => {
         <Paragraph>Not Loaded Yet</Paragraph>
       ) : (
         <>
-          <View style={override.carousel}>
-            <Carousel
-              activeSlideAlignment="start"
-              ref={refCarousel}
-              data={dataArray}
-              renderItem={({ item }: Item) => {
-                return <CardComponent barData={item} />;
-              }}
-              itemWidth={400}
-              sliderWidth={500}
-              onBeforeSnapToItem={(index) => {
-                setIndex(index);
-                //Reset's point value
-                setPointValue(0);
-              }}
-            />
+          <View style={override.homeContainer}>
+            <View style={override.carousel}>
+              <Carousel
+                activeSlideAlignment="start"
+                ref={refCarousel}
+                data={dataArray}
+                renderItem={({ item }: Item) => {
+                  return <CardComponent barData={item} />;
+                }}
+                itemWidth={400}
+                sliderWidth={500}
+                onBeforeSnapToItem={(index) => {
+                  setIndex(index);
+                  //Reset's point value
+                  setPointValue(0);
+                }}
+              />
+            </View>
+            <Button
+              onPress={() => fetchBarDetails(dataArray[index].id)}
+              style={override.infoButton}
+              mode="contained"
+            >
+              Get more info
+            </Button>
+            {currentPartyStatus ? (
+              <>
+                <View style={override.starView}>
+                  <TouchableOpacity onPress={() => firstStarLogic()}>
+                    <Icon
+                      name="star"
+                      style={{
+                        color: pointValue >= 1 ? "gold" : "black",
+                        fontSize: 32,
+                      }}
+                    ></Icon>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => setPointValue(2)}>
+                    <Icon
+                      name="star"
+                      style={{
+                        color: pointValue >= 2 ? "gold" : "black",
+                        fontSize: 32,
+                      }}
+                    ></Icon>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => setPointValue(3)}>
+                    <Icon
+                      name="star"
+                      style={{
+                        color: pointValue >= 3 ? "gold" : "black",
+                        fontSize: 32,
+                      }}
+                    ></Icon>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => setPointValue(4)}>
+                    <Icon
+                      name="star"
+                      style={{
+                        color: pointValue >= 4 ? "gold" : "black",
+                        fontSize: 32,
+                      }}
+                    ></Icon>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => setPointValue(5)}>
+                    <Icon
+                      name="star"
+                      style={{
+                        color: pointValue >= 5 ? "gold" : "black",
+                        fontSize: 32,
+                      }}
+                    ></Icon>
+                  </TouchableOpacity>
+                </View>
+                <View style={override.starViewButton}>
+                  <Button mode="contained" onPress={submitStarScores}>
+                    Submit
+                  </Button>
+                </View>
+              </>
+            ) : (
+              <View></View>
+            )}
           </View>
-          <Button
-            onPress={() => fetchBarDetails(dataArray[index].id)}
-            style={override.infoButton}
-            mode="contained"
-          >
-            Get more info
-          </Button>
-          {currentPartyStatus ? (
-            <>
-              <View style={override.starView}>
-                <TouchableOpacity onPress={() => firstStarLogic()}>
-                  <Icon
-                    name="star"
-                    style={{
-                      color: pointValue >= 1 ? "gold" : "black",
-                      fontSize: 32,
-                    }}
-                  ></Icon>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => setPointValue(2)}>
-                  <Icon
-                    name="star"
-                    style={{
-                      color: pointValue >= 2 ? "gold" : "black",
-                      fontSize: 32,
-                    }}
-                  ></Icon>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => setPointValue(3)}>
-                  <Icon
-                    name="star"
-                    style={{
-                      color: pointValue >= 3 ? "gold" : "black",
-                      fontSize: 32,
-                    }}
-                  ></Icon>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => setPointValue(4)}>
-                  <Icon
-                    name="star"
-                    style={{
-                      color: pointValue >= 4 ? "gold" : "black",
-                      fontSize: 32,
-                    }}
-                  ></Icon>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => setPointValue(5)}>
-                  <Icon
-                    name="star"
-                    style={{
-                      color: pointValue >= 5 ? "gold" : "black",
-                      fontSize: 32,
-                    }}
-                  ></Icon>
-                </TouchableOpacity>
-              </View>
-              <View style={override.starViewButton}>
-                <Button mode="contained" onPress={submitStarScores}>
-                  Submit
-                </Button>
-              </View>
-            </>
-          ) : (
-            <View></View>
-          )}
           <BottomSheet snapPoints={[150, 700]}>
             {CustomSheet(dataArray[index], cardDetail)}
           </BottomSheet>
@@ -213,10 +215,13 @@ const HomeScreen = (): React.ReactNode => {
 
 const override = StyleSheet.create({
   carousel: {
-    height: "60%",
-    margin: "2%",
+    height: "70%",
+    marginTop: "5%",
+    marginLeft: "2%",
   },
-
+  homeContainer: {
+    marginTop: "10%",
+  },
   starView: {
     marginTop: 60,
     flexDirection: "row",
