@@ -28,8 +28,8 @@ const CustomSheet = (
   return (
     <View style={override.sheetContainer}>
       <View>
-        <Title>{arrayObj.name}</Title>
-        <Paragraph>
+        <Title style={override.title}>{arrayObj.name}</Title>
+        <Paragraph style={override.paragraph}>
           {location.address1} {location.address2}
           {"\n"}
           {location.city} {location.state} {location.zip_code}
@@ -68,6 +68,12 @@ const CustomSheet = (
 };
 
 const override = StyleSheet.create({
+  title: {
+    fontSize: styles.fontL.fontSize,
+  },
+  paragraph: {
+    fontSize: styles.fontS.fontSize,
+  },
   imageArray: {
     flexDirection: "row",
   },

@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
   },
   fontS: {
-    fontSize: 14,
+    fontSize: 16,
   },
   colorPrimary: {
     backgroundColor: "#EDC126",
