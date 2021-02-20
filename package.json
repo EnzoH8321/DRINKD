@@ -18,6 +18,7 @@
     "eslint": "^7.19.0",
     "eslint-plugin-react": "^7.22.0",
     "expo": "^40.0.1",
+    "expo-cli": "^4.1.6",
     "expo-status-bar": "~1.0.3",
     "firebase": "8.2.4",
     "react": "16.13.1",
