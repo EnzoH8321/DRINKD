@@ -33,6 +33,7 @@ const HomeScreen = (): React.ReactNode => {
   const [index, setIndex] = useState(0);
   const [pointValue, setPointValue] = useState(0);
   const [firstStar, setFirstStar] = useState(false);
+
   const refCarousel = React.useRef(null);
   const currentPartyStatus = useSelector(
     (state: RootState) => state.party.inParty
@@ -138,15 +139,9 @@ const HomeScreen = (): React.ReactNode => {
                 }}
               />
             </View>
-            <Button
-              onPress={() => fetchBarDetails(dataArray[index].id)}
-              style={override.infoButton}
-              mode="contained"
-            >
-              Get more info
-            </Button>
+
             {currentPartyStatus ? (
-              <>
+              <View style={override.starContainer}>
                 <View style={override.starView}>
                   <TouchableOpacity onPress={() => firstStarLogic()}>
                     <Icon
@@ -199,14 +194,21 @@ const HomeScreen = (): React.ReactNode => {
                     Submit
                   </Button>
                 </View>
-              </>
+              </View>
             ) : (
               <View></View>
             )}
           </View>
-          <BottomSheet snapPoints={[150, 700]}>
+          <BottomSheet snapPoints={["0%", "60%"]}>
             {CustomSheet(dataArray[index], cardDetail)}
           </BottomSheet>
+          <Button
+            onPress={() => fetchBarDetails(dataArray[index].id)}
+            style={override.infoButton}
+            mode="contained"
+          >
+            Get more info
+          </Button>
         </>
       )}
     </View>
@@ -215,15 +217,17 @@ const HomeScreen = (): React.ReactNode => {
 
 const override = StyleSheet.create({
   carousel: {
-    height: "70%",
+    height: "65%",
     marginTop: "5%",
     marginLeft: "2%",
   },
   homeContainer: {
     marginTop: "10%",
   },
+  starContainer: {
+    marginTop: "10%",
+  },
   starView: {
-    marginTop: 60,
     flexDirection: "row",
     justifyContent: "space-around",
   },
@@ -236,7 +240,6 @@ const override = StyleSheet.create({
     justifyContent: "center",
   },
   infoButton: {
-    marginTop: styles.button.marginTop,
     width: styles.button.width,
     alignSelf: styles.button.alignSelf,
     backgroundColor: styles.colorPrimary.backgroundColor,

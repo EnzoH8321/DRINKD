@@ -88,36 +88,38 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
 
       default:
         return (
-          <View style={[styles.container]}>
-            <TextInput
-              style={override.textInput}
-              value={partyName}
-              onChangeText={(name) => setPartyName(name)}
-            ></TextInput>
-            {!memberLevel ? (
-              <Button
-                mode="contained"
-                style={styles.button}
-                onPress={createParty}
-              >
-                Create Party
-              </Button>
-            ) : (
-              <Button
-                mode="contained"
-                style={styles.button}
-                onPress={leaveParty}
-              >
-                Leave Party
-              </Button>
-            )}
+          <View style={override.screenContainer}>
+            <View style={override.screenDataContainer}>
+              <TextInput
+                style={override.textInput}
+                value={partyName}
+                onChangeText={(name) => setPartyName(name)}
+              ></TextInput>
+              {!memberLevel ? (
+                <Button
+                  mode="contained"
+                  style={override.screenButton}
+                  onPress={createParty}
+                >
+                  Create Party
+                </Button>
+              ) : (
+                <Button
+                  mode="contained"
+                  style={override.screenButton}
+                  onPress={leaveParty}
+                >
+                  Leave Party
+                </Button>
+              )}
 
-            <Headline style={override.headline}>
-              Party Code is {partyId}
-            </Headline>
-            <Headline style={override.headline}>
-              Party Name is {partyId}
-            </Headline>
+              <Headline style={override.headline}>
+                Party Code is {partyId}
+              </Headline>
+              <Headline style={override.headline}>
+                Party Name is {partyId}
+              </Headline>
+            </View>
           </View>
         );
     }
@@ -128,6 +130,15 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
 const override = StyleSheet.create({
   view: {
     alignItems: "center",
+  },
+  screenContainer: {
+    ...styles.container,
+  },
+  screenDataContainer: {
+    marginTop: styles.dataContainer.marginTop,
+  },
+  screenButton: {
+    ...styles.button,
   },
   headline: {
     alignSelf: "center",
