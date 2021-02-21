@@ -25,18 +25,12 @@ const Home = () => {
         headerShown: true,
         headerTitleAlign: styles.header.alignSelf,
         headerTintColor: styles.header.backgroundColor,
+        headerTitleStyle: {
+          fontSize: styles.fontL.fontSize,
+        },
       }}
     >
-      <HomeDrawer.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{
-          headerTitleStyle: {
-            fontSize: styles.fontL.fontSize,
-          },
-          headerTitleAlign: "center",
-        }}
-      />
+      <HomeDrawer.Screen name="Home" component={HomeScreen} />
       <HomeDrawer.Screen name="TopChoice" component={TopChoiceScreen} />
       <HomeDrawer.Screen name="JoinScreen" component={JoinScreen} />
       <HomeDrawer.Screen name="CreateScreen" component={CreateScreen} />
