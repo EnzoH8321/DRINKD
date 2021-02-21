@@ -122,6 +122,9 @@ const HomeScreen = (): React.ReactNode => {
       ) : (
         <>
           <View style={override.homeContainer}>
+            <TouchableOpacity style={override.iconContainer}>
+              <Icon name="bars" style={override.icon}></Icon>
+            </TouchableOpacity>
             <View style={override.carousel}>
               <Carousel
                 activeSlideAlignment="start"
@@ -222,7 +225,7 @@ const HomeScreen = (): React.ReactNode => {
 
 const override = StyleSheet.create({
   carousel: {
-    height: "75%",
+    height: "70%",
     marginTop: "2%",
     marginLeft: "2%",
   },
@@ -252,6 +255,13 @@ const override = StyleSheet.create({
   },
   submitButton: {
     backgroundColor: styles.colorPrimary.backgroundColor,
+  },
+  iconContainer: {
+    marginLeft: "2%",
+    marginTop: "2%",
+  },
+  icon: {
+    fontSize: 32,
   },
 });
 

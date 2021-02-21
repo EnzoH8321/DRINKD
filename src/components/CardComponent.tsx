@@ -41,7 +41,7 @@ const override = StyleSheet.create({
     height: "65%",
   },
   cardSubheadingView: {
-    marginTop: "5%",
+    marginTop: "2%",
   },
   cardSubheading: {
     marginTop: "2%",
