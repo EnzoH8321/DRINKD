@@ -199,9 +199,6 @@ const HomeScreen = (): React.ReactNode => {
               <View></View>
             )}
           </View>
-          <BottomSheet snapPoints={["0%", "60%"]}>
-            {CustomSheet(dataArray[index], cardDetail)}
-          </BottomSheet>
           <Button
             onPress={() => fetchBarDetails(dataArray[index].id)}
             style={override.infoButton}
@@ -209,6 +206,9 @@ const HomeScreen = (): React.ReactNode => {
           >
             Get more info
           </Button>
+          <BottomSheet snapPoints={[-1, "60%"]}>
+            {CustomSheet(dataArray[index], cardDetail)}
+          </BottomSheet>
         </>
       )}
     </View>
@@ -217,12 +217,13 @@ const HomeScreen = (): React.ReactNode => {
 
 const override = StyleSheet.create({
   carousel: {
-    height: "65%",
+    height: "70%",
     marginTop: "5%",
     marginLeft: "2%",
   },
   homeContainer: {
-    marginTop: "10%",
+    marginTop: "5%",
+    elevation: -1,
   },
   starContainer: {
     marginTop: "10%",
@@ -244,7 +245,7 @@ const override = StyleSheet.create({
     alignSelf: styles.button.alignSelf,
     backgroundColor: styles.colorPrimary.backgroundColor,
     //For Android due to it not propery supporting z-index
-    elevation: 0,
+    elevation: -1,
   },
 });
 
