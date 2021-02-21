@@ -46,6 +46,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: "20%",
   },
+  header: {
+    backgroundColor: "black",
+    alignSelf: "center",
+  },
 });
 
 export default styles;
