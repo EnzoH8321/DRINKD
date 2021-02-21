@@ -190,7 +190,11 @@ const HomeScreen = (): React.ReactNode => {
                   </TouchableOpacity>
                 </View>
                 <View style={override.starViewButton}>
-                  <Button mode="contained" onPress={submitStarScores}>
+                  <Button
+                    mode="contained"
+                    onPress={submitStarScores}
+                    style={override.submitButton}
+                  >
                     Submit
                   </Button>
                 </View>
@@ -198,14 +202,15 @@ const HomeScreen = (): React.ReactNode => {
             ) : (
               <View></View>
             )}
+            <Button
+              onPress={() => fetchBarDetails(dataArray[index].id)}
+              style={override.infoButton}
+              mode="contained"
+            >
+              Get more info
+            </Button>
           </View>
-          <Button
-            onPress={() => fetchBarDetails(dataArray[index].id)}
-            style={override.infoButton}
-            mode="contained"
-          >
-            Get more info
-          </Button>
+
           <BottomSheet snapPoints={[-1, "60%"]}>
             {CustomSheet(dataArray[index], cardDetail)}
           </BottomSheet>
@@ -217,16 +222,15 @@ const HomeScreen = (): React.ReactNode => {
 
 const override = StyleSheet.create({
   carousel: {
-    height: "70%",
-    marginTop: "5%",
+    height: "75%",
+    marginTop: "2%",
     marginLeft: "2%",
   },
   homeContainer: {
-    marginTop: "5%",
-    elevation: -1,
+    zIndex: -1,
   },
   starContainer: {
-    marginTop: "10%",
+    marginTop: "5%",
   },
   starView: {
     flexDirection: "row",
@@ -236,16 +240,18 @@ const override = StyleSheet.create({
     fontSize: 32,
   },
   starViewButton: {
-    flexDirection: "row",
-    marginTop: 30,
-    justifyContent: "center",
+    marginTop: "5%",
+    alignSelf: styles.button.alignSelf,
   },
   infoButton: {
+    marginTop: "5%",
     width: styles.button.width,
     alignSelf: styles.button.alignSelf,
     backgroundColor: styles.colorPrimary.backgroundColor,
     //For Android due to it not propery supporting z-index
-    elevation: -1,
+  },
+  submitButton: {
+    backgroundColor: styles.colorPrimary.backgroundColor,
   },
 });
 

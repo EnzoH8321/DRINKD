@@ -68,7 +68,7 @@ const JoinScreen: React.FC = () => {
   }
 
   return (
-    <View style={[styles.container]}>
+    <View style={override.joinContainer}>
       <Headline style={override.headline}> Enter Party Code Below </Headline>
       <TextInput
         label="Party Code"
@@ -76,19 +76,11 @@ const JoinScreen: React.FC = () => {
         onChangeText={(text) => setTextValue(text)}
       />
       {!inParty ? (
-        <Button
-          mode="contained"
-          style={[styles.button, override.button]}
-          onPress={joinParty}
-        >
+        <Button mode="contained" style={override.button} onPress={joinParty}>
           Go
         </Button>
       ) : (
-        <Button
-          mode="contained"
-          style={[styles.button, override.button]}
-          onPress={leaveParty}
-        >
+        <Button mode="contained" style={override.button} onPress={leaveParty}>
           Leave Party
         </Button>
       )}
@@ -105,17 +97,19 @@ const JoinScreen: React.FC = () => {
 };
 
 const override = StyleSheet.create({
+  joinContainer: {
+    ...styles.container,
+  },
   headline: {
-    textAlign: "center",
-    marginBottom: 100,
+    ...styles.headline,
   },
   statusText: {
-    textAlign: "center",
-    marginBottom: 100,
-    marginTop: 200,
+    ...styles.headline,
+    marginTop: "20%",
   },
   button: {
-    top: 50,
+    ...styles.button,
+    backgroundColor: styles.colorPrimary.backgroundColor,
   },
 });
 

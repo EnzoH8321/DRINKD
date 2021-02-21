@@ -42,6 +42,10 @@ const styles = StyleSheet.create({
   colorSecondary: {
     backgroundColor: "#FFFFFF",
   },
+  headline: {
+    textAlign: "center",
+    marginBottom: "20%",
+  },
 });
 
 export default styles;

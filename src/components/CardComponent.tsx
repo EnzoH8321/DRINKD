@@ -34,7 +34,6 @@ const override = StyleSheet.create({
   card: {
     height: "100%",
     borderRadius: styles.border.borderRadius,
-    backgroundColor: "red",
   },
   cardImage: {
     borderRadius: styles.border.borderRadius,
@@ -43,7 +42,6 @@ const override = StyleSheet.create({
   },
   cardSubheadingView: {
     marginTop: "5%",
-    marginBottom: "5%",
   },
   cardSubheading: {
     marginTop: "2%",

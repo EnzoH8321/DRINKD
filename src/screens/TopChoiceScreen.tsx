@@ -85,8 +85,8 @@ const TopChoicesScreen = (): React.ReactNode => {
   }, [inParty]);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.dataContainer}>
+    <View style={override.choiceContainer}>
+      <View style={override.choiceDataContainer}>
         <MiniCardComponent
           index={1}
           name={topChoicesObject.first ? topChoicesObject.first[0] : "none"}
@@ -115,10 +115,17 @@ const TopChoicesScreen = (): React.ReactNode => {
 };
 
 const override = StyleSheet.create({
+  choiceContainer: {
+    ...styles.container,
+  },
+  choiceDataContainer: {
+    ...styles.dataContainer,
+  },
   button: {
     marginTop: styles.button.marginTop,
     width: styles.button.width,
     alignSelf: styles.button.alignSelf,
+    backgroundColor: styles.colorPrimary.backgroundColor,
   },
 });
 
