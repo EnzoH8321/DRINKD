@@ -122,9 +122,6 @@ const HomeScreen = (): React.ReactNode => {
       ) : (
         <>
           <View style={override.homeContainer}>
-            <TouchableOpacity style={override.iconContainer}>
-              <Icon name="bars" style={override.icon}></Icon>
-            </TouchableOpacity>
             <View style={override.carousel}>
               <Carousel
                 activeSlideAlignment="start"
