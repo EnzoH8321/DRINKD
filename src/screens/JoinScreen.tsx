@@ -71,7 +71,7 @@ const JoinScreen: React.FC = () => {
     <View style={override.joinContainer}>
       <Headline style={override.headline}> Enter Party Code Below </Headline>
       <TextInput
-        label="Party Code"
+        label="Enter party code here"
         value={textValue}
         onChangeText={(text) => setTextValue(text)}
       />

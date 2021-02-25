@@ -31,9 +31,9 @@ const Home = () => {
       }}
     >
       <HomeDrawer.Screen name="Home" component={HomeScreen} />
-      <HomeDrawer.Screen name="TopChoice" component={TopChoiceScreen} />
-      <HomeDrawer.Screen name="JoinScreen" component={JoinScreen} />
-      <HomeDrawer.Screen name="CreateScreen" component={CreateScreen} />
+      <HomeDrawer.Screen name="Top Choices" component={TopChoiceScreen} />
+      <HomeDrawer.Screen name="Join Party" component={JoinScreen} />
+      <HomeDrawer.Screen name="Create Party" component={CreateScreen} />
     </HomeDrawer.Navigator>
   );
 };

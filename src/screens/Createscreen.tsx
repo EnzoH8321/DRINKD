@@ -91,12 +91,13 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
           <View style={override.screenContainer}>
             <View style={override.screenDataContainer}>
               <Headline style={override.headline}>
-                Create your Party Here
+                Create Your Party Below
               </Headline>
               <TextInput
                 style={override.textInput}
                 value={partyName}
                 onChangeText={(name) => setPartyName(name)}
+                label="Name your party here"
               ></TextInput>
               {!memberLevel ? (
                 <Button

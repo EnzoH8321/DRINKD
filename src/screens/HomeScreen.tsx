@@ -26,7 +26,7 @@ type Item = {
   item: ApiSearch;
 };
 
-const HomeScreen = (): React.ReactNode => {
+const HomeScreen = ({ navigation }): React.ReactNode => {
   const dispatch = useDispatch();
   const [dataArray, setDataArray] = useState<ApiSearch[]>();
   const [cardDetail, setCardDetails] = useState();
@@ -45,6 +45,20 @@ const HomeScreen = (): React.ReactNode => {
   const currentPartyId = useSelector((state: RootState) => state.party.partyId);
   const userName = useSelector((state: RootState) => state.party.userName);
   const inParty = useSelector((state: RootState) => state.party.inParty);
+
+  // //Creates the left header button
+  // React.useLayoutEffect(() => {
+  //   navigation.setOptions({
+  //     headerLeft: () => (
+  //       <TouchableOpacity
+  //         style={{ marginLeft: 10 }}
+  //         onPress={() => navigation.openDrawer()}
+  //       >
+  //         <Icon name="bars" style={{ fontSize: 28 }}></Icon>
+  //       </TouchableOpacity>
+  //     ),
+  //   });
+  // }, [navigation]);
 
   //Calls specific business using current card ID
   async function fetchBarDetails(id: string) {
