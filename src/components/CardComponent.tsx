@@ -1,8 +1,10 @@
 import React from "react";
-import { Card, Title, Subheading } from "react-native-paper";
+import { Card, Title } from "react-native-paper";
 import styles from "../styles/constant";
 import { ApiSearch } from "../types/types";
 import { StyleSheet, View } from "react-native";
+//Icons
+import Icon from "react-native-vector-icons/Ionicons";
 
 type BarData = {
   barData: ApiSearch;
@@ -10,6 +12,18 @@ type BarData = {
 
 const CardComponent = ({ barData }: BarData): React.ReactElement => {
   const { name, image_url, rating, price } = barData;
+
+  const priceValue = price.length;
+  const ratingArray = [];
+  const priceArray = [];
+
+  for (let i = 0; i < rating; i++) {
+    ratingArray.push(<Icon name="fast-food-outline" size={26}></Icon>);
+  }
+
+  for (let i = 0; i < priceValue; i++) {
+    priceArray.push(<Icon name="card-outline" size={26}></Icon>);
+  }
 
   return (
     <View>
@@ -21,8 +35,8 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
             style={override.cardImage}
           />
           <View style={override.cardSubheadingView}>
-            <Subheading style={override.cardSubheading}>{rating}</Subheading>
-            <Subheading style={override.cardSubheading}>{price}</Subheading>
+            <View style={override.ratingView}>{ratingArray}</View>
+            <View style={override.priceView}>{priceArray}</View>
           </View>
         </Card.Content>
       </Card>
@@ -41,7 +55,7 @@ const override = StyleSheet.create({
     height: "65%",
   },
   cardSubheadingView: {
-    marginTop: "2%",
+    marginTop: "5%",
   },
   cardSubheading: {
     marginTop: "2%",
@@ -52,6 +66,13 @@ const override = StyleSheet.create({
   },
   cardTitle: {
     fontSize: styles.fontL.fontSize,
+  },
+  ratingView: {
+    flexDirection: "row",
+  },
+  priceView: {
+    flexDirection: "row",
+    marginTop: "2%",
   },
 });
 

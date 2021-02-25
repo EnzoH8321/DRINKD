@@ -70,7 +70,7 @@ const override = StyleSheet.create({
     height: "100%",
   },
   flatList: {
-    marginTop: "5%",
+    marginTop: "10%",
   },
   image: {
     width: 200,

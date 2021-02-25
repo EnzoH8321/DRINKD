@@ -46,6 +46,8 @@ const HomeScreen = ({ navigation }): React.ReactNode => {
   const userName = useSelector((state: RootState) => state.party.userName);
   const inParty = useSelector((state: RootState) => state.party.inParty);
 
+  console.log(cardDetail);
+
   // //Creates the left header button
   // React.useLayoutEffect(() => {
   //   navigation.setOptions({
