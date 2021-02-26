@@ -134,6 +134,49 @@ const HomeScreen = ({ navigation }): React.ReactNode => {
       });
   }
 
+  //Styles
+  const override = StyleSheet.create({
+    carousel: {
+      height: !currentPartyStatus ? "75%" : "70%",
+      marginTop: "2%",
+      marginLeft: "2%",
+    },
+    homeContainer: {
+      zIndex: -1,
+    },
+    starContainer: {
+      marginTop: "5%",
+    },
+    starView: {
+      flexDirection: "row",
+      justifyContent: "space-around",
+    },
+    starStyles: {
+      fontSize: 32,
+    },
+    starViewButton: {
+      marginTop: "5%",
+      alignSelf: styles.button.alignSelf,
+    },
+    infoButton: {
+      marginTop: "5%",
+      width: styles.button.width,
+      alignSelf: styles.button.alignSelf,
+      backgroundColor: styles.colorPrimary.backgroundColor,
+      //For Android due to it not propery supporting z-index
+    },
+    submitButton: {
+      backgroundColor: styles.colorPrimary.backgroundColor,
+    },
+    iconContainer: {
+      marginLeft: "2%",
+      marginTop: "2%",
+    },
+    icon: {
+      fontSize: 42,
+    },
+  });
+
   return (
     <View style={styles.container}>
       {!dataArray ? (
@@ -167,7 +210,7 @@ const HomeScreen = ({ navigation }): React.ReactNode => {
                       name="star"
                       style={{
                         color: pointValue >= 1 ? "gold" : "black",
-                        fontSize: 32,
+                        fontSize: override.icon.fontSize,
                       }}
                     ></Icon>
                   </TouchableOpacity>
@@ -176,7 +219,7 @@ const HomeScreen = ({ navigation }): React.ReactNode => {
                       name="star"
                       style={{
                         color: pointValue >= 2 ? "gold" : "black",
-                        fontSize: 32,
+                        fontSize: override.icon.fontSize,
                       }}
                     ></Icon>
                   </TouchableOpacity>
@@ -185,7 +228,7 @@ const HomeScreen = ({ navigation }): React.ReactNode => {
                       name="star"
                       style={{
                         color: pointValue >= 3 ? "gold" : "black",
-                        fontSize: 32,
+                        fontSize: override.icon.fontSize,
                       }}
                     ></Icon>
                   </TouchableOpacity>
@@ -194,7 +237,7 @@ const HomeScreen = ({ navigation }): React.ReactNode => {
                       name="star"
                       style={{
                         color: pointValue >= 4 ? "gold" : "black",
-                        fontSize: 32,
+                        fontSize: override.icon.fontSize,
                       }}
                     ></Icon>
                   </TouchableOpacity>
@@ -203,7 +246,7 @@ const HomeScreen = ({ navigation }): React.ReactNode => {
                       name="star"
                       style={{
                         color: pointValue >= 5 ? "gold" : "black",
-                        fontSize: 32,
+                        fontSize: override.icon.fontSize,
                       }}
                     ></Icon>
                   </TouchableOpacity>
@@ -238,47 +281,5 @@ const HomeScreen = ({ navigation }): React.ReactNode => {
     </View>
   );
 };
-
-const override = StyleSheet.create({
-  carousel: {
-    height: "70%",
-    marginTop: "2%",
-    marginLeft: "2%",
-  },
-  homeContainer: {
-    zIndex: -1,
-  },
-  starContainer: {
-    marginTop: "5%",
-  },
-  starView: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-  },
-  starStyles: {
-    fontSize: 32,
-  },
-  starViewButton: {
-    marginTop: "5%",
-    alignSelf: styles.button.alignSelf,
-  },
-  infoButton: {
-    marginTop: "5%",
-    width: styles.button.width,
-    alignSelf: styles.button.alignSelf,
-    backgroundColor: styles.colorPrimary.backgroundColor,
-    //For Android due to it not propery supporting z-index
-  },
-  submitButton: {
-    backgroundColor: styles.colorPrimary.backgroundColor,
-  },
-  iconContainer: {
-    marginLeft: "2%",
-    marginTop: "2%",
-  },
-  icon: {
-    fontSize: 32,
-  },
-});
 
 export default HomeScreen;
