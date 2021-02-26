@@ -5,6 +5,9 @@ import styles from "../styles/constant";
 
 import { FlatList } from "react-native-gesture-handler";
 
+//Icons
+import Icon from "react-native-vector-icons/Ionicons";
+
 type ArrayObj = {
   location: {
     city: string;
@@ -21,23 +24,29 @@ type ArrayObj = {
 
 const CustomSheet = (
   arrayObj: ArrayObj,
-  apiPhotoArray: string[]
+  apiPhotoArray: string[],
+  detailedInfoObj
 ): React.ReactNode => {
   const { location, phone } = arrayObj;
 
-  console.log(arrayObj);
+  console.log(detailedInfoObj);
 
   return (
     <View style={override.sheetContainer}>
       <View style={override.infoView}>
         <Title style={override.title}>{arrayObj.name}</Title>
-        <Paragraph style={override.paragraph}>
-          {location.address1} {location.address2}
-          {"\n"}
-          {location.city} {location.state} {location.zip_code}
-          {"\n"}
-          {phone}
-        </Paragraph>
+        <View style={override.smallInfoView}>
+          <Icon name="home-outline" style={override.icon}></Icon>
+          <Paragraph style={override.paragraph}>
+            {location.address1} {location.address2}
+            {"\n"}
+            {location.city} {location.state} {location.zip_code}
+          </Paragraph>
+        </View>
+        <View style={override.smallInfoView}>
+          <Icon name="call-outline" style={override.icon}></Icon>
+          <Paragraph style={override.paragraph}>{phone}</Paragraph>
+        </View>
       </View>
       <FlatList
         data={apiPhotoArray}
@@ -57,11 +66,19 @@ const override = StyleSheet.create({
     fontSize: styles.fontL.fontSize,
   },
   infoView: {
-    height: "20%",
+    // height: "20%",
+  },
+  smallInfoView: {
+    display: "flex",
+    flexDirection: "row",
+
+    marginBottom: "1%",
   },
   paragraph: {
     fontSize: styles.fontS.fontSize,
+
     marginTop: "5%",
+    marginLeft: "5%",
   },
   sheetContainer: {
     backgroundColor: styles.colorSecondary.backgroundColor,
@@ -69,13 +86,17 @@ const override = StyleSheet.create({
     height: "100%",
   },
   flatList: {
-    marginTop: "10%",
+    marginTop: "5%",
   },
   image: {
     width: 200,
     height: 200,
     marginRight: 10,
     borderRadius: styles.border.borderRadius,
+  },
+  icon: {
+    fontSize: 32,
+    alignSelf: "flex-end",
   },
 });
 

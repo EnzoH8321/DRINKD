@@ -32,6 +32,7 @@ const HomeScreen = ({ navigation }): React.ReactNode => {
   const [index, setIndex] = useState(0);
   const [pointValue, setPointValue] = useState(0);
   const [firstStar, setFirstStar] = useState(false);
+  const [detailedInfo, setDetailedInfo] = useState();
   const [photoArray, setPhotoArray] = useState([]);
 
   const refCarousel = React.useRef(null);
@@ -75,6 +76,7 @@ const HomeScreen = ({ navigation }): React.ReactNode => {
     });
 
     // setCardDetails(data.data);
+    setDetailedInfo(data.data);
     setPhotoArray(data.data.photos);
   }
 
@@ -274,7 +276,7 @@ const HomeScreen = ({ navigation }): React.ReactNode => {
           </View>
 
           <BottomSheet snapPoints={[-1, "60%"]}>
-            {CustomSheet(dataArray[index], photoArray)}
+            {CustomSheet(dataArray[index], photoArray, detailedInfo)}
           </BottomSheet>
         </>
       )}
