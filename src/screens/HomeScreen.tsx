@@ -32,7 +32,7 @@ const HomeScreen = ({ navigation }): React.ReactNode => {
   const [index, setIndex] = useState(0);
   const [pointValue, setPointValue] = useState(0);
   const [firstStar, setFirstStar] = useState(false);
-  const [detailedInfo, setDetailedInfo] = useState();
+  const [detailedInfo, setDetailedInfo] = useState({});
   const [photoArray, setPhotoArray] = useState([]);
 
   const refCarousel = React.useRef(null);
