@@ -32,7 +32,7 @@ const HomeScreen = ({ navigation }): React.ReactNode => {
   const [index, setIndex] = useState(0);
   const [pointValue, setPointValue] = useState(0);
   const [firstStar, setFirstStar] = useState(false);
-  const [photoArray, setPhotoArray] = useState(null);
+  const [photoArray, setPhotoArray] = useState([]);
 
   const refCarousel = React.useRef(null);
   const currentPartyStatus = useSelector(
@@ -61,7 +61,7 @@ const HomeScreen = ({ navigation }): React.ReactNode => {
   // }, [navigation]);
 
   useEffect(() => {
-    setPhotoArray(null);
+    setPhotoArray([]);
   }, [index]);
 
   //Calls specific business using current card ID

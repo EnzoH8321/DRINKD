@@ -3,7 +3,6 @@ import { View, Image, StyleSheet } from "react-native";
 import { Paragraph, Title } from "react-native-paper";
 import styles from "../styles/constant";
 
-import { ApiBusiness } from "../types/types";
 import { FlatList } from "react-native-gesture-handler";
 
 type ArrayObj = {
@@ -20,10 +19,13 @@ type ArrayObj = {
   phone: string;
 };
 
-const CustomSheet = (arrayObj: ArrayObj, apiPhotoArray): React.ReactNode => {
+const CustomSheet = (
+  arrayObj: ArrayObj,
+  apiPhotoArray: string[]
+): React.ReactNode => {
   const { location, phone } = arrayObj;
 
-  console.log(apiPhotoArray);
+  console.log(arrayObj);
 
   return (
     <View style={override.sheetContainer}>
