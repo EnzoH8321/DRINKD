@@ -20,13 +20,10 @@ type ArrayObj = {
   phone: string;
 };
 
-const CustomSheet = (
-  arrayObj: ArrayObj,
-  chosenCard: ApiBusiness | undefined
-): React.ReactNode => {
+const CustomSheet = (arrayObj: ArrayObj, apiPhotoArray): React.ReactNode => {
   const { location, phone } = arrayObj;
 
-  const photoArray = chosenCard ? chosenCard.photos : [];
+  console.log(apiPhotoArray);
 
   return (
     <View style={override.sheetContainer}>
@@ -41,7 +38,7 @@ const CustomSheet = (
         </Paragraph>
       </View>
       <FlatList
-        data={photoArray}
+        data={apiPhotoArray}
         renderItem={({ item }) => (
           <Image source={{ uri: item }} style={override.image}></Image>
         )}

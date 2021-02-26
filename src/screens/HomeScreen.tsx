@@ -29,10 +29,10 @@ type Item = {
 const HomeScreen = ({ navigation }): React.ReactNode => {
   const dispatch = useDispatch();
   const [dataArray, setDataArray] = useState<ApiSearch[]>();
-  const [cardDetail, setCardDetails] = useState();
   const [index, setIndex] = useState(0);
   const [pointValue, setPointValue] = useState(0);
   const [firstStar, setFirstStar] = useState(false);
+  const [photoArray, setPhotoArray] = useState(null);
 
   const refCarousel = React.useRef(null);
   const currentPartyStatus = useSelector(
@@ -60,6 +60,10 @@ const HomeScreen = ({ navigation }): React.ReactNode => {
   //   });
   // }, [navigation]);
 
+  useEffect(() => {
+    setPhotoArray(null);
+  }, [index]);
+
   //Calls specific business using current card ID
   async function fetchBarDetails(id: string) {
     const data = await axios(`https://api.yelp.com/v3/businesses/${id}`, {
@@ -70,7 +74,8 @@ const HomeScreen = ({ navigation }): React.ReactNode => {
       },
     });
 
-    setCardDetails(data.data);
+    // setCardDetails(data.data);
+    setPhotoArray(data.data.photos);
   }
 
   // Calls General Yelp Api
@@ -226,7 +231,7 @@ const HomeScreen = ({ navigation }): React.ReactNode => {
           </View>
 
           <BottomSheet snapPoints={[-1, "60%"]}>
-            {CustomSheet(dataArray[index], cardDetail)}
+            {CustomSheet(dataArray[index], photoArray)}
           </BottomSheet>
         </>
       )}
