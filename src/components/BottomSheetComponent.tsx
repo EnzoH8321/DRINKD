@@ -30,8 +30,6 @@ const CustomSheet = (
 ): React.ReactNode => {
   const { location, phone } = arrayObj;
 
-  console.log(detailedInfoObj);
-
   return (
     <View style={override.sheetContainer}>
       <View style={override.infoView}>

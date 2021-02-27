@@ -107,7 +107,7 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
         }
 
         const data = await fetchBusiness(url);
-        console.log(data);
+
         dispatch(setBarListData(data));
         dispatch(setPartyURL(url));
         setDataArray(data);
