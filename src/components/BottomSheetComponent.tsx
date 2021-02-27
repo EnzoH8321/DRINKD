@@ -26,7 +26,7 @@ type ArrayObj = {
 const CustomSheet = (
   arrayObj: ArrayObj,
   apiPhotoArray: string[],
-  detailedInfoObj: ApiSearch
+  detailedInfoObj: ApiSearch | undefined
 ): React.ReactNode => {
   const { location, phone } = arrayObj;
 
