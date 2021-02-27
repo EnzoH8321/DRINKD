@@ -16,7 +16,7 @@ import Carousel from "react-native-snap-carousel";
 import { setBarListData } from "../actions/APIActions";
 import { setPartyURL } from "../actions/PartyActions";
 //Types
-import { ApiSearch, HomeScreenNav } from "../types/types";
+import { ApiSearch, HomeScreenNavProp } from "../types/types";
 //
 import { RootState } from "../reducers";
 //Firebase
@@ -28,7 +28,7 @@ type Item = {
 };
 
 type Props = {
-  navigation: HomeScreenNav;
+  navigation: HomeScreenNavProp;
 };
 
 const HomeScreen = ({ navigation }: Props): React.ReactNode => {

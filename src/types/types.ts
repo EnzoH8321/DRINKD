@@ -195,7 +195,10 @@ export type HomeDrawerParamList = {
   "Create Party": undefined;
 };
 
-export type HomeScreenNav = DrawerNavigationProp<HomeDrawerParamList, "Home">;
+export type HomeScreenNavProp = DrawerNavigationProp<
+  HomeDrawerParamList,
+  "Home"
+>;
 
 type CreateScreenRouteProp = RouteProp<HomeDrawerParamList, "Create Party">;
 
