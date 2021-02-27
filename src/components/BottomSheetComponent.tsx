@@ -1,9 +1,10 @@
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
-import { Paragraph, Title } from "react-native-paper";
+import { Paragraph } from "react-native-paper";
 import styles from "../styles/constant";
-
 import { FlatList } from "react-native-gesture-handler";
+//types
+import { ApiSearch } from "../types/types";
 
 //Icons
 import Icon from "react-native-vector-icons/Ionicons";
@@ -24,15 +25,17 @@ type ArrayObj = {
 
 const CustomSheet = (
   arrayObj: ArrayObj,
-  apiPhotoArray: string[]
+  apiPhotoArray: string[],
+  detailedInfoObj: ApiSearch
 ): React.ReactNode => {
   const { location, phone } = arrayObj;
+
+  console.log(detailedInfoObj);
 
   return (
     <View style={override.sheetContainer}>
       <View style={override.infoView}>
-        <Title style={override.title}>{arrayObj.name}</Title>
-
+        {/* <Title style={override.title}>{arrayObj.name}</Title> */}
         <View style={override.smallInfoView}>
           <Icon name="home-outline" style={override.icon}></Icon>
           <Paragraph style={override.paragraph}>

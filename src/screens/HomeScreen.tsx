@@ -32,6 +32,7 @@ const HomeScreen = ({ navigation }): React.ReactNode => {
   const [index, setIndex] = useState(0);
   const [pointValue, setPointValue] = useState(0);
   const [firstStar, setFirstStar] = useState(false);
+  const [detailedInfo, setDetailedInfo] = useState();
 
   const [photoArray, setPhotoArray] = useState([]);
 
@@ -74,7 +75,7 @@ const HomeScreen = ({ navigation }): React.ReactNode => {
           "BEARER nX9W-jXWsXSB_gW3t2Y89iwQ-M7SR9-HVBHDAqf1Zy0fo8LTs3Q1VbIVpdeyFu7PehJlkLDULQulnJ3l6q6loIET5JHmcs9i3tJqYEO02f39qKgSCi4DAEVIlgPPX3Yx",
       },
     });
-
+    setDetailedInfo(data.data);
     setPhotoArray(data.data.photos);
   }
 
@@ -101,6 +102,7 @@ const HomeScreen = ({ navigation }): React.ReactNode => {
         }
 
         const data = await fetchBusiness(url);
+        console.log(data);
         dispatch(setBarListData(data));
         dispatch(setPartyURL(url));
         setDataArray(data);
@@ -274,7 +276,7 @@ const HomeScreen = ({ navigation }): React.ReactNode => {
           </View>
 
           <BottomSheet snapPoints={[-1, "60%"]}>
-            {CustomSheet(dataArray[index], photoArray)}
+            {CustomSheet(dataArray[index], photoArray, detailedInfo)}
           </BottomSheet>
         </>
       )}

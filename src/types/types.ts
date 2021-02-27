@@ -154,7 +154,7 @@ export interface ApiBusiness {
 
 export type SetBarlistData = {
   type: "SET BARLIST DATA";
-  payload: ApiSearch[];
+  payload: [ApiSearch] | undefined;
 };
 
 export type SetUserName = {
@@ -184,7 +184,7 @@ export type SetPartyId = {
 
 export type BarListData = {
   type: "SET BARLIST DATA";
-  payload: ApiSearch[];
+  payload: [ApiSearch] | undefined;
 };
 
 //Navigation

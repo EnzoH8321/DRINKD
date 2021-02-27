@@ -1,6 +1,9 @@
 import axios from "axios";
+import { ApiSearch } from "../types/types";
 
-export default async function fetchBusiness(url: string) {
+export default async function fetchBusiness(
+  url: string
+): Promise<[ApiSearch] | undefined> {
   try {
     // const dispatch = useDispatch();
 

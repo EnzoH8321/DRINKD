@@ -31,8 +31,8 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
         <Card.Content style={override.cardContent}>
           <Title style={override.cardTitle}>{name}</Title>
           <Paragraph>
-            {categories[0]?.title}
-            {categories[1]?.title}
+            {categories[0]?.title} {`${categories[1] ? "-" : ""}`}{" "}
+            {categories[1]?.title} {`${categories[2] ? "-" : ""}`}{" "}
             {categories[2]?.title}
           </Paragraph>
           <Card.Cover

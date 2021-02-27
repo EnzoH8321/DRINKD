@@ -3,7 +3,7 @@ import * as actions from "../actions/APIActions";
 import { SetBarlistData, ApiSearch } from "../types/types";
 
 type InitialState = {
-  barList: ApiSearch[];
+  barList: ApiSearch[] | undefined;
 };
 
 export const initialState = {
