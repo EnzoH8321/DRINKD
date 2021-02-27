@@ -188,18 +188,20 @@ export type BarListData = {
 };
 
 //Navigation
-type HomeDrawerParamList = {
+export type HomeDrawerParamList = {
   Home: undefined;
-  TopChoice: undefined;
-  JoinScreen: undefined;
-  CreateScreen: undefined;
+  "Top Choices": undefined;
+  "Join Party": undefined;
+  "Create Party": undefined;
 };
 
-type CreateScreenRouteProp = RouteProp<HomeDrawerParamList, "CreateScreen">;
+export type HomeScreenNav = DrawerNavigationProp<HomeDrawerParamList, "Home">;
+
+type CreateScreenRouteProp = RouteProp<HomeDrawerParamList, "Create Party">;
 
 type ProfileScreenNavigationProp = DrawerNavigationProp<
   HomeDrawerParamList,
-  "CreateScreen"
+  "Create Party"
 >;
 
 export type CreateScreenProps = {

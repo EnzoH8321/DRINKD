@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { View, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import fetchBusiness from "../api/YelpApi";
 import axios from "axios";
@@ -16,7 +16,8 @@ import Carousel from "react-native-snap-carousel";
 import { setBarListData } from "../actions/APIActions";
 import { setPartyURL } from "../actions/PartyActions";
 //Types
-import { ApiSearch } from "../types/types";
+import { ApiSearch, HomeScreenNav } from "../types/types";
+//
 import { RootState } from "../reducers";
 //Firebase
 import firebase from "../utils/firebase";
@@ -26,7 +27,11 @@ type Item = {
   item: ApiSearch;
 };
 
-const HomeScreen = ({ navigation }): React.ReactNode => {
+type Props = {
+  navigation: HomeScreenNav;
+};
+
+const HomeScreen = ({ navigation }: Props): React.ReactNode => {
   const dispatch = useDispatch();
   const [dataArray, setDataArray] = useState<ApiSearch[]>();
   const [index, setIndex] = useState(0);
@@ -125,6 +130,10 @@ const HomeScreen = ({ navigation }): React.ReactNode => {
 
   //Submit score to DB
   function submitStarScores() {
+    if (!dataArray) {
+      return Alert.alert("No data found");
+    }
+
     const currentCard = dataArray[index].name;
     const finalScore = pointValue;
 

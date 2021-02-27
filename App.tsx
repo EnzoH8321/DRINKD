@@ -14,9 +14,11 @@ import JoinScreen from "./src/screens/JoinScreen";
 import CreateScreen from "./src/screens/Createscreen";
 //Store
 import store from "./src/store/store";
+//Types
+import { HomeDrawerParamList } from "./src/types/types";
 
 //Stack
-const HomeDrawer = createDrawerNavigator();
+const HomeDrawer = createDrawerNavigator<HomeDrawerParamList>();
 
 const Home = () => {
   return (
