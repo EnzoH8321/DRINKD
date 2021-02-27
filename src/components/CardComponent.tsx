@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Title } from "react-native-paper";
+import { Card, Title, Paragraph } from "react-native-paper";
 import styles from "../styles/constant";
 import { ApiSearch } from "../types/types";
 import { StyleSheet, View } from "react-native";
@@ -11,7 +11,7 @@ type BarData = {
 };
 
 const CardComponent = ({ barData }: BarData): React.ReactElement => {
-  const { name, image_url, rating, price } = barData;
+  const { name, image_url, rating, price, categories } = barData;
 
   const priceValue = price.length;
   const ratingArray = [];
@@ -30,6 +30,11 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
       <Card style={override.card}>
         <Card.Content style={override.cardContent}>
           <Title style={override.cardTitle}>{name}</Title>
+          <Paragraph>
+            {categories[0]?.title}
+            {categories[1]?.title}
+            {categories[2]?.title}
+          </Paragraph>
           <Card.Cover
             source={{ uri: `${image_url}` }}
             style={override.cardImage}

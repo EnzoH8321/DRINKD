@@ -24,24 +24,15 @@ type ArrayObj = {
 
 const CustomSheet = (
   arrayObj: ArrayObj,
-  apiPhotoArray: string[],
-  detailedInfoObj
+  apiPhotoArray: string[]
 ): React.ReactNode => {
   const { location, phone } = arrayObj;
-  const { categories } = detailedInfoObj;
 
   return (
     <View style={override.sheetContainer}>
       <View style={override.infoView}>
         <Title style={override.title}>{arrayObj.name}</Title>
-        {detailedInfoObj.categories ? (
-          <Paragraph>
-            {categories[0].title} - {categories[1].title} -{" "}
-            {categories[2].title}
-          </Paragraph>
-        ) : (
-          <></>
-        )}
+
         <View style={override.smallInfoView}>
           <Icon name="home-outline" style={override.icon}></Icon>
           <Paragraph style={override.paragraph}>
