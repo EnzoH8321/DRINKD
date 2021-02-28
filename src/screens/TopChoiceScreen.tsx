@@ -52,8 +52,6 @@ const TopChoicesScreen = (): React.ReactNode => {
       .sort((a, b) => a[1] - b[1])
       .reverse();
 
-    console.log(sortable);
-
     setTopChoicesObject({
       first: sortable[0] ? [sortable[0][0], sortable[0][1]] : "none",
       second: sortable[1] ? [sortable[1][0], sortable[1][1]] : "none",
@@ -91,16 +89,19 @@ const TopChoicesScreen = (): React.ReactNode => {
           index={1}
           name={topChoicesObject.first ? topChoicesObject.first[0] : "none"}
           number={topChoicesObject.first ? topChoicesObject.first[1] : 0}
+          iconColor="gold"
         />
         <MiniCardComponent
           index={2}
           name={topChoicesObject.second ? topChoicesObject.second[0] : "none"}
           number={topChoicesObject.second ? topChoicesObject.second[1] : 0}
+          iconColor="silver"
         />
         <MiniCardComponent
           index={3}
           name={topChoicesObject.third ? topChoicesObject.third[0] : "none"}
           number={topChoicesObject.third ? topChoicesObject.third[1] : 0}
+          iconColor="#CD7F32"
         />
         <Button
           mode="contained"
