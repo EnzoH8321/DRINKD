@@ -18,11 +18,11 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
   const priceArray = [];
 
   for (let i = 0; i < rating; i++) {
-    ratingArray.push(<Icon name="fast-food-outline" size={26}></Icon>);
+    ratingArray.push(<Icon name="thumbs-up-outline" size={26}></Icon>);
   }
 
   for (let i = 0; i < priceValue; i++) {
-    priceArray.push(<Icon name="card-outline" size={26}></Icon>);
+    priceArray.push(<Icon name="cash-outline" size={26}></Icon>);
   }
 
   return (

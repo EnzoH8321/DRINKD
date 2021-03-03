@@ -31,9 +31,9 @@ const TopChoicesScreen = (): React.ReactNode => {
 
   //Gets the three top scorers
   function getTopScorers() {
-    if (!choicesObject) {
-      return Alert.alert("nothing found");
-    }
+    // if (!choicesObject) {
+    //   return Alert.alert("nothing found");
+    // }
 
     const entries: EntriesInterface = Object.entries(choicesObject);
 
