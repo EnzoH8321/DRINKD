@@ -8,7 +8,7 @@ import { ApiSearch } from "../types/types";
 
 //Icons
 import Icon from "react-native-vector-icons/Ionicons";
-
+//Types
 type ArrayObj = {
   location: {
     city: string;
@@ -29,6 +29,33 @@ const CustomSheet = (
   detailedInfoObj: ApiSearch | undefined
 ): React.ReactNode => {
   const { location, phone } = arrayObj;
+  const transaction = [];
+
+  if (detailedInfoObj) {
+    detailedInfoObj.transactions.map((value) => {
+      if (value === "delivery") {
+        transaction.push(
+          <View style={override.smallInfoView}>
+            <Icon name="bicycle" style={override.icon}></Icon>
+            <Paragraph style={override.paragraph}>Delivery Available</Paragraph>
+          </View>
+        );
+      }
+
+      if (value === "pickup") {
+        transaction.push(
+          <View style={override.smallInfoView}>
+            <Icon name="walk" style={override.icon}></Icon>
+            <Paragraph style={override.paragraph}>Pickup Available</Paragraph>
+          </View>
+        );
+      }
+    });
+  }
+
+  if (detailedInfoObj) {
+    console.log(detailedInfoObj.transactions);
+  }
 
   return (
     <View style={override.sheetContainer}>
@@ -39,13 +66,14 @@ const CustomSheet = (
           <Paragraph style={override.paragraph}>
             {location.address1} {location.address2}
             {"\n"}
-            {location.city} {location.state} {location.zip_code}
+            {location.city}, {location.state} {location.zip_code}
           </Paragraph>
         </View>
         <View style={override.smallInfoView}>
           <Icon name="call-outline" style={override.icon}></Icon>
           <Paragraph style={override.paragraph}>{phone}</Paragraph>
         </View>
+        {transaction}
       </View>
       <FlatList
         data={apiPhotoArray}
@@ -71,7 +99,7 @@ const override = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
 
-    marginBottom: "1%",
+    marginBottom: "2%",
   },
   paragraph: {
     fontSize: styles.fontS.fontSize,

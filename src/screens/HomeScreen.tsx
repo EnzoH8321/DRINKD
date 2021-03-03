@@ -148,7 +148,7 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
   //Styles
   const override = StyleSheet.create({
     carousel: {
-      height: !currentPartyStatus ? "75%" : "70%",
+      height: !currentPartyStatus ? "80%" : "70%",
       marginTop: "2%",
       marginLeft: "2%",
     },
