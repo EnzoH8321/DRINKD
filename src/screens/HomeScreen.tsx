@@ -210,6 +210,7 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
                   //Reset's point value
                   setPointValue(0);
                 }}
+                layout="tinder"
               />
             </View>
 

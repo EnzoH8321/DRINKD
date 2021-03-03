@@ -4,7 +4,6 @@ import { Text, Card, Paragraph, Headline } from "react-native-paper";
 import { StyleSheet, View } from "react-native";
 import styles from "../styles/constant";
 import Icon from "react-native-vector-icons/Ionicons";
-import { color } from "react-native-reanimated";
 
 type Props = {
   index: number;
@@ -24,6 +23,7 @@ const MiniCardComponent = ({
       // height: "25%",
       borderRadius: styles.border.borderRadius,
       marginBottom: 10,
+      ...styles.shadow,
     },
     icon: {
       fontSize: 42,
@@ -40,7 +40,7 @@ const MiniCardComponent = ({
     },
     rightContent: {
       justifyContent: "center",
-      marginLeft: "30%",
+      marginLeft: "20%",
     },
   });
 

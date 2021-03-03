@@ -27,6 +27,9 @@ const TopChoicesScreen = (): React.ReactNode => {
   const partyId = useSelector((state: RootState) => state.party.partyId);
   const inParty = useSelector((state: RootState) => state.party.inParty);
 
+  console.log(choicesObject);
+
+  //Gets the three top scorers
   function getTopScorers() {
     if (!choicesObject) {
       return Alert.alert("nothing found");
@@ -53,12 +56,12 @@ const TopChoicesScreen = (): React.ReactNode => {
       .reverse();
 
     setTopChoicesObject({
-      first: sortable[0] ? [sortable[0][0], sortable[0][1]] : "none",
-      second: sortable[1] ? [sortable[1][0], sortable[1][1]] : "none",
-      third: sortable[2] ? [sortable[2][0], sortable[2][1]] : "none",
+      first: sortable[0] ? [sortable[0][0], sortable[0][1]] : "",
+      second: sortable[1] ? [sortable[1][0], sortable[1][1]] : "",
+      third: sortable[2] ? [sortable[2][0], sortable[2][1]] : "",
     });
   }
-
+  //Grabs the bar choices from the Firebase DB
   useEffect(() => {
     try {
       // the parenth below is syntax for => function(){...}
@@ -80,26 +83,26 @@ const TopChoicesScreen = (): React.ReactNode => {
     } catch (error) {
       console.log(error);
     }
-  }, [inParty]);
+  }, [inParty, partyId]);
 
   return (
     <View style={override.choiceContainer}>
       <View style={override.choiceDataContainer}>
         <MiniCardComponent
           index={1}
-          name={topChoicesObject.first ? topChoicesObject.first[0] : "none"}
+          name={topChoicesObject.first ? topChoicesObject.first[0] : ""}
           number={topChoicesObject.first ? topChoicesObject.first[1] : 0}
           iconColor="gold"
         />
         <MiniCardComponent
           index={2}
-          name={topChoicesObject.second ? topChoicesObject.second[0] : "none"}
+          name={topChoicesObject.second ? topChoicesObject.second[0] : ""}
           number={topChoicesObject.second ? topChoicesObject.second[1] : 0}
           iconColor="silver"
         />
         <MiniCardComponent
           index={3}
-          name={topChoicesObject.third ? topChoicesObject.third[0] : "none"}
+          name={topChoicesObject.third ? topChoicesObject.third[0] : ""}
           number={topChoicesObject.third ? topChoicesObject.third[1] : 0}
           iconColor="#CD7F32"
         />
@@ -108,7 +111,7 @@ const TopChoicesScreen = (): React.ReactNode => {
           onPress={getTopScorers}
           style={override.button}
         >
-          Who Won?
+          Find Winner
         </Button>
       </View>
     </View>

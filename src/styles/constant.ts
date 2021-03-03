@@ -18,14 +18,15 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
   shadow: {
-    shadowRadius: 2,
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 1,
+      height: 2,
     },
-    shadowColor: "black",
-    shadowOpacity: 0.8,
-    elevation: 2,
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+
+    elevation: 4,
   },
   fontL: {
     fontSize: 24,

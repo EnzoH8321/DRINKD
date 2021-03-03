@@ -26,7 +26,7 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
   }
 
   return (
-    <View>
+    <View style={override.cardView}>
       <Card style={override.card}>
         <Card.Content style={override.cardContent}>
           <Title style={override.cardTitle}>{name}</Title>
@@ -51,9 +51,12 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
 
 const override = StyleSheet.create({
   card: {
-    height: "100%",
+    height: "99%",
+    width: "99%",
     borderRadius: styles.border.borderRadius,
+    ...styles.shadow,
   },
+  cardView: {},
   cardImage: {
     borderRadius: styles.border.borderRadius,
     marginTop: "8%",
