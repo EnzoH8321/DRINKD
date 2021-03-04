@@ -32,8 +32,6 @@ const CustomSheet = (
   const { location, phone } = arrayObj;
   const transaction: React.ReactElement[] = [];
 
-  console.log(detailedInfoObj);
-
   if (transArray) {
     transArray.map((value) => {
       if (value === "delivery") {

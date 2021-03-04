@@ -27,8 +27,6 @@ const TopChoicesScreen = (): React.ReactNode => {
   const partyId = useSelector((state: RootState) => state.party.partyId);
   const inParty = useSelector((state: RootState) => state.party.inParty);
 
-  console.log(choicesObject);
-
   //Gets the three top scorers
   function getTopScorers() {
     // if (!choicesObject) {
