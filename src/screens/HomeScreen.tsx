@@ -38,8 +38,8 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
   const [pointValue, setPointValue] = useState(0);
   const [firstStar, setFirstStar] = useState(false);
   const [detailedInfo, setDetailedInfo] = useState();
-
   const [photoArray, setPhotoArray] = useState([]);
+  const [transactionArray, setTransactionArray] = useState([]);
 
   const refCarousel = React.useRef(null);
   const currentPartyStatus = useSelector(
@@ -69,6 +69,7 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
 
   useEffect(() => {
     setPhotoArray([]);
+    setTransactionArray([]);
   }, [index]);
 
   //Calls specific business using current card ID
@@ -80,6 +81,8 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
           "BEARER nX9W-jXWsXSB_gW3t2Y89iwQ-M7SR9-HVBHDAqf1Zy0fo8LTs3Q1VbIVpdeyFu7PehJlkLDULQulnJ3l6q6loIET5JHmcs9i3tJqYEO02f39qKgSCi4DAEVIlgPPX3Yx",
       },
     });
+
+    setTransactionArray(data.data.transactions);
     setDetailedInfo(data.data);
     setPhotoArray(data.data.photos);
   }
@@ -286,7 +289,12 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
           </View>
 
           <BottomSheet snapPoints={[-1, "60%"]}>
-            {CustomSheet(dataArray[index], photoArray, detailedInfo)}
+            {CustomSheet(
+              dataArray[index],
+              photoArray,
+              detailedInfo,
+              transactionArray
+            )}
           </BottomSheet>
         </>
       )}

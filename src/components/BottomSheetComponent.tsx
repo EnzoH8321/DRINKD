@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Image, StyleSheet } from "react-native";
 import { Paragraph } from "react-native-paper";
 import styles from "../styles/constant";
@@ -26,13 +26,16 @@ type ArrayObj = {
 const CustomSheet = (
   arrayObj: ArrayObj,
   apiPhotoArray: string[],
-  detailedInfoObj: ApiSearch | undefined
+  detailedInfoObj: ApiSearch | undefined,
+  transArray: string[]
 ): React.ReactNode => {
   const { location, phone } = arrayObj;
-  const transaction = [];
+  const transaction: React.ReactElement[] = [];
 
-  if (detailedInfoObj) {
-    detailedInfoObj.transactions.map((value) => {
+  console.log(detailedInfoObj);
+
+  if (transArray) {
+    transArray.map((value) => {
       if (value === "delivery") {
         transaction.push(
           <View style={override.smallInfoView}>
@@ -50,11 +53,18 @@ const CustomSheet = (
           </View>
         );
       }
-    });
-  }
 
-  if (detailedInfoObj) {
-    console.log(detailedInfoObj.transactions);
+      if (value === "restaurant_reservation") {
+        transaction.push(
+          <View style={override.smallInfoView}>
+            <Icon name="restaurant-outline" style={override.icon}></Icon>
+            <Paragraph style={override.paragraph}>
+              Reservations Available
+            </Paragraph>
+          </View>
+        );
+      }
+    });
   }
 
   return (
