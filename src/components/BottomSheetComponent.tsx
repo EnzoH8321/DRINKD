@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { View, Image, StyleSheet } from "react-native";
 import { Paragraph } from "react-native-paper";
 import styles from "../styles/constant";
-import { FlatList } from "react-native-gesture-handler";
+import { FlatList, ScrollView } from "react-native-gesture-handler";
 //types
 import { ApiSearch } from "../types/types";
 
@@ -69,31 +69,33 @@ const CustomSheet = (
 
   return (
     <View style={override.sheetContainer}>
-      <View style={override.infoView}>
-        {/* <Title style={override.title}>{arrayObj.name}</Title> */}
-        <View style={override.smallInfoView}>
-          <Icon name="home-outline" style={override.icon}></Icon>
-          <Paragraph style={override.paragraph}>
-            {location.address1} {location.address2}
-            {"\n"}
-            {location.city}, {location.state} {location.zip_code}
-          </Paragraph>
+      <ScrollView>
+        <View style={override.infoView}>
+          {/* <Title style={override.title}>{arrayObj.name}</Title> */}
+          <View style={override.smallInfoView}>
+            <Icon name="home-outline" style={override.icon}></Icon>
+            <Paragraph style={override.paragraph}>
+              {location.address1} {location.address2}
+              {"\n"}
+              {location.city}, {location.state} {location.zip_code}
+            </Paragraph>
+          </View>
+          <View style={override.smallInfoView}>
+            <Icon name="call-outline" style={override.icon}></Icon>
+            <Paragraph style={override.paragraph}>{phone}</Paragraph>
+          </View>
+          {transaction}
         </View>
-        <View style={override.smallInfoView}>
-          <Icon name="call-outline" style={override.icon}></Icon>
-          <Paragraph style={override.paragraph}>{phone}</Paragraph>
-        </View>
-        {transaction}
-      </View>
-      <FlatList
-        data={apiPhotoArray}
-        renderItem={({ item }) => (
-          <Image source={{ uri: item }} style={override.image}></Image>
-        )}
-        keyExtractor={(i) => i}
-        horizontal={true}
-        style={override.flatList}
-      ></FlatList>
+        <FlatList
+          data={apiPhotoArray}
+          renderItem={({ item }) => (
+            <Image source={{ uri: item }} style={override.image}></Image>
+          )}
+          keyExtractor={(i) => i}
+          horizontal={true}
+          style={override.flatList}
+        ></FlatList>
+      </ScrollView>
     </View>
   );
 };
@@ -124,6 +126,8 @@ const override = StyleSheet.create({
   },
   flatList: {
     marginTop: "5%",
+    //In Android, Scrollview only works if the content is too long to be displayed. Makes carousel as tall as possible
+    height: "100%",
   },
   image: {
     width: 200,

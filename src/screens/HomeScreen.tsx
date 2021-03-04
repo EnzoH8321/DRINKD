@@ -288,7 +288,7 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
             </Button>
           </View>
 
-          <BottomSheet snapPoints={[100, "60%"]}>
+          <BottomSheet snapPoints={[-1, "60%"]}>
             {CustomSheet(
               dataArray[index],
               photoArray,
