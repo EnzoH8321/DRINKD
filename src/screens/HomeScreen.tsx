@@ -55,20 +55,6 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
 
   console.log(detailedInfo);
 
-  // //Creates the left header button
-  // React.useLayoutEffect(() => {
-  //   navigation.setOptions({
-  //     headerLeft: () => (
-  //       <TouchableOpacity
-  //         style={{ marginLeft: 10 }}
-  //         onPress={() => navigation.openDrawer()}
-  //       >
-  //         <Icon name="bars" style={{ fontSize: 28 }}></Icon>
-  //       </TouchableOpacity>
-  //     ),
-  //   });
-  // }, [navigation]);
-
   //Calls specific business using current card ID
   async function fetchBarDetails(id: string) {
     const data = await axios(`https://api.yelp.com/v3/businesses/${id}`, {
