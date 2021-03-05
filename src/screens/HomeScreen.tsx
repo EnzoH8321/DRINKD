@@ -53,6 +53,8 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
   const userName = useSelector((state: RootState) => state.party.userName);
   const inParty = useSelector((state: RootState) => state.party.inParty);
 
+  console.log(detailedInfo);
+
   // //Creates the left header button
   // React.useLayoutEffect(() => {
   //   navigation.setOptions({
@@ -66,11 +68,6 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
   //     ),
   //   });
   // }, [navigation]);
-
-  useEffect(() => {
-    setPhotoArray([]);
-    setTransactionArray([]);
-  }, [index]);
 
   //Calls specific business using current card ID
   async function fetchBarDetails(id: string) {
@@ -212,6 +209,8 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
                   setIndex(index);
                   //Reset's point value
                   setPointValue(0);
+                  setTransactionArray([]);
+                  setPhotoArray([]);
                 }}
                 layout="tinder"
               />
