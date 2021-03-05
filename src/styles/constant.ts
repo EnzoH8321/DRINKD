@@ -43,6 +43,9 @@ const styles = StyleSheet.create({
   colorSecondary: {
     backgroundColor: "#FFFFFF",
   },
+  colorTertiary: {
+    backgroundColor: "#32A6ED",
+  },
   headline: {
     textAlign: "center",
     marginBottom: "20%",

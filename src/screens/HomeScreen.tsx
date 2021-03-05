@@ -5,7 +5,7 @@ import fetchBusiness from "../api/YelpApi";
 import axios from "axios";
 import * as Location from "expo-location";
 import styles from "../styles/constant";
-import Icon from "react-native-vector-icons/FontAwesome";
+import Icon from "react-native-vector-icons/Ionicons";
 //Components
 import CardComponent from "../components/CardComponent";
 import CustomSheet from "../components/BottomSheetComponent";
@@ -148,7 +148,7 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
   //Styles
   const override = StyleSheet.create({
     carousel: {
-      height: !currentPartyStatus ? "80%" : "70%",
+      height: !currentPartyStatus ? "80%" : "73%",
       marginTop: "2%",
       marginLeft: "2%",
     },
@@ -221,45 +221,60 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
                 <View style={override.starView}>
                   <TouchableOpacity onPress={() => firstStarLogic()}>
                     <Icon
-                      name="star"
+                      name="thumbs-up"
                       style={{
-                        color: pointValue >= 1 ? "gold" : "black",
+                        color:
+                          pointValue >= 1
+                            ? styles.colorTertiary.backgroundColor
+                            : "black",
                         fontSize: override.icon.fontSize,
                       }}
                     ></Icon>
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => setPointValue(2)}>
                     <Icon
-                      name="star"
+                      name="thumbs-up"
                       style={{
-                        color: pointValue >= 2 ? "gold" : "black",
+                        color:
+                          pointValue >= 2
+                            ? styles.colorTertiary.backgroundColor
+                            : "black",
                         fontSize: override.icon.fontSize,
                       }}
                     ></Icon>
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => setPointValue(3)}>
                     <Icon
-                      name="star"
+                      name="thumbs-up"
                       style={{
-                        color: pointValue >= 3 ? "gold" : "black",
+                        color:
+                          pointValue >= 3
+                            ? styles.colorTertiary.backgroundColor
+                            : "black",
                         fontSize: override.icon.fontSize,
                       }}
                     ></Icon>
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => setPointValue(4)}>
                     <Icon
-                      name="star"
+                      name="thumbs-up"
                       style={{
-                        color: pointValue >= 4 ? "gold" : "black",
+                        color:
+                          pointValue >= 4
+                            ? styles.colorTertiary.backgroundColor
+                            : "black",
                         fontSize: override.icon.fontSize,
                       }}
                     ></Icon>
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => setPointValue(5)}>
                     <Icon
-                      name="star"
+                      name="thumbs-up"
                       style={{
-                        color: pointValue >= 5 ? "gold" : "black",
+                        color:
+                          pointValue >= 5
+                            ? styles.colorTertiary.backgroundColor
+                            : "black",
                         fontSize: override.icon.fontSize,
                       }}
                     ></Icon>
