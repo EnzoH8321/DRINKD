@@ -34,10 +34,6 @@ const JoinScreen: React.FC = () => {
     userNameGenerator = userName;
   }
 
-  // const userNameGenerator = Math.floor(
-  //   Math.pow(10, 5 - 1) + Math.random() * 9 * Math.pow(10, 5 - 1)
-  // ).toString();
-
   //Join Party
   function joinParty() {
     const ref = firebase.database().ref(`parties/${textValue}`);

@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   fontM: {
-    fontSize: 22,
+    fontSize: 20,
   },
   fontS: {
     fontSize: 16,
