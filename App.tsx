@@ -6,7 +6,8 @@ import styles from "./src/styles/constant";
 
 //ReactNav
 import { NavigationContainer } from "@react-navigation/native";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 //Screens
 import HomeScreen from "./src/screens/HomeScreen";
 import TopChoiceScreen from "./src/screens/TopChoiceScreen";
@@ -18,20 +19,11 @@ import store from "./src/store/store";
 import { HomeDrawerParamList } from "./src/types/types";
 
 //Stack
-const HomeDrawer = createDrawerNavigator<HomeDrawerParamList>();
+const HomeDrawer = createBottomTabNavigator<HomeDrawerParamList>();
 
 const Home = () => {
   return (
-    <HomeDrawer.Navigator
-      screenOptions={{
-        headerShown: true,
-        headerTitleAlign: styles.header.alignSelf,
-        headerTintColor: styles.header.backgroundColor,
-        headerTitleStyle: {
-          fontSize: styles.fontL.fontSize,
-        },
-      }}
-    >
+    <HomeDrawer.Navigator>
       <HomeDrawer.Screen name="Home" component={HomeScreen} />
       <HomeDrawer.Screen name="Top Choices" component={TopChoiceScreen} />
       <HomeDrawer.Screen name="Join Party" component={JoinScreen} />
@@ -39,28 +31,6 @@ const Home = () => {
     </HomeDrawer.Navigator>
   );
 };
-
-// const App = () => {
-//   return (
-//     <AppStack.Navigator>
-//       <AppStack.Screen
-//         name="HomeApp"
-//         component={Home}
-//         options={{
-//           title: "Home",
-//           headerStyle: {
-//             backgroundColor: styles.colorSecondary.backgroundColor,
-//           },
-//           headerTitleStyle: {
-//             fontSize: styles.fontL.fontSize,
-//           },
-
-//           headerTitleAlign: "center",
-//         }}
-//       />
-//     </AppStack.Navigator>
-//   );
-// };
 
 //Do i need to name this?...
 export default function Main(): React.ReactElement {

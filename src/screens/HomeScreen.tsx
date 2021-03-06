@@ -133,7 +133,7 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
   const override = StyleSheet.create({
     carousel: {
       height: !currentPartyStatus ? "80%" : "73%",
-      marginTop: "2%",
+      marginTop: "15%",
       marginLeft: "2%",
     },
     homeContainer: {
@@ -158,6 +158,7 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
       width: styles.button.width,
       alignSelf: styles.button.alignSelf,
       backgroundColor: styles.colorPrimary.backgroundColor,
+
       //For Android due to it not propery supporting z-index
     },
     submitButton: {
@@ -286,14 +287,14 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
             </Button>
           </View>
 
-          <BottomSheet snapPoints={[-1, "60%"]}>
+          {/* <BottomSheet snapPoints={[-1, "60%"]}>
             {CustomSheet(
               dataArray[index],
               photoArray,
               detailedInfo,
               transactionArray
             )}
-          </BottomSheet>
+          </BottomSheet> */}
         </>
       )}
     </View>
