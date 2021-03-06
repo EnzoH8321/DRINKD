@@ -18,9 +18,12 @@ type ArrayObj = {
     state: string;
     address1: string;
     zip_code: string;
+    rating: string;
   };
   name: string;
   phone: string;
+  rating: number;
+  price: string;
 };
 
 const CustomSheet = (
@@ -29,8 +32,19 @@ const CustomSheet = (
   detailedInfoObj: ApiSearch | undefined,
   transArray: string[]
 ): React.ReactNode => {
-  const { location, phone } = arrayObj;
+  const { location, phone, rating, price } = arrayObj;
   const transaction: React.ReactElement[] = [];
+  const ratingArray = [];
+  const priceArray = [];
+  const priceValue = price.length;
+
+  for (let i = 0; i < rating; i++) {
+    ratingArray.push(<Icon name="star" size={26}></Icon>);
+  }
+
+  for (let i = 0; i < priceValue; i++) {
+    priceArray.push(<Icon name="cash-outline" size={26}></Icon>);
+  }
 
   if (transArray) {
     transArray.map((value) => {
@@ -68,8 +82,11 @@ const CustomSheet = (
   return (
     <View style={override.sheetContainer}>
       <ScrollView>
-        <View style={override.infoView}>
-          {/* <Title style={override.title}>{arrayObj.name}</Title> */}
+        <View>
+          <View style={override.headerInfo}>
+            <View style={override.ratingView}>{ratingArray}</View>
+            <View style={override.priceView}>{priceArray}</View>
+          </View>
           <View style={override.smallInfoView}>
             <Icon name="home-outline" style={override.icon}></Icon>
             <Paragraph style={override.paragraph}>
@@ -102,13 +119,22 @@ const override = StyleSheet.create({
   title: {
     fontSize: styles.fontL.fontSize,
   },
-  infoView: {
-    // height: "20%",
+
+  headerInfo: {
+    // display: "flex",
+    // flexDirection: "row",
+    alignItems: "center",
+  },
+
+  ratingView: {
+    flexDirection: "row",
+  },
+  priceView: {
+    flexDirection: "row",
   },
   smallInfoView: {
     display: "flex",
     flexDirection: "row",
-
     marginBottom: "2%",
   },
   paragraph: {

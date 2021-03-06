@@ -11,19 +11,7 @@ type BarData = {
 };
 
 const CardComponent = ({ barData }: BarData): React.ReactElement => {
-  const { name, image_url, rating, price, categories } = barData;
-
-  const priceValue = price.length;
-  const ratingArray = [];
-  const priceArray = [];
-
-  for (let i = 0; i < rating; i++) {
-    ratingArray.push(<Icon name="star" size={26}></Icon>);
-  }
-
-  for (let i = 0; i < priceValue; i++) {
-    priceArray.push(<Icon name="cash-outline" size={26}></Icon>);
-  }
+  const { name, image_url, categories } = barData;
 
   return (
     <View style={override.cardView}>
@@ -39,10 +27,6 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
             source={{ uri: `${image_url}` }}
             style={override.cardImage}
           />
-          <View style={override.cardSubheadingView}>
-            <View style={override.ratingView}>{ratingArray}</View>
-            <View style={override.priceView}>{priceArray}</View>
-          </View>
         </Card.Content>
       </Card>
     </View>
@@ -60,7 +44,7 @@ const override = StyleSheet.create({
   cardImage: {
     borderRadius: styles.border.borderRadius,
     marginTop: "8%",
-    height: "65%",
+    height: "75%",
   },
   cardSubheadingView: {
     marginTop: "5%",
