@@ -10,7 +10,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import CardComponent from "../components/CardComponent";
 import CustomSheet from "../components/BottomSheetComponent";
 import BottomSheet from "@gorhom/bottom-sheet";
-import { Paragraph, Button } from "react-native-paper";
+import { Paragraph, Button, Headline } from "react-native-paper";
 import Carousel from "react-native-snap-carousel";
 //Actions
 import { setBarListData } from "../actions/APIActions";
