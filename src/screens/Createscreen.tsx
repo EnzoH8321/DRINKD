@@ -138,6 +138,7 @@ const override = StyleSheet.create({
   },
   screenContainer: {
     ...styles.container,
+    marginTop: "30%",
   },
   screenDataContainer: {},
   screenButton: {

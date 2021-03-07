@@ -278,23 +278,7 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
             ) : (
               <View></View>
             )}
-            <Button
-              onPress={() => fetchBarDetails(dataArray[index].id)}
-              style={override.infoButton}
-              mode="contained"
-            >
-              Get more info
-            </Button>
           </View>
-
-          {/* <BottomSheet snapPoints={[-1, "60%"]}>
-            {CustomSheet(
-              dataArray[index],
-              photoArray,
-              detailedInfo,
-              transactionArray
-            )}
-          </BottomSheet> */}
         </>
       )}
     </View>
