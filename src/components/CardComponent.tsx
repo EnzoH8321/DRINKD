@@ -97,6 +97,7 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
                   {display_phone}
                 </Paragraph>
               </View>
+
               {setTransactionsUI(transactions)}
             </ScrollView>
           </View>
