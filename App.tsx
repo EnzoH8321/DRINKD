@@ -1,8 +1,6 @@
 import React from "react";
-
 import { Provider as PaperProvider } from "react-native-paper";
 import { Provider } from "react-redux";
-import styles from "./src/styles/constant";
 
 //ReactNav
 import { NavigationContainer } from "@react-navigation/native";
@@ -17,6 +15,8 @@ import CreateScreen from "./src/screens/Createscreen";
 import store from "./src/store/store";
 //Types
 import { HomeDrawerParamList } from "./src/types/types";
+//Icon
+import Icon from "react-native-vector-icons/Ionicons";
 
 //Stack
 const HomeDrawer = createBottomTabNavigator<HomeDrawerParamList>();
@@ -24,10 +24,42 @@ const HomeDrawer = createBottomTabNavigator<HomeDrawerParamList>();
 const Home = () => {
   return (
     <HomeDrawer.Navigator>
-      <HomeDrawer.Screen name="Home" component={HomeScreen} />
-      <HomeDrawer.Screen name="Top Choices" component={TopChoiceScreen} />
-      <HomeDrawer.Screen name="Join Party" component={JoinScreen} />
-      <HomeDrawer.Screen name="Create Party" component={CreateScreen} />
+      <HomeDrawer.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarIcon: ({ size }) => (
+            <Icon name="newspaper-outline" size={size}></Icon>
+          ),
+        }}
+      />
+      <HomeDrawer.Screen
+        name="Top Choices"
+        component={TopChoiceScreen}
+        options={{
+          tabBarIcon: ({ size }) => (
+            <Icon name="podium-outline" size={size}></Icon>
+          ),
+        }}
+      />
+      <HomeDrawer.Screen
+        name="Join Party"
+        component={JoinScreen}
+        options={{
+          tabBarIcon: ({ size }) => (
+            <Icon name="person-add-outline" size={size}></Icon>
+          ),
+        }}
+      />
+      <HomeDrawer.Screen
+        name="Create Party"
+        component={CreateScreen}
+        options={{
+          tabBarIcon: ({ size }) => (
+            <Icon name="person-outline" size={size}></Icon>
+          ),
+        }}
+      />
     </HomeDrawer.Navigator>
   );
 };

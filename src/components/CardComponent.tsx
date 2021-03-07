@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Title, Paragraph, Subheading } from "react-native-paper";
+import { Card, Title, Paragraph } from "react-native-paper";
 import styles from "../styles/constant";
 import { ApiSearch } from "../types/types";
 import { StyleSheet, View } from "react-native";
@@ -90,9 +90,6 @@ const override = StyleSheet.create({
     borderRadius: styles.border.borderRadius,
     // marginTop: "8%",
     height: "75%",
-  },
-  cardSubheadingView: {
-    marginTop: "5%",
   },
   cardSubheading: {
     marginTop: "2%",
