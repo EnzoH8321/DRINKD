@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { Card, Title, Paragraph } from "react-native-paper";
 import styles from "../styles/constant";
 import { ApiSearch } from "../types/types";
@@ -20,9 +20,45 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
     display_phone,
     rating,
     price,
+    transactions,
   } = barData;
 
-  console.log(barData);
+  function setTransactionsUI(transactions: string[]) {
+    const transactionArray: ReactElement[] = [];
+
+    transactions.map((value: string) => {
+      if (value === "delivery") {
+        transactionArray.push(
+          <View style={override.smallInfoView}>
+            <Icon name="bicycle" style={override.icon}></Icon>
+            <Paragraph style={override.paragraph}>Delivery Available</Paragraph>
+          </View>
+        );
+      }
+
+      if (value === "pickup") {
+        transactionArray.push(
+          <View style={override.smallInfoView}>
+            <Icon name="walk" style={override.icon}></Icon>
+            <Paragraph style={override.paragraph}>Pickup Available</Paragraph>
+          </View>
+        );
+      }
+
+      if (value === "restaurant_reservation") {
+        transactionArray.push(
+          <View style={override.smallInfoView}>
+            <Icon name="restaurant-outline" style={override.icon}></Icon>
+            <Paragraph style={override.paragraph}>
+              Reservations Available
+            </Paragraph>
+          </View>
+        );
+      }
+    });
+
+    return transactionArray;
+  }
 
   return (
     <View>
@@ -61,6 +97,7 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
                   {display_phone}
                 </Paragraph>
               </View>
+              {setTransactionsUI(transactions)}
             </ScrollView>
           </View>
         </Card.Content>
