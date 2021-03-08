@@ -60,17 +60,65 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
     return transactionArray;
   }
 
+  const override = StyleSheet.create({
+    card: {
+      height: "99%",
+      width: "99%",
+      borderRadius: styles.border.borderRadius,
+      ...styles.shadow,
+    },
+
+    scrollViewParent: {
+      flexGrow: 1,
+      marginTop: "2%",
+    },
+    smallInfoView: {
+      display: "flex",
+      flexDirection: "row",
+      marginBottom: "2%",
+    },
+    cardImage: {
+      borderRadius: styles.border.borderRadius,
+      // marginTop: "8%",
+      height: "75%",
+    },
+    cardSubheading: {
+      marginTop: "2%",
+      fontSize: styles.fontM.fontSize,
+    },
+    cardContent: {
+      height: "100%",
+    },
+    cardTitle: {
+      fontSize: styles.fontL.fontSize,
+      marginBottom: "2%",
+    },
+
+    paragraph: {
+      fontSize: styles.fontS.fontSize,
+      marginTop: "5%",
+      marginLeft: "5%",
+    },
+    paragraphHeader: {
+      fontSize: styles.fontM.fontSize,
+    },
+    icon: {
+      fontSize: 32,
+      alignSelf: "flex-end",
+    },
+  });
+
   return (
     <View>
       <Card style={override.card}>
         <Card.Content style={override.cardContent}>
           <Title style={override.cardTitle}>{name}</Title>
-          <Paragraph style={{ fontSize: override.paragraph.fontSize }}>
+          <Paragraph style={override.paragraphHeader}>
             {categories[0]?.title} {`${categories[1] ? "-" : ""}`}{" "}
             {categories[1]?.title} {`${categories[2] ? "-" : ""}`}{" "}
             {categories[2]?.title}
           </Paragraph>
-          <Paragraph style={{ fontSize: override.paragraph.fontSize }}>
+          <Paragraph style={override.paragraphHeader}>
             {rating} / {price}
           </Paragraph>
           <View style={override.scrollViewParent}>
@@ -106,50 +154,5 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
     </View>
   );
 };
-
-const override = StyleSheet.create({
-  card: {
-    height: "99%",
-    width: "99%",
-    borderRadius: styles.border.borderRadius,
-    ...styles.shadow,
-  },
-
-  scrollViewParent: {
-    flexGrow: 1,
-    marginTop: "2%",
-  },
-  smallInfoView: {
-    display: "flex",
-    flexDirection: "row",
-    marginBottom: "2%",
-  },
-  cardImage: {
-    borderRadius: styles.border.borderRadius,
-    // marginTop: "8%",
-    height: "75%",
-  },
-  cardSubheading: {
-    marginTop: "2%",
-    fontSize: styles.fontM.fontSize,
-  },
-  cardContent: {
-    height: "100%",
-  },
-  cardTitle: {
-    fontSize: styles.fontL.fontSize,
-    marginBottom: "2%",
-  },
-
-  paragraph: {
-    fontSize: styles.fontS.fontSize,
-    marginTop: "5%",
-    marginLeft: "5%",
-  },
-  icon: {
-    fontSize: 32,
-    alignSelf: "flex-end",
-  },
-});
 
 export default CardComponent;

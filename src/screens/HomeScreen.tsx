@@ -131,6 +131,11 @@ const HomeScreen = (): React.ReactNode => {
     button: {
       width: "35%",
       backgroundColor: styles.colorPrimary.backgroundColor,
+      ...styles.shadow,
+    },
+    container: {
+      ...styles.container,
+      marginTop: "5%",
     },
     carousel: {
       height: !currentPartyStatus ? "80%" : "73%",
@@ -170,6 +175,7 @@ const HomeScreen = (): React.ReactNode => {
     },
     submitButton: {
       backgroundColor: styles.colorPrimary.backgroundColor,
+      ...styles.shadow,
     },
     iconContainer: {
       marginLeft: "2%",
@@ -181,7 +187,7 @@ const HomeScreen = (): React.ReactNode => {
   });
 
   return (
-    <View style={styles.container}>
+    <View style={override.container}>
       {!dataArray ? (
         <Paragraph>Not Loaded Yet</Paragraph>
       ) : (
@@ -227,7 +233,7 @@ const HomeScreen = (): React.ReactNode => {
                 <View style={override.starView}>
                   <TouchableOpacity onPress={() => firstStarLogic()}>
                     <Icon
-                      name="thumbs-up"
+                      name="thumbs-up-outline"
                       style={{
                         color:
                           pointValue >= 1
@@ -239,7 +245,7 @@ const HomeScreen = (): React.ReactNode => {
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => setPointValue(2)}>
                     <Icon
-                      name="thumbs-up"
+                      name="thumbs-up-outline"
                       style={{
                         color:
                           pointValue >= 2
@@ -251,7 +257,7 @@ const HomeScreen = (): React.ReactNode => {
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => setPointValue(3)}>
                     <Icon
-                      name="thumbs-up"
+                      name="thumbs-up-outline"
                       style={{
                         color:
                           pointValue >= 3
@@ -263,7 +269,7 @@ const HomeScreen = (): React.ReactNode => {
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => setPointValue(4)}>
                     <Icon
-                      name="thumbs-up"
+                      name="thumbs-up-outline"
                       style={{
                         color:
                           pointValue >= 4
@@ -275,7 +281,7 @@ const HomeScreen = (): React.ReactNode => {
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => setPointValue(5)}>
                     <Icon
-                      name="thumbs-up"
+                      name="thumbs-up-outline"
                       style={{
                         color:
                           pointValue >= 5

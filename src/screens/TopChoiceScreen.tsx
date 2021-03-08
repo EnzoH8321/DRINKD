@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Alert } from "react-native";
 import styles from "../styles/constant";
 //Firebase
 import firebase from "../utils/firebase";
@@ -29,9 +29,9 @@ const TopChoicesScreen = (): React.ReactNode => {
 
   //Gets the three top scorers
   function getTopScorers() {
-    // if (!choicesObject) {
-    //   return Alert.alert("nothing found");
-    // }
+    if (!choicesObject) {
+      return Alert.alert("nothing found");
+    }
 
     const entries: EntriesInterface = Object.entries(choicesObject);
 

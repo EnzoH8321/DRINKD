@@ -13,7 +13,6 @@ type Props = {
 };
 
 const MiniCardComponent = ({
-  index,
   name,
   number,
   iconColor,

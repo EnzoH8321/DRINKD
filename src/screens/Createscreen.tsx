@@ -26,6 +26,36 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
   const partyId = useSelector((state: RootState) => state.party.partyId);
   const [partyName, setPartyName] = useState("");
 
+  const override = StyleSheet.create({
+    view: {
+      alignItems: "center",
+    },
+    screenContainer: {
+      ...styles.container,
+      marginTop: "30%",
+    },
+    screenDataContainer: {},
+    screenButton: {
+      ...styles.button,
+      backgroundColor: styles.colorPrimary.backgroundColor,
+    },
+    headline: {
+      ...styles.headline,
+    },
+    headlineView: {
+      marginTop: "10%",
+    },
+    createHeadline: {
+      textAlign: "center",
+    },
+    memberHeadline: {
+      alignSelf: "center",
+    },
+    memberHeadlineView: {
+      marginTop: "50%",
+    },
+  });
+
   //Create Party func
   function createParty() {
     if (!partyName) {
@@ -82,7 +112,11 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
       case "MEMBER":
         return (
           <View>
-            <Headline>Please Leave your party first</Headline>
+            <View style={override.memberHeadlineView}>
+              <Headline style={override.memberHeadline}>
+                Please Leave your party first
+              </Headline>
+            </View>
           </View>
         );
 
@@ -94,7 +128,6 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
                 Create Your Party Below
               </Headline>
               <TextInput
-                style={override.textInput}
                 value={partyName}
                 onChangeText={(name) => setPartyName(name)}
                 label="Name your party here"
@@ -131,30 +164,5 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
   }
   return renderSwitch(memberLevel);
 };
-
-const override = StyleSheet.create({
-  view: {
-    alignItems: "center",
-  },
-  screenContainer: {
-    ...styles.container,
-    marginTop: "30%",
-  },
-  screenDataContainer: {},
-  screenButton: {
-    ...styles.button,
-    backgroundColor: styles.colorPrimary.backgroundColor,
-  },
-  headline: {
-    ...styles.headline,
-  },
-  headlineView: {
-    marginTop: "10%",
-  },
-  createHeadline: {
-    textAlign: "center",
-  },
-  textInput: {},
-});
 
 export default CreateScreen;
