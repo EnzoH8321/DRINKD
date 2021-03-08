@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Alert, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import styles from "../styles/constant";
 //Firebase
 import firebase from "../utils/firebase";

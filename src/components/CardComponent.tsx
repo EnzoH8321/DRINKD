@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { Card, Title, Paragraph, Headline } from "react-native-paper";
+import { Card, Title, Paragraph } from "react-native-paper";
 import styles from "../styles/constant";
 import { ApiSearch } from "../types/types";
 import { StyleSheet, View } from "react-native";

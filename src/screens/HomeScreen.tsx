@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { View, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import fetchBusiness from "../api/YelpApi";
-import axios from "axios";
+
 import * as Location from "expo-location";
 import styles from "../styles/constant";
 import Icon from "react-native-vector-icons/Ionicons";
+import * as WebBrowser from "expo-web-browser";
 //Components
 import CardComponent from "../components/CardComponent";
 
@@ -36,9 +37,6 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
   const [index, setIndex] = useState(0);
   const [pointValue, setPointValue] = useState(0);
   const [firstStar, setFirstStar] = useState(false);
-  const [detailedInfo, setDetailedInfo] = useState();
-  const [photoArray, setPhotoArray] = useState([]);
-  const [transactionArray, setTransactionArray] = useState([]);
 
   const refCarousel = React.useRef(null);
   const currentPartyStatus = useSelector(
@@ -52,24 +50,20 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
   const userName = useSelector((state: RootState) => state.party.userName);
   const inParty = useSelector((state: RootState) => state.party.inParty);
 
-  if (dataArray) {
-    console.log(dataArray[index].url);
-  }
+  // //Calls specific business using current card ID
+  // async function fetchBarDetails(id: string) {
+  //   const data = await axios(`https://api.yelp.com/v3/businesses/${id}`, {
+  //     method: "GET",
+  //     headers: {
+  //       Authorization:
+  //         "BEARER nX9W-jXWsXSB_gW3t2Y89iwQ-M7SR9-HVBHDAqf1Zy0fo8LTs3Q1VbIVpdeyFu7PehJlkLDULQulnJ3l6q6loIET5JHmcs9i3tJqYEO02f39qKgSCi4DAEVIlgPPX3Yx",
+  //     },
+  //   });
 
-  //Calls specific business using current card ID
-  async function fetchBarDetails(id: string) {
-    const data = await axios(`https://api.yelp.com/v3/businesses/${id}`, {
-      method: "GET",
-      headers: {
-        Authorization:
-          "BEARER nX9W-jXWsXSB_gW3t2Y89iwQ-M7SR9-HVBHDAqf1Zy0fo8LTs3Q1VbIVpdeyFu7PehJlkLDULQulnJ3l6q6loIET5JHmcs9i3tJqYEO02f39qKgSCi4DAEVIlgPPX3Yx",
-      },
-    });
-
-    setTransactionArray(data.data.transactions);
-    setDetailedInfo(data.data);
-    setPhotoArray(data.data.photos);
-  }
+  //   setTransactionArray(data.data.transactions);
+  //   setDetailedInfo(data.data);
+  //   setPhotoArray(data.data.photos);
+  // }
 
   // Calls General Yelp Api
   useEffect(() => {
@@ -195,7 +189,15 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
           <View style={override.homeContainer}>
             <View style={override.headlineView}>
               <Headline>Party Code</Headline>
-              <Button mode="contained" style={override.button}>
+              <Button
+                mode="contained"
+                style={override.button}
+                onPress={() => {
+                  if (dataArray) {
+                    WebBrowser.openBrowserAsync(`${dataArray[index].url}`);
+                  }
+                }}
+              >
                 Learn More
               </Button>
             </View>
@@ -213,8 +215,6 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
                   setIndex(index);
                   //Reset's point value
                   setPointValue(0);
-                  setTransactionArray([]);
-                  setPhotoArray([]);
                 }}
                 layout="tinder"
               />
