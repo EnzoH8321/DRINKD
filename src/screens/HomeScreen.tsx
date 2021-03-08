@@ -133,11 +133,15 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
   const override = StyleSheet.create({
     carousel: {
       height: !currentPartyStatus ? "80%" : "73%",
-      marginTop: "15%",
+      marginTop: "2%",
       marginLeft: "2%",
     },
     homeContainer: {
       zIndex: -1,
+    },
+    headlineView: {
+      marginTop: "10%",
+      alignItems: "center",
     },
     starContainer: {
       marginTop: "5%",
@@ -180,6 +184,9 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
       ) : (
         <>
           <View style={override.homeContainer}>
+            <View style={override.headlineView}>
+              <Headline>Test</Headline>
+            </View>
             <View style={override.carousel}>
               <Carousel
                 activeSlideAlignment="start"
