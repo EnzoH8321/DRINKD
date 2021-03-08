@@ -36,11 +36,11 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
     const creationTime = Date.now();
 
     const randomNumber = Math.floor(
-      Math.pow(10, 3 - 1) + Math.random() * 9 * Math.pow(10, 3 - 1)
+      Math.pow(10, 6 - 1) + Math.random() * 9 * Math.pow(10, 6 - 1)
     ).toString();
 
     const userNameGenerator = Math.floor(
-      Math.pow(10, 5 - 1) + Math.random() * 9 * Math.pow(10, 5 - 1)
+      Math.pow(10, 6 - 1) + Math.random() * 9 * Math.pow(10, 6 - 1)
     ).toString();
 
     firebase

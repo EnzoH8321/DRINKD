@@ -31,7 +31,7 @@ type Props = {
   navigation: HomeScreenNavProp;
 };
 
-const HomeScreen = ({ navigation }: Props): React.ReactNode => {
+const HomeScreen = (): React.ReactNode => {
   const dispatch = useDispatch();
   const [dataArray, setDataArray] = useState<ApiSearch[]>();
   const [index, setIndex] = useState(0);
@@ -129,7 +129,7 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
   //Styles
   const override = StyleSheet.create({
     button: {
-      width: "40%",
+      width: "35%",
       backgroundColor: styles.colorPrimary.backgroundColor,
     },
     carousel: {
@@ -188,7 +188,9 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
         <>
           <View style={override.homeContainer}>
             <View style={override.headlineView}>
-              <Headline>Party Code</Headline>
+              <Headline>
+                Party Code: {currentPartyId ? currentPartyId : ""}
+              </Headline>
               <Button
                 mode="contained"
                 style={override.button}
