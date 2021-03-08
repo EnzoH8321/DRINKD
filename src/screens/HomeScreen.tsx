@@ -8,8 +8,7 @@ import styles from "../styles/constant";
 import Icon from "react-native-vector-icons/Ionicons";
 //Components
 import CardComponent from "../components/CardComponent";
-import CustomSheet from "../components/BottomSheetComponent";
-import BottomSheet from "@gorhom/bottom-sheet";
+
 import { Paragraph, Button, Headline } from "react-native-paper";
 import Carousel from "react-native-snap-carousel";
 //Actions
@@ -52,6 +51,10 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
   const currentPartyId = useSelector((state: RootState) => state.party.partyId);
   const userName = useSelector((state: RootState) => state.party.userName);
   const inParty = useSelector((state: RootState) => state.party.inParty);
+
+  if (dataArray) {
+    console.log(dataArray[index].url);
+  }
 
   //Calls specific business using current card ID
   async function fetchBarDetails(id: string) {
@@ -131,6 +134,10 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
 
   //Styles
   const override = StyleSheet.create({
+    button: {
+      width: "40%",
+      backgroundColor: styles.colorPrimary.backgroundColor,
+    },
     carousel: {
       height: !currentPartyStatus ? "80%" : "73%",
       marginTop: "2%",
@@ -141,7 +148,9 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
     },
     headlineView: {
       marginTop: "10%",
-      alignItems: "center",
+      justifyContent: "space-around",
+      display: "flex",
+      flexDirection: "row",
     },
     starContainer: {
       marginTop: "5%",
@@ -185,7 +194,10 @@ const HomeScreen = ({ navigation }: Props): React.ReactNode => {
         <>
           <View style={override.homeContainer}>
             <View style={override.headlineView}>
-              <Headline>Test</Headline>
+              <Headline>Party Code</Headline>
+              <Button mode="contained" style={override.button}>
+                Learn More
+              </Button>
             </View>
             <View style={override.carousel}>
               <Carousel
