@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, MutableRefObject } from "react";
 import { View, StyleSheet, Alert } from "react-native";
 import { Headline, Button, TextInput } from "react-native-paper";
 import styles from "../styles/constant";
@@ -26,6 +26,8 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
   const partyId = useSelector((state: RootState) => state.party.partyId);
   const [partyName, setPartyName] = useState("");
 
+  const textRef = React.useRef(null);
+
   const override = StyleSheet.create({
     view: {
       alignItems: "center",
@@ -34,7 +36,7 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
       ...styles.container,
       marginTop: "30%",
     },
-    screenDataContainer: {},
+
     screenButton: {
       ...styles.button,
       backgroundColor: styles.colorPrimary.backgroundColor,
@@ -53,6 +55,9 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
     },
     memberHeadlineView: {
       marginTop: "50%",
+    },
+    textInput: {
+      color: "green",
     },
   });
 
@@ -123,14 +128,22 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
       default:
         return (
           <View style={override.screenContainer}>
-            <View style={override.screenDataContainer}>
+            <View>
               <Headline style={override.headline}>
                 Create Your Party Below
               </Headline>
               <TextInput
+                ref={textRef}
                 value={partyName}
                 onChangeText={(name) => setPartyName(name)}
                 label="Name your party here"
+                // onFocus={() => {
+                //   textRef.current.props.theme.colors.primary =
+                //     styles.colorPrimary.backgroundColor;
+                // }}
+                theme={{
+                  colors: { primary: styles.colorPrimary.backgroundColor },
+                }}
               ></TextInput>
               {!memberLevel ? (
                 <Button

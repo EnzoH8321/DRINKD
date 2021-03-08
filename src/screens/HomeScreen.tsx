@@ -138,7 +138,7 @@ const HomeScreen = (): React.ReactNode => {
       marginTop: "5%",
     },
     carousel: {
-      height: !currentPartyStatus ? "80%" : "73%",
+      height: !currentPartyStatus ? "90%" : "73%",
       marginTop: "2%",
       marginLeft: "2%",
     },

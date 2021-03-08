@@ -1,5 +1,5 @@
 import React from "react";
-import { Provider as PaperProvider } from "react-native-paper";
+import { Provider as PaperProvider, DefaultTheme } from "react-native-paper";
 import { Provider } from "react-redux";
 
 //ReactNav
@@ -17,9 +17,17 @@ import store from "./src/store/store";
 import { HomeDrawerParamList } from "./src/types/types";
 //Icon
 import Icon from "react-native-vector-icons/Ionicons";
+import styles from "./src/styles/constant";
 
 //Stack
 const HomeDrawer = createBottomTabNavigator<HomeDrawerParamList>();
+
+// const theme = {
+//   ...DefaultTheme,
+//   colors: {
+//     ...DefaultTheme.colors,
+//   },
+// };
 
 const Home = () => {
   return (
