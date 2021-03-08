@@ -22,12 +22,24 @@ import styles from "./src/styles/constant";
 //Stack
 const HomeDrawer = createBottomTabNavigator<HomeDrawerParamList>();
 
-// const theme = {
-//   ...DefaultTheme,
-//   colors: {
-//     ...DefaultTheme.colors,
-//   },
-// };
+type Props = {
+  focused: boolean;
+  color: string;
+  size: number;
+};
+
+function setTabBarIconHome(size: number) {
+  return <Icon name="newspaper-outline" size={size}></Icon>;
+}
+function setTabBarIconTopChoices(size: number) {
+  return <Icon name="podium-outline" size={size}></Icon>;
+}
+function setTabBarIconJoin(size: number) {
+  return <Icon name="person-add-outline" size={size}></Icon>;
+}
+function setTabBarIconCreate(size: number) {
+  return <Icon name="person-outline" size={size}></Icon>;
+}
 
 const Home = () => {
   return (
@@ -36,36 +48,28 @@ const Home = () => {
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarIcon: ({ size }) => (
-            <Icon name="newspaper-outline" size={size}></Icon>
-          ),
+          tabBarIcon: ({ size }) => setTabBarIconHome(size),
         }}
       />
       <HomeDrawer.Screen
         name="Top Choices"
         component={TopChoiceScreen}
         options={{
-          tabBarIcon: ({ size }) => (
-            <Icon name="podium-outline" size={size}></Icon>
-          ),
+          tabBarIcon: ({ size }) => setTabBarIconTopChoices(size),
         }}
       />
       <HomeDrawer.Screen
         name="Join Party"
         component={JoinScreen}
         options={{
-          tabBarIcon: ({ size }) => (
-            <Icon name="person-add-outline" size={size}></Icon>
-          ),
+          tabBarIcon: ({ size }) => setTabBarIconJoin(size),
         }}
       />
       <HomeDrawer.Screen
         name="Create Party"
         component={CreateScreen}
         options={{
-          tabBarIcon: ({ size }) => (
-            <Icon name="person-outline" size={size}></Icon>
-          ),
+          tabBarIcon: ({ size }) => setTabBarIconCreate(size),
         }}
       />
     </HomeDrawer.Navigator>

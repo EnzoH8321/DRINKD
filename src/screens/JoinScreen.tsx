@@ -70,6 +70,9 @@ const JoinScreen: React.FC = () => {
         label="Enter party code here"
         value={textValue}
         onChangeText={(text) => setTextValue(text)}
+        theme={{
+          colors: { primary: styles.colorPrimary.backgroundColor },
+        }}
       />
       {!inParty ? (
         <Button mode="contained" style={override.button} onPress={joinParty}>

@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   colorPrimary: {
-    backgroundColor: "#f09424",
+    backgroundColor: "#e3330b",
   },
   colorSecondary: {
     backgroundColor: "#FFFFFF",
