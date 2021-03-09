@@ -22,12 +22,7 @@ import styles from "./src/styles/constant";
 //Stack
 const HomeDrawer = createBottomTabNavigator<HomeDrawerParamList>();
 
-type Props = {
-  focused: boolean;
-  color: string;
-  size: number;
-};
-
+//Created function for debug purposes
 function setTabBarIconHome(size: number) {
   return <Icon name="newspaper-outline" size={size}></Icon>;
 }
@@ -43,7 +38,15 @@ function setTabBarIconCreate(size: number) {
 
 const Home = () => {
   return (
-    <HomeDrawer.Navigator>
+    <HomeDrawer.Navigator
+      tabBarOptions={{
+        activeTintColor: styles.colorSecondary.backgroundColor,
+        activeBackgroundColor: styles.colorPrimary.backgroundColor,
+        labelStyle: {
+          color: "black",
+        },
+      }}
+    >
       <HomeDrawer.Screen
         name="Home"
         component={HomeScreen}
