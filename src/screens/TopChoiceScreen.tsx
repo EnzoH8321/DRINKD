@@ -74,7 +74,12 @@ const TopChoicesScreen = (): React.ReactNode => {
           if (!data) {
             return;
           }
+          //Turns off firebase listener when you leave a party
+          if (!inParty) {
+            firebaseData.off();
+          }
 
+          console.log(choicesObject);
           setChoicesObject(data.topBars);
         });
       })();
