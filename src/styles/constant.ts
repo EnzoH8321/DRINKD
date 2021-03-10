@@ -38,13 +38,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   colorPrimary: {
-    backgroundColor: "#e3330b",
+    backgroundColor: "#ec2113",
   },
   colorSecondary: {
     backgroundColor: "#FFFFFF",
   },
   colorTertiary: {
-    backgroundColor: "#32A6ED",
+    backgroundColor: "#ec2113",
   },
   headline: {
     textAlign: "center",

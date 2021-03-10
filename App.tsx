@@ -39,13 +39,15 @@ function setTabBarIconCreate(size: number) {
 const Home = () => {
   return (
     <HomeDrawer.Navigator
-      tabBarOptions={{
-        activeTintColor: styles.colorSecondary.backgroundColor,
-        activeBackgroundColor: styles.colorPrimary.backgroundColor,
-        labelStyle: {
-          color: "black",
-        },
-      }}
+      tabBarOptions={
+        {
+          // activeTintColor: styles.colorSecondary.backgroundColor,
+          // activeBackgroundColor: styles.colorPrimary.backgroundColor,
+          // labelStyle: {
+          //   color: "black",
+          // },
+        }
+      }
     >
       <HomeDrawer.Screen
         name="Home"
