@@ -5,11 +5,11 @@ import fetchBusiness from "../api/YelpApi";
 
 import * as Location from "expo-location";
 import styles from "../styles/constant";
-import Icon from "react-native-vector-icons/Ionicons";
+import * as SplashScreen from "expo-splash-screen";
 import * as WebBrowser from "expo-web-browser";
 //Components
 import CardComponent from "../components/CardComponent";
-
+import Icon from "react-native-vector-icons/Ionicons";
 import { Paragraph, Button, Headline } from "react-native-paper";
 import Carousel from "react-native-snap-carousel";
 //Actions
@@ -67,6 +67,7 @@ const HomeScreen = (): React.ReactNode => {
 
   // Calls General Yelp Api
   useEffect(() => {
+    SplashScreen.preventAutoHideAsync();
     try {
       // the parenth below is syntax for => function(){...}
       (async () => {
@@ -92,6 +93,7 @@ const HomeScreen = (): React.ReactNode => {
         dispatch(setBarListData(data));
         dispatch(setPartyURL(url));
         setDataArray(data);
+        SplashScreen.hideAsync();
       })();
     } catch (error) {
       console.log(error);
