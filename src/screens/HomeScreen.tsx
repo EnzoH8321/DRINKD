@@ -124,13 +124,14 @@ const HomeScreen = (): React.ReactNode => {
     const currentUrl = dataArray[index].url;
     const finalScore = pointValue;
 
-    console.log(currentUrl);
-
     firebase
       .database()
       .ref(`parties/${currentPartyId}/topBars/${userName}`)
       .update({
-        [currentCard]: finalScore,
+        [currentCard]: {
+          score: finalScore,
+          url: currentUrl,
+        },
       });
   }
 
