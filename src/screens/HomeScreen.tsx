@@ -67,7 +67,10 @@ const HomeScreen = (): React.ReactNode => {
 
   // Calls General Yelp Api
   useEffect(() => {
-    SplashScreen.preventAutoHideAsync();
+    if (!dataArray) {
+      SplashScreen.preventAutoHideAsync();
+    }
+
     try {
       // the parenth below is syntax for => function(){...}
       (async () => {
@@ -118,7 +121,10 @@ const HomeScreen = (): React.ReactNode => {
     }
 
     const currentCard = dataArray[index].name;
+    const currentUrl = dataArray[index].url;
     const finalScore = pointValue;
+
+    console.log(currentUrl);
 
     firebase
       .database()
