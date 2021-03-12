@@ -105,6 +105,7 @@ const TopChoicesScreen = (): React.ReactNode => {
           index={1}
           name={topChoicesObject.first ? topChoicesObject.first[0] : ""}
           number={topChoicesObject.first ? topChoicesObject.first[1].score : 0}
+          url={topChoicesObject.first ? topChoicesObject.first[1].url : ""}
           iconColor="gold"
         />
         <MiniCardComponent
@@ -113,12 +114,14 @@ const TopChoicesScreen = (): React.ReactNode => {
           number={
             topChoicesObject.second ? topChoicesObject.second[1].score : 0
           }
+          url={topChoicesObject.second ? topChoicesObject.second[1].url : ""}
           iconColor="silver"
         />
         <MiniCardComponent
           index={3}
           name={topChoicesObject.third ? topChoicesObject.third[0] : ""}
           number={topChoicesObject.third ? topChoicesObject.third[1].score : 0}
+          url={topChoicesObject.third ? topChoicesObject.third[1].url : ""}
           iconColor="#CD7F32"
         />
         <Button

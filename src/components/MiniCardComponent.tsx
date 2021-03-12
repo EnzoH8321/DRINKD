@@ -10,18 +10,20 @@ type Props = {
   name?: string;
   number?: ReactText;
   iconColor: string;
+  url: string;
 };
 
 const MiniCardComponent = ({
   name,
   number,
   iconColor,
+  url,
 }: Props): React.ReactElement => {
   const override = StyleSheet.create({
     card: {
       // height: "25%",
       borderRadius: styles.border.borderRadius,
-      marginBottom: 10,
+      marginBottom: 30,
       ...styles.shadow,
     },
     icon: {
