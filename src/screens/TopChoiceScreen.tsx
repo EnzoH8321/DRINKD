@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet, Alert } from "react-native";
+import { View, StyleSheet, Alert, TouchableOpacity } from "react-native";
+import * as WebBrowser from "expo-web-browser";
 import styles from "../styles/constant";
 //Firebase
 import firebase from "../utils/firebase";
@@ -101,29 +102,55 @@ const TopChoicesScreen = (): React.ReactNode => {
   return (
     <View style={override.choiceContainer}>
       <View style={override.choiceDataContainer}>
-        <MiniCardComponent
-          index={1}
-          name={topChoicesObject.first ? topChoicesObject.first[0] : ""}
-          number={topChoicesObject.first ? topChoicesObject.first[1].score : 0}
-          url={topChoicesObject.first ? topChoicesObject.first[1].url : ""}
-          iconColor="gold"
-        />
-        <MiniCardComponent
-          index={2}
-          name={topChoicesObject.second ? topChoicesObject.second[0] : ""}
-          number={
-            topChoicesObject.second ? topChoicesObject.second[1].score : 0
+        <TouchableOpacity
+          onPress={() =>
+            WebBrowser.openBrowserAsync(
+              `${topChoicesObject.first ? topChoicesObject.first[1].url : ""}`
+            )
           }
-          url={topChoicesObject.second ? topChoicesObject.second[1].url : ""}
-          iconColor="silver"
-        />
-        <MiniCardComponent
-          index={3}
-          name={topChoicesObject.third ? topChoicesObject.third[0] : ""}
-          number={topChoicesObject.third ? topChoicesObject.third[1].score : 0}
-          url={topChoicesObject.third ? topChoicesObject.third[1].url : ""}
-          iconColor="#CD7F32"
-        />
+        >
+          <MiniCardComponent
+            index={1}
+            name={topChoicesObject.first ? topChoicesObject.first[0] : ""}
+            number={
+              topChoicesObject.first ? topChoicesObject.first[1].score : 0
+            }
+            iconColor="gold"
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() =>
+            WebBrowser.openBrowserAsync(
+              `${topChoicesObject.second ? topChoicesObject.second[1].url : ""}`
+            )
+          }
+        >
+          <MiniCardComponent
+            index={2}
+            name={topChoicesObject.second ? topChoicesObject.second[0] : ""}
+            number={
+              topChoicesObject.second ? topChoicesObject.second[1].score : 0
+            }
+            url={topChoicesObject.second ? topChoicesObject.second[1].url : ""}
+            iconColor="silver"
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() =>
+            WebBrowser.openBrowserAsync(
+              `${topChoicesObject.third ? topChoicesObject.third[1].url : ""}`
+            )
+          }
+        >
+          <MiniCardComponent
+            index={3}
+            name={topChoicesObject.third ? topChoicesObject.third[0] : ""}
+            number={
+              topChoicesObject.third ? topChoicesObject.third[1].score : 0
+            }
+            iconColor="#CD7F32"
+          />
+        </TouchableOpacity>
         <Button
           mode="contained"
           onPress={getTopScorers}
