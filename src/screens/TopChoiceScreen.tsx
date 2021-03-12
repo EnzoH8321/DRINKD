@@ -10,13 +10,22 @@ import { RootState } from "../reducers";
 import { Button } from "react-native-paper";
 //Types
 type PrefInterface = {
-  [key: string]: number;
+  string?: {
+    score: number;
+    url: string;
+  };
 };
-type EntriesInterface = [string, { [key: string]: number }][];
+type EntriesInterface = [
+  string,
+  {
+    score: number;
+    url: string;
+  }
+][];
 type TopChoicesInterface = {
-  first?: string | [string, number];
-  second?: string | [string, number];
-  third?: string | [string, number];
+  first?: [string, { score: number; url: string }];
+  second?: [string, { score: number; url: string }];
+  third?: [string, { score: number; url: string }];
 };
 //
 const TopChoicesScreen = (): React.ReactNode => {
@@ -33,9 +42,9 @@ const TopChoicesScreen = (): React.ReactNode => {
       return Alert.alert("nothing found");
     }
 
-    const entries: EntriesInterface = Object.entries(choicesObject);
+    const entries: any = Object.entries(choicesObject);
 
-    const preferredChoices: PrefInterface = {};
+    const preferredChoices: any = {};
 
     let sortable = null;
 
@@ -50,7 +59,7 @@ const TopChoicesScreen = (): React.ReactNode => {
     }
 
     sortable = Object.entries(preferredChoices)
-      .sort((a, b) => a[1] - b[1])
+      .sort((a, b) => a[1].score - b[1].score)
       .reverse();
 
     setTopChoicesObject({
@@ -58,6 +67,8 @@ const TopChoicesScreen = (): React.ReactNode => {
       second: sortable[1] ? [sortable[1][0], sortable[1][1]] : "",
       third: sortable[2] ? [sortable[2][0], sortable[2][1]] : "",
     });
+
+    console.log(topChoicesObject);
   }
   //Grabs the bar choices from the Firebase DB
   useEffect(() => {
@@ -79,7 +90,6 @@ const TopChoicesScreen = (): React.ReactNode => {
             firebaseData.off();
           }
 
-          console.log(choicesObject);
           setChoicesObject(data.topBars);
         });
       })();
@@ -94,19 +104,21 @@ const TopChoicesScreen = (): React.ReactNode => {
         <MiniCardComponent
           index={1}
           name={topChoicesObject.first ? topChoicesObject.first[0] : ""}
-          number={topChoicesObject.first ? topChoicesObject.first[1] : 0}
+          number={topChoicesObject.first ? topChoicesObject.first[1].score : 0}
           iconColor="gold"
         />
         <MiniCardComponent
           index={2}
           name={topChoicesObject.second ? topChoicesObject.second[0] : ""}
-          number={topChoicesObject.second ? topChoicesObject.second[1] : 0}
+          number={
+            topChoicesObject.second ? topChoicesObject.second[1].score : 0
+          }
           iconColor="silver"
         />
         <MiniCardComponent
           index={3}
           name={topChoicesObject.third ? topChoicesObject.third[0] : ""}
-          number={topChoicesObject.third ? topChoicesObject.third[1] : 0}
+          number={topChoicesObject.third ? topChoicesObject.third[1].score : 0}
           iconColor="#CD7F32"
         />
         <Button

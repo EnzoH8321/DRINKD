@@ -67,6 +67,7 @@ const HomeScreen = (): React.ReactNode => {
 
   // Calls General Yelp Api
   useEffect(() => {
+    //When there is not data to present, use splash screen
     if (!dataArray) {
       SplashScreen.preventAutoHideAsync();
     }
@@ -96,6 +97,7 @@ const HomeScreen = (): React.ReactNode => {
         dispatch(setBarListData(data));
         dispatch(setPartyURL(url));
         setDataArray(data);
+        //After data ahs been called, remove splash screen
         SplashScreen.hideAsync();
       })();
     } catch (error) {
