@@ -131,7 +131,6 @@ const TopChoicesScreen = (): React.ReactNode => {
             number={
               topChoicesObject.second ? topChoicesObject.second[1].score : 0
             }
-            url={topChoicesObject.second ? topChoicesObject.second[1].url : ""}
             iconColor="silver"
           />
         </TouchableOpacity>
