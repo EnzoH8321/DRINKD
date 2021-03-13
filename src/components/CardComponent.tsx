@@ -113,10 +113,12 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
       alignSelf: "flex-end",
       marginLeft: "15%",
       top: "100%",
+      backgroundColor: styles.colorPrimary.backgroundColor,
     },
 
     iconPressable: {
       fontSize: 32,
+      color: styles.colorSecondary.backgroundColor,
     },
   });
 

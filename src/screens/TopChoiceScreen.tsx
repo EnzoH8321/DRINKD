@@ -101,49 +101,77 @@ const TopChoicesScreen = (): React.ReactNode => {
     <View style={override.choiceContainer}>
       <View style={override.choiceDataContainer}>
         <TouchableOpacity
-          onPress={() =>
-            WebBrowser.openBrowserAsync(
-              `${topChoicesObject.first ? topChoicesObject.first[1].url : ""}`
-            )
-          }
+          onPress={() => {
+            try {
+              WebBrowser.openBrowserAsync(
+                `${topChoicesObject.first ? topChoicesObject.first[1].url : ""}`
+              );
+            } catch (error) {
+              Alert.alert("No Link Found ");
+            }
+          }}
         >
           <MiniCardComponent
             index={1}
-            name={topChoicesObject.first ? topChoicesObject.first[0] : ""}
+            name={
+              topChoicesObject.first && inParty ? topChoicesObject.first[0] : ""
+            }
             number={
-              topChoicesObject.first ? topChoicesObject.first[1].score : 0
+              topChoicesObject.first && inParty
+                ? topChoicesObject.first[1].score
+                : 0
             }
             iconColor="gold"
           />
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() =>
-            WebBrowser.openBrowserAsync(
-              `${topChoicesObject.second ? topChoicesObject.second[1].url : ""}`
-            )
-          }
+          onPress={() => {
+            try {
+              WebBrowser.openBrowserAsync(
+                `${
+                  topChoicesObject.second ? topChoicesObject.second[1].url : ""
+                }`
+              );
+            } catch (err) {
+              Alert.alert("No Link Found ");
+            }
+          }}
         >
           <MiniCardComponent
             index={2}
-            name={topChoicesObject.second ? topChoicesObject.second[0] : ""}
+            name={
+              topChoicesObject.second && inParty
+                ? topChoicesObject.second[0]
+                : ""
+            }
             number={
-              topChoicesObject.second ? topChoicesObject.second[1].score : 0
+              topChoicesObject.second && inParty
+                ? topChoicesObject.second[1].score
+                : 0
             }
             iconColor="silver"
           />
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() =>
-            WebBrowser.openBrowserAsync(
-              `${topChoicesObject.third ? topChoicesObject.third[1].url : ""}`
-            )
-          }
+          onPress={() => {
+            try {
+              WebBrowser.openBrowserAsync(
+                `${topChoicesObject.third ? topChoicesObject.third[1].url : ""}`
+              );
+            } catch (error) {
+              Alert.alert("No Link Found ");
+            }
+          }}
         >
           <MiniCardComponent
             index={3}
-            name={topChoicesObject.third ? topChoicesObject.third[0] : ""}
+            name={
+              topChoicesObject.third && inParty ? topChoicesObject.third[0] : ""
+            }
             number={
-              topChoicesObject.third ? topChoicesObject.third[1].score : 0
+              topChoicesObject.third && inParty
+                ? topChoicesObject.third[1].score
+                : 0
             }
             iconColor="#CD7F32"
           />
