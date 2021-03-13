@@ -5,7 +5,7 @@ import { ApiSearch } from "../types/types";
 import { StyleSheet, View } from "react-native";
 //Icons
 import Icon from "react-native-vector-icons/Ionicons";
-import { ScrollView } from "react-native-gesture-handler";
+import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 
 type BarData = {
   barData: ApiSearch;
@@ -22,6 +22,8 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
     price,
     transactions,
   } = barData;
+
+  console.log(barData);
 
   function setTransactionsUI(transactions: string[]) {
     const transactionArray: ReactElement[] = [];
@@ -106,6 +108,16 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
       fontSize: 32,
       alignSelf: "flex-end",
     },
+
+    iconTouchableOpacity: {
+      alignSelf: "flex-end",
+      marginLeft: "15%",
+      top: "100%",
+    },
+
+    iconPressable: {
+      fontSize: 32,
+    },
   });
 
   return (
@@ -138,6 +150,12 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
                   {"\n"}
                   {location.city}, {location.state} {location.zip_code}
                 </Paragraph>
+                <TouchableOpacity style={override.iconTouchableOpacity}>
+                  <Icon
+                    name="restaurant-outline"
+                    style={override.iconPressable}
+                  ></Icon>
+                </TouchableOpacity>
               </View>
               <View style={override.smallInfoView}>
                 <Icon name="call-outline" style={override.icon}></Icon>

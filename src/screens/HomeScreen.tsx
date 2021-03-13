@@ -27,9 +27,9 @@ type Item = {
   item: ApiSearch;
 };
 
-type Props = {
-  navigation: HomeScreenNavProp;
-};
+// type Props = {
+//   navigation: HomeScreenNavProp;
+// };
 
 const HomeScreen = (): React.ReactNode => {
   const dispatch = useDispatch();

@@ -40,7 +40,7 @@ const TopChoicesScreen = (): React.ReactNode => {
   //Gets the three top scorers
   function getTopScorers() {
     if (!choicesObject) {
-      return Alert.alert("nothing found");
+      return Alert.alert("Not in a party");
     }
 
     const entries: any = Object.entries(choicesObject);
@@ -68,8 +68,6 @@ const TopChoicesScreen = (): React.ReactNode => {
       second: sortable[1] ? [sortable[1][0], sortable[1][1]] : "",
       third: sortable[2] ? [sortable[2][0], sortable[2][1]] : "",
     });
-
-    console.log(topChoicesObject);
   }
   //Grabs the bar choices from the Firebase DB
   useEffect(() => {
