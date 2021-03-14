@@ -113,6 +113,7 @@ const TopChoicesScreen = (): React.ReactNode => {
       alignSelf: styles.button.alignSelf,
       backgroundColor: styles.colorPrimary.backgroundColor,
       ...styles.shadow,
+      ...styles.border,
     },
   });
 

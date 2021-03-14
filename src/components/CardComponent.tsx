@@ -111,21 +111,16 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
 
     iconView: {
       position: "absolute",
-      width: "30%",
-      marginLeft: "65%",
-      marginTop: "20%",
-      // marginTop: "130%",
+      marginLeft: "75%",
+      top: "90%",
     },
 
     iconTouchableOpacity: {
-      // alignSelf: "flex-end",
-      // marginLeft: "25%",
-      // width: "200%",
+      paddingTop: 20,
+      paddingBottom: 20,
       backgroundColor: styles.colorPrimary.backgroundColor,
       ...styles.shadow,
       borderRadius: 5,
-
-      zIndex: 1,
     },
 
     iconPressable: {
@@ -169,13 +164,11 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
                   <TouchableOpacity
                     style={override.iconTouchableOpacity}
                     onPress={() => {
-                      // try {
-                      //   WebBrowser.openBrowserAsync(`${url}`);
-                      // } catch (error) {
-                      //   console.log(error);
-                      // }
-
-                      console.log("test");
+                      try {
+                        WebBrowser.openBrowserAsync(`${url}`);
+                      } catch (error) {
+                        console.log(error);
+                      }
                     }}
                   >
                     <Icon

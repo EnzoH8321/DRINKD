@@ -78,10 +78,8 @@ const JoinScreen: React.FC = () => {
     button: {
       ...styles.button,
       ...styles.shadow,
+      ...styles.border,
       backgroundColor: styles.colorPrimary.backgroundColor,
-      // marginTop: styles.button.marginTop,
-      // width: styles.button.width,
-      // alignSelf: styles.button.alignSelf,
     },
   });
 

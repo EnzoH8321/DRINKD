@@ -10,13 +10,13 @@ import * as WebBrowser from "expo-web-browser";
 //Components
 import CardComponent from "../components/CardComponent";
 import Icon from "react-native-vector-icons/Ionicons";
-import { Paragraph, Button, Headline } from "react-native-paper";
+import { Button, Headline } from "react-native-paper";
 import Carousel from "react-native-snap-carousel";
 //Actions
 import { setBarListData } from "../actions/APIActions";
 import { setPartyURL } from "../actions/PartyActions";
 //Types
-import { ApiSearch, HomeScreenNavProp } from "../types/types";
+import { ApiSearch } from "../types/types";
 //
 import { RootState } from "../reducers";
 //Firebase
@@ -163,7 +163,7 @@ const HomeScreen = (): React.ReactNode => {
       flexDirection: "row",
     },
     starContainer: {
-      marginTop: "5%",
+      marginTop: "3%",
     },
     starView: {
       flexDirection: "row",
@@ -200,7 +200,7 @@ const HomeScreen = (): React.ReactNode => {
   return (
     <View style={override.container}>
       {!dataArray ? (
-        <Paragraph>Not Loaded Yet</Paragraph>
+        <></>
       ) : (
         <>
           <View style={override.homeContainer}>
@@ -208,17 +208,6 @@ const HomeScreen = (): React.ReactNode => {
               <Headline>
                 Party Code: {currentPartyId ? currentPartyId : ""}
               </Headline>
-              {/* <Button
-                mode="contained"
-                style={override.button}
-                onPress={() => {
-                  if (dataArray) {
-                    WebBrowser.openBrowserAsync(`${dataArray[index].url}`);
-                  }
-                }}
-              >
-                Learn More
-              </Button> */}
             </View>
             <View style={override.carousel}>
               <Carousel
@@ -244,11 +233,11 @@ const HomeScreen = (): React.ReactNode => {
                 <View style={override.starView}>
                   <TouchableOpacity onPress={() => firstStarLogic()}>
                     <Icon
-                      name="thumbs-up-outline"
+                      name="star"
                       style={{
                         color:
                           pointValue >= 1
-                            ? styles.colorTertiary.backgroundColor
+                            ? styles.colorPrimary.backgroundColor
                             : "black",
                         fontSize: override.icon.fontSize,
                       }}
@@ -256,11 +245,11 @@ const HomeScreen = (): React.ReactNode => {
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => setPointValue(2)}>
                     <Icon
-                      name="thumbs-up-outline"
+                      name="star"
                       style={{
                         color:
                           pointValue >= 2
-                            ? styles.colorTertiary.backgroundColor
+                            ? styles.colorPrimary.backgroundColor
                             : "black",
                         fontSize: override.icon.fontSize,
                       }}
@@ -268,11 +257,11 @@ const HomeScreen = (): React.ReactNode => {
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => setPointValue(3)}>
                     <Icon
-                      name="thumbs-up-outline"
+                      name="star"
                       style={{
                         color:
                           pointValue >= 3
-                            ? styles.colorTertiary.backgroundColor
+                            ? styles.colorPrimary.backgroundColor
                             : "black",
                         fontSize: override.icon.fontSize,
                       }}
@@ -280,11 +269,11 @@ const HomeScreen = (): React.ReactNode => {
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => setPointValue(4)}>
                     <Icon
-                      name="thumbs-up-outline"
+                      name="star"
                       style={{
                         color:
                           pointValue >= 4
-                            ? styles.colorTertiary.backgroundColor
+                            ? styles.colorPrimary.backgroundColor
                             : "black",
                         fontSize: override.icon.fontSize,
                       }}
@@ -292,11 +281,11 @@ const HomeScreen = (): React.ReactNode => {
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => setPointValue(5)}>
                     <Icon
-                      name="thumbs-up-outline"
+                      name="star"
                       style={{
                         color:
                           pointValue >= 5
-                            ? styles.colorTertiary.backgroundColor
+                            ? styles.colorPrimary.backgroundColor
                             : "black",
                         fontSize: override.icon.fontSize,
                       }}

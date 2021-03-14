@@ -40,6 +40,7 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
     screenButton: {
       ...styles.button,
       ...styles.shadow,
+      ...styles.border,
       backgroundColor: styles.colorPrimary.backgroundColor,
     },
     headline: {
