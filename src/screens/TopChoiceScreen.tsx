@@ -102,6 +102,9 @@ const TopChoicesScreen = (): React.ReactNode => {
       <View style={override.choiceDataContainer}>
         <TouchableOpacity
           onPress={() => {
+            if (!inParty) {
+              return;
+            }
             try {
               WebBrowser.openBrowserAsync(
                 `${topChoicesObject.first ? topChoicesObject.first[1].url : ""}`
@@ -126,6 +129,9 @@ const TopChoicesScreen = (): React.ReactNode => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
+            if (!inParty) {
+              return;
+            }
             try {
               WebBrowser.openBrowserAsync(
                 `${
@@ -154,6 +160,9 @@ const TopChoicesScreen = (): React.ReactNode => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
+            if (!inParty) {
+              return;
+            }
             try {
               WebBrowser.openBrowserAsync(
                 `${topChoicesObject.third ? topChoicesObject.third[1].url : ""}`

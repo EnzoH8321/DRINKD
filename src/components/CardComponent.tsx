@@ -3,6 +3,7 @@ import { Card, Title, Paragraph } from "react-native-paper";
 import styles from "../styles/constant";
 import { ApiSearch } from "../types/types";
 import { StyleSheet, View } from "react-native";
+import * as WebBrowser from "expo-web-browser";
 //Icons
 import Icon from "react-native-vector-icons/Ionicons";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
@@ -21,9 +22,8 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
     rating,
     price,
     transactions,
+    url,
   } = barData;
-
-  console.log(barData);
 
   function setTransactionsUI(transactions: string[]) {
     const transactionArray: ReactElement[] = [];
@@ -111,14 +111,20 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
 
     iconTouchableOpacity: {
       alignSelf: "flex-end",
-      marginLeft: "15%",
-      top: "100%",
+      marginLeft: "25%",
+      // top: "100%",
+      width: "70%",
+
+      // width: "100%",
       backgroundColor: styles.colorPrimary.backgroundColor,
+      ...styles.shadow,
+      borderRadius: 5,
     },
 
     iconPressable: {
       fontSize: 32,
       color: styles.colorSecondary.backgroundColor,
+      alignSelf: "center",
     },
   });
 
@@ -152,7 +158,18 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
                   {"\n"}
                   {location.city}, {location.state} {location.zip_code}
                 </Paragraph>
-                <TouchableOpacity style={override.iconTouchableOpacity}>
+                <TouchableOpacity
+                  style={override.iconTouchableOpacity}
+                  onPress={() => {
+                    // try {
+                    //   WebBrowser.openBrowserAsync(`${url}`);
+                    // } catch (error) {
+                    //   console.log(error);
+                    // }
+
+                    console.log("test");
+                  }}
+                >
                   <Icon
                     name="restaurant-outline"
                     style={override.iconPressable}
