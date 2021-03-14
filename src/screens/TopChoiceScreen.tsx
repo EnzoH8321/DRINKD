@@ -101,9 +101,11 @@ const TopChoicesScreen = (): React.ReactNode => {
     choiceContainer: {
       ...styles.container,
       marginTop: "30%",
+      flexDirection: "column",
     },
     choiceDataContainer: {
       ...styles.dataContainer,
+      alignItems: "center",
     },
     button: {
       marginTop: styles.button.marginTop,
@@ -119,7 +121,7 @@ const TopChoicesScreen = (): React.ReactNode => {
       <View style={override.choiceDataContainer}>
         <TouchableOpacity
           onPress={() => {
-            if (!inParty) {
+            if (!inParty || !topChoicesObject.first) {
               return;
             }
             try {
@@ -146,7 +148,7 @@ const TopChoicesScreen = (): React.ReactNode => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            if (!inParty) {
+            if (!inParty || !topChoicesObject.second) {
               return;
             }
             try {
@@ -177,7 +179,7 @@ const TopChoicesScreen = (): React.ReactNode => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            if (!inParty) {
+            if (!inParty || !topChoicesObject.third) {
               return;
             }
             try {

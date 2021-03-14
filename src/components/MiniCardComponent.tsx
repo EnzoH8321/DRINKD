@@ -22,6 +22,8 @@ const MiniCardComponent = ({
       // height: "25%",
       borderRadius: styles.border.borderRadius,
       marginBottom: 30,
+      width: "98%",
+      flexDirection: "row",
       ...styles.shadow,
     },
     icon: {
@@ -31,7 +33,6 @@ const MiniCardComponent = ({
     cardContent: {
       flexDirection: "row",
       flexWrap: "wrap",
-
       // height: "100%",
     },
     leftContent: {
@@ -51,7 +52,7 @@ const MiniCardComponent = ({
         </View>
         <View style={override.rightContent}>
           <Headline>{name}</Headline>
-          <Headline>Votes - {number}</Headline>
+          <Headline>{number ? `Votes - ${number}` : ""}</Headline>
         </View>
       </Card.Content>
     </Card>
