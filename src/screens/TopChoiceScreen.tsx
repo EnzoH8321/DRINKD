@@ -97,6 +97,23 @@ const TopChoicesScreen = (): React.ReactNode => {
     }
   }, [inParty, partyId]);
 
+  const override = StyleSheet.create({
+    choiceContainer: {
+      ...styles.container,
+      marginTop: "30%",
+    },
+    choiceDataContainer: {
+      ...styles.dataContainer,
+    },
+    button: {
+      marginTop: styles.button.marginTop,
+      width: styles.button.width,
+      alignSelf: styles.button.alignSelf,
+      backgroundColor: styles.colorPrimary.backgroundColor,
+      ...styles.shadow,
+    },
+  });
+
   return (
     <View style={override.choiceContainer}>
       <View style={override.choiceDataContainer}>
@@ -196,21 +213,5 @@ const TopChoicesScreen = (): React.ReactNode => {
     </View>
   );
 };
-
-const override = StyleSheet.create({
-  choiceContainer: {
-    ...styles.container,
-    marginTop: "30%",
-  },
-  choiceDataContainer: {
-    ...styles.dataContainer,
-  },
-  button: {
-    marginTop: styles.button.marginTop,
-    width: styles.button.width,
-    alignSelf: styles.button.alignSelf,
-    backgroundColor: styles.colorPrimary.backgroundColor,
-  },
-});
 
 export default TopChoicesScreen;

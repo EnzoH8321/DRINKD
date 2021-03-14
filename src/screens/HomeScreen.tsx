@@ -208,7 +208,7 @@ const HomeScreen = (): React.ReactNode => {
               <Headline>
                 Party Code: {currentPartyId ? currentPartyId : ""}
               </Headline>
-              <Button
+              {/* <Button
                 mode="contained"
                 style={override.button}
                 onPress={() => {
@@ -218,7 +218,7 @@ const HomeScreen = (): React.ReactNode => {
                 }}
               >
                 Learn More
-              </Button>
+              </Button> */}
             </View>
             <View style={override.carousel}>
               <Carousel

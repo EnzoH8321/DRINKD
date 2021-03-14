@@ -109,16 +109,23 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
       alignSelf: "flex-end",
     },
 
-    iconTouchableOpacity: {
-      alignSelf: "flex-end",
-      marginLeft: "25%",
-      // top: "100%",
-      width: "70%",
+    iconView: {
+      position: "absolute",
+      width: "30%",
+      marginLeft: "65%",
+      marginTop: "20%",
+      // marginTop: "130%",
+    },
 
-      // width: "100%",
+    iconTouchableOpacity: {
+      // alignSelf: "flex-end",
+      // marginLeft: "25%",
+      // width: "200%",
       backgroundColor: styles.colorPrimary.backgroundColor,
       ...styles.shadow,
       borderRadius: 5,
+
+      zIndex: 1,
     },
 
     iconPressable: {
@@ -158,24 +165,27 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
                   {"\n"}
                   {location.city}, {location.state} {location.zip_code}
                 </Paragraph>
-                <TouchableOpacity
-                  style={override.iconTouchableOpacity}
-                  onPress={() => {
-                    // try {
-                    //   WebBrowser.openBrowserAsync(`${url}`);
-                    // } catch (error) {
-                    //   console.log(error);
-                    // }
+                <View style={override.iconView}>
+                  <TouchableOpacity
+                    style={override.iconTouchableOpacity}
+                    onPress={() => {
+                      // try {
+                      //   WebBrowser.openBrowserAsync(`${url}`);
+                      // } catch (error) {
+                      //   console.log(error);
+                      // }
 
-                    console.log("test");
-                  }}
-                >
-                  <Icon
-                    name="restaurant-outline"
-                    style={override.iconPressable}
-                  ></Icon>
-                </TouchableOpacity>
+                      console.log("test");
+                    }}
+                  >
+                    <Icon
+                      name="restaurant-outline"
+                      style={override.iconPressable}
+                    ></Icon>
+                  </TouchableOpacity>
+                </View>
               </View>
+
               <View style={override.smallInfoView}>
                 <Icon name="call-outline" style={override.icon}></Icon>
                 <Paragraph style={override.paragraph}>

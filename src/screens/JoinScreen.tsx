@@ -63,6 +63,28 @@ const JoinScreen: React.FC = () => {
     dispatch(setPartyURL(""));
   }
 
+  const override = StyleSheet.create({
+    joinContainer: {
+      ...styles.container,
+      marginTop: "30%",
+    },
+    headline: {
+      ...styles.headline,
+    },
+    statusText: {
+      ...styles.headline,
+      marginTop: "20%",
+    },
+    button: {
+      ...styles.button,
+      ...styles.shadow,
+      backgroundColor: styles.colorPrimary.backgroundColor,
+      // marginTop: styles.button.marginTop,
+      // width: styles.button.width,
+      // alignSelf: styles.button.alignSelf,
+    },
+  });
+
   return (
     <View style={override.joinContainer}>
       <Headline style={override.headline}> Enter Party Code Below </Headline>
@@ -94,23 +116,5 @@ const JoinScreen: React.FC = () => {
     </View>
   );
 };
-
-const override = StyleSheet.create({
-  joinContainer: {
-    ...styles.container,
-    marginTop: "30%",
-  },
-  headline: {
-    ...styles.headline,
-  },
-  statusText: {
-    ...styles.headline,
-    marginTop: "20%",
-  },
-  button: {
-    ...styles.button,
-    backgroundColor: styles.colorPrimary.backgroundColor,
-  },
-});
 
 export default JoinScreen;
