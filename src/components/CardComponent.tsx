@@ -73,6 +73,9 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
     scrollViewParent: {
       flexGrow: 1,
       marginTop: "2%",
+      //For scrolling on Android, content needs to be bigger than its container. This forces scroll on container by
+      //making height of container small
+      height: "5%",
     },
     smallInfoView: {
       display: "flex",
@@ -82,7 +85,7 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
     cardImage: {
       borderRadius: styles.border.borderRadius,
       // marginTop: "8%",
-      height: "75%",
+      height: "70%",
     },
     cardSubheading: {
       marginTop: "2%",
@@ -112,7 +115,7 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
     iconView: {
       position: "absolute",
       marginLeft: "75%",
-      top: "90%",
+      top: "125%",
     },
 
     iconTouchableOpacity: {
@@ -147,6 +150,7 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
             <ScrollView
               contentContainerStyle={{
                 flexGrow: 1,
+                height: "120%",
               }}
             >
               <Card.Cover
