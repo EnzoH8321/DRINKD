@@ -27,7 +27,7 @@ const MiniCardComponent = ({
       ...styles.shadow,
     },
     icon: {
-      fontSize: 42,
+      fontSize: styles.icon.fontSize,
       color: iconColor,
     },
     cardContent: {

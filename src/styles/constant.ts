@@ -17,6 +17,10 @@ const styles = StyleSheet.create({
   border: {
     borderRadius: 15,
   },
+
+  icon: {
+    fontSize: 32,
+  },
   shadow: {
     shadowColor: "#000000",
     shadowOffset: {

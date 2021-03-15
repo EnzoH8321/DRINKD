@@ -149,7 +149,7 @@ const HomeScreen = (): React.ReactNode => {
       marginTop: "5%",
     },
     carousel: {
-      height: !currentPartyStatus ? "90%" : "73%",
+      height: !currentPartyStatus ? "90%" : "75%",
       marginTop: "2%",
       marginLeft: "2%",
     },
@@ -162,15 +162,15 @@ const HomeScreen = (): React.ReactNode => {
       display: "flex",
       flexDirection: "row",
     },
-    starContainer: {
-      marginTop: "3%",
-    },
+    // starContainer: {
+    //   marginTop: "3%",
+    // },
     starView: {
       flexDirection: "row",
       justifyContent: "space-around",
     },
     starStyles: {
-      fontSize: 32,
+      fontSize: styles.icon.fontSize,
     },
     starViewButton: {
       marginTop: "5%",
@@ -191,6 +191,7 @@ const HomeScreen = (): React.ReactNode => {
       marginTop: "2%",
     },
     icon: {
+      //For stars
       fontSize: 42,
     },
   });

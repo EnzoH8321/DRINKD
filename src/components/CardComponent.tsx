@@ -64,7 +64,7 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
 
   const override = StyleSheet.create({
     card: {
-      height: "99%",
+      height: "98%",
       width: "99%",
       borderRadius: styles.border.borderRadius,
       ...styles.shadow,
@@ -98,7 +98,6 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
       fontSize: styles.fontL.fontSize,
       marginBottom: "2%",
     },
-
     paragraph: {
       fontSize: styles.fontS.fontSize,
       marginTop: "5%",
