@@ -181,8 +181,6 @@ const HomeScreen = (): React.ReactNode => {
       width: styles.button.width,
       alignSelf: styles.button.alignSelf,
       backgroundColor: styles.colorPrimary.backgroundColor,
-
-      //For Android due to it not propery supporting z-index
     },
     submitButton: {
       backgroundColor: styles.colorPrimary.backgroundColor,
