@@ -31,7 +31,6 @@ const MiniCardComponent = ({
     },
     cardContent: {
       flexDirection: "row",
-      // flexWrap: "wrap",
     },
     leftContent: {
       justifyContent: "center",

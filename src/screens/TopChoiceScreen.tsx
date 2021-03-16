@@ -81,12 +81,12 @@ const TopChoicesScreen = (): React.ReactNode => {
         firebaseData.on("value", (snapshot) => {
           const data = snapshot.val();
 
-          if (!data) {
-            return;
-          }
-          //Turns off firebase listener when you leave a party
-          if (!inParty) {
+          //Turns off firebase listener when you leave a party. Also sets objects empty when you are not in a party
+          if (!inParty || !data) {
             firebaseData.off();
+            setTopChoicesObject({});
+            setChoicesObject({});
+            return;
           }
 
           setChoicesObject(data.topBars);
