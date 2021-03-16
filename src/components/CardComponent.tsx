@@ -4,12 +4,10 @@ import styles from "../styles/constant";
 import { ApiSearch } from "../types/types";
 import { StyleSheet, View } from "react-native";
 import * as WebBrowser from "expo-web-browser";
-//Reducers
-import { RootState } from "../reducers";
+
 //Icons
 import Icon from "react-native-vector-icons/Ionicons";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
-import { useSelector } from "react-redux";
 
 type BarData = {
   barData: ApiSearch;
@@ -27,8 +25,6 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
     transactions,
     url,
   } = barData;
-
-  const currentPartyId = useSelector((state: RootState) => state.party.partyId);
 
   function setTransactionsUI(transactions: string[]) {
     const transactionArray: ReactElement[] = [];

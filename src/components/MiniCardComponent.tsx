@@ -19,7 +19,6 @@ const MiniCardComponent = ({
 }: Props): React.ReactElement => {
   const override = StyleSheet.create({
     card: {
-      // height: "25%",
       borderRadius: styles.border.borderRadius,
       marginBottom: 30,
       width: "98%",
@@ -32,8 +31,7 @@ const MiniCardComponent = ({
     },
     cardContent: {
       flexDirection: "row",
-      flexWrap: "wrap",
-      // height: "100%",
+      // flexWrap: "wrap",
     },
     leftContent: {
       justifyContent: "center",

@@ -6,7 +6,7 @@ import fetchBusiness from "../api/YelpApi";
 import * as Location from "expo-location";
 import styles from "../styles/constant";
 import * as SplashScreen from "expo-splash-screen";
-import * as WebBrowser from "expo-web-browser";
+
 //Components
 import CardComponent from "../components/CardComponent";
 import Icon from "react-native-vector-icons/Ionicons";
@@ -49,21 +49,6 @@ const HomeScreen = (): React.ReactNode => {
   const currentPartyId = useSelector((state: RootState) => state.party.partyId);
   const userName = useSelector((state: RootState) => state.party.userName);
   const inParty = useSelector((state: RootState) => state.party.inParty);
-
-  // //Calls specific business using current card ID
-  // async function fetchBarDetails(id: string) {
-  //   const data = await axios(`https://api.yelp.com/v3/businesses/${id}`, {
-  //     method: "GET",
-  //     headers: {
-  //       Authorization:
-  //         "BEARER nX9W-jXWsXSB_gW3t2Y89iwQ-M7SR9-HVBHDAqf1Zy0fo8LTs3Q1VbIVpdeyFu7PehJlkLDULQulnJ3l6q6loIET5JHmcs9i3tJqYEO02f39qKgSCi4DAEVIlgPPX3Yx",
-  //     },
-  //   });
-
-  //   setTransactionArray(data.data.transactions);
-  //   setDetailedInfo(data.data);
-  //   setPhotoArray(data.data.photos);
-  // }
 
   // Calls General Yelp Api
   useEffect(() => {
@@ -162,9 +147,7 @@ const HomeScreen = (): React.ReactNode => {
       display: "flex",
       flexDirection: "row",
     },
-    // starContainer: {
-    //   marginTop: "3%",
-    // },
+
     starView: {
       flexDirection: "row",
       justifyContent: "space-around",
@@ -228,7 +211,7 @@ const HomeScreen = (): React.ReactNode => {
             </View>
 
             {currentPartyStatus ? (
-              <View style={override.starContainer}>
+              <View>
                 <View style={override.starView}>
                   <TouchableOpacity onPress={() => firstStarLogic()}>
                     <Icon

@@ -100,7 +100,6 @@ const TopChoicesScreen = (): React.ReactNode => {
   const override = StyleSheet.create({
     choiceContainer: {
       ...styles.container,
-      marginTop: "30%",
       flexDirection: "column",
     },
     choiceDataContainer: {
