@@ -11,18 +11,23 @@ import { RootState } from "../reducers";
 import { Button } from "react-native-paper";
 //Types
 type PrefInterface = {
-  string?: {
+  [index: string]: {
     score: number;
     url: string;
   };
 };
+
 type EntriesInterface = [
   string,
   {
-    score: number;
-    url: string;
+    //index:string basically says that each object name will be different stri
+    [index: string]: {
+      score: number;
+      url: string;
+    };
   }
 ][];
+
 type TopChoicesInterface = {
   first?: [string, { score: number; url: string }];
   second?: [string, { score: number; url: string }];
@@ -43,9 +48,9 @@ const TopChoicesScreen = (): React.ReactNode => {
       return Alert.alert("Not in a party");
     }
 
-    const entries: any = Object.entries(choicesObject);
+    const entries: EntriesInterface = Object.entries(choicesObject);
 
-    const preferredChoices: any = {};
+    const preferredChoices: PrefInterface = {};
 
     let sortable = null;
 
@@ -68,6 +73,8 @@ const TopChoicesScreen = (): React.ReactNode => {
       second: sortable[1] ? [sortable[1][0], sortable[1][1]] : "",
       third: sortable[2] ? [sortable[2][0], sortable[2][1]] : "",
     });
+
+    console.log(preferredChoices);
   }
   //Grabs the bar choices from the Firebase DB
   useEffect(() => {
