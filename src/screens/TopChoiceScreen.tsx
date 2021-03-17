@@ -29,9 +29,9 @@ type EntriesInterface = [
 ][];
 
 type TopChoicesInterface = {
-  first?: [string, { score: number; url: string }];
-  second?: [string, { score: number; url: string }];
-  third?: [string, { score: number; url: string }];
+  first: [string, { score: number; url: string }];
+  second: [string, { score: number; url: string }];
+  third: [string, { score: number; url: string }];
 };
 //
 const TopChoicesScreen = (): React.ReactNode => {
@@ -59,6 +59,7 @@ const TopChoicesScreen = (): React.ReactNode => {
         if (!preferredChoices[property]) {
           preferredChoices[property] = value[property];
         } else {
+          //Is this needed?
           preferredChoices[property] += value[property];
         }
       }
@@ -74,7 +75,7 @@ const TopChoicesScreen = (): React.ReactNode => {
       third: sortable[2] ? [sortable[2][0], sortable[2][1]] : "",
     });
 
-    console.log(preferredChoices);
+    console.log(topChoicesObject);
   }
   //Grabs the bar choices from the Firebase DB
   useEffect(() => {
