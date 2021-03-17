@@ -1,7 +1,8 @@
 import firebase from "firebase";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDOxlOHr3T3T7EY-g2YQualK6QC8ybwMkE",
+  //Not really necessary but w/e
+  apiKey: process.env.REACT_APP_API_KEY,
   authDomain: "drinkd-dev.firebaseapp.com",
   //Change this back for production
   databaseURL: "https://drinkd-dev-default-rtdb.firebaseio.com",
