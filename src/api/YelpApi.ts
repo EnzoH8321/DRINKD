@@ -5,8 +5,6 @@ export default async function fetchBusiness(
   url: string
 ): Promise<[ApiSearch] | undefined> {
   try {
-    // const dispatch = useDispatch();
-
     const data = await axios(url, {
       method: "GET",
       headers: {
@@ -15,8 +13,10 @@ export default async function fetchBusiness(
       },
     });
 
-    //Returns an array of objects
-    return data.data.businesses;
+    const businessData = data.data.businesses;
+
+    //Returns an array of businesses
+    return businessData;
   } catch (error) {
     console.log(error);
   }

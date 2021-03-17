@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Alert, TouchableOpacity } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import styles from "../styles/constant";
+import { useSelector } from "react-redux";
+import { RootState } from "../reducers";
 //Firebase
 import firebase from "../utils/firebase";
 //Components
 import MiniCardComponent from "../components/MiniCardComponent";
-import { useSelector } from "react-redux";
-import { RootState } from "../reducers";
 import { Button } from "react-native-paper";
 //Types
 type PrefInterface = {
@@ -20,7 +20,7 @@ type PrefInterface = {
 type EntriesInterface = [
   string,
   {
-    //index:string basically says that each object name will be different stri
+    //[index:string] says that each object name will be different string value
     [index: string]: {
       score: number;
       url: string;
@@ -33,7 +33,7 @@ type TopChoicesInterface = {
   second: [string, { score: number; url: string }];
   third: [string, { score: number; url: string }];
 };
-//
+
 const TopChoicesScreen = (): React.ReactNode => {
   const [choicesObject, setChoicesObject] = useState({});
   const [topChoicesObject, setTopChoicesObject] = useState<TopChoicesInterface>(
@@ -65,6 +65,7 @@ const TopChoicesScreen = (): React.ReactNode => {
       }
     }
 
+    //the sortable value takes thhe preferredChoices object and transforms it to an array
     sortable = Object.entries(preferredChoices)
       .sort((a, b) => a[1].score - b[1].score)
       .reverse();
@@ -74,14 +75,13 @@ const TopChoicesScreen = (): React.ReactNode => {
       second: sortable[1] ? [sortable[1][0], sortable[1][1]] : "",
       third: sortable[2] ? [sortable[2][0], sortable[2][1]] : "",
     });
-
-    console.log(topChoicesObject);
   }
-  //Grabs the bar choices from the Firebase DB
+  //Grabs the eatery choices from the Firebase DB
   useEffect(() => {
     try {
       // the parenth below is syntax for => function(){...}
       (async () => {
+        //Find the correct parties object in the db
         const firebaseData = await firebase
           .database()
           .ref(`parties/${partyId}`);
@@ -89,7 +89,7 @@ const TopChoicesScreen = (): React.ReactNode => {
         firebaseData.on("value", (snapshot) => {
           const data = snapshot.val();
 
-          //Turns off firebase listener when you leave a party. Also sets objects empty when you are not in a party
+          //Turns off firebase listener when you leave a party. Also sets objects empty when you are not in a party (this clears the mini card component)
           if (!inParty || !data) {
             firebaseData.off();
             setTopChoicesObject({});
@@ -105,6 +105,7 @@ const TopChoicesScreen = (): React.ReactNode => {
     }
   }, [inParty, partyId]);
 
+  //Styles
   const override = StyleSheet.create({
     choiceContainer: {
       ...styles.container,

@@ -26,6 +26,7 @@ const JoinScreen: React.FC = () => {
   const [textValue, setTextValue] = useState("");
   let userNameGenerator = "";
 
+  //Gives the user a random name to use. If they already have one, they just use that
   if (userName === "") {
     userNameGenerator = Math.floor(
       Math.pow(10, 5 - 1) + Math.random() * 9 * Math.pow(10, 5 - 1)
@@ -41,7 +42,7 @@ const JoinScreen: React.FC = () => {
     ref.on("value", (snapshot) => {
       const data = snapshot.val();
 
-      //returns if data is not found
+      //Returns if data is not found
       if (data === null || textValue.length === 0) {
         return Alert.alert("No Party Found");
       }
@@ -54,7 +55,7 @@ const JoinScreen: React.FC = () => {
     });
   }
 
-  //Leave Party func
+  //Leave Party function
   function leaveParty() {
     firebase.database().ref(`parties/${partyId}/topBars/${userName}/`).remove();
     dispatch(setPartyData(false));
@@ -63,6 +64,7 @@ const JoinScreen: React.FC = () => {
     dispatch(setPartyURL(""));
   }
 
+  //Styles
   const override = StyleSheet.create({
     joinContainer: {
       ...styles.container,

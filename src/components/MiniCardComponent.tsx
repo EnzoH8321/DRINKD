@@ -7,8 +7,8 @@ import Icon from "react-native-vector-icons/Ionicons";
 
 type Props = {
   index: number;
-  name?: string;
-  number?: ReactText;
+  name: string;
+  number: ReactText;
   iconColor: string;
 };
 
@@ -17,6 +17,7 @@ const MiniCardComponent = ({
   number,
   iconColor,
 }: Props): React.ReactElement => {
+  //Styles
   const override = StyleSheet.create({
     card: {
       borderRadius: styles.border.borderRadius,
