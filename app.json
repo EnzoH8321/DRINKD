@@ -4,7 +4,7 @@
     "slug": "drinkdapp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/",
+    "icon": "./assets/splash_icon",
     "splash": {
       "image": "./assets/splash_icon.png",
       "resizeMode": "contain",
