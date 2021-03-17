@@ -4,10 +4,10 @@ import * as WebBrowser from "expo-web-browser";
 import styles from "../styles/constant";
 import { useSelector } from "react-redux";
 import { RootState } from "../reducers";
+import MiniCardComponent from "../components/MiniCardComponent";
 //Firebase
 import firebase from "../utils/firebase";
 //Components
-import MiniCardComponent from "../components/MiniCardComponent";
 import { Button } from "react-native-paper";
 //Types
 type PrefInterface = {

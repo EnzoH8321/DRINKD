@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, TouchableOpacity, Alert } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
+import Carousel from "react-native-snap-carousel";
+import { RootState } from "../reducers";
 import fetchBusiness from "../api/YelpApi";
 
 import * as Location from "expo-location";
@@ -11,25 +13,20 @@ import * as SplashScreen from "expo-splash-screen";
 import CardComponent from "../components/CardComponent";
 import Icon from "react-native-vector-icons/Ionicons";
 import { Button, Headline } from "react-native-paper";
-import Carousel from "react-native-snap-carousel";
+
 //Actions
 import { setBarListData } from "../actions/APIActions";
 import { setPartyURL } from "../actions/PartyActions";
 //Types
 import { ApiSearch } from "../types/types";
-//
-import { RootState } from "../reducers";
+
 //Firebase
 import firebase from "../utils/firebase";
 
-//Interface
+//Types
 type Item = {
   item: ApiSearch;
 };
-
-// type Props = {
-//   navigation: HomeScreenNavProp;
-// };
 
 const HomeScreen = (): React.ReactNode => {
   const dispatch = useDispatch();
@@ -111,6 +108,7 @@ const HomeScreen = (): React.ReactNode => {
     const currentUrl = dataArray[index].url;
     const finalScore = pointValue;
 
+    //Find current eatery and updates the score if needed
     firebase
       .database()
       .ref(`parties/${currentPartyId}/topBars/${userName}`)

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Alert } from "react-native";
 import { Headline, Button, TextInput } from "react-native-paper";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "../styles/constant";
 //Actions
 import {
@@ -12,22 +13,22 @@ import {
 
 //firebase
 import firebase from "../utils/firebase";
-import { useDispatch, useSelector } from "react-redux";
-//Types
+
 import { RootState } from "../reducers";
 import { CreateScreenProps } from "../types/types";
 
 const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
+  const [partyName, setPartyName] = useState("");
   const dispatch = useDispatch();
   const memberLevel = useSelector(
     (state: RootState) => state.party.memberLevel
   );
   const partyURL = useSelector((state: RootState) => state.party.partyURL);
   const partyId = useSelector((state: RootState) => state.party.partyId);
-  const [partyName, setPartyName] = useState("");
-
+  //References textinput
   const textRef = React.useRef(null);
 
+  //Styles
   const override = StyleSheet.create({
     view: {
       alignItems: "center",
@@ -100,7 +101,7 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
     navigation.navigate("Home");
   }
 
-  //Leave Party func
+  //Leave Party function
   function leaveParty() {
     if (memberLevel === "MEMBER") {
       return Alert.alert("You must be party leader to leave the party");
@@ -139,10 +140,6 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
                 value={partyName}
                 onChangeText={(name) => setPartyName(name)}
                 label="Name your party here"
-                // onFocus={() => {
-                //   textRef.current.props.theme.colors.primary =
-                //     styles.colorPrimary.backgroundColor;
-                // }}
                 theme={{
                   colors: { primary: styles.colorPrimary.backgroundColor },
                 }}

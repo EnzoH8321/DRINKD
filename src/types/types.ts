@@ -152,6 +152,7 @@ export interface ApiBusiness {
   ];
 }
 
+//Actions
 export type SetBarlistData = {
   type: "SET BARLIST DATA";
   payload: [ApiSearch] | undefined;

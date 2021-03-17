@@ -15,7 +15,6 @@ import {
 //firebase
 import firebase from "../utils/firebase";
 
-//Types
 import { RootState } from "../reducers";
 
 const JoinScreen: React.FC = () => {
@@ -26,7 +25,7 @@ const JoinScreen: React.FC = () => {
   const [textValue, setTextValue] = useState("");
   let userNameGenerator = "";
 
-  //Gives the user a random name to use. If they already have one, they just use that
+  //Gives the user a random name to use. If they already have one, they just use that.
   if (userName === "") {
     userNameGenerator = Math.floor(
       Math.pow(10, 5 - 1) + Math.random() * 9 * Math.pow(10, 5 - 1)

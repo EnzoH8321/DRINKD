@@ -11,15 +11,6 @@ const firebaseConfig = {
   appId: "1:811366010805:web:e889f8bbf3e51cb71e53fc",
 };
 
-// if (location.hostname === "localhost") {
-//   let database = firebase
-//     .app()
-//     .database("http://localhost:9000/?ns=drinkd-dev");
-
-//   firebaseConfig = {
-//     databaseURL: database,
-//   };
-// }
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
