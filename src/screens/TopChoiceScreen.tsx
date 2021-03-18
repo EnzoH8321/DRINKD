@@ -224,9 +224,10 @@ const TopChoicesScreen = (): React.ReactNode => {
         <Image
           source={require("../../assets/splash-icon-app.png")}
           style={{
-            marginTop: "10%",
+            marginTop: styles.iconSplash.marginTop,
             height: styles.iconSplash.height,
             width: styles.iconSplash.width,
+            alignSelf: styles.iconSplash.alignSelf,
           }}
         ></Image>
       </View>

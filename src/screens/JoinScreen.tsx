@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Alert } from "react-native";
+import { View, StyleSheet, Alert, Image } from "react-native";
 import { Headline, TextInput, Button } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "../styles/constant";
@@ -112,6 +112,15 @@ const JoinScreen: React.FC = () => {
           Your party code is {partyId}
         </Headline>
       )}
+      <Image
+        source={require("../../assets/splash-icon-app.png")}
+        style={{
+          marginTop: styles.iconSplash.marginTop,
+          height: styles.iconSplash.height,
+          width: styles.iconSplash.width,
+          alignSelf: "center",
+        }}
+      ></Image>
     </View>
   );
 };
