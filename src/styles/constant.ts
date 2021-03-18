@@ -21,12 +21,7 @@ const styles = StyleSheet.create({
   icon: {
     fontSize: 32,
   },
-  iconSplash: {
-    marginTop: "20%",
-    height: "10%",
-    width: "60%",
-    alignSelf: "center",
-  },
+
   shadow: {
     shadowColor: "#000000",
     shadowOffset: {

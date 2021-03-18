@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet, Alert, TouchableOpacity, Image } from "react-native";
+import { View, StyleSheet, Alert, TouchableOpacity } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import styles from "../styles/constant";
 import { useSelector } from "react-redux";
@@ -220,15 +220,6 @@ const TopChoicesScreen = (): React.ReactNode => {
         >
           Find Winner
         </Button>
-        <Image
-          source={require("../../assets/drinkd_text.png")}
-          style={{
-            marginTop: styles.iconSplash.marginTop,
-            height: styles.iconSplash.height,
-            width: styles.iconSplash.width,
-            alignSelf: styles.iconSplash.alignSelf,
-          }}
-        ></Image>
       </View>
     </View>
   );

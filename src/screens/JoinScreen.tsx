@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Alert, Image } from "react-native";
+import { View, StyleSheet, Alert } from "react-native";
 import { Headline, TextInput, Button } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "../styles/constant";
@@ -116,16 +116,7 @@ const JoinScreen: React.FC = () => {
           Your party code is {partyId}
         </Headline>
       )}
-      <View style={override.imageView}>
-        <Image
-          source={require("../../assets/drinkd_text.png")}
-          style={{
-            alignSelf: styles.iconSplash.alignSelf,
-            width: styles.iconSplash.width,
-            height: "20%",
-          }}
-        ></Image>
-      </View>
+      <View style={override.imageView}></View>
     </View>
   );
 };
