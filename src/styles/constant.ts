@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
     fontSize: 32,
   },
   iconSplash: {
-    marginTop: "5%",
-    height: "30%",
+    marginTop: "20%",
+    height: "10%",
     width: "60%",
     alignSelf: "center",
   },

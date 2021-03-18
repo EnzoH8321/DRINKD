@@ -220,9 +220,8 @@ const TopChoicesScreen = (): React.ReactNode => {
         >
           Find Winner
         </Button>
-
         <Image
-          source={require("../../assets/splash-icon-app.png")}
+          source={require("../../assets/drinkd_text.png")}
           style={{
             marginTop: styles.iconSplash.marginTop,
             height: styles.iconSplash.height,

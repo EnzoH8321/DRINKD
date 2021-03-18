@@ -72,6 +72,10 @@ const JoinScreen: React.FC = () => {
     headline: {
       ...styles.headline,
     },
+    imageView: {
+      height: "100%",
+      flex: 1,
+    },
     statusText: {
       ...styles.headline,
       marginTop: "20%",
@@ -112,15 +116,16 @@ const JoinScreen: React.FC = () => {
           Your party code is {partyId}
         </Headline>
       )}
-      <Image
-        source={require("../../assets/splash-icon-app.png")}
-        style={{
-          marginTop: styles.iconSplash.marginTop,
-          height: styles.iconSplash.height,
-          width: styles.iconSplash.width,
-          alignSelf: "center",
-        }}
-      ></Image>
+      <View style={override.imageView}>
+        <Image
+          source={require("../../assets/drinkd_text.png")}
+          style={{
+            alignSelf: styles.iconSplash.alignSelf,
+            width: styles.iconSplash.width,
+            height: "20%",
+          }}
+        ></Image>
+      </View>
     </View>
   );
 };
