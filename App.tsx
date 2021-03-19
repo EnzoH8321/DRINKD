@@ -41,10 +41,6 @@ const Home = () => {
     <HomeDrawer.Navigator
       tabBarOptions={{
         activeTintColor: styles.colorPrimary.backgroundColor,
-        // activeBackgroundColor: styles.colorPrimary.backgroundColor,
-        // labelStyle: {
-        //   color: "black",
-        // },
       }}
     >
       <HomeDrawer.Screen
