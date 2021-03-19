@@ -129,7 +129,7 @@ const HomeScreen = (): React.ReactNode => {
     },
     container: {
       ...styles.container,
-      marginTop: "5%",
+      // marginTop: "5%",
     },
     carousel: {
       height: !currentPartyStatus ? "90%" : "75%",
@@ -140,7 +140,7 @@ const HomeScreen = (): React.ReactNode => {
       zIndex: -1,
     },
     headlineView: {
-      marginTop: "10%",
+      // marginTop: "10%",
       justifyContent: "space-around",
       display: "flex",
       flexDirection: "row",

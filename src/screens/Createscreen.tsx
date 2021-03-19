@@ -35,7 +35,7 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
     },
     screenContainer: {
       ...styles.container,
-      marginTop: "30%",
+      // marginTop: "30%",
     },
 
     screenButton: {
