@@ -65,7 +65,7 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
 
   const override = StyleSheet.create({
     card: {
-      height: "98%",
+      height: "99%",
       width: "99%",
       borderRadius: styles.border.borderRadius,
       ...styles.shadow,
