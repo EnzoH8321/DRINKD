@@ -86,7 +86,7 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
     cardImage: {
       borderRadius: styles.border.borderRadius,
       // marginTop: "8%",
-      height: "50%",
+      height: "55%",
     },
     cardSubheading: {
       marginTop: "2%",

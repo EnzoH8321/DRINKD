@@ -131,7 +131,7 @@ const HomeScreen = (): React.ReactNode => {
       ...styles.container,
     },
     carousel: {
-      height: !currentPartyStatus ? "90%" : "75%",
+      height: !currentPartyStatus ? "94%" : "77%",
       marginTop: "2%",
       marginLeft: "2%",
     },
@@ -148,6 +148,7 @@ const HomeScreen = (): React.ReactNode => {
     starView: {
       flexDirection: "row",
       justifyContent: "space-around",
+      marginTop: "3%",
     },
     starStyles: {
       fontSize: styles.icon.fontSize,
