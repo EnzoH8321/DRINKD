@@ -78,6 +78,10 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
       //making height of container small
       height: "5%",
     },
+    scrollViewStyle: {
+      flexGrow: 1,
+      height: "150%",
+    },
     smallInfoView: {
       display: "flex",
       flexDirection: "row",
@@ -149,9 +153,9 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
           <View style={override.scrollViewParent}>
             <ScrollView
               contentContainerStyle={{
-                flexGrow: 1,
+                flexGrow: override.scrollViewStyle.flexGrow,
                 //Due to android scrollview pecularities, we need to make the scrollview a lot bigger than container
-                height: "150%",
+                height: override.scrollViewStyle.height,
               }}
             >
               <Card.Cover
