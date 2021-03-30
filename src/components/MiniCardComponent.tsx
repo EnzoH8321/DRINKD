@@ -38,7 +38,8 @@ const MiniCardComponent = ({
     },
     rightContent: {
       justifyContent: "center",
-      marginLeft: "20%",
+      marginLeft: "10%",
+      marginRight: "10%",
     },
   });
 

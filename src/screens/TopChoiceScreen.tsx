@@ -10,14 +10,14 @@ import firebase from "../utils/firebase";
 //Components
 import { Button } from "react-native-paper";
 //Types
-type PrefInterface = {
+type PrefType = {
   [index: string]: {
     score: number;
     url: string;
   };
 };
 
-type EntriesInterface = [
+type EntriesType = [
   string,
   {
     //[index:string] says that each object name will be different string value
@@ -42,15 +42,17 @@ const TopChoicesScreen = (): React.ReactNode => {
   const partyId = useSelector((state: RootState) => state.party.partyId);
   const inParty = useSelector((state: RootState) => state.party.inParty);
 
+  console.log(topChoicesObject);
+
   //Gets the three top scorers
   function getTopScorers() {
     if (!choicesObject) {
       return Alert.alert("Not in a party");
     }
 
-    const entries: EntriesInterface = Object.entries(choicesObject);
+    const entries: EntriesType = Object.entries(choicesObject);
 
-    const preferredChoices: PrefInterface = {};
+    const preferredChoices: PrefType = {};
 
     let sortable = null;
 

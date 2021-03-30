@@ -79,7 +79,7 @@ const HomeScreen = (): React.ReactNode => {
         dispatch(setBarListData(data));
         dispatch(setPartyURL(url));
         setDataArray(data);
-        //After data ahs been called, remove splash screen
+        //After data has been called, remove splash screen
         SplashScreen.hideAsync();
       })();
     } catch (error) {

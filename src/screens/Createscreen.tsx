@@ -104,7 +104,7 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
   //Leave Party function
   function leaveParty() {
     if (memberLevel === "MEMBER") {
-      return Alert.alert("You must be party leader to leave the party");
+      return Alert.alert("You must be the party leader to leave the party");
     }
 
     //Removes "session" from DB

@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   },
 
   icon: {
-    fontSize: 32,
+    fontSize: 44,
   },
 
   shadow: {

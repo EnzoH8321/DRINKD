@@ -80,7 +80,8 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
     },
     scrollViewStyle: {
       flexGrow: 1,
-      height: "150%",
+      ////Due to android scrollview pecularities, we need to make the scrollview a lot bigger than container
+      height: "110%",
     },
     smallInfoView: {
       display: "flex",
