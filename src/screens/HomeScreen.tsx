@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet, TouchableOpacity, Alert } from "react-native";
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Alert,
+  Platform,
+} from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import Carousel from "react-native-snap-carousel";
 import { RootState } from "../reducers";
@@ -34,7 +40,6 @@ const HomeScreen = (): React.ReactNode => {
   const [index, setIndex] = useState(0);
   const [pointValue, setPointValue] = useState(0);
   const [firstStar, setFirstStar] = useState(false);
-
   const refCarousel = React.useRef(null);
   const currentPartyStatus = useSelector(
     (state: RootState) => state.party.inParty
@@ -87,14 +92,31 @@ const HomeScreen = (): React.ReactNode => {
     }
   }, [yelpUrl]);
 
-  //Toggle First Star
-  function firstStarLogic() {
-    if (!firstStar) {
-      setFirstStar(true);
-      setPointValue(1);
-    } else {
-      setPointValue(0);
-      setFirstStar(false);
+  //Star Logic
+
+  function starLogic(starPosition: number) {
+    switch (starPosition) {
+      case 1:
+        if (!firstStar) {
+          setFirstStar(true);
+          setPointValue(1);
+        } else {
+          setPointValue(0);
+          setFirstStar(false);
+        }
+        break;
+      case 2:
+        setPointValue(2);
+        break;
+      case 3:
+        setPointValue(3);
+        break;
+      case 4:
+        setPointValue(4);
+        break;
+      case 5:
+        setPointValue(5);
+        break;
     }
   }
 
@@ -174,6 +196,8 @@ const HomeScreen = (): React.ReactNode => {
     icon: {
       //For stars
       fontSize: 42,
+      // backgroundColor: styles.reactNavigationDefaultBackground.backgroundColor,
+      ...styles.shadow,
     },
   });
 
@@ -211,63 +235,83 @@ const HomeScreen = (): React.ReactNode => {
             {currentPartyStatus ? (
               <View>
                 <View style={override.starView}>
-                  <TouchableOpacity onPress={() => firstStarLogic()}>
+                  <TouchableOpacity onPress={() => starLogic(1)}>
                     <Icon
                       name="star"
                       style={{
+                        ...override.icon,
                         color:
                           pointValue >= 1
                             ? styles.colorPrimary.backgroundColor
                             : "black",
-                        fontSize: override.icon.fontSize,
+                        shadowColor:
+                          pointValue >= 1
+                            ? styles.colorPrimary.backgroundColor
+                            : "#000000",
                       }}
                     ></Icon>
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={() => setPointValue(2)}>
+                  <TouchableOpacity onPress={() => starLogic(2)}>
                     <Icon
                       name="star"
                       style={{
+                        ...override.icon,
                         color:
                           pointValue >= 2
                             ? styles.colorPrimary.backgroundColor
                             : "black",
-                        fontSize: override.icon.fontSize,
+                        shadowColor:
+                          pointValue >= 2
+                            ? styles.colorPrimary.backgroundColor
+                            : "#000000",
                       }}
                     ></Icon>
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={() => setPointValue(3)}>
+                  <TouchableOpacity onPress={() => starLogic(3)}>
                     <Icon
                       name="star"
                       style={{
+                        ...override.icon,
                         color:
                           pointValue >= 3
                             ? styles.colorPrimary.backgroundColor
                             : "black",
-                        fontSize: override.icon.fontSize,
+                        shadowColor:
+                          pointValue >= 3
+                            ? styles.colorPrimary.backgroundColor
+                            : "#000000",
                       }}
                     ></Icon>
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={() => setPointValue(4)}>
+                  <TouchableOpacity onPress={() => starLogic(4)}>
                     <Icon
                       name="star"
                       style={{
+                        ...override.icon,
                         color:
                           pointValue >= 4
                             ? styles.colorPrimary.backgroundColor
                             : "black",
-                        fontSize: override.icon.fontSize,
+                        shadowColor:
+                          pointValue >= 4
+                            ? styles.colorPrimary.backgroundColor
+                            : "#000000",
                       }}
                     ></Icon>
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={() => setPointValue(5)}>
+                  <TouchableOpacity onPress={() => starLogic(5)}>
                     <Icon
                       name="star"
                       style={{
+                        ...override.icon,
                         color:
                           pointValue >= 5
                             ? styles.colorPrimary.backgroundColor
                             : "black",
-                        fontSize: override.icon.fontSize,
+                        shadowColor:
+                          pointValue >= 5
+                            ? styles.colorPrimary.backgroundColor
+                            : "#000000",
                       }}
                     ></Icon>
                   </TouchableOpacity>

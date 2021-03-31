@@ -51,6 +51,9 @@ const styles = StyleSheet.create({
   colorTertiary: {
     backgroundColor: "#ec2113",
   },
+  reactNavigationDefaultBackground: {
+    backgroundColor: "#f2f2f2",
+  },
   headline: {
     textAlign: "center",
     marginBottom: "20%",
