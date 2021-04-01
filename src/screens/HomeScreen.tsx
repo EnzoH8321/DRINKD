@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   View,
   StyleSheet,
   TouchableOpacity,
   Alert,
   Platform,
+  Easing,
 } from "react-native";
+import Animated from "react-native-reanimated";
 import { useDispatch, useSelector } from "react-redux";
 import Carousel from "react-native-snap-carousel";
 import { RootState } from "../reducers";
@@ -52,6 +54,44 @@ const HomeScreen = (): React.ReactNode => {
   const userName = useSelector((state: RootState) => state.party.userName);
   const inParty = useSelector((state: RootState) => state.party.inParty);
 
+  //Animation
+  const state1 = useRef(new Animated.Value(0)).current;
+  const state2 = useRef(new Animated.Value(0)).current;
+  const state3 = useRef(new Animated.Value(0)).current;
+  const state4 = useRef(new Animated.Value(0)).current;
+  const state5 = useRef(new Animated.Value(0)).current;
+
+  const startAnimation = (stateVal) => {
+    Animated.timing(stateVal, {
+      toValue: 360,
+      duration: 100,
+      easing: Easing.linear,
+    }).start();
+
+    stateVal.setValue(0);
+  };
+
+  const rotateInterpolate1 = state1.interpolate({
+    inputRange: [0, 360],
+    outputRange: ["0deg", "-360deg"],
+  });
+  const rotateInterpolate2 = state2.interpolate({
+    inputRange: [0, 360],
+    outputRange: ["0deg", "-360deg"],
+  });
+  const rotateInterpolate3 = state3.interpolate({
+    inputRange: [0, 360],
+    outputRange: ["0deg", "-360deg"],
+  });
+  const rotateInterpolate4 = state4.interpolate({
+    inputRange: [0, 360],
+    outputRange: ["0deg", "-360deg"],
+  });
+  const rotateInterpolate5 = state5.interpolate({
+    inputRange: [0, 360],
+    outputRange: ["0deg", "-360deg"],
+  });
+  //
   // Calls General Yelp Api
   useEffect(() => {
     //When there is not data to present, use splash screen
@@ -100,6 +140,7 @@ const HomeScreen = (): React.ReactNode => {
         if (!firstStar) {
           setFirstStar(true);
           setPointValue(1);
+          startAnimation(state1);
         } else {
           setPointValue(0);
           setFirstStar(false);
@@ -107,15 +148,21 @@ const HomeScreen = (): React.ReactNode => {
         break;
       case 2:
         setPointValue(2);
+
+        startAnimation(state2);
+
         break;
       case 3:
         setPointValue(3);
+        startAnimation(state3);
         break;
       case 4:
         setPointValue(4);
+        startAnimation(state4);
         break;
       case 5:
         setPointValue(5);
+        startAnimation(state5);
         break;
     }
   }
@@ -196,7 +243,6 @@ const HomeScreen = (): React.ReactNode => {
     icon: {
       //For stars
       fontSize: 42,
-      // backgroundColor: styles.reactNavigationDefaultBackground.backgroundColor,
       ...styles.shadow,
     },
   });
@@ -235,86 +281,126 @@ const HomeScreen = (): React.ReactNode => {
             {currentPartyStatus ? (
               <View>
                 <View style={override.starView}>
-                  <TouchableOpacity onPress={() => starLogic(1)}>
-                    <Icon
-                      name="star"
-                      style={{
-                        ...override.icon,
-                        color:
-                          pointValue >= 1
-                            ? styles.colorPrimary.backgroundColor
-                            : "black",
-                        shadowColor:
-                          pointValue >= 1
-                            ? styles.colorPrimary.backgroundColor
-                            : "#000000",
+                  <Animated.View
+                    style={[{ transform: [{ rotate: rotateInterpolate1 }] }]}
+                  >
+                    <TouchableOpacity
+                      onPress={() => {
+                        starLogic(1);
                       }}
-                    ></Icon>
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={() => starLogic(2)}>
-                    <Icon
-                      name="star"
-                      style={{
-                        ...override.icon,
-                        color:
-                          pointValue >= 2
-                            ? styles.colorPrimary.backgroundColor
-                            : "black",
-                        shadowColor:
-                          pointValue >= 2
-                            ? styles.colorPrimary.backgroundColor
-                            : "#000000",
+                    >
+                      <Icon
+                        name="star"
+                        style={{
+                          ...override.icon,
+                          color:
+                            pointValue >= 1
+                              ? styles.colorPrimary.backgroundColor
+                              : "black",
+                          shadowColor:
+                            pointValue >= 1
+                              ? styles.colorPrimary.backgroundColor
+                              : "#000000",
+                        }}
+                      ></Icon>
+                    </TouchableOpacity>
+                  </Animated.View>
+                  <Animated.View
+                    style={[{ transform: [{ rotate: rotateInterpolate2 }] }]}
+                  >
+                    <TouchableOpacity
+                      onPress={() => {
+                        starLogic(2);
                       }}
-                    ></Icon>
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={() => starLogic(3)}>
-                    <Icon
-                      name="star"
-                      style={{
-                        ...override.icon,
-                        color:
-                          pointValue >= 3
-                            ? styles.colorPrimary.backgroundColor
-                            : "black",
-                        shadowColor:
-                          pointValue >= 3
-                            ? styles.colorPrimary.backgroundColor
-                            : "#000000",
+                    >
+                      <Icon
+                        name="star"
+                        style={{
+                          ...override.icon,
+                          color:
+                            pointValue >= 2
+                              ? styles.colorPrimary.backgroundColor
+                              : "black",
+                          shadowColor:
+                            pointValue >= 2
+                              ? styles.colorPrimary.backgroundColor
+                              : "#000000",
+                        }}
+                      ></Icon>
+                    </TouchableOpacity>
+                  </Animated.View>
+                  <Animated.View
+                    style={[{ transform: [{ rotate: rotateInterpolate3 }] }]}
+                  >
+                    <TouchableOpacity
+                      onPress={() => {
+                        starLogic(3);
                       }}
-                    ></Icon>
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={() => starLogic(4)}>
-                    <Icon
-                      name="star"
-                      style={{
-                        ...override.icon,
-                        color:
-                          pointValue >= 4
-                            ? styles.colorPrimary.backgroundColor
-                            : "black",
-                        shadowColor:
-                          pointValue >= 4
-                            ? styles.colorPrimary.backgroundColor
-                            : "#000000",
+                    >
+                      <Icon
+                        name="star"
+                        style={{
+                          ...override.icon,
+                          color:
+                            pointValue >= 3
+                              ? styles.colorPrimary.backgroundColor
+                              : "black",
+                          shadowColor:
+                            pointValue >= 3
+                              ? styles.colorPrimary.backgroundColor
+                              : "#000000",
+                        }}
+                      ></Icon>
+                    </TouchableOpacity>
+                  </Animated.View>
+                  <Animated.View
+                    style={[{ transform: [{ rotate: rotateInterpolate4 }] }]}
+                  >
+                    <TouchableOpacity
+                      onPress={() => {
+                        starLogic(4);
                       }}
-                    ></Icon>
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={() => starLogic(5)}>
-                    <Icon
-                      name="star"
-                      style={{
-                        ...override.icon,
-                        color:
-                          pointValue >= 5
-                            ? styles.colorPrimary.backgroundColor
-                            : "black",
-                        shadowColor:
-                          pointValue >= 5
-                            ? styles.colorPrimary.backgroundColor
-                            : "#000000",
+                    >
+                      <Icon
+                        name="star"
+                        style={{
+                          ...override.icon,
+                          color:
+                            pointValue >= 4
+                              ? styles.colorPrimary.backgroundColor
+                              : "black",
+                          shadowColor:
+                            pointValue >= 4
+                              ? styles.colorPrimary.backgroundColor
+                              : "#000000",
+                        }}
+                      ></Icon>
+                    </TouchableOpacity>
+                  </Animated.View>
+                  <Animated.View
+                    style={[{ transform: [{ rotate: rotateInterpolate5 }] }]}
+                  >
+                    <TouchableOpacity
+                      onPress={() => {
+                        starLogic(5);
                       }}
-                    ></Icon>
-                  </TouchableOpacity>
+                    >
+                      <Icon
+                        name="star"
+                        style={{
+                          ...override.icon,
+                          color:
+                            pointValue >= 5
+                              ? styles.colorPrimary.backgroundColor
+                              : "black",
+                          shadowColor:
+                            pointValue >= 5
+                              ? styles.colorPrimary.backgroundColor
+                              : "#000000",
+                        }}
+                      ></Icon>
+                    </TouchableOpacity>
+                  </Animated.View>
                 </View>
                 <View style={override.starViewButton}>
                   <Button
