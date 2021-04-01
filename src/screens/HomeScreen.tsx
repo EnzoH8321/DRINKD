@@ -61,7 +61,7 @@ const HomeScreen = (): React.ReactNode => {
   const state4 = useRef(new Animated.Value(0)).current;
   const state5 = useRef(new Animated.Value(0)).current;
 
-  const startAnimation = (stateVal) => {
+  const startAnimation = (stateVal: Animated.Value<number>) => {
     Animated.timing(stateVal, {
       toValue: 360,
       duration: 100,
