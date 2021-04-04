@@ -4,7 +4,6 @@ import {
   StyleSheet,
   TouchableOpacity,
   Alert,
-  Platform,
   Easing,
 } from "react-native";
 import Animated from "react-native-reanimated";

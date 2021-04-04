@@ -70,6 +70,7 @@ const TopChoicesScreen = (): React.ReactNode => {
       return Alert.alert("Not in a party");
     }
 
+    //Final Array that will hold all out sorted eateries and their url/scores
     let sortable: SortableType = null;
     const tempArray: TempArrayType = [];
     const tempObject: TempObjectType = {};
@@ -110,21 +111,39 @@ const TopChoicesScreen = (): React.ReactNode => {
       .reverse();
 
     setTopChoicesObject({
-      first: {
-        name: sortable[0][0],
-        score: sortable[0][1][0],
-        url: sortable[0][1][1],
-      },
-      second: {
-        name: sortable[1][0],
-        score: sortable[1][1][0],
-        url: sortable[1][1][1],
-      },
-      third: {
-        name: sortable[2][0],
-        score: sortable[2][1][0],
-        url: sortable[2][1][1],
-      },
+      first: sortable[0]
+        ? {
+            name: sortable[0][0],
+            score: sortable[0][1][0],
+            url: sortable[0][1][1],
+          }
+        : {
+            name: "",
+            score: 0,
+            url: "",
+          },
+      second: sortable[1]
+        ? {
+            name: sortable[1][0],
+            score: sortable[1][1][0],
+            url: sortable[1][1][1],
+          }
+        : {
+            name: "",
+            score: 0,
+            url: "",
+          },
+      third: sortable[2]
+        ? {
+            name: sortable[2][0],
+            score: sortable[2][1][0],
+            url: sortable[2][1][1],
+          }
+        : {
+            name: "",
+            score: 0,
+            url: "",
+          },
     });
   }
   //Grabs the eatery choices from the Firebase DB
@@ -143,7 +162,24 @@ const TopChoicesScreen = (): React.ReactNode => {
           //Turns off firebase listener when you leave a party. Also sets objects empty when you are not in a party (this clears the mini card component)
           if (!inParty || !data) {
             firebaseData.off();
-            setTopChoicesObject({});
+            //Resets the topChoicesObject
+            setTopChoicesObject({
+              first: {
+                name: "",
+                score: 0,
+                url: "",
+              },
+              second: {
+                name: "",
+                score: 0,
+                url: "",
+              },
+              third: {
+                name: "",
+                score: 0,
+                url: "",
+              },
+            });
             setChoicesObject({});
             return;
           }
