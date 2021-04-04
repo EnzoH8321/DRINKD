@@ -27,6 +27,7 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
   } = barData;
 
   function setTransactionsUI(transactions: string[]) {
+    //Holds React elements for the delivery status component
     const transactionArray: ReactElement[] = [];
 
     transactions.map((value: string) => {
@@ -90,7 +91,6 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
     },
     cardImage: {
       borderRadius: styles.border.borderRadius,
-      // marginTop: "8%",
       height: "55%",
     },
     cardSubheading: {
