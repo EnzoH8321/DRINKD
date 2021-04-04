@@ -53,7 +53,7 @@ const HomeScreen = (): React.ReactNode => {
   const userName = useSelector((state: RootState) => state.party.userName);
   const inParty = useSelector((state: RootState) => state.party.inParty);
 
-  //Animation
+  //Animation Code
   const state1 = useRef(new Animated.Value(0)).current;
   const state2 = useRef(new Animated.Value(0)).current;
   const state3 = useRef(new Animated.Value(0)).current;
