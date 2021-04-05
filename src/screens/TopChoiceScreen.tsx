@@ -1,14 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { View, StyleSheet, Alert, TouchableOpacity } from "react-native";
+import React, { useEffect, useState, useRef } from "react";
+import {
+  View,
+  StyleSheet,
+  Alert,
+  TouchableOpacity,
+  Easing,
+  Animated,
+} from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import styles from "../styles/constant";
 import { useSelector } from "react-redux";
 import { RootState } from "../reducers";
 import MiniCardComponent from "../components/MiniCardComponent";
+import MiniCardComponentBack from "../components/MiniCardComponentBack";
 //Firebase
 import firebase from "../utils/firebase";
 //Components
 import { Button } from "react-native-paper";
+
 //Types
 type TopChoicesType = {
   first: {
@@ -64,8 +73,60 @@ const TopChoicesScreen = (): React.ReactNode => {
   const partyId = useSelector((state: RootState) => state.party.partyId);
   const inParty = useSelector((state: RootState) => state.party.inParty);
 
+  //Animation
+  const animatedValue: Animated.Value = useRef(new Animated.Value(0)).current;
+  let defaultValue = 0;
+
+  //Sets the default value to whatever the animater value is. This lets the JS engine have access to the animated value
+  animatedValue.addListener(({ value }: { value: number }) => {
+    defaultValue = value;
+  });
+
+  const frontInterpolate = animatedValue.interpolate({
+    inputRange: [0, 360],
+    outputRange: ["0deg", "360deg"],
+  });
+  const backInterpolate = animatedValue.interpolate({
+    inputRange: [0, 180],
+    outputRange: ["180deg", "360deg"],
+  });
+
+  const frontAnimatedStyle = {
+    transform: [
+      {
+        rotateX: frontInterpolate,
+      },
+    ],
+  };
+
+  const backAnimatedStyle = {
+    transform: [
+      {
+        rotateX: backInterpolate,
+      },
+    ],
+  };
+
+  function flipCard() {
+    animatedValue.setValue(0);
+    Animated.timing(animatedValue, {
+      toValue: 360,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start();
+  }
+
+  useEffect(() => {
+    return () => {
+      animatedValue.removeAllListeners();
+    };
+  }, []);
+
+  //
+
   //Gets the three top scorers
   function getTopScorers() {
+    flipCard();
     if (!choicesObject) {
       return Alert.alert("Not in a party");
     }
@@ -146,6 +207,7 @@ const TopChoicesScreen = (): React.ReactNode => {
           },
     });
   }
+
   //Grabs the eatery choices from the Firebase DB
   useEffect(() => {
     try {
@@ -194,6 +256,11 @@ const TopChoicesScreen = (): React.ReactNode => {
 
   //Styles
   const override = StyleSheet.create({
+    animatedCardView: {
+      alignItems: "center",
+      backfaceVisibility: "hidden",
+    },
+
     choiceContainer: {
       ...styles.container,
       flexDirection: "column",
@@ -214,102 +281,112 @@ const TopChoicesScreen = (): React.ReactNode => {
 
   return (
     <View style={override.choiceContainer}>
-      <View style={override.choiceDataContainer}>
-        <TouchableOpacity
-          onPress={() => {
-            if (!inParty || !topChoicesObject.first.url) {
-              return;
-            }
-            try {
-              WebBrowser.openBrowserAsync(
-                `${topChoicesObject.first ? topChoicesObject.first.url : ""}`
-              );
-            } catch (error) {
-              Alert.alert("No Link Found ");
-            }
-          }}
-        >
-          <MiniCardComponent
-            index={1}
-            name={
-              topChoicesObject.first && inParty
-                ? topChoicesObject.first.name
-                : ""
-            }
-            number={
-              topChoicesObject.first && inParty
-                ? topChoicesObject.first.score
-                : 0
-            }
-            iconColor="gold"
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            if (!inParty || !topChoicesObject.second) {
-              return;
-            }
-            try {
-              WebBrowser.openBrowserAsync(
-                `${topChoicesObject.second ? topChoicesObject.second.url : ""}`
-              );
-            } catch (err) {
-              Alert.alert("No Link Found ");
-            }
-          }}
-        >
-          <MiniCardComponent
-            index={2}
-            name={
-              topChoicesObject.second && inParty
-                ? topChoicesObject.second.name
-                : ""
-            }
-            number={
-              topChoicesObject.second && inParty
-                ? topChoicesObject.second.score
-                : 0
-            }
-            iconColor="silver"
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            if (!inParty || !topChoicesObject.third) {
-              return;
-            }
-            try {
-              WebBrowser.openBrowserAsync(
-                `${topChoicesObject.third ? topChoicesObject.third.url : ""}`
-              );
-            } catch (error) {
-              Alert.alert("No Link Found ");
-            }
-          }}
-        >
-          <MiniCardComponent
-            index={3}
-            name={
-              topChoicesObject.third && inParty
-                ? topChoicesObject.third.name
-                : ""
-            }
-            number={
-              topChoicesObject.third && inParty
-                ? topChoicesObject.third.score
-                : 0
-            }
-            iconColor="#CD7F32"
-          />
-        </TouchableOpacity>
-        <Button
-          mode="contained"
-          onPress={getTopScorers}
-          style={override.button}
-        >
-          Find Winner
-        </Button>
+      <View style={[override.choiceDataContainer]}>
+        <Animated.View style={[frontAnimatedStyle, override.animatedCardView]}>
+          <TouchableOpacity
+            onPress={() => {
+              if (!inParty || !topChoicesObject.first.url) {
+                return;
+              }
+              try {
+                WebBrowser.openBrowserAsync(
+                  `${topChoicesObject.first ? topChoicesObject.first.url : ""}`
+                );
+              } catch (error) {
+                Alert.alert("No Link Found ");
+              }
+            }}
+          >
+            <MiniCardComponent
+              index={1}
+              name={
+                topChoicesObject.first && inParty
+                  ? topChoicesObject.first.name
+                  : ""
+              }
+              number={
+                topChoicesObject.first && inParty
+                  ? topChoicesObject.first.score
+                  : 0
+              }
+              iconColor="gold"
+            />
+          </TouchableOpacity>
+        </Animated.View>
+        <Animated.View style={[frontAnimatedStyle, override.animatedCardView]}>
+          <TouchableOpacity
+            onPress={() => {
+              if (!inParty || !topChoicesObject.second) {
+                return;
+              }
+              try {
+                WebBrowser.openBrowserAsync(
+                  `${
+                    topChoicesObject.second ? topChoicesObject.second.url : ""
+                  }`
+                );
+              } catch (err) {
+                Alert.alert("No Link Found ");
+              }
+            }}
+          >
+            <MiniCardComponent
+              index={2}
+              name={
+                topChoicesObject.second && inParty
+                  ? topChoicesObject.second.name
+                  : ""
+              }
+              number={
+                topChoicesObject.second && inParty
+                  ? topChoicesObject.second.score
+                  : 0
+              }
+              iconColor="silver"
+            />
+          </TouchableOpacity>
+        </Animated.View>
+        <Animated.View style={[frontAnimatedStyle, override.animatedCardView]}>
+          <TouchableOpacity
+            onPress={() => {
+              if (!inParty || !topChoicesObject.third) {
+                return;
+              }
+              try {
+                WebBrowser.openBrowserAsync(
+                  `${topChoicesObject.third ? topChoicesObject.third.url : ""}`
+                );
+              } catch (error) {
+                Alert.alert("No Link Found ");
+              }
+            }}
+          >
+            <MiniCardComponent
+              index={3}
+              name={
+                topChoicesObject.third && inParty
+                  ? topChoicesObject.third.name
+                  : ""
+              }
+              number={
+                topChoicesObject.third && inParty
+                  ? topChoicesObject.third.score
+                  : 0
+              }
+              iconColor="#CD7F32"
+            />
+          </TouchableOpacity>
+        </Animated.View>
       </View>
+      <Button
+        mode="contained"
+        onPress={() => {
+          getTopScorers();
+        }}
+        style={override.button}
+      >
+        Find Winner
+      </Button>
     </View>
   );
 };
