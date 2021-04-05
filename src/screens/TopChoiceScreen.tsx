@@ -4,7 +4,6 @@ import {
   StyleSheet,
   Alert,
   TouchableOpacity,
-  Easing,
   Animated,
 } from "react-native";
 import * as WebBrowser from "expo-web-browser";
@@ -12,7 +11,7 @@ import styles from "../styles/constant";
 import { useSelector } from "react-redux";
 import { RootState } from "../reducers";
 import MiniCardComponent from "../components/MiniCardComponent";
-import MiniCardComponentBack from "../components/MiniCardComponentBack";
+
 //Firebase
 import firebase from "../utils/firebase";
 //Components
@@ -86,10 +85,10 @@ const TopChoicesScreen = (): React.ReactNode => {
     inputRange: [0, 360],
     outputRange: ["0deg", "360deg"],
   });
-  const backInterpolate = animatedValue.interpolate({
-    inputRange: [0, 180],
-    outputRange: ["180deg", "360deg"],
-  });
+  // const backInterpolate = animatedValue.interpolate({
+  //   inputRange: [0, 180],
+  //   outputRange: ["180deg", "360deg"],
+  // });
 
   const frontAnimatedStyle = {
     transform: [
@@ -99,13 +98,13 @@ const TopChoicesScreen = (): React.ReactNode => {
     ],
   };
 
-  const backAnimatedStyle = {
-    transform: [
-      {
-        rotateX: backInterpolate,
-      },
-    ],
-  };
+  // const backAnimatedStyle = {
+  //   transform: [
+  //     {
+  //       rotateX: backInterpolate,
+  //     },
+  //   ],
+  // };
 
   function flipCard() {
     animatedValue.setValue(0);
@@ -113,8 +112,14 @@ const TopChoicesScreen = (): React.ReactNode => {
       toValue: 360,
       duration: 1000,
       useNativeDriver: true,
-    }).start();
+    }).start(({ finished }) => {
+      if (finished === true) {
+        getTopScorers();
+      }
+    });
   }
+
+  console.log(defaultValue);
 
   useEffect(() => {
     return () => {
@@ -126,7 +131,6 @@ const TopChoicesScreen = (): React.ReactNode => {
 
   //Gets the three top scorers
   function getTopScorers() {
-    flipCard();
     if (!choicesObject) {
       return Alert.alert("Not in a party");
     }
@@ -381,7 +385,7 @@ const TopChoicesScreen = (): React.ReactNode => {
       <Button
         mode="contained"
         onPress={() => {
-          getTopScorers();
+          flipCard();
         }}
         style={override.button}
       >
