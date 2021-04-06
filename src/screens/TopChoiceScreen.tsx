@@ -74,21 +74,17 @@ const TopChoicesScreen = (): React.ReactNode => {
 
   //Animation
   const animatedValue: Animated.Value = useRef(new Animated.Value(0)).current;
-  let defaultValue = 0;
+  // let defaultValue = 0;
 
   //Sets the default value to whatever the animater value is. This lets the JS engine have access to the animated value
-  animatedValue.addListener(({ value }: { value: number }) => {
-    defaultValue = value;
-  });
+  // animatedValue.addListener(({ value }: { value: number }) => {
+  //   defaultValue = value;
+  // });
 
   const frontInterpolate = animatedValue.interpolate({
     inputRange: [0, 360],
     outputRange: ["0deg", "360deg"],
   });
-  // const backInterpolate = animatedValue.interpolate({
-  //   inputRange: [0, 180],
-  //   outputRange: ["180deg", "360deg"],
-  // });
 
   const frontAnimatedStyle = {
     transform: [
@@ -98,28 +94,19 @@ const TopChoicesScreen = (): React.ReactNode => {
     ],
   };
 
-  // const backAnimatedStyle = {
-  //   transform: [
-  //     {
-  //       rotateX: backInterpolate,
-  //     },
-  //   ],
-  // };
-
   function flipCard() {
     animatedValue.setValue(0);
-    Animated.timing(animatedValue, {
+    getTopScorers();
+    Animated.spring(animatedValue, {
       toValue: 360,
-      duration: 1000,
+      // duration: 1000,
       useNativeDriver: true,
-    }).start(({ finished }) => {
-      if (finished === true) {
-        getTopScorers();
-      }
-    });
+      // friction: 5,
+      // tension: 40,
+      speed: 1,
+      bounciness: 2,
+    }).start();
   }
-
-  console.log(defaultValue);
 
   useEffect(() => {
     return () => {
@@ -137,6 +124,7 @@ const TopChoicesScreen = (): React.ReactNode => {
 
     //Final Array that will hold all out sorted eateries and their url/scores
     let sortable: SortableType = null;
+
     const tempArray: TempArrayType = [];
     const tempObject: TempObjectType = {};
 
