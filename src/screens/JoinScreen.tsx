@@ -67,7 +67,6 @@ const JoinScreen: React.FC = () => {
   const override = StyleSheet.create({
     joinContainer: {
       ...styles.container,
-      // marginTop: "30%",
     },
     headline: {
       ...styles.headline,
