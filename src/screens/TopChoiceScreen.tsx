@@ -8,47 +8,21 @@ import {
 } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import styles from "../styles/constant";
+import MiniCardComponent from "../components/MiniCardComponent";
+import { Button } from "react-native-paper";
 import { useSelector } from "react-redux";
 import { RootState } from "../reducers";
-import MiniCardComponent from "../components/MiniCardComponent";
-
 //Firebase
 import firebase from "../utils/firebase";
-//Components
-import { Button } from "react-native-paper";
-
 //Types
-type TopChoicesType = {
-  first: {
-    name: string;
-    score: number;
-    url: string;
-  };
-  second: {
-    name: string;
-    score: number;
-    url: string;
-  };
-  third: {
-    name: string;
-    score: number;
-    url: string;
-  };
-};
+import {
+  TopChoicesType,
+  TestObjectType,
+  TempObjectType,
+  SortableType,
+  TempArrayType,
+} from "../types/types";
 
-type TestObjectType = {
-  [key: string]: {
-    score: number;
-    url: string;
-  };
-};
-
-type TempObjectType = {
-  [key: string]: [number, string];
-};
-
-type SortableType = [string, [number, string]][] | null;
-type TempArrayType = [string, number, string][];
 //
 const TopChoicesScreen = (): React.ReactNode => {
   const [choicesObject, setChoicesObject] = useState({});
@@ -74,12 +48,6 @@ const TopChoicesScreen = (): React.ReactNode => {
 
   //Animation
   const animatedValue: Animated.Value = useRef(new Animated.Value(0)).current;
-  // let defaultValue = 0;
-
-  //Sets the default value to whatever the animater value is. This lets the JS engine have access to the animated value
-  // animatedValue.addListener(({ value }: { value: number }) => {
-  //   defaultValue = value;
-  // });
 
   const frontInterpolate = animatedValue.interpolate({
     inputRange: [0, 360],
@@ -108,14 +76,6 @@ const TopChoicesScreen = (): React.ReactNode => {
     }).start();
   }
 
-  useEffect(() => {
-    return () => {
-      animatedValue.removeAllListeners();
-    };
-  }, []);
-
-  //
-
   //Gets the three top scorers
   function getTopScorers() {
     if (!choicesObject) {
@@ -143,7 +103,7 @@ const TopChoicesScreen = (): React.ReactNode => {
       return ele[1];
     });
 
-    //Takes the temporary array and loops through it, creating a temporary object
+    //Takes the temporary array and loops through it, uses the name/score,url as the properties of the temp object
     tempArray.forEach((ele: [string, number, string]) => {
       const currentName = ele[0];
       const currentScore = ele[1];
@@ -158,7 +118,7 @@ const TopChoicesScreen = (): React.ReactNode => {
       }
     });
 
-    //the sortable value takes the tempArray object and transforms it to an array
+    //The sortable value takes the tempArray object and transforms it to an array
     sortable = Object.entries(tempObject)
       .sort((a, b) => a[1][0] - b[1][0])
       .reverse();

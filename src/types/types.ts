@@ -212,3 +212,36 @@ export type CreateScreenProps = {
   route: CreateScreenRouteProp;
   navigation: ProfileScreenNavigationProp;
 };
+
+//TopChoiceScreen
+export type TopChoicesType = {
+  first: {
+    name: string;
+    score: number;
+    url: string;
+  };
+  second: {
+    name: string;
+    score: number;
+    url: string;
+  };
+  third: {
+    name: string;
+    score: number;
+    url: string;
+  };
+};
+
+export type TestObjectType = {
+  [key: string]: {
+    score: number;
+    url: string;
+  };
+};
+
+export type TempObjectType = {
+  [key: string]: [number, string];
+};
+
+export type SortableType = [string, [number, string]][] | null;
+export type TempArrayType = [string, number, string][];
