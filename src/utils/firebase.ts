@@ -1,7 +1,7 @@
 import firebase from "firebase";
 
 const firebaseConfig = {
-  //Not really necessary but w/e
+  //Not really necessary to send to a env variable but w/e
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: "drinkd-dev.firebaseapp.com",
   //Change this back for production
