@@ -30,6 +30,7 @@ expo start --ios
 ```
 ## Tech Stack
 
+* Expo
 * React / React Native
 * React Navigation
-* [gorhom/react-native-bottom-sheet](https://github.com/gorhom/react-native-bottom-sheet)
+* Firebase
