@@ -23,5 +23,5 @@ expo start --android
 expo start --ios
 
 //
-
+Right now 
 ```
