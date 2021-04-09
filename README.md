@@ -6,13 +6,13 @@ App that lets you and your friend's plan for a night out.
 
 ```bash
 # Clone this repo
-git clone https://github.com/shootismoke/mobile-app && cd shoot-i-smoke
-# Install dependencies
-yarn install
+git clone https://github.com/EnzoH8321/DRINKD.git && cd drinkdapp
+# Install expo
+npm install --global expo-cli
 
-# Copy the file that contains secrets
-cp app.example.json app.json
+# Install Dependencies
+npm install
 
 # Run the app with Expo
-yarn start
+expo start
 ```
