@@ -19,7 +19,7 @@ npm install --global expo-cli
 npm install
 
 # Configure your Firebase config in src/utils/firebase.ts (if using Firebase)
-Set up is relatively easy. Create a Firebase account of your own and copy your Firebase SDK snippet + paste into this file. 
+Set up is relatively easy. Create a Firebase account of your own and copy the firebaseConfig object in your Firebase SDK snippet and paste into the firebaseConfig in the repo. 
 Important keys to note are the apikey and databaseURL.
 
 # Run the app with Expo (Android)
