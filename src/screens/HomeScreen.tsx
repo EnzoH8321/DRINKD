@@ -7,29 +7,26 @@ import {
   Easing,
 } from "react-native";
 import Animated from "react-native-reanimated";
-import { useDispatch, useSelector } from "react-redux";
-import Carousel from "react-native-snap-carousel";
-import { RootState } from "../reducers";
-import fetchBusiness from "../api/YelpApi";
-
-import * as Location from "expo-location";
 import styles from "../styles/constant";
+//Expo
 import * as SplashScreen from "expo-splash-screen";
-
+import * as Location from "expo-location";
+//Api
+import fetchBusiness from "../api/YelpApi";
 //Components
 import CardComponent from "../components/CardComponent";
 import Icon from "react-native-vector-icons/Ionicons";
 import { Button, Headline } from "react-native-paper";
-
-//Actions
+import Carousel from "react-native-snap-carousel";
+import { useDispatch, useSelector } from "react-redux";
+//Redux Components
 import { setBarListData } from "../actions/APIActions";
 import { setPartyURL } from "../actions/PartyActions";
+import { RootState } from "../reducers";
 //Types
 import { ApiSearch } from "../types/types";
-
 //Firebase
 import firebase from "../utils/firebase";
-
 //Types
 type Item = {
   item: ApiSearch;

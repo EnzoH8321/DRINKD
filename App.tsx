@@ -3,10 +3,9 @@ import { Provider as PaperProvider } from "react-native-paper";
 import { Provider } from "react-redux";
 import { Image } from "react-native";
 import styles from "./src/styles/constant";
-
+import Icon from "react-native-vector-icons/Ionicons";
 //ReactNav
 import { NavigationContainer } from "@react-navigation/native";
-
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 //Screens
@@ -18,10 +17,8 @@ import CreateScreen from "./src/screens/Createscreen";
 import store from "./src/store/store";
 //Types
 import { HomeDrawerParamList } from "./src/types/types";
-//Icon
-import Icon from "react-native-vector-icons/Ionicons";
 
-//Stack
+//Navigator Stack
 const HomeDrawer = createBottomTabNavigator<HomeDrawerParamList>();
 const HomeStack = createStackNavigator();
 

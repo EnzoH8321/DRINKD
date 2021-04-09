@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Alert } from "react-native";
 import { Headline, Button, TextInput } from "react-native-paper";
-import { useDispatch, useSelector } from "react-redux";
 import styles from "../styles/constant";
 //Actions
 import {
@@ -10,13 +9,16 @@ import {
   setPartyId,
   setUserName,
 } from "../actions/PartyActions";
-
-//firebase
+//Redux Components
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../reducers";
+//Firebase
 import firebase from "../utils/firebase";
 
-import { RootState } from "../reducers";
+//Types
 import { CreateScreenProps } from "../types/types";
 
+//
 const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
   const [partyName, setPartyName] = useState("");
   const dispatch = useDispatch();

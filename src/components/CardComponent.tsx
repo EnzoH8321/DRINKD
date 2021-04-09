@@ -1,18 +1,16 @@
 import React, { ReactElement } from "react";
 import { Card, Title, Paragraph } from "react-native-paper";
-import styles from "../styles/constant";
-import { ApiSearch } from "../types/types";
 import { StyleSheet, View } from "react-native";
+import styles from "../styles/constant";
 import * as WebBrowser from "expo-web-browser";
-
-//Icons
 import Icon from "react-native-vector-icons/Ionicons";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
-
+//Types
+import { ApiSearch } from "../types/types";
 type BarData = {
   barData: ApiSearch;
 };
-
+//
 const CardComponent = ({ barData }: BarData): React.ReactElement => {
   const {
     name,
@@ -25,6 +23,8 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
     transactions,
     url,
   } = barData;
+
+  console.log(barData);
 
   function setTransactionsUI(transactions: string[]) {
     //Holds React elements for the delivery status component

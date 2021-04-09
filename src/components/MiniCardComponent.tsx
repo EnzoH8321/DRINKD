@@ -1,10 +1,9 @@
 import React, { ReactText } from "react";
-
 import { Card, Headline } from "react-native-paper";
 import { StyleSheet, View } from "react-native";
 import styles from "../styles/constant";
 import Icon from "react-native-vector-icons/Ionicons";
-
+//Types
 type Props = {
   index: number;
   name: string;

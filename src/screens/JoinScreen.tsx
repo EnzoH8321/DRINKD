@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Alert } from "react-native";
 import { Headline, TextInput, Button } from "react-native-paper";
-import { useDispatch, useSelector } from "react-redux";
 import styles from "../styles/constant";
-
+//Redux Components
+import { RootState } from "../reducers";
+import { useDispatch, useSelector } from "react-redux";
 import {
   setPartyData,
   setMemberLevel,
@@ -11,12 +12,10 @@ import {
   setUserName,
   setPartyURL,
 } from "../actions/PartyActions";
-
-//firebase
+//Firebase
 import firebase from "../utils/firebase";
 
-import { RootState } from "../reducers";
-
+//
 const JoinScreen: React.FC = () => {
   const dispatch = useDispatch();
   const partyId = useSelector((state: RootState) => state.party.partyId);

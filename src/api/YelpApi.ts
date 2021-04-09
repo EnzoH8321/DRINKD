@@ -1,4 +1,5 @@
 import axios from "axios";
+//Types
 import { ApiSearch } from "../types/types";
 
 export default async function fetchBusiness(

@@ -8,10 +8,12 @@ import {
 } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import styles from "../styles/constant";
-import MiniCardComponent from "../components/MiniCardComponent";
-import { Button } from "react-native-paper";
+//Redux Components
 import { useSelector } from "react-redux";
 import { RootState } from "../reducers";
+//Components
+import MiniCardComponent from "../components/MiniCardComponent";
+import { Button } from "react-native-paper";
 //Firebase
 import firebase from "../utils/firebase";
 //Types
