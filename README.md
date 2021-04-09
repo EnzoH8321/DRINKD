@@ -6,7 +6,7 @@ The hardest part about going for a night out with your friends is deciding where
 
 ## Getting Started
 
-:fire: This app uses Firebase Realtime DB  + a Google Cloud Function that performs cleanup of inactive parties. You will need your own DB (Firebase is very easy to set up) + A cleanup function to remove inactive parties (recommended a chron job that runs every hour).
+:fire: This app uses Firebase Realtime DB  + a Google Cloud Function that performs cleanup of inactive parties. You will need Firebase + A cleanup function to remove inactive parties (recommended a GCF chron job that runs every hour).
 
 ```bash
 # Clone this repo
