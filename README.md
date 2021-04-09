@@ -18,14 +18,18 @@ npm install --global expo-cli
 # Install Dependencies
 npm install
 
-# Include a valid 
+# Configure your Firebase config in src/utils/firebase.ts (if using Firebase)
+Set up is relatively easy. Create a Firebase account of your own and copy your Firebase SDK snippet + paste into this file. 
+Important keys to note are the apikey and databaseURL.
 
 # Run the app with Expo (Android)
 expo start --android
 
 # Run the app with Expo (iOS)
 expo start --ios
-
-//
-Right now 
 ```
+## Tech Stack
+
+* React / React Native
+* React Navigation
+* [gorhom/react-native-bottom-sheet](https://github.com/gorhom/react-native-bottom-sheet)
