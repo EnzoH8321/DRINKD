@@ -25,7 +25,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 const HomeDrawer = createBottomTabNavigator<HomeDrawerParamList>();
 const HomeStack = createStackNavigator();
 
-//Created function for debug purposes
+//Created function for debug purposes.
 function setTabBarIconHome(size: number) {
   return <Icon name="newspaper-outline" size={size}></Icon>;
 }
