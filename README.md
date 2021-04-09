@@ -6,6 +6,8 @@ The hardest part about going for a night out with your friends is deciding where
 
 ## Getting Started
 
+:fire: This app uses Firebase Realtime DB  + a Google Cloud Function that performs cleanup of inactive parties. You will need your own DB (Firebase is very easy to set up) + A cleanup function to remove inactive parties (recommended a chron job that runs every hour).
+
 ```bash
 # Clone this repo
 git clone https://github.com/EnzoH8321/DRINKD.git && cd drinkdapp
@@ -15,6 +17,8 @@ npm install --global expo-cli
 
 # Install Dependencies
 npm install
+
+# Include a valid 
 
 # Run the app with Expo (Android)
 expo start --android
