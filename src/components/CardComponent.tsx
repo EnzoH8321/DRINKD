@@ -1,11 +1,14 @@
 import React, { ReactElement } from "react";
 import { Card, Title, Paragraph } from "react-native-paper";
 import { StyleSheet, View, Alert } from "react-native";
-import * as Linking from "expo-linking";
+
 import styles from "../styles/constant";
-import * as WebBrowser from "expo-web-browser";
+
 import Icon from "react-native-vector-icons/Ionicons";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
+//Expo
+import * as WebBrowser from "expo-web-browser";
+import * as Linking from "expo-linking";
 //Types
 import { ApiSearch } from "../types/types";
 type BarData = {
