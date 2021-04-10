@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 import { Card, Title, Paragraph } from "react-native-paper";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Alert } from "react-native";
+import * as Linking from "expo-linking";
 import styles from "../styles/constant";
 import * as WebBrowser from "expo-web-browser";
 import Icon from "react-native-vector-icons/Ionicons";
@@ -19,13 +20,13 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
     location,
     display_phone,
     rating,
+    phone,
     price,
     transactions,
     url,
   } = barData;
 
-  console.log(barData);
-
+  //Returns Transaction components
   function setTransactionsUI(transactions: string[]) {
     //Holds React elements for the delivery status component
     const transactionArray: ReactElement[] = [];
@@ -62,6 +63,17 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
     });
 
     return transactionArray;
+  }
+
+  //Access Phone on
+  function handlePhonePress(phoneNumber: string) {
+    Linking.canOpenURL(`tel:${phoneNumber}`).then((obj) => {
+      if (obj) {
+        Linking.openURL(`tel:${phoneNumber}`);
+      } else {
+        Alert.alert("Not Able to Access Phone");
+      }
+    });
   }
 
   const override = StyleSheet.create({
@@ -115,6 +127,7 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
     icon: {
       fontSize: 32,
       alignSelf: "flex-end",
+      justifyContent: "flex-start",
     },
 
     iconView: {
@@ -135,6 +148,13 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
       fontSize: 32,
       color: styles.colorSecondary.backgroundColor,
       alignSelf: "center",
+    },
+    touchableOpacityPhoneNumber: {
+      marginTop: "5%",
+      marginLeft: "5%",
+    },
+    touchableOpacityPhoneIcon: {
+      marginTop: "10%",
     },
   });
 
@@ -190,10 +210,20 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
               </View>
 
               <View style={override.smallInfoView}>
-                <Icon name="call-outline" style={override.icon}></Icon>
-                <Paragraph style={override.paragraph}>
-                  {display_phone}
-                </Paragraph>
+                <TouchableOpacity
+                  onPress={() => handlePhonePress(phone)}
+                  style={override.touchableOpacityPhoneIcon}
+                >
+                  <Icon name="call-outline" style={override.icon}></Icon>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => handlePhonePress(phone)}
+                  style={override.touchableOpacityPhoneNumber}
+                >
+                  <Paragraph style={override.paragraph}>
+                    {display_phone}
+                  </Paragraph>
+                </TouchableOpacity>
               </View>
 
               {setTransactionsUI(transactions)}
