@@ -1,9 +1,7 @@
 import React, { ReactElement } from "react";
 import { Card, Title, Paragraph } from "react-native-paper";
-import { StyleSheet, View, Alert } from "react-native";
-
+import { StyleSheet, View, Alert, Dimensions } from "react-native";
 import styles from "../styles/constant";
-
 import Icon from "react-native-vector-icons/Ionicons";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 //Expo
@@ -28,6 +26,9 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
     transactions,
     url,
   } = barData;
+  //Gets window dimensions
+  const windowWidth = Dimensions.get("window").width;
+  const windowHeight = Dimensions.get("window").height;
 
   //Returns Transaction components
   function setTransactionsUI(transactions: string[]) {
@@ -81,8 +82,8 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
 
   const override = StyleSheet.create({
     card: {
-      height: "99%",
-      width: "99%",
+      height: windowHeight < 700 ? "97%" : "99%",
+      width: windowWidth < 400 ? "90%" : "99%",
       borderRadius: styles.border.borderRadius,
       ...styles.shadow,
     },

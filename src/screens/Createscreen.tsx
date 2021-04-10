@@ -14,11 +14,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../reducers";
 //Firebase
 import firebase from "../utils/firebase";
-
 //Types
 import { CreateScreenProps } from "../types/types";
 
-//
 const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
   const [partyName, setPartyName] = useState("");
   const dispatch = useDispatch();
@@ -27,7 +25,7 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
   );
   const partyURL = useSelector((state: RootState) => state.party.partyURL);
   const partyId = useSelector((state: RootState) => state.party.partyId);
-  //References textinput
+  //References text input
   const textRef = React.useRef(null);
 
   //Styles
@@ -37,7 +35,6 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
     },
     screenContainer: {
       ...styles.container,
-      // marginTop: "30%",
     },
 
     screenButton: {
@@ -168,7 +165,7 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
                   Party Code is {partyId}
                 </Headline>
                 <Headline style={override.createHeadline}>
-                  Party Name is {partyId}
+                  Party Name is {partyName}
                 </Headline>
               </View>
             </View>

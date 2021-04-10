@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   Alert,
   Easing,
+  Dimensions,
 } from "react-native";
 import Animated from "react-native-reanimated";
 import styles from "../styles/constant";
@@ -49,6 +50,9 @@ const HomeScreen = (): React.ReactNode => {
   const currentPartyId = useSelector((state: RootState) => state.party.partyId);
   const userName = useSelector((state: RootState) => state.party.userName);
   const inParty = useSelector((state: RootState) => state.party.inParty);
+  //Get window dimensions
+  const windowWidth = Dimensions.get("window").width;
+  const windowHeight = Dimensions.get("window").height;
 
   //Animation Code
   const state1 = useRef(new Animated.Value(0)).current;
