@@ -54,6 +54,8 @@ const HomeScreen = (): React.ReactNode => {
   const windowWidth = Dimensions.get("window").width;
   const windowHeight = Dimensions.get("window").height;
 
+  const isSmallDisplay = windowHeight < 700;
+
   //Animation Code
   const state1 = useRef(new Animated.Value(0)).current;
   const state2 = useRef(new Animated.Value(0)).current;
@@ -201,14 +203,13 @@ const HomeScreen = (): React.ReactNode => {
     },
     carousel: {
       height: !currentPartyStatus ? "94%" : "77%",
-      marginTop: "2%",
+      marginTop: isSmallDisplay ? 0 : "2%",
       marginLeft: "2%",
     },
     homeContainer: {
       zIndex: -1,
     },
     headlineView: {
-      // marginTop: "10%",
       justifyContent: "space-around",
       display: "flex",
       flexDirection: "row",
@@ -217,13 +218,13 @@ const HomeScreen = (): React.ReactNode => {
     starView: {
       flexDirection: "row",
       justifyContent: "space-around",
-      marginTop: "3%",
+      marginTop: isSmallDisplay ? 0 : "3%",
     },
     starStyles: {
       fontSize: styles.icon.fontSize,
     },
     starViewButton: {
-      marginTop: "5%",
+      marginTop: isSmallDisplay ? "2%" : "5%",
       alignSelf: styles.button.alignSelf,
     },
     infoButton: {
@@ -275,6 +276,12 @@ const HomeScreen = (): React.ReactNode => {
                   setPointValue(0);
                 }}
                 layout="tinder"
+                // containerCustomStyle={{
+                //   backgroundColor: "green",
+                //   marginBottom: -20,
+                //   paddingBottom: 0,
+                //   height: "100%",
+                // }}
               />
             </View>
 
