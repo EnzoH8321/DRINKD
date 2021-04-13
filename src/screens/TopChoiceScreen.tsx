@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../reducers";
 //Components
 import MiniCardComponent from "../components/MiniCardComponent";
-import { Button } from "react-native-paper";
+import { Button, Headline } from "react-native-paper";
 //Firebase
 import firebase from "../utils/firebase";
 //Types
@@ -47,6 +47,7 @@ const TopChoicesScreen = (): React.ReactNode => {
   });
   const partyId = useSelector((state: RootState) => state.party.partyId);
   const inParty = useSelector((state: RootState) => state.party.inParty);
+  const maxVotes = useSelector((state: RootState) => state.party.toWinVotes);
 
   //Animation
   const animatedValue: Animated.Value = useRef(new Animated.Value(0)).current;
@@ -83,6 +84,8 @@ const TopChoicesScreen = (): React.ReactNode => {
     if (!choicesObject) {
       return Alert.alert("Not in a party");
     }
+
+    console.log(choicesObject);
 
     //Final Array that will hold all out sorted eateries and their url/scores
     let sortable: SortableType = null;
@@ -236,6 +239,7 @@ const TopChoicesScreen = (): React.ReactNode => {
   return (
     <View style={override.choiceContainer}>
       <View style={[override.choiceDataContainer]}>
+        <Headline>Points Needed to Win - </Headline>
         <Animated.View style={[frontAnimatedStyle, override.animatedCardView]}>
           <TouchableOpacity
             onPress={() => {

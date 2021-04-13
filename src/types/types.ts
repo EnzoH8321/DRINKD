@@ -183,6 +183,11 @@ export type SetPartyId = {
   payload: string;
 };
 
+export type SetToWinVotes = {
+  type: "SET TOWIN VOTES";
+  payload: string;
+};
+
 export type BarListData = {
   type: "SET BARLIST DATA";
   payload: [ApiSearch] | undefined;

@@ -5,6 +5,7 @@ import {
   SetPartyUrl,
   SetPartyId,
   SetUserName,
+  SetToWinVotes,
 } from "../types/types";
 
 type InitialState = {
@@ -13,6 +14,7 @@ type InitialState = {
   partyURL: string;
   partyId: string;
   userName: string;
+  toWinVotes: string;
 };
 
 //Initial State!
@@ -22,6 +24,7 @@ export const initialState = {
   partyURL: "",
   partyId: "",
   userName: "",
+  toWinVotes: "",
 };
 
 export default function partyStatusReducer(
@@ -32,6 +35,7 @@ export default function partyStatusReducer(
     | SetPartyUrl
     | SetPartyId
     | SetUserName
+    | SetToWinVotes
 ): InitialState {
   switch (action.type) {
     case actions.SET_INPARTY_DATA:
@@ -48,6 +52,9 @@ export default function partyStatusReducer(
 
     case actions.SET_USERNAME:
       return { ...state, userName: action.payload };
+
+    case actions.SET_TOWIN_VOTES:
+      return { ...state, toWinVotes: action.payload };
 
     default:
       return state;

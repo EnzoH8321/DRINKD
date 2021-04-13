@@ -19,14 +19,70 @@ import { CreateScreenProps } from "../types/types";
 
 const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
   const [partyName, setPartyName] = useState("");
+  const [winningVoteAmount, setWinningVoteAmount] = useState("");
   const dispatch = useDispatch();
   const memberLevel = useSelector(
     (state: RootState) => state.party.memberLevel
   );
   const partyURL = useSelector((state: RootState) => state.party.partyURL);
   const partyId = useSelector((state: RootState) => state.party.partyId);
+
   //References text input
   const textRef = React.useRef(null);
+
+  //Create Party func
+  function createParty() {
+    if (!partyName) {
+      return Alert.alert("You must name your party");
+    }
+
+    //Sets timestamp for when this is posted to the DB
+    const creationTime = Date.now();
+
+    const randomNumber = Math.floor(
+      Math.pow(10, 6 - 1) + Math.random() * 9 * Math.pow(10, 6 - 1)
+    ).toString();
+
+    const userNameGenerator = Math.floor(
+      Math.pow(10, 6 - 1) + Math.random() * 9 * Math.pow(10, 6 - 1)
+    ).toString();
+
+    firebase
+      .database()
+      .ref(`parties/${randomNumber}`)
+      .set({
+        partyId: randomNumber,
+        partyTimestamp: creationTime,
+        partyName: partyName,
+        partyURL: partyURL,
+        partyMaxVotes: winningVoteAmount,
+        topBars: {
+          [userNameGenerator]: "",
+        },
+      });
+
+    dispatch(setPartyData(true));
+    dispatch(setMemberLevel("LEADER"));
+    dispatch(setPartyId(randomNumber));
+    dispatch(setUserName(userNameGenerator));
+    navigation.navigate("Home");
+
+    console.log(firebase.database());
+  }
+
+  //Leave Party function
+  function leaveParty() {
+    if (memberLevel === "MEMBER") {
+      return Alert.alert("You must be the party leader to leave the party");
+    }
+
+    //Removes "session" from DB
+    firebase.database().ref(`parties/${partyId}`).remove();
+
+    dispatch(setPartyData(false));
+    dispatch(setMemberLevel(""));
+    dispatch(setPartyId(""));
+  }
 
   //Styles
   const override = StyleSheet.create({
@@ -63,57 +119,6 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
     },
   });
 
-  //Create Party func
-  function createParty() {
-    if (!partyName) {
-      return Alert.alert("You must name your party");
-    }
-
-    //Sets timestamp for when this is posted to the DB
-    const creationTime = Date.now();
-
-    const randomNumber = Math.floor(
-      Math.pow(10, 6 - 1) + Math.random() * 9 * Math.pow(10, 6 - 1)
-    ).toString();
-
-    const userNameGenerator = Math.floor(
-      Math.pow(10, 6 - 1) + Math.random() * 9 * Math.pow(10, 6 - 1)
-    ).toString();
-
-    firebase
-      .database()
-      .ref(`parties/${randomNumber}`)
-      .set({
-        partyId: randomNumber,
-        partyTimestamp: creationTime,
-        partyName: partyName,
-        partyURL: partyURL,
-        topBars: {
-          [userNameGenerator]: "",
-        },
-      });
-
-    dispatch(setPartyData(true));
-    dispatch(setMemberLevel("LEADER"));
-    dispatch(setPartyId(randomNumber));
-    dispatch(setUserName(userNameGenerator));
-    navigation.navigate("Home");
-  }
-
-  //Leave Party function
-  function leaveParty() {
-    if (memberLevel === "MEMBER") {
-      return Alert.alert("You must be the party leader to leave the party");
-    }
-
-    //Removes "session" from DB
-    firebase.database().ref(`parties/${partyId}`).remove();
-
-    dispatch(setPartyData(false));
-    dispatch(setMemberLevel(""));
-    dispatch(setPartyId(""));
-  }
-
   function renderSwitch(param: string) {
     switch (param) {
       case "MEMBER":
@@ -143,6 +148,14 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
                   colors: { primary: styles.colorPrimary.backgroundColor },
                 }}
               ></TextInput>
+              <TextInput
+                label="Set winning vote amount"
+                theme={{
+                  colors: { primary: styles.colorPrimary.backgroundColor },
+                }}
+                keyboardType="numeric"
+                onChangeText={(value) => setWinningVoteAmount(value)}
+              ></TextInput>
               {!memberLevel ? (
                 <Button
                   mode="contained"
@@ -166,6 +179,9 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
                 </Headline>
                 <Headline style={override.createHeadline}>
                   Party Name is {partyName}
+                </Headline>
+                <Headline style={override.createHeadline}>
+                  The winning vote amount is {winningVoteAmount}
                 </Headline>
               </View>
             </View>
