@@ -7,6 +7,8 @@ import {
   Easing,
   Dimensions,
 } from "react-native";
+
+import * as Notifications from "expo-notifications";
 import Animated from "react-native-reanimated";
 import styles from "../styles/constant";
 //Expo
@@ -34,11 +36,21 @@ type Item = {
 };
 
 const HomeScreen = (): React.ReactNode => {
+  //Expo Notifications
+  Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+      shouldShowAlert: true,
+      shouldPlaySound: false,
+      shouldSetBadge: false,
+    }),
+  });
+
   const dispatch = useDispatch();
   const [dataArray, setDataArray] = useState<ApiSearch[]>();
   const [index, setIndex] = useState(0);
   const [pointValue, setPointValue] = useState(0);
   const [firstStar, setFirstStar] = useState(false);
+
   const refCarousel = React.useRef(null);
   const currentPartyStatus = useSelector(
     (state: RootState) => state.party.inParty
@@ -53,8 +65,27 @@ const HomeScreen = (): React.ReactNode => {
   //Get window dimensions
   const windowWidth = Dimensions.get("window").width;
   const windowHeight = Dimensions.get("window").height;
-
   const isSmallDisplay = windowHeight < 700;
+
+  //Listens for incoming notifications then responds
+  useEffect(() => {
+    const subscription = Notifications.addNotificationReceivedListener(
+      (notification) => {
+        console.log(notification);
+      }
+    );
+
+    const responseSub = Notifications.addNotificationResponseReceivedListener(
+      (response) => {
+        console.log(response);
+      }
+    );
+
+    return () => {
+      subscription.remove();
+      responseSub.remove();
+    };
+  }, [inParty]);
 
   //Animation Code
   const state1 = useRef(new Animated.Value(0)).current;
@@ -94,6 +125,7 @@ const HomeScreen = (): React.ReactNode => {
     outputRange: ["0deg", "-360deg"],
   });
   //
+
   // Calls General Yelp Api
   useEffect(() => {
     //When there is not data to present, use splash screen
@@ -135,7 +167,6 @@ const HomeScreen = (): React.ReactNode => {
   }, [yelpUrl]);
 
   //Star Logic
-
   function starLogic(starPosition: number) {
     switch (starPosition) {
       case 1:

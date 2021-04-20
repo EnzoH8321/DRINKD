@@ -37,8 +37,6 @@ const JoinScreen: React.FC = () => {
   function joinParty() {
     const ref = firebase.database().ref(`parties/${textValue}`);
 
-    console.log(textValue);
-
     ref.on("value", (snapshot) => {
       const data = snapshot.val();
 

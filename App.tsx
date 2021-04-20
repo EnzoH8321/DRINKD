@@ -17,7 +17,6 @@ import CreateScreen from "./src/screens/Createscreen";
 import store from "./src/store/store";
 //Types
 import { HomeDrawerParamList } from "./src/types/types";
-
 //Navigator Stack
 const HomeDrawer = createBottomTabNavigator<HomeDrawerParamList>();
 const HomeStack = createStackNavigator();

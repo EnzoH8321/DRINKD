@@ -47,7 +47,6 @@ const TopChoicesScreen = (): React.ReactNode => {
   });
   const partyId = useSelector((state: RootState) => state.party.partyId);
   const inParty = useSelector((state: RootState) => state.party.inParty);
-  const maxVotes = useSelector((state: RootState) => state.party.toWinVotes);
 
   //Animation
   const animatedValue: Animated.Value = useRef(new Animated.Value(0)).current;
@@ -84,8 +83,6 @@ const TopChoicesScreen = (): React.ReactNode => {
     if (!choicesObject) {
       return Alert.alert("Not in a party");
     }
-
-    console.log(choicesObject);
 
     //Final Array that will hold all out sorted eateries and their url/scores
     let sortable: SortableType = null;

@@ -1,6 +1,8 @@
-import React, { useState } from "react";
-import { View, StyleSheet, Alert } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, StyleSheet, Alert, Platform } from "react-native";
 import { Headline, Button, TextInput } from "react-native-paper";
+import Constants from "expo-constants";
+import * as Notifications from "expo-notifications";
 import styles from "../styles/constant";
 //Actions
 import {
@@ -20,6 +22,9 @@ import { CreateScreenProps } from "../types/types";
 const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
   const [partyName, setPartyName] = useState("");
   const [winningVoteAmount, setWinningVoteAmount] = useState("");
+  const [expoTokenState, setExpoTokenState] = useState({
+    expoPushToken: "",
+  });
   const dispatch = useDispatch();
   const memberLevel = useSelector(
     (state: RootState) => state.party.memberLevel
@@ -47,6 +52,8 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
       Math.pow(10, 6 - 1) + Math.random() * 9 * Math.pow(10, 6 - 1)
     ).toString();
 
+    //Expo
+
     firebase
       .database()
       .ref(`parties/${randomNumber}`)
@@ -56,6 +63,7 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
         partyName: partyName,
         partyURL: partyURL,
         partyMaxVotes: winningVoteAmount,
+
         topBars: {
           [userNameGenerator]: "",
         },
@@ -66,9 +74,43 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
     dispatch(setPartyId(randomNumber));
     dispatch(setUserName(userNameGenerator));
     navigation.navigate("Home");
-
-    console.log(firebase.database());
   }
+
+  useEffect(() => {
+    (async () => {
+      if (Constants.isDevice) {
+        const {
+          status: existingStatus,
+        } = await Notifications.getPermissionsAsync();
+        let finalStatus = existingStatus;
+        if (existingStatus !== "granted") {
+          const { status } = await Notifications.requestPermissionsAsync();
+          finalStatus = status;
+        }
+        if (finalStatus !== "granted") {
+          alert("Failed to get push token for push notification!");
+          return;
+        }
+        const token = (await Notifications.getExpoPushTokenAsync()).data;
+        // console.log(token);
+        setExpoTokenState({ expoPushToken: token });
+        firebase.database().ref(`parties/${partyId}`).update({
+          expoToken: token,
+        });
+      } else {
+        alert("Must use physical device for Push Notifications");
+      }
+
+      if (Platform.OS === "android") {
+        Notifications.setNotificationChannelAsync("default", {
+          name: "default",
+          importance: Notifications.AndroidImportance.MAX,
+          vibrationPattern: [0, 250, 250, 250],
+          lightColor: "#FF231F7C",
+        });
+      }
+    })();
+  }, [partyId]);
 
   //Leave Party function
   function leaveParty() {
