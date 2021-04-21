@@ -67,6 +67,8 @@ const HomeScreen = (): React.ReactNode => {
   const windowHeight = Dimensions.get("window").height;
   const isSmallDisplay = windowHeight < 700;
 
+  console.log(windowWidth);
+
   //Listens for incoming notifications then responds
   useEffect(() => {
     const subscription = Notifications.addNotificationReceivedListener(
@@ -307,12 +309,6 @@ const HomeScreen = (): React.ReactNode => {
                   setPointValue(0);
                 }}
                 layout="tinder"
-                // containerCustomStyle={{
-                //   backgroundColor: "green",
-                //   marginBottom: -20,
-                //   paddingBottom: 0,
-                //   height: "100%",
-                // }}
               />
             </View>
 

@@ -5,6 +5,7 @@ import {
   Alert,
   TouchableOpacity,
   Animated,
+  Dimensions,
 } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import styles from "../styles/constant";
@@ -47,6 +48,9 @@ const TopChoicesScreen = (): React.ReactNode => {
   });
   const partyId = useSelector((state: RootState) => state.party.partyId);
   const inParty = useSelector((state: RootState) => state.party.inParty);
+  //Get window dimensions
+  const windowHeight = Dimensions.get("window").height;
+  const isSmallDisplay = windowHeight < 700;
 
   //Animation
   const animatedValue: Animated.Value = useRef(new Animated.Value(0)).current;
@@ -69,15 +73,12 @@ const TopChoicesScreen = (): React.ReactNode => {
     getTopScorers();
     Animated.spring(animatedValue, {
       toValue: 360,
-      // duration: 1000,
       useNativeDriver: true,
-      // friction: 5,
-      // tension: 40,
       speed: 1,
       bounciness: 2,
     }).start();
   }
-
+  //
   //Gets the three top scorers
   function getTopScorers() {
     if (!choicesObject) {
@@ -214,29 +215,31 @@ const TopChoicesScreen = (): React.ReactNode => {
       alignItems: "center",
       backfaceVisibility: "hidden",
     },
-
-    choiceContainer: {
-      ...styles.container,
-      flexDirection: "column",
-    },
-    choiceDataContainer: {
-      ...styles.dataContainer,
-      alignItems: "center",
-    },
     button: {
-      marginTop: styles.button.marginTop,
+      marginTop: isSmallDisplay ? "5%" : styles.button.marginTop,
       width: styles.button.width,
       alignSelf: styles.button.alignSelf,
       backgroundColor: styles.colorPrimary.backgroundColor,
       ...styles.shadow,
       ...styles.border,
     },
+    choiceContainer: {
+      ...styles.container,
+      flexDirection: "column",
+    },
+    choiceDataContainer: {
+      marginTop: "1%",
+      alignItems: "center",
+    },
+    headline: {
+      marginBottom: "5%",
+    },
   });
 
   return (
     <View style={override.choiceContainer}>
       <View style={[override.choiceDataContainer]}>
-        <Headline>Points Needed to Win - </Headline>
+        <Headline style={override.headline}>Points Needed to Win - </Headline>
         <Animated.View style={[frontAnimatedStyle, override.animatedCardView]}>
           <TouchableOpacity
             onPress={() => {

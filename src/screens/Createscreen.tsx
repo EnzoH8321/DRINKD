@@ -52,8 +52,6 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
       Math.pow(10, 6 - 1) + Math.random() * 9 * Math.pow(10, 6 - 1)
     ).toString();
 
-    //Expo
-
     firebase
       .database()
       .ref(`parties/${randomNumber}`)
