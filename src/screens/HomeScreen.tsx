@@ -68,8 +68,6 @@ const HomeScreen = (): React.ReactNode => {
   const windowHeight = Dimensions.get("window").height;
   const isSmallDisplay = windowHeight < 750;
 
-  console.log(windowHeight);
-
   //Listens for incoming notifications then responds
   useEffect(() => {
     const subscription = Notifications.addNotificationReceivedListener(
