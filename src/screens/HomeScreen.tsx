@@ -6,6 +6,7 @@ import {
   Alert,
   Easing,
   Dimensions,
+  Platform,
 } from "react-native";
 
 import * as Notifications from "expo-notifications";
@@ -65,9 +66,9 @@ const HomeScreen = (): React.ReactNode => {
   //Get window dimensions
   const windowWidth = Dimensions.get("window").width;
   const windowHeight = Dimensions.get("window").height;
-  const isSmallDisplay = windowHeight < 700;
+  const isSmallDisplay = windowHeight < 750;
 
-  console.log(windowWidth);
+  console.log(windowHeight);
 
   //Listens for incoming notifications then responds
   useEffect(() => {
@@ -251,7 +252,12 @@ const HomeScreen = (): React.ReactNode => {
     starView: {
       flexDirection: "row",
       justifyContent: "space-around",
-      marginTop: isSmallDisplay ? 0 : "3%",
+      marginTop:
+        Platform.OS === "android" && isSmallDisplay
+          ? "3%"
+          : isSmallDisplay
+          ? 0
+          : "3%",
     },
     starStyles: {
       fontSize: styles.icon.fontSize,

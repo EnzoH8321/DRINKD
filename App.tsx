@@ -97,6 +97,8 @@ const Stack = () => {
         options={{
           headerTitle: (props) => createHeader(props),
           headerTitleAlign: "center",
+          //For pixel devices or devices that show the status bar
+          headerStatusBarHeight: 20,
         }}
       ></HomeStack.Screen>
     </HomeStack.Navigator>
