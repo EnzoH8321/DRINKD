@@ -61,7 +61,7 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
         partyName: partyName,
         partyURL: partyURL,
         partyMaxVotes: winningVoteAmount,
-
+        notificationSent: false,
         topBars: {
           [userNameGenerator]: "",
         },
@@ -90,7 +90,7 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
           return;
         }
         const token = (await Notifications.getExpoPushTokenAsync()).data;
-        // console.log(token);
+
         setExpoTokenState({ expoPushToken: token });
         firebase.database().ref(`parties/${partyId}`).update({
           expoToken: token,
