@@ -64,7 +64,7 @@ const HomeScreen = (): React.ReactNode => {
   const userName = useSelector((state: RootState) => state.party.userName);
   const inParty = useSelector((state: RootState) => state.party.inParty);
   //Get window dimensions
-  const windowWidth = Dimensions.get("window").width;
+  // const windowWidth = Dimensions.get("window").width;
   const windowHeight = Dimensions.get("window").height;
   const isSmallDisplay = windowHeight < 750;
 
@@ -167,7 +167,7 @@ const HomeScreen = (): React.ReactNode => {
     }
   }, [yelpUrl]);
 
-  //Star Logic
+  //Star Logic Function
   function starLogic(starPosition: number) {
     switch (starPosition) {
       case 1:
