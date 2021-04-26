@@ -163,7 +163,7 @@ const HomeScreen = (): React.ReactNode => {
         SplashScreen.hideAsync();
       })();
     } catch (error) {
-      console.log(error);
+      console.log("error is" + error);
     }
   }, [yelpUrl]);
 

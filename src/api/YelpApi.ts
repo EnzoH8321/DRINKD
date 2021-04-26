@@ -19,6 +19,6 @@ export default async function fetchBusiness(
     //Returns an array of businesses
     return businessData;
   } catch (error) {
-    console.log(error);
+    console.log("the error is" + error);
   }
 }

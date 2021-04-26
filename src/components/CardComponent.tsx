@@ -201,7 +201,7 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
                       try {
                         WebBrowser.openBrowserAsync(`${url}`);
                       } catch (error) {
-                        console.log(error);
+                        console.log("the error is" + error);
                       }
                     }}
                   >

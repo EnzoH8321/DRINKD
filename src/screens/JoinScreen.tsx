@@ -37,20 +37,24 @@ const JoinScreen: React.FC = () => {
   function joinParty() {
     const ref = firebase.database().ref(`parties/${textValue}`);
 
-    ref.on("value", (snapshot) => {
-      const data = snapshot.val();
+    try {
+      ref.on("value", (snapshot) => {
+        const data = snapshot.val();
 
-      //Returns if data is not found
-      if (data === null || textValue.length === 0) {
-        return Alert.alert("No Party Found");
-      }
+        //Returns if data is not found
+        if (data === null || textValue.length === 0) {
+          return Alert.alert("No Party Found");
+        }
 
-      dispatch(setPartyData(true));
-      dispatch(setPartyId(data.partyId));
-      dispatch(setMemberLevel("MEMBER"));
-      dispatch(setUserName(userNameGenerator));
-      dispatch(setPartyURL(data.partyURL));
-    });
+        dispatch(setPartyData(true));
+        dispatch(setPartyId(data.partyId));
+        dispatch(setMemberLevel("MEMBER"));
+        dispatch(setUserName(userNameGenerator));
+        dispatch(setPartyURL(data.partyURL));
+      });
+    } catch (error) {
+      console.log("the error is" + error);
+    }
   }
 
   //Leave Party function
