@@ -96,7 +96,7 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
           expoToken: token,
         });
       } else {
-        alert("Must use physical device for Push Notifications");
+        // alert("Must use physical device for Push Notifications");
       }
 
       if (Platform.OS === "android") {
@@ -122,6 +122,8 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
     dispatch(setPartyData(false));
     dispatch(setMemberLevel(""));
     dispatch(setPartyId(""));
+    setPartyName("");
+    setWinningVoteAmount("");
   }
 
   //Styles

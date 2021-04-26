@@ -1,7 +1,7 @@
 import React from "react";
 import { Provider as PaperProvider } from "react-native-paper";
 import { Provider } from "react-redux";
-import { Image } from "react-native";
+import { Image, StatusBar, Platform } from "react-native";
 import styles from "./src/styles/constant";
 import Icon from "react-native-vector-icons/Ionicons";
 //ReactNav
@@ -98,7 +98,7 @@ const Stack = () => {
           headerTitle: (props) => createHeader(props),
           headerTitleAlign: "center",
           //For pixel devices or devices that show the status bar
-          headerStatusBarHeight: 20,
+          headerStatusBarHeight: 30,
         }}
       ></HomeStack.Screen>
     </HomeStack.Navigator>

@@ -236,7 +236,6 @@ const HomeScreen = (): React.ReactNode => {
     carousel: {
       height: !currentPartyStatus ? "94%" : "77%",
       marginTop: isSmallDisplay ? 0 : "2%",
-      // marginLeft: "2%",
       alignSelf: "center",
     },
     homeContainer: {
@@ -300,7 +299,6 @@ const HomeScreen = (): React.ReactNode => {
             </View>
             <View style={override.carousel}>
               <Carousel
-                // activeSlideAlignment="start"
                 ref={refCarousel}
                 data={dataArray}
                 renderItem={({ item }: Item) => {
