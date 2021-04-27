@@ -17,11 +17,13 @@ import firebase from "../utils/firebase";
 
 //
 const JoinScreen: React.FC = () => {
+  const [currentlyInParty, setCurrentlyInParty] = useState(false);
+  const [textValue, setTextValue] = useState("");
   const dispatch = useDispatch();
   const partyId = useSelector((state: RootState) => state.party.partyId);
   const inParty = useSelector((state: RootState) => state.party.inParty);
   const userName = useSelector((state: RootState) => state.party.userName);
-  const [textValue, setTextValue] = useState("");
+
   let userNameGenerator = "";
 
   //Gives the user a random name to use. If they already have one, they just use that.
@@ -51,6 +53,7 @@ const JoinScreen: React.FC = () => {
         dispatch(setMemberLevel("MEMBER"));
         dispatch(setUserName(userNameGenerator));
         dispatch(setPartyURL(data.partyURL));
+        setCurrentlyInParty(true);
       });
     } catch (error) {
       console.log("the error is" + error);
@@ -64,6 +67,7 @@ const JoinScreen: React.FC = () => {
     dispatch(setMemberLevel(""));
     dispatch(setPartyId(""));
     dispatch(setPartyURL(""));
+    setCurrentlyInParty(false);
   }
 
   //Styles

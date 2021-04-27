@@ -70,7 +70,7 @@ const TopChoicesScreen = (): React.ReactNode => {
 
   function flipCard() {
     animatedValue.setValue(0);
-    getTopScorers();
+    // getTopScorers();
     Animated.spring(animatedValue, {
       toValue: 360,
       useNativeDriver: true,
@@ -79,10 +79,52 @@ const TopChoicesScreen = (): React.ReactNode => {
     }).start();
   }
   //
+
   //Gets the three top scorers
   function getTopScorers() {
-    if (!choicesObject) {
-      return Alert.alert("Not in a party");
+    try {
+      // the parenth below is syntax for => function(){...}
+      (() => {
+        //Find the correct parties object in the db
+        const firebaseData = firebase.database().ref(`parties/${partyId}`);
+
+        firebaseData.on("value", (snapshot) => {
+          const data = snapshot.val();
+          console.log(data);
+          //Turns off firebase listener when you leave a party. Also sets objects empty when you are not in a party (this clears the mini card component)
+          if (!inParty || !data) {
+            firebaseData.off();
+            //Resets the topChoicesObject
+            setTopChoicesObject({
+              first: {
+                name: "",
+                score: 0,
+                url: "",
+              },
+              second: {
+                name: "",
+                score: 0,
+                url: "",
+              },
+              third: {
+                name: "",
+                score: 0,
+                url: "",
+              },
+            });
+            setChoicesObject({});
+            return;
+          }
+
+          setChoicesObject(data.topBars);
+        });
+      })();
+      flipCard();
+      if (!choicesObject) {
+        return Alert.alert("No one has voted!");
+      }
+    } catch (error) {
+      console.log(error);
     }
 
     //Final Array that will hold all out sorted eateries and their url/scores
@@ -167,14 +209,13 @@ const TopChoicesScreen = (): React.ReactNode => {
   useEffect(() => {
     try {
       // the parenth below is syntax for => function(){...}
-      (async () => {
+      (() => {
         //Find the correct parties object in the db
-        const firebaseData = await firebase
-          .database()
-          .ref(`parties/${partyId}`);
+        const firebaseData = firebase.database().ref(`parties/${partyId}`);
 
         firebaseData.on("value", (snapshot) => {
           const data = snapshot.val();
+          console.log(data);
 
           //Turns off firebase listener when you leave a party. Also sets objects empty when you are not in a party (this clears the mini card component)
           if (!inParty || !data) {
@@ -204,6 +245,9 @@ const TopChoicesScreen = (): React.ReactNode => {
           setChoicesObject(data.topBars);
         });
       })();
+      if (!choicesObject) {
+        return Alert.alert("No one has voted!");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -339,7 +383,7 @@ const TopChoicesScreen = (): React.ReactNode => {
       <Button
         mode="contained"
         onPress={() => {
-          flipCard();
+          getTopScorers();
         }}
         style={override.button}
       >

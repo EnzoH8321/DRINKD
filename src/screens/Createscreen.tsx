@@ -25,6 +25,7 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
   const [expoTokenState, setExpoTokenState] = useState({
     expoPushToken: "",
   });
+  const [inParty, setInParty] = useState(false);
   const dispatch = useDispatch();
   const memberLevel = useSelector(
     (state: RootState) => state.party.memberLevel
@@ -71,6 +72,7 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
     dispatch(setMemberLevel("LEADER"));
     dispatch(setPartyId(randomNumber));
     dispatch(setUserName(userNameGenerator));
+    setInParty(true);
     navigation.navigate("Home");
   }
 
@@ -113,7 +115,7 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
   //Leave Party function
   function leaveParty() {
     if (memberLevel === "MEMBER") {
-      return Alert.alert("You must be the party leader to leave the party");
+      return Alert.alert("You must be the party leader to delete the party");
     }
 
     //Removes "session" from DB
@@ -124,6 +126,7 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
     dispatch(setPartyId(""));
     setPartyName("");
     setWinningVoteAmount("");
+    setInParty(false);
   }
 
   //Styles
