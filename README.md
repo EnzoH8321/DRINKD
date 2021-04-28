@@ -6,6 +6,8 @@ The hardest part about going for a night out with your friends is deciding where
 
 ## Getting Started
 
+### If you have an Android Device, you can test out the App here (click on the link and scan the QR code) -> https://expo.io/@lowerbrunii/projects/drinkdapp
+
 :fire: This app uses Firebase Realtime DB  + a Google Cloud Function that performs cleanup of inactive parties. You will need Firebase + A cleanup function to remove inactive parties (recommended a GCF chron job that runs every hour).
 
 ```bash
