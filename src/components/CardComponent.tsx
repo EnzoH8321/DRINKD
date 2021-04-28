@@ -83,9 +83,10 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
   const override = StyleSheet.create({
     card: {
       height: windowHeight < 700 ? "97%" : "99%",
-      width: windowWidth < 400 ? "90%" : "99%",
+      width: windowWidth < 400 ? "90%" : "95%",
       borderRadius: styles.border.borderRadius,
       ...styles.shadow,
+      alignSelf: "center",
     },
 
     scrollViewParent: {
