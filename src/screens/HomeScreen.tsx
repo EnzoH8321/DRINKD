@@ -66,7 +66,7 @@ const HomeScreen = (): React.ReactNode => {
   //Get window dimensions
   // const windowWidth = Dimensions.get("window").width;
   const windowHeight = Dimensions.get("window").height;
-  const isSmallDisplay = windowHeight < 750;
+  const isSmallDisplayHeight = windowHeight < 750;
 
   //Listens for incoming notifications then responds
   useEffect(() => {
@@ -235,7 +235,7 @@ const HomeScreen = (): React.ReactNode => {
     },
     carousel: {
       height: !currentPartyStatus ? "94%" : "77%",
-      marginTop: isSmallDisplay ? 0 : "2%",
+      marginTop: isSmallDisplayHeight ? 0 : "2%",
       alignSelf: "center",
     },
     homeContainer: {
@@ -251,9 +251,9 @@ const HomeScreen = (): React.ReactNode => {
       flexDirection: "row",
       justifyContent: "space-around",
       marginTop:
-        Platform.OS === "android" && isSmallDisplay
-          ? "3%"
-          : isSmallDisplay
+        Platform.OS === "android" && isSmallDisplayHeight
+          ? "1%"
+          : isSmallDisplayHeight
           ? 0
           : "3%",
     },
@@ -261,7 +261,7 @@ const HomeScreen = (): React.ReactNode => {
       fontSize: styles.icon.fontSize,
     },
     starViewButton: {
-      marginTop: isSmallDisplay ? "2%" : "5%",
+      marginTop: isSmallDisplayHeight ? "2%" : "5%",
       alignSelf: styles.button.alignSelf,
     },
     infoButton: {
@@ -312,6 +312,7 @@ const HomeScreen = (): React.ReactNode => {
                   setPointValue(0);
                 }}
                 layout="tinder"
+                layoutCardOffset={isSmallDisplayHeight ? 12 : 14}
               />
             </View>
 

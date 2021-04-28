@@ -30,6 +30,9 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
   const windowWidth = Dimensions.get("window").width;
   const windowHeight = Dimensions.get("window").height;
 
+  const isSmallDisplayHeight = windowHeight < 700;
+  const isSmallDisplayWidth = windowWidth < 400;
+
   //Returns Transaction components
   function setTransactionsUI(transactions: string[]) {
     //Holds React elements for the delivery status component
@@ -82,8 +85,8 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
 
   const override = StyleSheet.create({
     card: {
-      height: windowHeight < 700 ? "97%" : "99%",
-      width: windowWidth < 400 ? "90%" : "95%",
+      height: isSmallDisplayHeight ? "97%" : "98%",
+      width: isSmallDisplayWidth ? "90%" : "95%",
       borderRadius: styles.border.borderRadius,
       ...styles.shadow,
       alignSelf: "center",

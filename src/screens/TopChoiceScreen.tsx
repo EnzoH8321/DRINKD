@@ -121,7 +121,7 @@ const TopChoicesScreen = (): React.ReactNode => {
       })();
       flipCard();
       if (!choicesObject) {
-        return Alert.alert("No one has voted!");
+        return Alert.alert("No Changes to the Scoreboard");
       }
     } catch (error) {
       console.log(error);
@@ -245,9 +245,9 @@ const TopChoicesScreen = (): React.ReactNode => {
           setChoicesObject(data.topBars);
         });
       })();
-      if (!choicesObject) {
-        return Alert.alert("No one has voted!");
-      }
+      // if (!choicesObject) {
+      //   return Alert.alert("No one has voted!");
+      // }
     } catch (error) {
       console.log(error);
     }
@@ -260,7 +260,7 @@ const TopChoicesScreen = (): React.ReactNode => {
       backfaceVisibility: "hidden",
     },
     button: {
-      marginTop: isSmallDisplay ? "5%" : styles.button.marginTop,
+      marginTop: isSmallDisplay ? 0 : styles.button.marginTop,
       width: styles.button.width,
       alignSelf: styles.button.alignSelf,
       backgroundColor: styles.colorPrimary.backgroundColor,
