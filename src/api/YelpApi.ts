@@ -9,7 +9,7 @@ export default async function fetchBusiness(
     const data = await axios(url, {
       method: "GET",
       headers: {
-        Authorization: `${process.env.YELP_API_KEY}`,
+        Authorization: `Bearer ${process.env.REACT_APP_YELP_API_KEY}`,
       },
     });
 
