@@ -33,8 +33,9 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
   const partyURL = useSelector((state: RootState) => state.party.partyURL);
   const partyId = useSelector((state: RootState) => state.party.partyId);
 
-  //References text input
+  //References text input and vote amount
   const textRef = React.useRef(null);
+  const voteRef = React.useRef(null);
 
   //Create Party func
   function createParty() {
@@ -198,6 +199,8 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
                 }}
               ></TextInput>
               <TextInput
+                ref={voteRef}
+                value={winningVoteAmount}
                 label="Set winning vote amount"
                 theme={{
                   colors: { primary: styles.colorPrimary.backgroundColor },
