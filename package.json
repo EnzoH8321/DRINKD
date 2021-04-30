@@ -19,7 +19,10 @@
     "eslint-plugin-react": "^7.22.0",
     "expo": "^40.0.1",
     "expo-cli": "^4.1.6",
+    "expo-notifications": "~0.8.2",
+    "expo-splash-screen": "~0.8.1",
     "expo-status-bar": "~1.0.3",
+    "expo-web-browser": "~8.6.0",
     "firebase": "7.9.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
@@ -33,9 +36,7 @@
     "react-native-vector-icons": "^7.1.0",
     "react-native-web": "~0.13.12",
     "react-redux": "^7.2.2",
-    "redux-thunk": "^2.3.0",
-    "expo-web-browser": "~8.6.0",
-    "expo-splash-screen": "~0.8.1"
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
@@ -47,6 +48,7 @@
     "@types/react-redux": "^7.1.16",
     "@typescript-eslint/eslint-plugin": "^4.14.1",
     "@typescript-eslint/parser": "^4.14.1",
+    "react-native-dotenv": "^2.5.5",
     "typescript": "~4.0.0"
   },
   "private": true

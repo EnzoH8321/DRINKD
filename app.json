@@ -5,7 +5,7 @@
     "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/splash_icon_app.png",
-    "ios.icon": "./assets/splash_icon_app.png",
+
     "splash": {
       "image": "./assets/splash_icon_app.png",
       "resizeMode": "contain",
