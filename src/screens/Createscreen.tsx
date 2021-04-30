@@ -42,6 +42,10 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
       return Alert.alert("You must name your party");
     }
 
+    if (!winningVoteAmount) {
+      return Alert.alert("You must set a winning vote amount");
+    }
+
     //Sets timestamp for when this is posted to the DB
     const creationTime = Date.now();
 
