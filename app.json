@@ -20,7 +20,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/splash_icon_notext.png",
+        "foregroundImage": "./assets/splashAndroidIcon.png",
         "backgroundColor": "#f2f2f2"
       },
       "package": "com.lowerbrunii.drinkdapp",
