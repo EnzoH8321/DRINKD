@@ -6,7 +6,6 @@ const firebaseConfig = {
   authDomain: "drinkd-dev.firebaseapp.com",
   //Change this back for production
   databaseURL: "https://drinkd-dev-default-rtdb.firebaseio.com/",
-  // databaseURL: "http://127.0.0.1:9000/?ns=drinkd-dev-default-rtdb",
   projectId: "drinkd-dev",
   storageBucket: "drinkd-dev.appspot.com",
   messagingSenderId: "811366010805",

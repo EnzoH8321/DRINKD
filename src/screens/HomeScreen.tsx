@@ -19,7 +19,7 @@ import * as Location from "expo-location";
 import fetchBusiness from "../api/YelpApi";
 //Components
 import CardComponent from "../components/CardComponent";
-import Icon from "react-native-vector-icons/Ionicons";
+import { Ionicons } from "@expo/vector-icons";
 import { Button, Headline } from "react-native-paper";
 import Carousel from "react-native-snap-carousel";
 import { useDispatch, useSelector } from "react-redux";
@@ -51,6 +51,7 @@ const HomeScreen = (): React.ReactNode => {
   const [index, setIndex] = useState(0);
   const [pointValue, setPointValue] = useState(0);
   const [firstStar, setFirstStar] = useState(false);
+  const [hasLoaded, setHasLoaded] = useState(false);
 
   const refCarousel = React.useRef(null);
   const currentPartyStatus = useSelector(
@@ -63,30 +64,10 @@ const HomeScreen = (): React.ReactNode => {
   const currentPartyId = useSelector((state: RootState) => state.party.partyId);
   const userName = useSelector((state: RootState) => state.party.userName);
   const inParty = useSelector((state: RootState) => state.party.inParty);
+
   //Get window dimensions
-  // const windowWidth = Dimensions.get("window").width;
   const windowHeight = Dimensions.get("window").height;
   const isSmallDisplayHeight = windowHeight < 750;
-
-  //Listens for incoming notifications then responds
-  useEffect(() => {
-    const subscription = Notifications.addNotificationReceivedListener(
-      (notification) => {
-        console.log(notification);
-      }
-    );
-
-    const responseSub = Notifications.addNotificationResponseReceivedListener(
-      (response) => {
-        console.log(response);
-      }
-    );
-
-    return () => {
-      subscription.remove();
-      responseSub.remove();
-    };
-  }, [inParty]);
 
   //Animation Code
   const state1 = useRef(new Animated.Value(0)).current;
@@ -127,11 +108,37 @@ const HomeScreen = (): React.ReactNode => {
   });
   //
 
+  //Listens for incoming notifications then responds
+  useEffect(() => {
+    const subscription = Notifications.addNotificationReceivedListener(
+      (notification) => {
+        console.log(notification);
+      }
+    );
+
+    const responseSub = Notifications.addNotificationResponseReceivedListener(
+      (response) => {
+        console.log(response);
+      }
+    );
+
+    return () => {
+      subscription.remove();
+      responseSub.remove();
+    };
+  }, [inParty]);
+
   // Calls General Yelp Api
   useEffect(() => {
     //When there is not data to present, use splash screen
-    if (!dataArray) {
-      SplashScreen.preventAutoHideAsync();
+    if (!hasLoaded) {
+      SplashScreen.preventAutoHideAsync()
+        .then((result) =>
+          console.log(
+            `SplashScreen.preventAutoHideAsync() succeeded: ${result}`
+          )
+        )
+        .catch(console.warn); // it's good to explicitly catch and inspect any error;
     }
 
     try {
@@ -159,6 +166,7 @@ const HomeScreen = (): React.ReactNode => {
         dispatch(setBarListData(data));
         dispatch(setPartyURL(url));
         setDataArray(data);
+        setHasLoaded(true);
         //After data has been called, remove splash screen
         SplashScreen.hideAsync();
       })();
@@ -327,7 +335,7 @@ const HomeScreen = (): React.ReactNode => {
                         starLogic(1);
                       }}
                     >
-                      <Icon
+                      <Ionicons
                         name="star"
                         style={{
                           ...override.icon,
@@ -340,7 +348,7 @@ const HomeScreen = (): React.ReactNode => {
                               ? styles.colorPrimary.backgroundColor
                               : "#000000",
                         }}
-                      ></Icon>
+                      ></Ionicons>
                     </TouchableOpacity>
                   </Animated.View>
                   <Animated.View
@@ -351,7 +359,7 @@ const HomeScreen = (): React.ReactNode => {
                         starLogic(2);
                       }}
                     >
-                      <Icon
+                      <Ionicons
                         name="star"
                         style={{
                           ...override.icon,
@@ -364,7 +372,7 @@ const HomeScreen = (): React.ReactNode => {
                               ? styles.colorPrimary.backgroundColor
                               : "#000000",
                         }}
-                      ></Icon>
+                      ></Ionicons>
                     </TouchableOpacity>
                   </Animated.View>
                   <Animated.View
@@ -375,7 +383,7 @@ const HomeScreen = (): React.ReactNode => {
                         starLogic(3);
                       }}
                     >
-                      <Icon
+                      <Ionicons
                         name="star"
                         style={{
                           ...override.icon,
@@ -388,7 +396,7 @@ const HomeScreen = (): React.ReactNode => {
                               ? styles.colorPrimary.backgroundColor
                               : "#000000",
                         }}
-                      ></Icon>
+                      ></Ionicons>
                     </TouchableOpacity>
                   </Animated.View>
                   <Animated.View
@@ -399,7 +407,7 @@ const HomeScreen = (): React.ReactNode => {
                         starLogic(4);
                       }}
                     >
-                      <Icon
+                      <Ionicons
                         name="star"
                         style={{
                           ...override.icon,
@@ -412,7 +420,7 @@ const HomeScreen = (): React.ReactNode => {
                               ? styles.colorPrimary.backgroundColor
                               : "#000000",
                         }}
-                      ></Icon>
+                      ></Ionicons>
                     </TouchableOpacity>
                   </Animated.View>
                   <Animated.View
@@ -423,7 +431,7 @@ const HomeScreen = (): React.ReactNode => {
                         starLogic(5);
                       }}
                     >
-                      <Icon
+                      <Ionicons
                         name="star"
                         style={{
                           ...override.icon,
@@ -436,7 +444,7 @@ const HomeScreen = (): React.ReactNode => {
                               ? styles.colorPrimary.backgroundColor
                               : "#000000",
                         }}
-                      ></Icon>
+                      ></Ionicons>
                     </TouchableOpacity>
                   </Animated.View>
                 </View>

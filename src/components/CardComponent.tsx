@@ -2,8 +2,10 @@ import React, { ReactElement } from "react";
 import { Card, Title, Paragraph } from "react-native-paper";
 import { StyleSheet, View, Alert, Dimensions } from "react-native";
 import styles from "../styles/constant";
-import Icon from "react-native-vector-icons/Ionicons";
+
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
+import { Ionicons } from "@expo/vector-icons";
+
 //Expo
 import * as WebBrowser from "expo-web-browser";
 import * as Linking from "expo-linking";
@@ -42,7 +44,7 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
       if (value === "delivery") {
         transactionArray.push(
           <View style={override.smallInfoView}>
-            <Icon name="bicycle" style={override.icon}></Icon>
+            <Ionicons name="bicycle" style={override.icon}></Ionicons>
             <Paragraph style={override.paragraph}>Delivery Available</Paragraph>
           </View>
         );
@@ -51,7 +53,7 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
       if (value === "pickup") {
         transactionArray.push(
           <View style={override.smallInfoView}>
-            <Icon name="walk" style={override.icon}></Icon>
+            <Ionicons name="walk" style={override.icon}></Ionicons>
             <Paragraph style={override.paragraph}>Pickup Available</Paragraph>
           </View>
         );
@@ -60,7 +62,10 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
       if (value === "restaurant_reservation") {
         transactionArray.push(
           <View style={override.smallInfoView}>
-            <Icon name="restaurant-outline" style={override.icon}></Icon>
+            <Ionicons
+              name="restaurant-outline"
+              style={override.icon}
+            ></Ionicons>
             <Paragraph style={override.paragraph}>
               Reservations Available
             </Paragraph>
@@ -192,7 +197,7 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
                 style={override.cardImage}
               />
               <View style={override.smallInfoView}>
-                <Icon name="home-outline" style={override.icon}></Icon>
+                <Ionicons name="home-outline" style={override.icon}></Ionicons>
                 <Paragraph style={override.paragraph}>
                   {location.address1} {location.address2}
                   {"\n"}
@@ -209,10 +214,10 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
                       }
                     }}
                   >
-                    <Icon
+                    <Ionicons
                       name="restaurant-outline"
                       style={override.iconPressable}
-                    ></Icon>
+                    ></Ionicons>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -222,7 +227,10 @@ const CardComponent = ({ barData }: BarData): React.ReactElement => {
                   onPress={() => handlePhonePress(phone)}
                   style={override.touchableOpacityPhoneIcon}
                 >
-                  <Icon name="call-outline" style={override.icon}></Icon>
+                  <Ionicons
+                    name="call-outline"
+                    style={override.icon}
+                  ></Ionicons>
                 </TouchableOpacity>
                 <TouchableOpacity
                   onPress={() => handlePhonePress(phone)}

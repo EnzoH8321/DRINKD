@@ -2,7 +2,7 @@ import React, { ReactText } from "react";
 import { Card, Headline } from "react-native-paper";
 import { StyleSheet, View } from "react-native";
 import styles from "../styles/constant";
-import Icon from "react-native-vector-icons/Ionicons";
+import { Ionicons } from "@expo/vector-icons";
 //Types
 type Props = {
   index: number;
@@ -46,7 +46,7 @@ const MiniCardComponent = ({
     <Card style={override.card}>
       <Card.Content style={override.cardContent}>
         <View style={override.leftContent}>
-          <Icon name="trophy-sharp" style={override.icon}></Icon>
+          <Ionicons name="trophy-sharp" style={override.icon}></Ionicons>
         </View>
         <View style={override.rightContent}>
           <Headline>{name}</Headline>

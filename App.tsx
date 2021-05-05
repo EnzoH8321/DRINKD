@@ -1,9 +1,10 @@
 import React from "react";
 import { Provider as PaperProvider } from "react-native-paper";
 import { Provider } from "react-redux";
-import { Image, StatusBar, Platform } from "react-native";
+import { Image } from "react-native";
 import styles from "./src/styles/constant";
-import Icon from "react-native-vector-icons/Ionicons";
+
+import { Ionicons } from "@expo/vector-icons";
 //ReactNav
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -23,16 +24,16 @@ const HomeStack = createStackNavigator();
 
 //Created function for debug purposes.
 function setTabBarIconHome(size: number) {
-  return <Icon name="newspaper-outline" size={size}></Icon>;
+  return <Ionicons name="newspaper-outline" size={size}></Ionicons>;
 }
 function setTabBarIconTopChoices(size: number) {
-  return <Icon name="podium-outline" size={size}></Icon>;
+  return <Ionicons name="podium-outline" size={size}></Ionicons>;
 }
 function setTabBarIconJoin(size: number) {
-  return <Icon name="person-add-outline" size={size}></Icon>;
+  return <Ionicons name="person-add-outline" size={size}></Ionicons>;
 }
 function setTabBarIconCreate(size: number) {
-  return <Icon name="person-outline" size={size}></Icon>;
+  return <Ionicons name="person-outline" size={size}></Ionicons>;
 }
 
 function createHeader(props) {
@@ -105,7 +106,6 @@ const Stack = () => {
   );
 };
 
-//Do i need to name this?...
 export default function Main(): React.ReactElement {
   return (
     <NavigationContainer>
