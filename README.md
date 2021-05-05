@@ -39,3 +39,8 @@ expo start --ios
 * React / React Native
 * React Navigation
 * Firebase
+
+## TODO
+
+ * Messenging Feature
+ * iOS version
