@@ -1,4 +1,4 @@
-![Alt text](/assets/splash_icon_app.png?raw=true "Title" height="100")
+![Alt text](/assets/splash_icon_app.png?raw=true "Title" height="100") <img src="/assets/splash_icon_app.png">
 
 # DRINKD
 App that lets you and your friend's plan for a night out. 
