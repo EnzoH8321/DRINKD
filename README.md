@@ -1,4 +1,4 @@
-![Alt text](/assets/splash_icon_app.png?raw=true "Title")
+![Alt text](/assets/splash_icon_app.png?raw=true "Title"height=100px)
 
 # DRINKD
 App that lets you and your friend's plan for a night out. 
