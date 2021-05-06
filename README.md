@@ -1,4 +1,7 @@
- <img src="/assets/splash_icon_app.png" height="200" align="center">
+ 
+ <p align="center"> 
+ <img src="/assets/splash_icon_app.png" height="200">
+ </p>
 
 # DRINKD
 App that lets you and your friend's plan for a night out. 
