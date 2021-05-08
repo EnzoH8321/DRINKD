@@ -35,6 +35,8 @@ import firebase from "../utils/firebase";
 type Item = {
   item: ApiSearch;
 };
+//Functions
+import { checkNetworkConnection } from "../utils/functions";
 
 const HomeScreen = (): React.ReactNode => {
   //Expo Notifications
@@ -148,7 +150,12 @@ const HomeScreen = (): React.ReactNode => {
         const location = await Location.getCurrentPositionAsync();
         const locationLat = location.coords.latitude.toString();
         const locationLong = location.coords.longitude.toString();
+        const networkStatus = await checkNetworkConnection();
         let url = "";
+
+        if (!networkStatus) {
+          return Alert.alert("Please Connect to the Internet");
+        }
 
         if (status !== "granted") {
           alert("Permission to access denied");

@@ -25,6 +25,8 @@ import {
   SortableType,
   TempArrayType,
 } from "../types/types";
+//Functions
+import { checkNetworkConnection } from "../utils/functions";
 
 //
 const TopChoicesScreen = (): React.ReactNode => {
@@ -81,7 +83,13 @@ const TopChoicesScreen = (): React.ReactNode => {
   //
 
   //Gets the three top scorers
-  function getTopScorers() {
+  async function getTopScorers() {
+    const networkStatus = await checkNetworkConnection();
+
+    if (!networkStatus) {
+      return Alert.alert("Please Connect to the Internet");
+    }
+
     try {
       // the parenth below is syntax for => function(){...}
       (() => {
@@ -90,7 +98,7 @@ const TopChoicesScreen = (): React.ReactNode => {
 
         firebaseData.on("value", (snapshot) => {
           const data = snapshot.val();
-          console.log(data);
+
           //Turns off firebase listener when you leave a party. Also sets objects empty when you are not in a party (this clears the mini card component)
           if (!inParty || !data) {
             firebaseData.off();
@@ -215,7 +223,6 @@ const TopChoicesScreen = (): React.ReactNode => {
 
         firebaseData.on("value", (snapshot) => {
           const data = snapshot.val();
-          console.log(data);
 
           //Turns off firebase listener when you leave a party. Also sets objects empty when you are not in a party (this clears the mini card component)
           if (!inParty || !data) {
@@ -245,9 +252,6 @@ const TopChoicesScreen = (): React.ReactNode => {
           setChoicesObject(data.topBars);
         });
       })();
-      // if (!choicesObject) {
-      //   return Alert.alert("No one has voted!");
-      // }
     } catch (error) {
       console.log(error);
     }

@@ -18,6 +18,8 @@ import { RootState } from "../reducers";
 import firebase from "../utils/firebase";
 //Types
 import { CreateScreenProps } from "../types/types";
+//Functions
+import { checkNetworkConnection } from "../utils/functions";
 
 const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
   const [partyName, setPartyName] = useState("");
@@ -38,15 +40,8 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
   const voteRef = React.useRef(null);
 
   //Create Party func
-  function createParty() {
-    if (!partyName) {
-      return Alert.alert("You must name your party");
-    }
-
-    if (!winningVoteAmount) {
-      return Alert.alert("You must set a winning vote amount");
-    }
-
+  async function createParty() {
+    const networkStatus = await checkNetworkConnection();
     //Sets timestamp for when this is posted to the DB
     const creationTime = Date.now();
 
@@ -57,6 +52,18 @@ const CreateScreen = ({ navigation }: CreateScreenProps): React.ReactNode => {
     const userNameGenerator = Math.floor(
       Math.pow(10, 6 - 1) + Math.random() * 9 * Math.pow(10, 6 - 1)
     ).toString();
+    //
+    if (!networkStatus) {
+      return Alert.alert("Please Connect to the Internet");
+    }
+
+    if (!partyName) {
+      return Alert.alert("You must name your party");
+    }
+
+    if (!winningVoteAmount) {
+      return Alert.alert("You must set a winning vote amount");
+    }
 
     firebase
       .database()

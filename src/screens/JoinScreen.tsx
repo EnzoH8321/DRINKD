@@ -14,6 +14,8 @@ import {
 } from "../actions/PartyActions";
 //Firebase
 import firebase from "../utils/firebase";
+//Functions
+import { checkNetworkConnection } from "../utils/functions";
 
 //
 const JoinScreen: React.FC = () => {
@@ -36,8 +38,13 @@ const JoinScreen: React.FC = () => {
   }
 
   //Join Party
-  function joinParty() {
+  async function joinParty() {
     const ref = firebase.database().ref(`parties/${textValue}`);
+    const networkStatus = await checkNetworkConnection();
+
+    if (!networkStatus) {
+      return Alert.alert("Please Connect to the Internet");
+    }
 
     try {
       ref.on("value", (snapshot) => {
