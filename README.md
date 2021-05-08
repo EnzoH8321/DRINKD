@@ -1,3 +1,8 @@
+ 
+ <p align="center"> 
+ <img src="/assets/splash_icon_app.png" height="300">
+ </p>
+
 # DRINKD
 App that lets you and your friend's plan for a night out. 
 
@@ -39,3 +44,8 @@ expo start --ios
 * React / React Native
 * React Navigation
 * Firebase
+
+## TODO
+
+ * Messenging Feature
+ * iOS version
