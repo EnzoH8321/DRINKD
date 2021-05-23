@@ -48,4 +48,9 @@ expo start --ios
 ## TODO
 
  * Messenging Feature
- * iOS version
+
+## Contact Me
+
+If you would liked to contact me, please email enzoherrera123 at gmail.com
+
+
