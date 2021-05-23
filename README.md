@@ -51,6 +51,6 @@ expo start --ios
 
 ## Contact Me
 
-If you would liked to contact me, please email enzoherrera123 at gmail.com
+If you would liked to contact me, please email enzoherrera123@gmail.com
 
 
