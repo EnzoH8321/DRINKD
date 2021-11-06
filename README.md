@@ -9,6 +9,9 @@ App that lets you and your friend's plan for a night out.
 ## Google Play Store
 Check it out on the Google Play Store here -> https://play.google.com/store/apps/details?id=com.lowerbrunii.drinkdapp
 
+## iOS Version
+For the iOS version written in Swift, you can check out the repo here -> https://github.com/EnzoH8321/Drinkd-iOS
+
 ## Why?
 The hardest part about going for a night out with your friends is deciding where to go. Everyone has their own opinions, no one can decide on anything. With this app, you create a party, invite your friends and vote on which bar or restaurant you would like to go to. Highest vote wins. No arguing or complaining. 
 
